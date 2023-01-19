@@ -36,8 +36,13 @@ html {
 .tilte {
   text-align: center;
   font-size: x-large;
-  margin-bottom: 55px;
+  margin-bottom: 40px;
 }
+.tilte h2{
+  margin-top: 70px;
+  margin-bottom: 0;
+}
+
 form{
   margin-top: 40px;
 }
@@ -111,7 +116,14 @@ svg{
 .btn:hover {
   background-color: #4158d0;
 }
-
+.head{
+  left: 45%;
+  width: 50px;
+  height: 100px;
+  position: absolute;
+  /* margin-bottom: 20px; */
+  top: -10px;
+}
 .btn:active {
   background-color: #4158d0;
   box-shadow: 0 5px rgb(0, 0, 0);

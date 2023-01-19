@@ -21,6 +21,8 @@ function Login() {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="tilte">
+          
+        <FaUserAlt className="head"/>
           <h2>Login</h2>
         </div>
         <div className="mb-3 email">
