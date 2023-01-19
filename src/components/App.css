@@ -1,0 +1,114 @@
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .nav {
+    /* max-width: fit-content; */
+    background-color: #263e61;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .nav {
+    /* max-width: fit-content; */
+    background-color: #263e61;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .nav .content .search-bar {
+    height: 30px;
+  }
+
+  .nav .content .right {
+    position: absolute;
+    right: 0;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .nav .content .search-bar {
+    height: 10px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .nav {
+    background-color: #263e61;
+  }
+}
+
+@media only screen and (min-width: 1034px) {
+  .nav {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1085px) {
+  .sidebar-box .toggle-setting {
+    top: 70px;
+  }
+}
+@media only screen and (max-width: 1085px) {
+  .sidebar-box .toggle-setting {
+    top: 80px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .open {
+    left: -200px;
+    height: 700px;
+  }
+  .setting-box {
+    background-color: #263e61;
+  }
+  .content {
+    max-width: 576px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 577px) {
+  .open {
+    left: -200px;
+    height: 700px;
+  }
+  .setting-box {
+    background-color: #263e61;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .open {
+    left: -200px;
+    height: 700px;
+  }
+  .setting-box {
+    background-color: #263e61;
+  }
+  .content {
+    min-width: 576px;
+    max-width: 1031px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .open {
+    left: 0;
+    height: 700px;
+  }
+  .setting-box {
+    background-color: #263e61;
+  }
+}
+@media only screen and (max-width: 1430px) {
+  .open {
+    left: -200px;
+    height: 700px;
+  }
+}
+@media only screen and (max-width: 1032px) {
+  .search-bar {
+    max-width: fit-content;
+    max-height: 75%;
+  }
+}
