@@ -1,0 +1,108 @@
+html {
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-100deg, #c850c0, #4158d0);
+}
+
+.container {
+  width: 35%;
+  height: 80%;
+  padding-bottom: 30px;
+  margin: auto;
+  position: absolute;
+  left: 600px;
+  top: 100px;
+  margin-top: 3%;
+  border-color: #555;
+  border: solid;
+  flex: auto;
+  border-radius: 30px;
+  /* background-color: rgb(240, 240, 236); */
+  /* background-color: #fff; */
+  background-color: #f0ffff;
+  box-shadow: 15px 15px rgb(3, 0, 0);
+  font-family: Poppins-Regular, sans-serif;
+}
+.form-label {
+  padding-top: 20%;
+  padding-left: 5%;
+  font-size: x-large;
+  font-weight: bold;
+}
+.tilte {
+  text-align: center;
+  font-size: x-large;
+}
+
+.email {
+  padding-left: 20px;
+}
+.form-check {
+  padding-left: 10%;
+}
+.password {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+}
+.button {
+  padding-top: 20px;
+  text-align: center;
+}
+::placeholder {
+  font-size: large;
+  font: bolder;
+}
+.email-input,
+.password-input {
+  /* background-color: rgb(240, 240, 236); */
+  background-color: #e6e6e6;
+  width: 85%;
+  height: 35px;
+  margin-top: 15px;
+  padding-left: 40px;
+  border: none;
+  /* border-bottom: 2px solid #555; */
+  border-bottom: none;
+  border-radius: 25px;
+  font-size: larger;
+  font: bolder;
+} /*
+.password-input {
+  background-color: rgb(240, 240, 236);
+  width: 65%;
+  height: 35px;
+  margin-top: 15px;
+  padding-left: 40px;
+  border: none;
+  border-bottom: 2px solid #555;
+} */
+.btn {
+  padding: 2% 2%;
+  font-size: larger;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  /* background-color: #d4d4d4; */
+  background-color: #c850c0;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(0, 0, 0);
+}
+.btn:hover {
+  background-color: #4158d0;
+}
+
+.btn:active {
+  background-color: #4158d0;
+  box-shadow: 0 5px rgb(0, 0, 0);
+  transform: translateY(4px);
+}
+
+/* <!-- background-image: url(E:\GP\Hoadag\hoagag\src\user-solid.svg); -->
+  background-image: url(E:\GP\Hoadag\hoagag\src\key-solid.svg);
+ */

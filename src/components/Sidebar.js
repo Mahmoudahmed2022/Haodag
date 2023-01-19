@@ -7,9 +7,9 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { BiPackage } from "react-icons/bi";
 
 import { FaMale } from "react-icons/fa";
-import "./App.css"
+import "../Css/App.css";
 import { Link } from "react-router-dom";
-import "./sidebar.css";
+import "../Css/sidebar.css";
 import image from "./images/logo1.png";
 
 function Sidebar() {
@@ -17,7 +17,7 @@ function Sidebar() {
     <>
       <div className="sidebar-box open">
         <div className="toggle-setting">
-          <FaCog className="fa-gear"  />
+          <FaCog className="fa-gear" />
         </div>
         <div className="Allsidebar ">
           <div className="content1">

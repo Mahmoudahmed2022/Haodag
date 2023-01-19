@@ -1,13 +1,15 @@
-import Sidebar from "./components/Sidebar.js"
+import Sidebar from "./components/Sidebar.js";
 
-import { Routes , Route, BrowserRouter } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 function App() {
   return (
     <BrowserRouter>
-     <div className="App">
-      <Navbar/>
-      <Sidebar/>
+      <div className="App">
+        <Navbar />
+        <Sidebar />
+        <Login />
         {/* <Navbar /> */}
         {/* <Routes>
          
@@ -15,12 +17,7 @@ function App() {
           <Route path="/booking" element={<Booking />}></Route>
         </Routes> */}
       </div>
-  </BrowserRouter>
-   
-     
-      
-     
-
+    </BrowserRouter>
   );
 }
 
