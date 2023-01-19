@@ -16,33 +16,41 @@ html {
   top: 100px;
   margin-top: 3%;
   border-color: #555;
-  border: solid;
+  /* border: solid; */
   flex: auto;
+  color: #263e61;
+  font: #c7862f;
   border-radius: 30px;
   /* background-color: rgb(240, 240, 236); */
   /* background-color: #fff; */
-  background-color: #f0ffff;
-  box-shadow: 15px 15px rgb(3, 0, 0);
-  font-family: Poppins-Regular, sans-serif;
+  background-color: #e4e9e4;
+  /* box-shadow: 15px 15px rgb(210 210 210); */
+  font-family: auto;
 }
 .form-label {
   padding-top: 20%;
   padding-left: 5%;
-  font-size: x-large;
+  font-size: 20px;
   font-weight: bold;
 }
 .tilte {
   text-align: center;
   font-size: x-large;
+  margin-bottom: 55px;
 }
-
+form{
+  margin-top: 40px;
+}
 .email {
   padding-left: 20px;
+  margin-bottom: 15px;
 }
 .form-check {
   padding-left: 10%;
+  margin-bottom: 10px;
 }
 .password {
+  margin-bottom: 5px;
   padding-top: 20px;
   padding-bottom: 25px;
   padding-left: 20px;
@@ -52,23 +60,28 @@ html {
   text-align: center;
 }
 ::placeholder {
-  font-size: large;
-  font: bolder;
+  font-size: 14px;
+  /* font: bolder; */
+}
+svg{
+  color: #263e61;
+
 }
 .email-input,
 .password-input {
   /* background-color: rgb(240, 240, 236); */
-  background-color: #e6e6e6;
-  width: 85%;
-  height: 35px;
-  margin-top: 15px;
-  padding-left: 40px;
-  border: none;
-  /* border-bottom: 2px solid #555; */
-  border-bottom: none;
-  border-radius: 25px;
-  font-size: larger;
-  font: bolder;
+      /* background-color: rgb(240, 240, 236); */
+      background-color: #e8e8e8;
+      width: 85%;
+      height: 35px;
+      margin-top: 15px;
+      padding-left: 40px;
+      border: none;
+      border-bottom: 2px solid #555;
+      /* border-bottom: none; */
+      /* border-radius: 25px; */
+      /* font-size: 12px; */
+      font: bolder;
 } /*
 .password-input {
   background-color: rgb(240, 240, 236);
@@ -80,18 +93,20 @@ html {
   border-bottom: 2px solid #555;
 } */
 .btn {
+  width: 60%;
+
   padding: 2% 2%;
-  font-size: larger;
+  font-size: 16px;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
   outline: none;
-  color: rgb(0, 0, 0);
-  font-weight: bolder;
+  color: #c7862f;
   /* background-color: #d4d4d4; */
-  background-color: #c850c0;
+  background-color: #263e61;
   border: none;
+  font-family: auto;
   border-radius: 15px;
-  box-shadow: 0 9px rgb(0, 0, 0);
 }
 .btn:hover {
   background-color: #4158d0;

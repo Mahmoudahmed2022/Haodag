@@ -67,10 +67,11 @@ function Login() {
           <button type="submit" className="btn btn-primary">
             Login
           </button>
-          <h6>New Visitor ?</h6>
-          <Link path="submit" className="btn btn-primary">
-            Subscribe
-          </Link>
+          <h5>New Visitor ?</h5>
+          <button type="submit" className="btn btn-primary">
+          Subscribe
+          </button>
+          
         </div>
       </form>
     </div>
