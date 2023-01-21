@@ -1,128 +1,168 @@
+import "../Css/Registration.css";
+import { FaUserLock } from "@react-icons/all-files/fa/FaUserLock";
+import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
+import { MdEmail } from "react-icons/md";
+import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
+import { RiRotateLockFill } from "react-icons/ri";
+import { FaMale } from "@react-icons/all-files/fa/FaMale";
+import { FaFemale } from "@react-icons/all-files/fa/FaFemale";
+import { IoHome, IoIdCard } from "react-icons/io5";
+import { FaAddressCard } from "@react-icons/all-files/fa/FaAddressCard";
+import { FaPhoneAlt } from "@react-icons/all-files/fa/FaPhoneAlt";
+
 function Registration() {
   return (
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-      <div class="wrapper wrapper--w790">
-        <div class="card card-5">
-          <div class="card-heading">
-            <h2 class="title">Event Registration Form</h2>
+    <>
+      <div className="big-container">
+        <h2 className="title">Sign Up</h2>
+        <form>
+          <div className="sml-container">
+            <div className="mb-3">
+              <label htmlFor="FirstName" className="FirstName-label">
+                <FaUserAlt />
+                &nbsp;First Name
+              </label>
+              <input
+                type="text"
+                className="FirstName-input"
+                id="FirstName"
+                required
+              />
+              <label
+                htmlFor="LastName"
+                id="form-label"
+                className="LastName-label"
+              >
+                <FaUserAlt />
+                &nbsp;Last Name
+              </label>
+              <input
+                type="text"
+                className="LastName-input"
+                id="LastName"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="email-label">
+                <MdEmail />
+                &nbsp;Email Address
+              </label>
+              <input
+                type="email"
+                className="email-input"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="userName" className="userName-label">
+                <FaUserCircle />
+                &nbsp;User Name
+              </label>
+              <input
+                type="text"
+                className="userName-input"
+                id="userName"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="password-1-label">
+                <FaUserLock />
+                &nbsp;Password
+              </label>
+              <input
+                type="password"
+                className="password-1-input"
+                id="password"
+                required
+              />
+              <label htmlFor="password" className="password-2-label">
+                <RiRotateLockFill />
+                &nbsp;Verify Password
+              </label>
+              <input
+                type="password"
+                className="password-2-input"
+                id="verify-password"
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="Address" className="Address-label">
+                <IoHome />
+                &nbsp;Address
+              </label>
+              <input
+                type="text"
+                className="Address-input"
+                id="Address"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="NationalID" className="NationalID-label">
+                <FaAddressCard />
+                &nbsp;National ID
+              </label>
+              <input
+                type="number"
+                className="NationalID-input"
+                id="NationalID"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="phone" className="phone-label">
+                <FaPhoneAlt />
+                &nbsp;Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className="phone-input"
+                required
+              />
+            </div>
+            <div className="mb-3 form-check">
+              <label className="male-label">
+                <FaMale />
+                &nbsp;Male
+              </label>
+              <input type="checkbox" className="male-input" />
+              <span className="checkmark"></span>
+
+              <label className="female-label">
+                <FaFemale />
+                &nbsp;Female
+                <input type="checkbox" className="female-input" />
+                <span className="checkmark"></span>
+              </label>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="role" className="role-label">
+                <IoIdCard />
+                Choose a Role:
+              </label>
+              <select name="Role" id="role">
+                <option value="Customer">Customer</option>
+                <option value="HallOwner">Hall Owner</option>
+                <option value="WeddingPlanner">Wedding Planner</option>
+              </select>
+            </div>
+            <div className="mb-3 form-check">
+              <button type="submit" className="btn btn-primary">
+                Sign Up
+              </button>
+            </div>
           </div>
-          <div class="card-body">
-            <form method="POST">
-              <div class="form-row m-b-55">
-                <div class="name">Name</div>
-                <div class="value">
-                  <div class="row row-space">
-                    <div class="col-2">
-                      <div class="input-group-desc">
-                        <input
-                          class="input--style-5"
-                          type="text"
-                          name="first_name"
-                        />
-                        <label class="label--desc">first name</label>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="input-group-desc">
-                        <input
-                          class="input--style-5"
-                          type="text"
-                          name="last_name"
-                        />
-                        <label class="label--desc">last name</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="name">Company</div>
-                <div class="value">
-                  <div class="input-group">
-                    <input class="input--style-5" type="text" name="company" />
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="name">Email</div>
-                <div class="value">
-                  <div class="input-group">
-                    <input class="input--style-5" type="email" name="email" />
-                  </div>
-                </div>
-              </div>
-              <div class="form-row m-b-55">
-                <div class="name">Phone</div>
-                <div class="value">
-                  <div class="row row-refine">
-                    <div class="col-3">
-                      <div class="input-group-desc">
-                        <input
-                          class="input--style-5"
-                          type="text"
-                          name="area_code"
-                        />
-                        <label class="label--desc">Area Code</label>
-                      </div>
-                    </div>
-                    <div class="col-9">
-                      <div class="input-group-desc">
-                        <input
-                          class="input--style-5"
-                          type="text"
-                          name="phone"
-                        />
-                        <label class="label--desc">Phone Number</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="name">Subject</div>
-                <div class="value">
-                  <div class="input-group">
-                    <div class="rs-select2 js-select-simple select--no-search">
-                      <select name="subject">
-                        <option disabled="disabled" selected="selected">
-                          Choose option
-                        </option>
-                        <option>Subject 1</option>
-                        <option>Subject 2</option>
-                        <option>Subject 3</option>
-                      </select>
-                      <div class="select-dropdown"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row p-t-20">
-                <label class="label label--block">
-                  Are you an existing customer?
-                </label>
-                <div class="p-t-15">
-                  <label class="radio-container m-r-55">
-                    Yes
-                    <input type="radio" checked="checked" name="exist" />
-                    <span class="checkmark"></span>
-                  </label>
-                  <label class="radio-container">
-                    No
-                    <input type="radio" name="exist" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <button class="btn btn--radius-2 btn--red" type="submit">
-                  Register
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        </form>
       </div>
-    </div>
+    </>
   );
 }
 
