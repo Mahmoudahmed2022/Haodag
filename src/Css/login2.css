@@ -30,22 +30,25 @@ html {
   
   .login-box .user-box {
     position: relative;
-  }
+    margin-bottom: 15px;  }
   
   .login-box .user-box input {
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 10px;
     font-size: 16px;
     color: #243b55;
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #141e30;
     outline: none;
+    padding-left: 25px;
+    height: 10px;
+    border-right: none;
     background: transparent;
   }
   .login-box .user-box label {
     position: absolute;
-    top: 15px;
+    top: -10px;
     left: 25px;
     padding: 10px 0;
     font-size: 16px;
@@ -62,9 +65,9 @@ html {
     font-size: 14px;
   } */
   .svg1{
-        position: relative;
-        top: 24px;
-        color: #263e61;
+    position: relative;
+    top: -1px;
+    color: #263e61;
 
       }
   .login-box form .submit {
@@ -77,7 +80,7 @@ html {
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 40px;
+    margin-top: 0px;
     letter-spacing: 4px;
   }
   .login-box form .register {
@@ -90,7 +93,7 @@ html {
     left: 35%;
     text-decoration: none;
     overflow: hidden;
-    margin-top: 40px;
+    margin-top: 30px;
   }
   .login-box .register:hover {
     color: red;
