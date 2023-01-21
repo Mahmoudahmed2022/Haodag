@@ -2,16 +2,18 @@
   border: solid;
   border-radius: 30px;
   width: 50%;
+  margin: auto;
   position: absolute;
   flex: auto;
   top: 120px;
-  left: 250px;
+  left: 300px;
   padding: 10px;
   color: #263e61;
   background-color: #e4e9e4;
   border-color: #555;
   font-family: auto;
   display: block;
+  text-align: center;
 }
 svg {
   color: #c7862f;
@@ -49,14 +51,14 @@ label {
   position: absolute;
   top: 17ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .LastName-label {
   position: absolute;
   top: 17ex;
   z-index: 1;
-  left: 21em;
+  left: 23em;
   padding: 0px 5px;
 }
 .LastName {
@@ -74,7 +76,7 @@ label {
   position: absolute;
   top: 27.5ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .email-input {
@@ -85,7 +87,7 @@ label {
   position: absolute;
   top: 37.8ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .userName-input {
@@ -96,7 +98,7 @@ label {
   position: absolute;
   top: 48ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .password-1-input {
@@ -107,7 +109,7 @@ label {
   position: absolute;
   top: 48ex;
   z-index: 1;
-  left: 21em;
+  left: 23em;
   padding: 0px 5px;
 }
 .password-2-input {
@@ -118,7 +120,7 @@ label {
   position: absolute;
   top: 59ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .Address-input {
@@ -129,7 +131,7 @@ label {
   position: absolute;
   top: 70ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .NationalID-input {
@@ -140,25 +142,86 @@ label {
   position: absolute;
   top: 80ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .phone-input {
-  width: 250px;
+  width: 83%;
   margin-left: 10px;
-  width: 69%;
+}
+.gender,
+.role {
+  margin-bottom: 100px;
 }
 .male-label {
   position: absolute;
-  top: 90ex;
+  top: 93ex;
   z-index: 1;
-  left: 2em;
+  left: 4em;
   padding: 0px 5px;
 }
 .male-input {
   position: absolute;
-  top: 88ex;
+  top: 93.2ex;
   z-index: 1;
-  left: 2em;
+  left: 10em;
   padding: 0px 5px;
+}
+.female-label {
+  position: absolute;
+  top: 93ex;
+  z-index: 1;
+  left: 12em;
+  padding: 0px 5px;
+}
+.female-input {
+  position: absolute;
+  top: -2.8ex;
+  z-index: 1;
+  left: 6em;
+  padding: 0px 5px;
+}
+.role-label {
+  position: absolute;
+  top: 98ex;
+  z-index: 1;
+  left: 4em;
+  padding: 0px 5px;
+}
+.role-select {
+  position: absolute;
+  top: 101.5ex;
+  z-index: 1;
+  left: 15em;
+  padding: 0px 5px;
+}
+
+.btn-cont {
+  margin-top: 150px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.btn {
+  width: 60%;
+
+  padding: 2% 2%;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #c7862f;
+  /* background-color: #d4d4d4; */
+  background-color: #263e61;
+  border: none;
+  font-family: auto;
+  border-radius: 15px;
+}
+.btn:hover {
+  background-color: #4158d0;
+}
+.btn:active {
+  background-color: #4158d0;
+  box-shadow: 0 5px rgb(0, 0, 0);
+  transform: translateY(4px);
 }

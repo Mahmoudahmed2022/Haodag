@@ -128,7 +128,7 @@ function Registration() {
                 required
               />
             </div>
-            <div className="mb-3 form-check">
+            <div className="mb-3 gender">
               <label className="male-label">
                 <FaMale />
                 &nbsp;Male
@@ -143,18 +143,18 @@ function Registration() {
                 <span className="checkmark"></span>
               </label>
             </div>
-            <div className="mb-3">
+            <div className="mb-3 role">
               <label htmlFor="role" className="role-label">
                 <IoIdCard />
                 Choose a Role:
               </label>
-              <select name="Role" id="role">
+              <select name="Role" id="role" className="role-select">
                 <option value="Customer">Customer</option>
                 <option value="HallOwner">Hall Owner</option>
                 <option value="WeddingPlanner">Wedding Planner</option>
               </select>
             </div>
-            <div className="mb-3 form-check">
+            <div className="mb-3 form-check btn-cont">
               <button type="submit" className="btn btn-primary">
                 Sign Up
               </button>
