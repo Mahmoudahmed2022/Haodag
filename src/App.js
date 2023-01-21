@@ -3,12 +3,13 @@ import Sidebar from "./components/Sidebar.js";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import Home from "./components/Home.js";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
-        <Sidebar />
+        {/* <Navbar />
+        <Sidebar /> */}
         <Login />
         {/* <Navbar /> */}
         {/* <Routes>
