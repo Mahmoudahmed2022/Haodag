@@ -1,12 +1,19 @@
+body {
+  background-color: #243b55;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 .big-container {
-  border: solid;
+  box-shadow: 0 6px 15px #a8acb1;
+
   border-radius: 30px;
   width: 50%;
   margin: auto;
   position: absolute;
   flex: auto;
-  top: 120px;
-  left: 300px;
+  top: 20%;
+  left: 25%;
   padding: 10px;
   color: #263e61;
   background-color: #e4e9e4;
@@ -27,12 +34,16 @@ svg {
   margin-bottom: 20px;
 }
 input {
+  box-shadow: 0 6px 15px #555;
   background-color: #a8acb1;
   height: 35px;
   margin-top: 15px;
   padding-left: 40px;
   border-radius: 8px;
   font: bolder;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 label {
   display: block;
@@ -129,7 +140,7 @@ label {
 }
 .NationalID-label {
   position: absolute;
-  top: 70ex;
+  top: 69ex;
   z-index: 1;
   left: 4em;
   padding: 0px 5px;
@@ -140,7 +151,7 @@ label {
 }
 .phone-label {
   position: absolute;
-  top: 80ex;
+  top: 79ex;
   z-index: 1;
   left: 4em;
   padding: 0px 5px;
@@ -166,6 +177,7 @@ label {
   z-index: 1;
   left: 10em;
   padding: 0px 5px;
+  box-shadow: none;
 }
 .female-label {
   position: absolute;
@@ -180,10 +192,11 @@ label {
   z-index: 1;
   left: 6em;
   padding: 0px 5px;
+  box-shadow: none;
 }
 .role-label {
   position: absolute;
-  top: 98ex;
+  top: 98.5ex;
   z-index: 1;
   left: 4em;
   padding: 0px 5px;
@@ -194,6 +207,20 @@ label {
   z-index: 1;
   left: 15em;
   padding: 0px 5px;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #243b55;
+  color: #c7862f;
+  border-radius: 10px;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+}
+select::-ms-expand {
+  display: none;
 }
 
 .btn-cont {
