@@ -4,15 +4,17 @@ import { BrowserRouter,Routes, Route } from "react-router-dom";
 // import Login from "./components/Login";
 // import Home from "./components/Home.js";
 import Login2 from "./components/Login2";
+import Registration from "./components/Registration";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        {/*<Sidebar /> */}
+        <Registration />
         {/* <Navbar />
-        <Sidebar /> */}
-        <Login2 />
-
-        {/* <Navbar /> */}
+          
+          <Registration
+      */}
         {/* <Routes>
          
           <Route path="/dashboard" element={<Dashboard/>}/>
@@ -20,7 +22,6 @@ function App() {
         </Routes> */}
       </div>
     </BrowserRouter>
-
   );
 }
 
