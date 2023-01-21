@@ -6,11 +6,13 @@ import { ImMail } from "react-icons/im";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+ 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -32,7 +34,6 @@ function Login() {
               <FaUserAlt />
               &nbsp;Email address
             </label>
-            <br />
             <input
               type="email"
               className="form-control email-input"
@@ -49,7 +50,6 @@ function Login() {
               <FaLock />
               &nbsp;Password
             </label>
-            <br />
             <input
               type="password"
               className="form-control password-input"

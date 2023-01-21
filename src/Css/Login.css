@@ -1,10 +1,14 @@
+body{
+  height: 1000px;
+}
+
 .container {
   width: 35%;
-  height: 550px;
+  /* height: 600px; */
   padding-bottom: 30px;
   margin: auto;
-  position: absolute;
-  left: 600px;
+  /* position: absolute; */
+  /* left: 50%; */
   top: 100px;
   margin-top: 3%;
   border-color: #555;
@@ -15,12 +19,16 @@
   border-radius: 30px;
   /* background-color: rgb(240, 240, 236); */
   /* background-color: #fff; */
-  background-color: #e4e9e4;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-100deg, #f5f4f6, #4158d0);
+  /* background-color: #e4e9e4; */
   /* box-shadow: 15px 15px rgb(210 210 210); */
   font-family: auto;
 }
 .form-label {
-  padding-top: 20%;
   padding-left: 5%;
   font-size: 20px;
   font-weight: bold;
@@ -30,12 +38,19 @@
   font-size: x-large;
   margin-bottom: 40px;
 }
-.tilte h2 {
-  margin-top: 70px;
+.tilte svg{
+  margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+
+}
+.tilte h2{
+  margin-top: -10px;
   margin-bottom: 0;
 }
 
-form {
+form{
   margin-top: 40px;
 }
 .email {
@@ -49,7 +64,6 @@ form {
 .password {
   margin-bottom: 5px;
   padding-top: 20px;
-  padding-bottom: 25px;
   padding-left: 20px;
 }
 .button {
@@ -58,26 +72,34 @@ form {
 }
 ::placeholder {
   font-size: 14px;
+  color: #364f75;
   /* font: bolder; */
 }
-svg {
+svg{
   color: #263e61;
+
 }
 .email-input,
 .password-input {
-  /* background-color: rgb(240, 240, 236); */
-  /* background-color: rgb(240, 240, 236); */
-  background-color: #e8e8e8;
-  width: 85%;
-  height: 35px;
-  margin-top: 15px;
-  padding-left: 40px;
-  border: none;
-  border-bottom: 2px solid #555;
-  /* border-bottom: none; */
-  /* border-radius: 25px; */
-  /* font-size: 12px; */
-  font: bolder;
+      /* background-color: rgb(240, 240, 236); */
+    /* background-color: rgb(240, 240, 236); */
+    background-color: #e8e8e8;
+    width: 70%;
+    height: 35px;
+    margin-top: 15px;
+    padding-left: 40px;
+    border: none;
+    border-bottom: 2px solid #555;
+    /* border-bottom: none; */
+    /* background: #9053c7; */
+    /* background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); */
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    /* background: linear-gradient(-100deg, #f5f4f6, #4158d0); */
+    /* border-radius: 25px; */
+    /* font-size: 12px; */
+    background-color: transparent;
+    font: bolder;
 } /*
 .password-input {
   background-color: rgb(240, 240, 236);
@@ -90,7 +112,6 @@ svg {
 } */
 .btn {
   width: 60%;
-
   padding: 2% 2%;
   font-size: 16px;
   text-align: center;
@@ -107,13 +128,12 @@ svg {
 .btn:hover {
   background-color: #4158d0;
 }
-.head {
-  left: 45%;
-  width: 50px;
-  height: 100px;
-  position: absolute;
-  /* margin-bottom: 20px; */
-  top: -10px;
+.head{
+  margin-bottom: 0;
+
+}
+svg{
+  color: #263e61;
 }
 .btn:active {
   background-color: #4158d0;
