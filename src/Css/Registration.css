@@ -79,7 +79,7 @@ label {
 
 .LastName-input,
 .FirstName-input {
-  width: 250px;
+  width: 38%;
   margin-left: 10px;
 }
 
@@ -113,7 +113,7 @@ label {
   padding: 0px 5px;
 }
 .password-1-input {
-  width: 250px;
+  width: 38%;
   margin-left: 10px;
 }
 .password-2-label {
@@ -124,7 +124,7 @@ label {
   padding: 0px 5px;
 }
 .password-2-input {
-  width: 250px;
+  width: 38%;
   margin-left: 10px;
 }
 .Address-label {

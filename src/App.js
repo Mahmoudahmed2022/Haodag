@@ -1,10 +1,6 @@
-import { BrowserRouter,Routes, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-// import Registration from "./components/Registration.js";
-// import Login from "./components/Login";
-// import Home from "./components/Home.js";
-import Login2 from "./components/Login2";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./components/Registration";
+// import Login2 from "./components/Login2";
 function App() {
   return (
     <BrowserRouter>
@@ -13,7 +9,8 @@ function App() {
         <Registration />
         {/* <Navbar />
           
-          <Registration
+          <
+          Login2
       */}
         {/* <Routes>
          
