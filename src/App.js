@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter,Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-<<<<<<< HEAD
+import Registration from "./components/Registration.js";
 import Login from "./components/Login";
 import Home from "./components/Home.js";
 function App() {
@@ -18,20 +18,7 @@ function App() {
         </Routes> */}
       </div>
     </BrowserRouter>
-=======
-import Registration from "./components/Registration.js";
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Registration />
-      {/* <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Registration" element={<Registration />} />
-        <Route path="/Home" element={<Home />} />
-  </Routes>*/}
-    </div>
->>>>>>> b878df462feb0587b680fa3db89149268a4e34b7
+
   );
 }
 

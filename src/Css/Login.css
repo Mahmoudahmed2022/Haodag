@@ -1,16 +1,10 @@
-<<<<<<< HEAD
 body{
   height: 1000px;
 }
 
 .container {
   width: 35%;
-  height: 600px;
-=======
-.container {
-  width: 35%;
-  height: 550px;
->>>>>>> b878df462feb0587b680fa3db89149268a4e34b7
+  /* height: 600px; */
   padding-bottom: 30px;
   margin: auto;
   /* position: absolute; */
@@ -35,7 +29,6 @@ body{
   font-family: auto;
 }
 .form-label {
-  padding-top: 20%;
   padding-left: 5%;
   font-size: 20px;
   font-weight: bold;
@@ -45,7 +38,6 @@ body{
   font-size: x-large;
   margin-bottom: 40px;
 }
-<<<<<<< HEAD
 .tilte svg{
   margin-bottom: 5px;
   width: 50px;
@@ -55,14 +47,10 @@ body{
 }
 .tilte h2{
   margin-top: -10px;
-=======
-.tilte h2 {
-  margin-top: 70px;
->>>>>>> b878df462feb0587b680fa3db89149268a4e34b7
   margin-bottom: 0;
 }
 
-form {
+form{
   margin-top: 40px;
 }
 .email {
@@ -76,7 +64,6 @@ form {
 .password {
   margin-bottom: 5px;
   padding-top: 20px;
-  padding-bottom: 25px;
   padding-left: 20px;
 }
 .button {
@@ -85,14 +72,15 @@ form {
 }
 ::placeholder {
   font-size: 14px;
+  color: #364f75;
   /* font: bolder; */
 }
-svg {
+svg{
   color: #263e61;
+
 }
 .email-input,
 .password-input {
-<<<<<<< HEAD
       /* background-color: rgb(240, 240, 236); */
     /* background-color: rgb(240, 240, 236); */
     background-color: #e8e8e8;
@@ -112,21 +100,6 @@ svg {
     /* font-size: 12px; */
     background-color: transparent;
     font: bolder;
-=======
-  /* background-color: rgb(240, 240, 236); */
-  /* background-color: rgb(240, 240, 236); */
-  background-color: #e8e8e8;
-  width: 85%;
-  height: 35px;
-  margin-top: 15px;
-  padding-left: 40px;
-  border: none;
-  border-bottom: 2px solid #555;
-  /* border-bottom: none; */
-  /* border-radius: 25px; */
-  /* font-size: 12px; */
-  font: bolder;
->>>>>>> b878df462feb0587b680fa3db89149268a4e34b7
 } /*
 .password-input {
   background-color: rgb(240, 240, 236);
@@ -155,22 +128,12 @@ svg {
 .btn:hover {
   background-color: #4158d0;
 }
-<<<<<<< HEAD
 .head{
   margin-bottom: 0;
 
 }
 svg{
   color: #263e61;
-=======
-.head {
-  left: 45%;
-  width: 50px;
-  height: 100px;
-  position: absolute;
-  /* margin-bottom: 20px; */
-  top: -10px;
->>>>>>> b878df462feb0587b680fa3db89149268a4e34b7
 }
 .btn:active {
   background-color: #4158d0;
