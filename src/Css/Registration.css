@@ -1,0 +1,164 @@
+.big-container {
+  border: solid;
+  border-radius: 30px;
+  width: 50%;
+  position: absolute;
+  flex: auto;
+  top: 120px;
+  left: 250px;
+  padding: 10px;
+  color: #263e61;
+  background-color: #e4e9e4;
+  border-color: #555;
+  font-family: auto;
+  display: block;
+}
+svg {
+  color: #c7862f;
+}
+.title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 60px;
+}
+.mb-3 {
+  margin-bottom: 20px;
+}
+input {
+  background-color: #a8acb1;
+  height: 35px;
+  margin-top: 15px;
+  padding-left: 40px;
+  border-radius: 8px;
+  font: bolder;
+}
+label {
+  display: block;
+}
+.input-wrapper {
+  position: static;
+}
+.form-logo {
+  display: block;
+}
+.logo {
+  width: 200px;
+  height: 80px;
+}
+.FirstName-label {
+  position: absolute;
+  top: 17ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.LastName-label {
+  position: absolute;
+  top: 17ex;
+  z-index: 1;
+  left: 21em;
+  padding: 0px 5px;
+}
+.LastName {
+  position: absolute;
+  right: 142px;
+}
+
+.LastName-input,
+.FirstName-input {
+  width: 250px;
+  margin-left: 10px;
+}
+
+.email-label {
+  position: absolute;
+  top: 27.5ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.email-input {
+  margin-left: 10px;
+  width: 83%;
+}
+.userName-label {
+  position: absolute;
+  top: 37.8ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.userName-input {
+  margin-left: 10px;
+  width: 83%;
+}
+.password-1-label {
+  position: absolute;
+  top: 48ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.password-1-input {
+  width: 250px;
+  margin-left: 10px;
+}
+.password-2-label {
+  position: absolute;
+  top: 48ex;
+  z-index: 1;
+  left: 21em;
+  padding: 0px 5px;
+}
+.password-2-input {
+  width: 250px;
+  margin-left: 10px;
+}
+.Address-label {
+  position: absolute;
+  top: 59ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.Address-input {
+  width: 83%;
+  margin-left: 10px;
+}
+.NationalID-label {
+  position: absolute;
+  top: 70ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.NationalID-input {
+  width: 83%;
+  margin-left: 10px;
+}
+.phone-label {
+  position: absolute;
+  top: 80ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.phone-input {
+  width: 250px;
+  margin-left: 10px;
+  width: 69%;
+}
+.male-label {
+  position: absolute;
+  top: 90ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}
+.male-input {
+  position: absolute;
+  top: 88ex;
+  z-index: 1;
+  left: 2em;
+  padding: 0px 5px;
+}

@@ -1,23 +1,17 @@
-import Sidebar from "./components/Sidebar.js";
-
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Login from "./components/Login";
+import Registration from "./components/Registration.js";
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-        <Sidebar />
-        <Login />
-        {/* <Navbar /> */}
-        {/* <Routes>
-         
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/booking" element={<Booking />}></Route>
-        </Routes> */}
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Navbar />
+      <Registration />
+      {/* <Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Registration" element={<Registration />} />
+        <Route path="/Home" element={<Home />} />
+  </Routes>*/}
+    </div>
   );
 }
 

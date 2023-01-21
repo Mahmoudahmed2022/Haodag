@@ -1,14 +1,6 @@
-html {
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-100deg, #c850c0, #4158d0);
-}
-
 .container {
   width: 35%;
-  height: 80%;
+  height: 550px;
   padding-bottom: 30px;
   margin: auto;
   position: absolute;
@@ -38,12 +30,12 @@ html {
   font-size: x-large;
   margin-bottom: 40px;
 }
-.tilte h2{
+.tilte h2 {
   margin-top: 70px;
   margin-bottom: 0;
 }
 
-form{
+form {
   margin-top: 40px;
 }
 .email {
@@ -68,25 +60,24 @@ form{
   font-size: 14px;
   /* font: bolder; */
 }
-svg{
+svg {
   color: #263e61;
-
 }
 .email-input,
 .password-input {
   /* background-color: rgb(240, 240, 236); */
-      /* background-color: rgb(240, 240, 236); */
-      background-color: #e8e8e8;
-      width: 85%;
-      height: 35px;
-      margin-top: 15px;
-      padding-left: 40px;
-      border: none;
-      border-bottom: 2px solid #555;
-      /* border-bottom: none; */
-      /* border-radius: 25px; */
-      /* font-size: 12px; */
-      font: bolder;
+  /* background-color: rgb(240, 240, 236); */
+  background-color: #e8e8e8;
+  width: 85%;
+  height: 35px;
+  margin-top: 15px;
+  padding-left: 40px;
+  border: none;
+  border-bottom: 2px solid #555;
+  /* border-bottom: none; */
+  /* border-radius: 25px; */
+  /* font-size: 12px; */
+  font: bolder;
 } /*
 .password-input {
   background-color: rgb(240, 240, 236);
@@ -116,7 +107,7 @@ svg{
 .btn:hover {
   background-color: #4158d0;
 }
-.head{
+.head {
   left: 45%;
   width: 50px;
   height: 100px;
