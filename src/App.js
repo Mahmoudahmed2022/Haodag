@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Registration from "./components/Registration";
-// import Login2 from "./components/Login2";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+
+
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {/*<Sidebar /> */}
-        <Registration />
+        <Navbar />
+        <Sidebar />
+        {/* <Registration /> */}
         {/* <Navbar />
           
           <Login2

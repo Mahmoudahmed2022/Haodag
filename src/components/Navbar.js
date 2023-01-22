@@ -18,7 +18,7 @@ function Navbar() {
 
               <div className="search-text-and-rect">
                 <div className="rect"></div>
-                <input placeholder="Search or type" />
+                <input className="input1" placeholder="Search or type" />
               </div>
             </div>
           </div>

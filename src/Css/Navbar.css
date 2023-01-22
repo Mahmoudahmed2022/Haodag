@@ -1,41 +1,3 @@
-/* @media only screen and (max-width: 600px) {
-    body {
-      background-color: black;
-    }
-  }  */
-/* small */
-/* @media (max-width: 767px) {
-    .nav{
-        width: 50%;
-    }
-    
-  }  */
-/* 
-@media (min-width: 768px) {
-    
-  } */
-/* medium */
-/* @media (min-width: 992px) {
-    
-  }  */
-/* large */
-/* @media (min-width: 1200px) {
-   
-  }
-  @media (max-width: 992px) {
-    
-  } 
-  @media (max-width: 1199px) {
-    
-  }  */
-
-/* @media screen and (max-width: 480px) {
-    .nav .content{
-   
-     display: none;
-    }
-   }
-  /* Extra small devices (phones, 600px and down) */
 
 .nav {
   display: flex;
@@ -152,7 +114,7 @@
   flex-grow: 0;
 }
 
-.nav .content .search-bar .search-bar-content .search-text-and-rect input {
+.nav .content .search-bar .search-bar-content .search-text-and-rect .input1 {
   width: 112px;
   height: 21px;
 
