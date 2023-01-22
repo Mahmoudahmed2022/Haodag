@@ -9,8 +9,8 @@ function App() {
         <Registration />
         {/* <Navbar />
           
-          <
-          Login2
+          <Login2
+          
       */}
         {/* <Routes>
          

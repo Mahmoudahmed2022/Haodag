@@ -9,13 +9,61 @@ import { FaFemale } from "@react-icons/all-files/fa/FaFemale";
 import { IoHome, IoIdCard } from "react-icons/io5";
 import { FaAddressCard } from "@react-icons/all-files/fa/FaAddressCard";
 import { FaPhoneAlt } from "@react-icons/all-files/fa/FaPhoneAlt";
+import axios from "axios";
+import { useState } from "react";
 
 function Registration() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [verifyPassword, setVerifyPassword] = useState("");
+  const [Address, setAddress] = useState("");
+  const [nationalID, setNationalID] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("male");
+  const [role, setRole] = useState("Customer");
+  const [gendercheck, setGendercheck] = useState("male");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(
+      firstName,
+      lastName,
+      email,
+      userName,
+      password,
+      verifyPassword,
+      Address,
+      nationalID,
+      phone,
+      gender,
+      role
+    );
+    axios
+      .post("https://fakestoreapi.com/products", {
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        verifyPassword,
+        Address,
+        nationalID,
+        phone,
+        gender,
+        role,
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <>
       <div className="big-container">
         <h2 className="title">Sign Up</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="sml-container">
             <div className="mb-3">
               <label htmlFor="FirstName" className="FirstName-label">
@@ -27,6 +75,7 @@ function Registration() {
                 className="FirstName-input"
                 id="FirstName"
                 required
+                onChange={(e) => setFirstName(e.target.value)}
               />
               <label
                 htmlFor="LastName"
@@ -41,6 +90,7 @@ function Registration() {
                 className="LastName-input"
                 id="LastName"
                 required
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -54,6 +104,7 @@ function Registration() {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -66,6 +117,7 @@ function Registration() {
                 className="userName-input"
                 id="userName"
                 required
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -78,6 +130,7 @@ function Registration() {
                 className="password-1-input"
                 id="password"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="password" className="password-2-label">
                 <RiRotateLockFill />
@@ -88,6 +141,7 @@ function Registration() {
                 className="password-2-input"
                 id="verify-password"
                 required
+                onChange={(e) => setVerifyPassword(e.target.value)}
               />
             </div>
 
@@ -101,6 +155,7 @@ function Registration() {
                 className="Address-input"
                 id="Address"
                 required
+                onChange={(e) => setAddress(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -113,6 +168,7 @@ function Registration() {
                 className="NationalID-input"
                 id="NationalID"
                 required
+                onChange={(e) => setNationalID(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -126,20 +182,37 @@ function Registration() {
                 name="phone"
                 className="phone-input"
                 required
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
             <div className="mb-3 gender">
-              <label className="male-label">
+              <label className="male-label checkoption">
                 <FaMale />
                 &nbsp;Male
               </label>
-              <input type="checkbox" className="male-input" />
+              <input
+                type="checkbox"
+                className="male-input"
+                checked={gendercheck === "male"}
+                onChange={() => {
+                  setGendercheck("male");
+                  setGender("male");
+                }}
+              />
               <span className="checkmark"></span>
 
-              <label className="female-label">
+              <label className="female-label checkoption">
                 <FaFemale />
                 &nbsp;Female
-                <input type="checkbox" className="female-input" />
+                <input
+                  type="checkbox"
+                  className="female-input"
+                  checked={gendercheck === "female"}
+                  onChange={() => {
+                    setGendercheck("female");
+                    setGender("female");
+                  }}
+                />
                 <span className="checkmark"></span>
               </label>
             </div>
@@ -149,9 +222,24 @@ function Registration() {
                 Choose a Role:
               </label>
               <select name="Role" id="role" className="role-select">
-                <option value="Customer">Customer</option>
-                <option value="HallOwner">Hall Owner</option>
-                <option value="WeddingPlanner">Wedding Planner</option>
+                <option
+                  value="Customer"
+                  onChange={(e) => setFirstName(e.target.value)}
+                >
+                  Customer
+                </option>
+                <option
+                  value="Hall Owner"
+                  onChange={(e) => setFirstName(e.target.value)}
+                >
+                  Hall Owner
+                </option>
+                <option
+                  value="Wedding Planner"
+                  onChange={(e) => setFirstName(e.target.value)}
+                >
+                  Wedding Planner
+                </option>
               </select>
             </div>
             <div className="mb-3 form-check btn-cont">
