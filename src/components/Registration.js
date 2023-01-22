@@ -1,4 +1,6 @@
 import "../Css/Registration.css";
+import "../Css/App.css";
+
 import { FaUserLock } from "@react-icons/all-files/fa/FaUserLock";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 import { MdEmail } from "react-icons/md";

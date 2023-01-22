@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 1000px;
 }
 .big-container {
   box-shadow: 0 6px 15px #a8acb1;
@@ -12,7 +13,7 @@ body {
   margin: auto;
   position: absolute;
   flex: auto;
-  top: 20%;
+  top: 5%;
   left: 25%;
   padding: 10px;
   color: #263e61;
@@ -69,7 +70,7 @@ label {
   position: absolute;
   top: 17ex;
   z-index: 1;
-  left: 23em;
+  left: 24em;
   padding: 0px 5px;
 }
 .LastName {
@@ -120,7 +121,7 @@ label {
   position: absolute;
   top: 48ex;
   z-index: 1;
-  left: 23em;
+  left: 24em;
   padding: 0px 5px;
 }
 .password-2-input {

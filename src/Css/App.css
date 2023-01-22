@@ -1,4 +1,59 @@
+@media only screen and (max-width: 992px) {
+  .big-container {
+    left: 4%;
+    width: 90%;
+  }
+  .password-2-label {
+    left: 30em;
+  }
+  .LastName-label {
+    left: 30em;
+  }
+  .FirstName-label {
+    left: 5em;
+  }
+  .email-label {
+    left: 5em;
+  }
+  .userName-label {
+    left: 5em;
+  }
+  .password-1-label {
+    left: 5em;
+  }
+  .Address-label {
+    left: 5em;
+  }
+  .NationalID-label {
+    left: 5em;
+  }
+  .phone-label {
+    left: 5em;
+  }
+}
+/* @media only screen and (min-width: 993px) {
+  .big-container {
+    left: 25%;
+    width: 50%;
+  }} */
+@media only screen and (max-width: 768px) {
+  .password-2-label {
+    left: 22em;
+  }
+  .LastName-label {
+    left: 22em;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .password-2-label {
+    left: 18em;
+  }
+  .LastName-label {
+    left: 18em;
+  }
+}
 /* Medium devices (landscape tablets, 768px and up) */
+
 @media only screen and (min-width: 768px) {
   .nav {
     /* max-width: fit-content; */
