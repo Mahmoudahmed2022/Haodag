@@ -46,32 +46,45 @@ input {
   border-left: none;
   border-right: none;
 }
-label {
+label,
+.form-logo  {
   display: block;
 }
 .input-wrapper {
   position: static;
 }
-.form-logo {
-  display: block;
-}
 .logo {
   width: 200px;
   height: 80px;
 }
-.FirstName-label {
+
+.FirstName-label,
+.LastName-label,
+.email-label,
+.userName-label,
+.password-1-label,
+.password-2-label,
+.Address-label,
+.NationalID-label,
+.phone-label,
+.male-input,
+.female-label,
+.role-select,
+.role-label,
+.male-label,
+.female-input {
   position: absolute;
-  top: 17ex;
   z-index: 1;
-  left: 4em;
   padding: 0px 5px;
 }
-.LastName-label {
-  position: absolute;
+
+.FirstName-label {
   top: 17ex;
-  z-index: 1;
-  left: 24em;
-  padding: 0px 5px;
+  left: 4em;
+}
+.LastName-label {
+  top: 17ex;
+  left: 23em;
 }
 .LastName {
   position: absolute;
@@ -85,77 +98,56 @@ label {
 }
 
 .email-label {
-  position: absolute;
   top: 27.5ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .email-input {
   margin-left: 10px;
   width: 83%;
 }
 .userName-label {
-  position: absolute;
   top: 37.8ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .userName-input {
   margin-left: 10px;
   width: 83%;
 }
 .password-1-label {
-  position: absolute;
   top: 48ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .password-1-input {
   width: 38%;
   margin-left: 10px;
 }
 .password-2-label {
-  position: absolute;
   top: 48ex;
-  z-index: 1;
-  left: 24em;
-  padding: 0px 5px;
+  left: 23em;
 }
 .password-2-input {
   width: 38%;
   margin-left: 10px;
 }
 .Address-label {
-  position: absolute;
   top: 59ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .Address-input {
   width: 83%;
   margin-left: 10px;
 }
 .NationalID-label {
-  position: absolute;
   top: 69ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .NationalID-input {
   width: 83%;
   margin-left: 10px;
 }
 .phone-label {
-  position: absolute;
   top: 79ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .phone-input {
   width: 83%;
@@ -166,48 +158,30 @@ label {
   margin-bottom: 100px;
 }
 .male-label {
-  position: absolute;
   top: 93ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .male-input {
-  position: absolute;
   top: 93.2ex;
-  z-index: 1;
   left: 10em;
-  padding: 0px 5px;
   box-shadow: none;
 }
 .female-label {
-  position: absolute;
   top: 93ex;
-  z-index: 1;
   left: 12em;
-  padding: 0px 5px;
 }
 .female-input {
-  position: absolute;
   top: -2.8ex;
-  z-index: 1;
   left: 6em;
-  padding: 0px 5px;
   box-shadow: none;
 }
 .role-label {
-  position: absolute;
   top: 98.5ex;
-  z-index: 1;
   left: 4em;
-  padding: 0px 5px;
 }
 .role-select {
-  position: absolute;
   top: 101.5ex;
-  z-index: 1;
   left: 15em;
-  padding: 0px 5px;
 }
 select {
   -webkit-appearance: none;
