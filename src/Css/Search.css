@@ -1,7 +1,6 @@
 .landing-container {
-  margin-top: 107px;
   width: auto;
-  height: 520px;
+  height: 550px;
   background-image: url("../components/images/image1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,18 +17,124 @@ p {
 .sml-landing-text {
   font-size: 20px;
 }
+.sml-landing-text-container {
+  margin-bottom: -50px;
+}
+.landing-text {
+  padding-top: 20px;
+}
 .big-landing-text {
   font-size: 50px;
 }
+.search-form-container {
+  margin-top: 10%;
+  margin-left: 26%;
+}
+.city-input,
+.price-input {
+  height: -webkit-fill-available;
+
+  width: 300px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  border: solid #263e61;
+  box-shadow: 6px 6px 15px #a8acb1;
+  width: fit-content;
+  block-size: fit-content;
+  background-color: #e4e9e4;
+  height: 50px;
+  border-radius: 10px;
+  border-color: #263e61;
+}
+::placeholder {
+  color: #263e61;
+}
+.city-input,
+.price-input {
+  color: #263e61;
+  border: none;
+  text-align: center;
+}
+.city-input {
+  border-right: #263e61;
+}
+.search-icon {
+  display: block;
+  color: #c7862f;
+  height: 20px;
+  width: 40px;
+}
+
+.search-btn {
+  width: 60%;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  background-color: #263e61;
+  border: none;
+  font-family: auto;
+}
+.search-btn:hover {
+  background-color: #4158d0;
+}
+.search-btn:active {
+  background-color: #4158d0;
+}
 /*mobile*/
 @media (max-width: 767px) {
+  .city-input,
+  .price-input {
+    width: 130px;
+  }
+  .search-form-container {
+    margin-top: -11%;
+    margin-left: 9%;
+  }
 }
 /*small-screens*/
 @media (min-width: 768px) {
+  .landing-container {
+    width: 97%;
+    height: 350px;
+  }
+  .city-input,
+  .price-input {
+    width: 230px;
+  }
+  .search-form-container {
+    margin-top: 1%;
+    margin-left: 15%;
+  }
 }
 /*medium-screens*/
 @media (min-width: 992px) {
+  .landing-container {
+    width: 100%;
+    height: 550px;
+  }
+  .city-input,
+  .price-input {
+    width: 300px;
+  }
+  .search-form-container {
+    margin-top: 10%;
+    margin-left: 25%;
+  }
 }
-/*large-screens*/
 @media (min-width: 1200px) {
+  .landing-container {
+    width: 100%;
+    height: 550px;
+  }
+  .city-input,
+  .price-input {
+    width: 300px;
+  }
+  .search-form-container {
+    margin-top: 10%;
+    margin-left: 25%;
+  }
 }

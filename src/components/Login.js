@@ -1,9 +1,11 @@
 import React from "react";
-import "../Css/login.css";
+import "../Css/Login.css";
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import axios from "axios";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import { useState } from "react";
+import NavbarWithSideBar from "./NavbarWithSideBar";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +20,7 @@ function Login() {
   };
   return (
     <>
+      <NavbarWithSideBar />
       <div className="login-box">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
