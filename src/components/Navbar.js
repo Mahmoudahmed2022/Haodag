@@ -14,7 +14,7 @@ function Navbar() {
           </div>
           <div className="search-bar">
             <div className="search-bar-content">
-              <BiSearch />
+              <BiSearch className="svg10" />
 
               <div className="search-text-and-rect">
                 <div className="rect"></div>

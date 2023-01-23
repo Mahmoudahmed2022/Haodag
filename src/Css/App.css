@@ -97,12 +97,12 @@
   }
 }
 @media only screen and (min-width: 1085px) {
-  .sidebar-box .toggle-setting {
+  .toggle-setting {
     top: 70px;
   }
 }
 @media only screen and (max-width: 1085px) {
-  .sidebar-box .toggle-setting {
+  .toggle-setting {
     top: 80px;
   }
 }
@@ -124,6 +124,8 @@
   .open {
     left: -200px;
     height: 700px;
+    transition: 350ms;
+
   }
   .setting-box {
     background-color: #263e61;
@@ -133,6 +135,8 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .open {
+    transition: 350ms;
+
     left: -200px;
     height: 700px;
   }
@@ -148,8 +152,10 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .open {
-    left: 0;
+    /* left: 0; */
     height: 700px;
+    transition: 350ms;
+
   }
   .setting-box {
     background-color: #263e61;
@@ -158,6 +164,8 @@
 @media only screen and (max-width: 1430px) {
   .open {
     left: -200px;
+    transition: 350ms;
+
     height: 700px;
   }
 }
