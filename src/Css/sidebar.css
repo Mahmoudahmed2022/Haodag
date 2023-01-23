@@ -1,18 +1,4 @@
-/* .sidebar-top {
-    width: 300px;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
-  .sidebar-top li {
-    text-align: center;
-    margin-top: 10px;
-  }
-  .sidebar-top li a {
-    text-decoration: none;
-  }
-   */
-   /* Small devices (portrait tablets and large phones, 600px and up) */
-   
+
 .Allsidebar{
 display: flex;
 flex-direction: row;
@@ -138,14 +124,13 @@ flex: none;
 order: 0;
 flex-grow: 0;
 }
-.sidebar-top li div a {
+.sidebar-top li div .a1 {
 text-decoration: none;
 width: 102px;
 height: 18px;
 
 /* tittle/14 M */
 
-font-family: 'DM Sans';
 font-style: normal;
 font-weight: 500;
 font-size: 14px;
@@ -163,7 +148,7 @@ flex-grow: 0;
 .sidebar-top .active {
 display: flex;
 flex-direction: column;
-justify-content1: center;
+justify-content: center;
 align-items: flex-start;
 padding: 7px 8px;
 gap: 10px;
@@ -300,7 +285,7 @@ flex-grow: 0;
 {
 display: flex;
 flex-direction: column;
-justify-content1: center;
+justify-content: center;
 align-items: flex-start;
 padding: 7px 8px;
 gap: 10px;
@@ -380,30 +365,35 @@ flex-grow: 0;
   top: 0;
   width: 200px;
   min-height: 100vh;
+  /* height: 100%; */
   z-index: 1000;
   background-color: #263e61;
-  transition: 0.8s;
-  -webkit-transition: 0.8s;
-  -moz-transition: 0.8s;
-  -ms-transition: 0.8s;
-  -o-transition: 0.8s;
+  transition: 850ms;
+
 }
-.sidebar-box .toggle-setting {
+.toggle-setting {
   position: absolute;
   left: 200px;
+  width: 35px;
+  top: 69px;
+  height: 35px;
   background-color: #c7862f;
   border: 5px;
   text-align: center;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 20px;
 
 }
+ .open{
+  transition: 350ms;
 
-.sidebar-box .fa-gear {
+ }
+.fa-gear {
   width: 30px;
+  height: 20px;
   position: relative;
   padding: 8px 0px;
-  top: 2px;
+  top: 0px;
   color: #263e61;
   cursor: pointer;
 

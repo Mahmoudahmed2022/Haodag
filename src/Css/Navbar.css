@@ -1,4 +1,7 @@
-
+body{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 2000px;
+}
 .nav {
   display: flex;
   flex-direction: column;
@@ -67,7 +70,7 @@
   flex-grow: 0;
 }
 
-.nav .content .search-bar .search-bar-content svg {
+.nav .content .search-bar .search-bar-content .svg10 {
   width: 20px;
   height: 20px;
 
