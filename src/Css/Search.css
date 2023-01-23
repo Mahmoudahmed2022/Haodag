@@ -1,0 +1,35 @@
+.landing-container {
+  margin-top: 107px;
+  width: auto;
+  height: 520px;
+  background-image: url("../components/images/image1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.search-box {
+  text-align: center;
+  background-color: rgb(38, 62, 97, 0.6);
+  height: inherit;
+}
+p {
+  color: white;
+  font-family: cursive;
+}
+.sml-landing-text {
+  font-size: 20px;
+}
+.big-landing-text {
+  font-size: 50px;
+}
+/*mobile*/
+@media (max-width: 767px) {
+}
+/*small-screens*/
+@media (min-width: 768px) {
+}
+/*medium-screens*/
+@media (min-width: 992px) {
+}
+/*large-screens*/
+@media (min-width: 1200px) {
+}
