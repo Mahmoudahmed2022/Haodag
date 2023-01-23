@@ -1,19 +1,14 @@
-import "../Css/Login.css";
 import React from "react";
+import "../Css/login.css";
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
-import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
-import { ImMail } from "react-icons/im";
-import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
+import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
+import { useState } from "react";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
- 
-
   const handleSubmit = (event) => {
+    console.log(email, password);
     event.preventDefault();
     axios
       .post("https://fakestoreapi.com/products", { email, password })
@@ -23,65 +18,44 @@ function Login() {
   };
   return (
     <>
-      <div className="container">
+      <div className="login-box">
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <div className="tilte">
-            <FaUserAlt className="head" />
-            <h2>Login</h2>
-          </div>
-          <div className="mb-3 email">
-            <label className="form-label">
-              <FaUserAlt />
-              &nbsp;Email address
-            </label>
+          <div className="user-box">
+            <FaUserAlt className="svg1" />
             <input
               type="email"
-              className="form-control email-input"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              placeholder="Type your email"
-              required
+              name=""
+              required=""
               onChange={(e) => setEmail(e.target.value)}
             />
+
+            <label>Email</label>
           </div>
-          <div className="mb-3 password">
-            <label className="form-label">
-              <FaLock />
-              &nbsp;Password
-            </label>
+          <div className="user-box">
+            <FaLock className="svg1" />
             <input
               type="password"
-              className="form-control password-input"
-              id="password"
-              name="password"
-              placeholder="Type your password"
-              required
+              name=""
+              required=""
               onChange={(e) => setPassword(e.target.value)}
             />
+            <label>Password</label>
           </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="rememberme"
-            />
 
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Remember me
-            </label>
-          </div>
-          <div className="button">
-            <button type="submit" className="btn btn-primary">
-              Login
-            </button>
-            <h5>New Visitor ?</h5>
-            <button className="btn btn-primary">Subscribe</button>
-          </div>
+          <button className="submit" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </button>
+          <a className="register" href="#">
+            new visitor
+          </a>
         </form>
       </div>
     </>
   );
 }
-
 export default Login;
