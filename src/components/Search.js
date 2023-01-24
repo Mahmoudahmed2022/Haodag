@@ -1,11 +1,18 @@
 import React from "react";
 // import landing from "./images/download (1).jfif";
 import "../Css/Search.css";
-import { HiSearchCircle } from "react-icons/hi";
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { IoMdSearch } from "react-icons/io";
+import { useEffect, useState } from "react";
 
 function Search() {
+  const [products, setProducts] = useState([]);
+  const api_url = "https://fakestoreapi.com/products";
+  useEffect(() => {
+    fetch(api_url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
   return (
     <>
       <NavbarWithSideBar />
@@ -42,14 +49,34 @@ function Search() {
                     required
                   />
                 </div>
-                <button type="submit" className="search-btn">
+                <button type="submit" className="search-btn s-d-hover">
                   <IoMdSearch className="search-icon" />
                 </button>
               </form>
             </div>
           </div>
         </div>
-        <div className="halls-result">halls</div>
+        <div className="allhalls-container">
+          {products.map((product) => {
+            return (
+              <div className="hall-container" key={product.id}>
+                <div className="img-div">
+                  <img
+                    src={product.image}
+                    className="hall-img"
+                    alt={product.title}
+                  />
+                </div>
+                <div className="hall-body">
+                  <p className="hall-title">{product.title}</p>
+                  <button className="details-btn s-d-hover" href="#">
+                    Details
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

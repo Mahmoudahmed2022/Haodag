@@ -1,9 +1,8 @@
-::placeholder{
+::placeholder {
   font-family: cursive;
   color: #263e61;
-
 }
-body{
+body {
   font-family: cursive;
 }
 .landing-container {
@@ -38,7 +37,7 @@ p {
 .city-input,
 .price-input {
   height: -webkit-fill-available;
-font-family: cursive;
+  font-family: cursive;
   width: 300px;
 }
 .search-form-container {
@@ -76,7 +75,8 @@ font-family: cursive;
   width: 40px;
 }
 
-.search-btn {
+.search-btn,
+.details-btn {
   width: 60%;
   cursor: pointer;
   text-decoration: none;
@@ -85,11 +85,41 @@ font-family: cursive;
   border: none;
   font-family: auto;
 }
-.search-btn:hover {
+.s-d-hover:hover {
   background-color: #4158d0;
 }
-.search-btn:active {
+.s-d-hover:active {
   background-color: #4158d0;
+}
+.details-btn {
+  border-radius: 10px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.allhalls-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: inherit;
+  background-color: rgb(38, 62, 97, 0.6);
+}
+.hall-container {
+  border: solid rgb(38, 62, 97, 0.6);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  background-color: rgb(38, 62, 97, 0.6);
+  box-shadow: 6px 6px 15px #a8acb1;
+}
+.hall-img {
+  width: 250px;
+  height: 100px;
+}
+.hall-title {
+  width: 250px;
+  color: black;
+  font-size: x-small;
 }
 /*mobile*/
 @media (max-width: 767px) {
@@ -97,7 +127,6 @@ font-family: cursive;
   .price-input {
     width: 130px;
   }
-  
 }
 /*small-screens*/
 @media (min-width: 768px) {
@@ -109,7 +138,6 @@ font-family: cursive;
   .price-input {
     width: 230px;
   }
-  
 }
 /*medium-screens*/
 @media (min-width: 992px) {
@@ -121,7 +149,6 @@ font-family: cursive;
   .price-input {
     width: 300px;
   }
-  
 }
 @media (min-width: 1200px) {
   .landing-container {
@@ -132,5 +159,4 @@ font-family: cursive;
   .price-input {
     width: 300px;
   }
-  
 }
