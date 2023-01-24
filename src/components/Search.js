@@ -49,9 +49,11 @@ function Search() {
                     required
                   />
                 </div>
-                <button type="submit" className="search-btn s-d-hover">
-                  <IoMdSearch className="search-icon" />
-                </button>
+                <div className="search-btn-div">
+                  <button type="submit" className="search-btn s-d-hover">
+                    <IoMdSearch className="search-icon" />
+                  </button>
+                </div>
               </form>
             </div>
           </div>
