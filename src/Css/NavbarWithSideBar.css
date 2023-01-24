@@ -2,8 +2,19 @@
   background-color: #263e61;
   height: 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content:space-between;
   align-items: center;
+}
+.left{
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+}
+.right2{
+  display: flex;
+  width: 500px;
+  align-items: center;
+  justify-content: space-around;
 }
 .svgColor {
   color: #ef9011;
@@ -19,13 +30,15 @@
   color: #ef9011;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .bigger {
   height: 20px;
   width: 30px;
 }
 .menu-bars {
-  margin-left: 2rem;
+  display: flex;
+
   font-size: 2rem;
   background: none;
 }

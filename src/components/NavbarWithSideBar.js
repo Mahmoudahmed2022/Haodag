@@ -20,30 +20,33 @@ function NavbarWithSideBar() {
     <>
       <IconContext.Provider value={{}}>
         <div className="navbar">
-          <div className="svgColor1">
-            <FaArrowCircleLeft className="bigger" />
-            <FaArrowCircleRight className="bigger" />
-          </div>
-          <Link to="#" className="menu-bars">
-            <FaAlignLeft className="svgColor" onClick={showSidebar} />
-          </Link>
-
-          <div className="search-bar">
-            <div className="search-bar-content">
-              <Link className="search-stick">
-                <BiSearch className="svg10" />
-              </Link>
-
-              <div className="search-text-and-rect">
-                <div className="rect"></div>
-                <input className="input1" placeholder="Search or type" />
-              </div>
+          <div className="left">
+            <Link to="#" className="menu-bars">
+              <FaAlignLeft className="svgColor" onClick={showSidebar} />
+            </Link>
+            <div className="svgColor1">
+              <FaArrowCircleLeft className="bigger" />
+              <FaArrowCircleRight className="bigger" />
             </div>
           </div>
-          <div className="right">
-            <Link className="logo">
-              <img className="avatar" src={image2} alt="" />
-            </Link>
+          <div className="right2">
+            <div className="search-bar">
+              <div className="search-bar-content">
+                <Link className="search-stick">
+                  <BiSearch className="svg10" />
+                </Link>
+
+                <div className="search-text-and-rect">
+                  <div className="rect"></div>
+                  <input className="input1" placeholder="Search or type" />
+                </div>
+              </div>
+            </div>
+            <div className="right">
+              <Link className="logo">
+                <img className="avatar" src={image2} alt="" />
+              </Link>
+            </div>
           </div>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
