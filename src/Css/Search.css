@@ -1,3 +1,11 @@
+::placeholder{
+  font-family: cursive;
+  color: #263e61;
+
+}
+body{
+  font-family: cursive;
+}
 .landing-container {
   width: auto;
   height: 550px;
@@ -30,7 +38,7 @@ p {
 .city-input,
 .price-input {
   height: -webkit-fill-available;
-
+font-family: cursive;
   width: 300px;
 }
 .search-form-container {
@@ -51,9 +59,7 @@ p {
   border-radius: 10px;
   border-color: #263e61;
 }
-::placeholder {
-  color: #263e61;
-}
+
 .city-input,
 .price-input {
   color: #263e61;
