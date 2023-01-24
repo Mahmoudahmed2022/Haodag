@@ -118,6 +118,7 @@ p {
   flex-direction: column;
   text-align: center;
   margin: auto;
+  margin-top: 20px;
   background-color: rgb(38, 62, 97, 0.6);
   box-shadow: 6px 6px 15px #a8acb1;
 }
