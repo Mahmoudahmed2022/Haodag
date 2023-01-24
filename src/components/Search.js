@@ -70,7 +70,7 @@ function Search() {
                   />
                 </div>
                 <div className="hall-body">
-                  <p className="hall-title">{product.title}</p>
+                  <p className="hall-title">{product.title.slice(0, 20)}</p>
                   <button className="details-btn s-d-hover" href="#">
                     Details
                   </button>
