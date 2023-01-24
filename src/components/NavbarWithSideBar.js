@@ -21,13 +21,14 @@ function NavbarWithSideBar() {
       <IconContext.Provider value={{}}>
         <div className="navbar">
           <div className="left">
-            <Link to="#" className="menu-bars">
-              <FaAlignLeft className="svgColor" onClick={showSidebar} />
-            </Link>
+            
             <div className="svgColor1">
               <FaArrowCircleLeft className="bigger" />
               <FaArrowCircleRight className="bigger" />
             </div>
+            <Link to="#" className="menu-bars">
+              <FaAlignLeft className="svgColor" onClick={showSidebar} />
+            </Link>
           </div>
           <div className="right2">
             <div className="search-bar">
