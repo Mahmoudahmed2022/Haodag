@@ -83,6 +83,12 @@
     height: 10px;
   }
 }
+@media only screen and (max-width: 462px) {
+  .right2 {
+    
+    width: 400px;
+  }
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {

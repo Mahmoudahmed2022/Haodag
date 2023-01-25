@@ -26,7 +26,7 @@ function NavbarWithSideBar() {
               <FaArrowCircleLeft className="bigger" />
               <FaArrowCircleRight className="bigger" />
             </div>
-            <Link to="#" className="menu-bars">
+            <Link to="/" className="menu-bars">
               <FaAlignLeft className="svgColor" onClick={showSidebar} />
             </Link>
           </div>

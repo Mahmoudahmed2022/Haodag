@@ -72,7 +72,7 @@ function Registration() {
           <div className="sml-container">
             <div className="mb-3">
               <label htmlFor="FirstName" className="FirstName-label">
-                <FaUserAlt />
+                <FaUserAlt className="svg-registrer"/>
                 &nbsp;First Name
               </label>
               <input
@@ -87,7 +87,7 @@ function Registration() {
                 id="form-label"
                 className="LastName-label"
               >
-                <FaUserAlt />
+                <FaUserAlt className="svg-registrer"/>
                 &nbsp;Last Name
               </label>
               <input
@@ -100,7 +100,7 @@ function Registration() {
             </div>
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="email-label">
-                <MdEmail />
+                <MdEmail className="svg-registrer"/>
                 &nbsp;Email Address
               </label>
               <input
@@ -114,7 +114,7 @@ function Registration() {
             </div>
             <div className="mb-3">
               <label htmlFor="userName" className="userName-label">
-                <FaUserCircle />
+                <FaUserCircle className="svg-registrer"/>
                 &nbsp;User Name
               </label>
               <input
@@ -127,7 +127,7 @@ function Registration() {
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="password-1-label">
-                <FaUserLock />
+                <FaUserLock className="svg-registrer"/>
                 &nbsp;Password
               </label>
               <input
@@ -138,7 +138,7 @@ function Registration() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="password" className="password-2-label">
-                <RiRotateLockFill />
+                <RiRotateLockFill className="svg-registrer"/>
                 &nbsp;Verify Password
               </label>
               <input
@@ -152,7 +152,7 @@ function Registration() {
 
             <div className="mb-3">
               <label htmlFor="Address" className="Address-label">
-                <IoHome />
+                <IoHome className="svg-registrer"/>
                 &nbsp;Address
               </label>
               <input
@@ -165,7 +165,7 @@ function Registration() {
             </div>
             <div className="mb-3">
               <label htmlFor="NationalID" className="NationalID-label">
-                <FaAddressCard />
+                <FaAddressCard className="svg-registrer"/>
                 &nbsp;National ID
               </label>
               <input
@@ -178,7 +178,7 @@ function Registration() {
             </div>
             <div className="mb-3">
               <label htmlFor="phone" className="phone-label">
-                <FaPhoneAlt />
+                <FaPhoneAlt className="svg-registrer"/>
                 &nbsp;Phone Number
               </label>
               <input
@@ -192,7 +192,7 @@ function Registration() {
             </div>
             <div className="mb-3 gender">
               <label className="male-label checkoption">
-                <FaMale />
+                <FaMale className="svg-registrer"/>
                 &nbsp;Male
               </label>
               <input
@@ -207,7 +207,7 @@ function Registration() {
               <span className="checkmark"></span>
 
               <label className="female-label checkoption">
-                <FaFemale />
+                <FaFemale className="svg-registrer"/>
                 &nbsp;Female
                 <input
                   type="checkbox"
@@ -223,7 +223,7 @@ function Registration() {
             </div>
             <div className="mb-3 role">
               <label htmlFor="role" className="role-label">
-                <IoIdCard />
+                <IoIdCard className="svg-registrer"/>
                 Choose a Role:
               </label>
               <select name="Role" id="role" className="role-select">

@@ -1,9 +1,7 @@
 body {
-  background-color: #243b55;
   margin: 0;
   padding: 0;
   font-family: cursive;
-  height: 1000px;
 }
 .big-container {
   box-shadow: 0 6px 15px #a8acb1;
@@ -23,7 +21,7 @@ body {
   display: block;
   text-align: center;
 }
-svg {
+.svg-registrer {
   color: #c7862f;
 }
 .title {

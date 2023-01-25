@@ -1,5 +1,5 @@
 import React from "react";
-import "../Css/Login.css";
+import "../Css/login.css";
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import axios from "axios";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";

@@ -2,15 +2,15 @@
   background-color: #263e61;
   height: 80px;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
 }
-.left{
+.left {
   display: flex;
   width: 200px;
   justify-content: space-around;
 }
-.right2{
+.right2 {
   display: flex;
   width: 500px;
   align-items: center;
@@ -58,6 +58,7 @@
 .nav-menu.active {
   left: 0;
   transition: 350ms;
+  z-index: 1000;
 }
 
 .nav-text {

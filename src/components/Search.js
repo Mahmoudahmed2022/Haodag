@@ -4,6 +4,7 @@ import "../Css/Search.css";
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 function Search() {
   const [products, setProducts] = useState([]);
@@ -80,6 +81,7 @@ function Search() {
           })}
         </div>
       </div>
+     
     </>
   );
 }
