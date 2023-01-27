@@ -132,10 +132,21 @@ p {
   color: black;
   font-size: small;
 }
-.hall-body{
+.hall-body {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+.user-pic {
+  display: flex;
+  float: right;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 2px solid #263e61;
+  filter: drop-shadow(0 0 8px #c7862f);
+  margin-top: 30px;
+  margin-right: 30px;
 }
 /*mobile*/
 @media (max-width: 767px) {

@@ -4,8 +4,7 @@ import "../Css/Search.css";
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
-
+import user from "./images/user.png";
 function Search() {
   const [products, setProducts] = useState([]);
   const api_url = "https://fakestoreapi.com/products";
@@ -20,6 +19,9 @@ function Search() {
 
       <div className="search-page-container">
         <div className="landing-container">
+          <div className="user-pic">
+            <img src={user} alt="user pic" />
+          </div>
           <div className="search-box">
             <div className="landing-text">
               <div className="sml-landing-text-container">
@@ -81,7 +83,6 @@ function Search() {
           })}
         </div>
       </div>
-     
     </>
   );
 }
