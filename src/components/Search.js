@@ -19,9 +19,9 @@ function Search() {
 
       <div className="search-page-container">
         <div className="landing-container">
-          <div className="user-pic">
+          {/* <div className="user-pic">
             <img src={user} alt="user pic" />
-          </div>
+          </div> */}
           <div className="search-box">
             <div className="landing-text">
               <div className="sml-landing-text-container">

@@ -10,6 +10,7 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { FaAlignLeft } from "react-icons/fa";
 import image2 from "./images/logo.png";
 import { BiSearch } from "react-icons/bi";
+import user from "./images/user.png";
 
 function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);
@@ -47,6 +48,9 @@ function NavbarWithSideBar() {
               <Link className="logo">
                 <img className="avatar" src={image2} alt="" />
               </Link>
+            </div>
+            <div className="profile-photo">
+              <img src={user} alt="user pic" />
             </div>
           </div>
         </div>

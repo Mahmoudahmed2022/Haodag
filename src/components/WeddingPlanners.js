@@ -7,9 +7,9 @@ function WeddingPlanners() {
       <div className="WeddingPlanners-container">
         <div className="land-container">
           <div className="sml-land-container">
-            <div className="user-pic">
+            {/* <div className="user-pic">
               <img src={user} alt="user pic" />
-            </div>
+            </div> */}
             <div className="landing-text">
               <div className="big-landing-text-container">
                 <p className="big-landing-text">Want a magnificent wedding</p>
