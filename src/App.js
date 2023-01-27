@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Search from "./components/Search";
+import NavbarWithSideBar from "./components/NavbarWithSideBar";
+import WeddingPlanners from "./components/WeddingPlanners";
 import Footer from "./components/Footer";
 // import Registration from "./components/Registration";
 
@@ -9,9 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Search/>
-        <Footer/>
-
+        <NavbarWithSideBar />
+        <WeddingPlanners />
+        <Footer />
       </div>
     </BrowserRouter>
   );
