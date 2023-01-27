@@ -17,6 +17,10 @@ function Home() {
   <div>
   <button onClick={changeEN}>EN</button>
   <button onClick={changeAR}>AR</button>
+  <input class="input__2o8B " spellcheck="false"
+   autocorrect="off" autocapitalize="off" type="password"
+    name="password1" autocomplete="new-password"
+     placeholder="Password" value="" aria-autocomplete="list"></input>
   </div>
   <div>
     <h1>{t("Welcome to React")}</h1>
