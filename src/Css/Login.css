@@ -5,7 +5,7 @@ body {
   background-color: #243b55;
   margin: 0;
   padding: 0;
-  font-family:cursive;
+  font-family: cursive;
 }
 
 .login-box {
@@ -20,12 +20,12 @@ body {
   box-shadow: 0 6px 15px #a8acb1;
   border-radius: 10px;
 }
-button {
+.login-submit {
   background-color: rgb(210 210 210);
   border: none;
 }
 
-.login-box h2 {
+.login-box .login-title {
   margin: 0 0 30px;
   padding: 0;
   color: #243b55;
@@ -37,12 +37,13 @@ button {
   margin-bottom: 15px;
 }
 
-.login-box .user-box input {
+.login-box .user-box .e-p-input {
   width: 90%;
   padding: 10px 10px;
   font-size: 16px;
   color: #243b55;
   margin-bottom: 30px;
+  margin-left: 0px;
   border: none;
   border-bottom: 1px solid #141e30;
   outline: none;
@@ -51,7 +52,7 @@ button {
   border-right: none;
   background: transparent;
 }
-.login-box .user-box label {
+.login-box .user-box .e-p-label {
   position: absolute;
   top: -10px;
   left: 25px;
@@ -74,7 +75,7 @@ button {
   top: -1px;
   color: #263e61;
 }
-.login-box form .submit {
+.login-box .login-form .login-submit {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -87,7 +88,7 @@ button {
   margin-top: 0px;
   letter-spacing: 4px;
 }
-.login-box form .register {
+.login-box .login-form .register {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -103,7 +104,7 @@ button {
   color: red;
 }
 
-.login-box .submit:hover {
+.login-box .login-submit:hover {
   background: #243b55;
   color: #fff;
   border-radius: 5px;
@@ -111,12 +112,12 @@ button {
     0 0 100px #243b55;
 }
 
-.login-box button span {
+.login-box .login-submit .s-span {
   position: absolute;
   display: block;
 }
 
-.login-box button span:nth-child(1) {
+.login-box .login-submit .s-span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -135,7 +136,7 @@ button {
   }
 }
 
-.login-box button span:nth-child(2) {
+.login-box .login-submit .s-span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -155,7 +156,7 @@ button {
   }
 }
 
-.login-box button span:nth-child(3) {
+.login-box .login-submit .s-span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -175,7 +176,7 @@ button {
   }
 }
 
-.login-box button span:nth-child(4) {
+.login-box .login-submit .s-span:nth-child(4) {
   bottom: -100%;
   left: -15px;
   width: 2px;

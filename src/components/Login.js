@@ -1,12 +1,16 @@
 import React from "react";
-import "../Css/login.css";
+import "../Css/Login.css";
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import axios from "axios";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import { useState } from "react";
 import NavbarWithSideBar from "./NavbarWithSideBar";
+import { Link } from "react-router-dom";
 
 function Login() {
+  // let body = document.getElementsByTagName("body");
+  // body.setAttribute("class", "login-body");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
@@ -19,21 +23,22 @@ function Login() {
       });
   };
   return (
-    <>
+    <div>
       <NavbarWithSideBar />
       <div className="login-box">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <h2 className="login-title">Login</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="user-box">
             <FaUserAlt className="svg1" />
             <input
               type="email"
               name=""
+              className="email-input e-p-input"
               required=""
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <label>Email</label>
+            <label className="e-p-label">Email</label>
           </div>
           <div className="user-box">
             <FaLock className="svg1" />
@@ -41,24 +46,25 @@ function Login() {
               type="password"
               name=""
               required=""
+              className="password-input e-p-input"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label>Password</label>
+            <label className="e-p-label">Password</label>
           </div>
 
-          <button className="submit" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <Link className="login-submit submit" to="/home">
+            <span className="s-span"></span>
+            <span className="s-span"></span>
+            <span className="s-span"></span>
+            <span className="s-span"></span>
             Submit
-          </button>
+          </Link>
           <a className="register" href="#">
             new visitor
           </a>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 export default Login;

@@ -65,6 +65,11 @@ p {
   width: 60%;
   height: 30px;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: #c7862f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .allPlanners-container {
   display: flex;
@@ -89,7 +94,7 @@ p {
 }
 .planner-img {
   width: 70%;
-  height: 200px;
+  height: 250px;
   display: flex;
   border-radius: 50%;
   border: 2px solid #263e61;
