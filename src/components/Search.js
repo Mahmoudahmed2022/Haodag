@@ -6,12 +6,12 @@ import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import user from "./images/user.png";
 function Search() {
-  const [products, setProducts] = useState([]);
+  const [halls, setHalls] = useState([]);
   const api_url = "https://fakestoreapi.com/products";
   useEffect(() => {
     fetch(api_url)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setHalls(data));
   }, []);
   return (
     <>
@@ -62,18 +62,14 @@ function Search() {
           </div>
         </div>
         <div className="allhalls-container">
-          {products.map((product) => {
+          {halls.map((hall) => {
             return (
-              <div className="hall-container" key={product.id}>
+              <div className="hall-container" key={hall.id}>
                 <div className="img-div">
-                  <img
-                    src={product.image}
-                    className="hall-img"
-                    alt={product.title}
-                  />
+                  <img src={hall.image} className="hall-img" alt={hall.title} />
                 </div>
                 <div className="hall-body">
-                  <p className="hall-title">{product.title.slice(0, 20)}</p>
+                  <p className="hall-title">{hall.title.slice(0, 20)}</p>
                   <button className="details-btn s-d-hover" href="#">
                     Details
                   </button>

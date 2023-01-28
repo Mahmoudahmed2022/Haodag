@@ -39,7 +39,9 @@ p {
   height: -webkit-fill-available;
   font-family: cursive;
   width: 300px;
+  border-radius: 10px;
 }
+
 .search-form-container {
   display: flex;
   justify-content: center;

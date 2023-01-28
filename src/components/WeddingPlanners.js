@@ -1,7 +1,17 @@
 import React from "react";
 import user from "./images/user.png";
 import "../Css/WeddingPlanners.css";
+import { useEffect, useState } from "react";
+import user2 from "./images/user2.png";
+
 function WeddingPlanners() {
+  const [planners, setPlanners] = useState([]);
+  const api_url = "https://fakestoreapi.com/products";
+  useEffect(() => {
+    fetch(api_url)
+      .then((res) => res.json())
+      .then((data) => setPlanners(data));
+  }, []);
   return (
     <>
       <div className="WeddingPlanners-container">
@@ -22,7 +32,37 @@ function WeddingPlanners() {
             </div>
           </div>
         </div>
-        <div className="Planners-container">WeddingPlanners</div>
+        <div className="Planners-container">
+          <div className="allPlanners-container">
+            {planners.map((planner) => {
+              return (
+                <div className="planner-container" key={planner.id}>
+                  <div className="img-planner-div">
+                    {/*   <img
+                      src={planner.image}
+                      className="planner-img"
+                      alt={planner.title}
+                    />
+              */}
+                    <img
+                      src={user2}
+                      className="planner-img"
+                      alt={planner.title}
+                    />
+                  </div>
+                  <div className="planner-body">
+                    <p className="planner-title">
+                      {planner.title.slice(0, 20)}
+                    </p>
+                    <button className="details-btn s-d-hover" href="#">
+                      Details
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

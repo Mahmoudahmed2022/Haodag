@@ -12,8 +12,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Search/>
+        <NavbarWithSideBar />
 
+        <WeddingPlanners />
+        <Footer />
       </div>
     </BrowserRouter>
   );
