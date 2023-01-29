@@ -4,8 +4,6 @@ import "../Css/WeddingPlanners.css";
 import { useEffect, useState } from "react";
 import user2 from "./images/user2.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import NavbarWithSideBar from "./NavbarWithSideBar";
-import Footer from "./Footer";
 
 function WeddingPlanners() {
   const [planners, setPlanners] = useState([]);
@@ -17,7 +15,6 @@ function WeddingPlanners() {
   }, []);
   return (
     <>
-
       <div className="WeddingPlanners-container">
         <div className="land-container">
           <div className="sml-land-container">
@@ -71,7 +68,6 @@ function WeddingPlanners() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

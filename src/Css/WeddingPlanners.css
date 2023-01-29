@@ -24,9 +24,8 @@ body {
   margin-top: 30px;
   margin-right: 30px;
 } */
-p {
+.landing-text {
   color: white;
-  font-family: cursive;
 }
 .sml-landing-text {
   font-size: 20px;

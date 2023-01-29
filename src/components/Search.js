@@ -2,25 +2,46 @@ import React from "react";
 // import landing from "./images/download (1).jfif";
 import "../Css/Search.css";
 import "../Css/App.css";
-
-import NavbarWithSideBar from "./NavbarWithSideBar";
-import Footer from "./Footer";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import user from "./images/user.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Search() {
   const [halls, setHalls] = useState([]);
-  const api_url = "https://fakestoreapi.com/products";
+  const [visible, setVisible] = useState(5);
+  const allHalls = () => {
+    axios.get("https://fakestoreapi.com/products").then((data) => {
+      setHalls(data.data);
+    });
+  };
+  const loadMore = () => {
+    setVisible(visible + 5);
+  };
+
   useEffect(() => {
-    fetch(api_url)
-      .then((res) => res.json())
-      .then((data) => setHalls(data));
+    allHalls();
   }, []);
+  const renderCard = (hall) => {
+    return (
+      <>
+        <div className="hall-container" key={hall.id}>
+          <div className="img-div">
+            <img className="hall-img" src={hall.image} alt={hall.title}></img>
+            {hall.title}
+          </div>
+          <div className="hall-body">
+            <button className="details-btn s-d-hover" href="#">
+              Details
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
-      <NavbarWithSideBar />
-
       <div className="search-page-container">
         <div className="landing-container">
           {/* <div className="user-pic">
@@ -66,27 +87,16 @@ function Search() {
           </div>
         </div>
         <div className="allhalls-container">
-          {halls.map((hall) => {
-            return (
-              <div className="hall-container" key={hall.id}>
-                <div className="img-div">
-                  <img src={hall.image} className="hall-img" alt={hall.title} />
-                </div>
-                <div className="hall-body">
-                  <p className="hall-title">{hall.title.slice(0, 20)}</p>
-                  <Link
-                    className="details-btn s-d-hover"
-                    to={`/Hall/${hall.id}`}
-                  >
-                    Details
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+          {halls.slice(0, visible).map(renderCard)}
+        </div>
+        <div className="for-button">
+          {visible < halls.length && (
+            <button className="more" onClick={loadMore}>
+              Load 5 More
+            </button>
+          )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

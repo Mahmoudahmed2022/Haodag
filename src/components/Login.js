@@ -4,7 +4,6 @@ import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import axios from "axios";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import { useState } from "react";
-import NavbarWithSideBar from "./NavbarWithSideBar";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -63,7 +62,7 @@ function Login() {
           </a>
         </form>
       </div>
-      </div>
+    </div>
   );
 }
 export default Login;

@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import image10 from "./images/animation.png";
 import "../Css/Home1.css";
 import "../Css/App.css";
-
 import "../Css/Search.css";
-import NavbarWithSideBar from "./NavbarWithSideBar";
+import axios from "axios";
 function Home() {
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
 
   const allCardData = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((cardData) => setCardData(cardData));
-    console.log(cardData);
+    axios.get("https://fakestoreapi.com/products").then((data) => {
+      setCardData(data.data);
+    });
   };
 
   const loadMore = () => {
@@ -25,7 +23,7 @@ function Home() {
     allCardData();
   }, []);
 
-  const renderCard = (person, index) => {
+  const renderCard = (person) => {
     return (
       <>
         <div className="hall-container" key={person.id}>
@@ -49,7 +47,6 @@ function Home() {
 
   return (
     <>
-
       <div className="landing">
         <div className="all-content">
           <div className="text-content1">
@@ -90,9 +87,11 @@ function Home() {
         {cardData.slice(0, visible).map(renderCard)}
       </div>
       <div className="for-button">
-      {visible < cardData.length && (
-        <button className="more" onClick={loadMore}>Load 5 More</button>
-      )}
+        {visible < cardData.length && (
+          <button className="more" onClick={loadMore}>
+            Load 5 More
+          </button>
+        )}
       </div>
     </>
   );

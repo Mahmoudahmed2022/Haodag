@@ -1,26 +1,30 @@
-import NavbarWithSideBar from "./NavbarWithSideBar";
 import React from "react";
 import { useEffect, useState } from "react";
 import user2 from "./images/user2.png";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Footer from "./Footer";
+import { useParams } from "react-router-dom";
 import "../Css/Hall.css";
-function Hall(props) {
-  const hall_id = props;
-  const [hall, setHall] = useState([]);
-  const api_url = `https://fakestoreapi.com/products/${hall_id}`;
+import axios from "axios";
+function Hall() {
+  const parms = useParams();
+  const [hall, setHall] = useState({});
+  const api_url = "https://fakestoreapi.com/products";
   useEffect(() => {
-    fetch(api_url)
-      .then((res) => res.json())
-      .then((data) => setHall(data));
+    axios.get(`${api_url}/${parms.hallId}`).then((data) => {
+      setHall(data.data);
+    });
   }, []);
   return (
     <>
-      <div className="WeddingPlanner-big-container" key={hall.id}>
-        <img src={user2} className="planner-img" alt={hall.title} />
-        <p className="planner-title">{hall.title.slice(0, 20)}</p>
+      <div className="hall-big-cont" key={hall.id}>
+        <div className="hall-cont" key={hall.id}>
+          <div className="img-div">
+            <img src={hall.image} className="hall-img" alt={hall.title} />
+          </div>
+          <div className="hall-body">
+            <p className="hall-title">{hall.title}</p>
+          </div>
+        </div>
       </div>
-      <Footer />
     </>
   );
 }
