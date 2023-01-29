@@ -1,6 +1,8 @@
 import React from "react";
 // import landing from "./images/download (1).jfif";
 import "../Css/Search.css";
+import "../Css/App.css";
+
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";

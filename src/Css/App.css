@@ -1,3 +1,10 @@
+:root {
+  --main-color: #314569;
+}
+
+
+
+
 @media only screen and (max-width: 992px) {
   .big-container {
     left: 4%;

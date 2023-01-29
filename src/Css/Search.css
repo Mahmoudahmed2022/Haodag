@@ -1,3 +1,4 @@
+
 ::placeholder {
   font-family: cursive;
   color: #263e61;
@@ -14,11 +15,11 @@ body {
 }
 .search-box {
   text-align: center;
-  background-color: rgb(38, 62, 97, 0.6);
+  background-color:rgb(108 119 136 / 60%);
   height: inherit;
 }
 p {
-  color: white;
+  color: var(--main-color);
   font-family: cursive;
 }
 .sml-landing-text {
@@ -84,10 +85,11 @@ p {
   cursor: pointer;
   text-decoration: none;
   outline: none;
-  background-color: #263e61;
+  background-color: var(--main-color);
   border: none;
-  font-family: auto;
+  font-family: cursive;
   border-radius: 10px;
+  color: white;
 }
 .search-btn-div {
   background-color: #263e61;
@@ -114,8 +116,8 @@ p {
   width: inherit;
 }
 .hall-container {
-  border: solid rgb(38, 62, 97, 0.6);
-  border-radius: 10px;
+  border: 0.5px solid #afb2b8;
+  border-radius: 5px;
   display: flex;
   width: 400px;
   height: 350px;
@@ -137,19 +139,10 @@ p {
 .hall-body {
   align-items: center;
   display: flex;
+  margin-top: 10px;
   flex-direction: column;
 }
-/* .user-pic {
-  display: flex;
-  float: right;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  border: 2px solid #263e61;
-  filter: drop-shadow(0 0 8px #c7862f);
-  margin-top: 30px;
-  margin-right: 30px;
-} */
+
 /*mobile*/
 @media (max-width: 767px) {
   .city-input,

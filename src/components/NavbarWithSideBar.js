@@ -11,6 +11,7 @@ import { FaAlignLeft } from "react-icons/fa";
 import image2 from "./images/logo.png";
 import { BiSearch } from "react-icons/bi";
 import user from "./images/user.png";
+import "../Css/App.css";
 
 function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);

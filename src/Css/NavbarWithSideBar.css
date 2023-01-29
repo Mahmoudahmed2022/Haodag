@@ -1,5 +1,6 @@
+
 .navbar {
-  background-color: #263e61;
+  background-color: var(--main-color);
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -22,9 +23,7 @@
 .bigger:hover {
   color: #1a83ff;
 }
-.svgColor:hover {
-  color: #1a83ff;
-}
+
 .svgColor1 {
   width: 50px;
   color: #ef9011;
@@ -44,7 +43,7 @@
 }
 
 .nav-menu {
-  background-color: #263e61;
+  background-color: var(--main-color);
   width: 250px;
   height: 100vh;
   display: flex;
@@ -91,7 +90,7 @@
 }
 
 .nav-text a:hover {
-  background-color: #1a83ff;
+  background-color: #557fa8;;
 }
 .hoverOnX:hover {
   color: red;
@@ -101,7 +100,7 @@
 }
 
 .navbar-toggle {
-  background-color: #263e61;
+  background-color: var(--main-color);
   width: 100%;
   height: 80px;
   display: flex;
@@ -236,7 +235,7 @@ span {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px solid #263e61;
+  border: 2px solid var(--main-color);
   filter: drop-shadow(0 0 8px #c7862f);
   /* margin-top: 30px; */
   margin-right: 30px;
