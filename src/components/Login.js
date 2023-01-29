@@ -23,8 +23,7 @@ function Login() {
       });
   };
   return (
-    <div>
-      <NavbarWithSideBar />
+    <div className="cont">
       <div className="login-box">
         <h2 className="login-title">Login</h2>
         <form className="login-form" onSubmit={handleSubmit}>
@@ -64,7 +63,7 @@ function Login() {
           </a>
         </form>
       </div>
-    </div>
+      </div>
   );
 }
 export default Login;

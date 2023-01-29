@@ -19,19 +19,19 @@ export const SidebarData = [
   ,
   {
     title: "Home",
-    path: "/",
+    path: "/home",
     icon: <FaHome />,
     cName: "nav-text",
   },
   {
     title: "Suggested Halls",
-    path: "/suggested-halls",
+    path: "/hall",
     icon: <FaHandsHelping />,
     cName: "nav-text",
   },
   {
     title: "Wedding Planners",
-    path: "/wedding-planners",
+    path: "/WeddingPlanners",
     icon: <FaMale />,
     cName: "nav-text",
   },

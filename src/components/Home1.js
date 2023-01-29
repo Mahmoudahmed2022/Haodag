@@ -5,6 +5,7 @@ import "../Css/Home1.css";
 import "../Css/App.css";
 
 import "../Css/Search.css";
+import NavbarWithSideBar from "./NavbarWithSideBar";
 function Home() {
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
@@ -48,6 +49,7 @@ function Home() {
 
   return (
     <>
+
       <div className="landing">
         <div className="all-content">
           <div className="text-content1">
@@ -60,10 +62,10 @@ function Home() {
                 easier for you to choose the right hall for your wedding
               </p>
               <div className="buttons-log-reg">
-                <Link className="glow-on-hover" to="/">
+                <Link className="glow-on-hover" to="/login">
                   Login
                 </Link>
-                <Link className="glow-on-hover" to="/">
+                <Link className="glow-on-hover" to="/registration">
                   Sign Up
                 </Link>
               </div>

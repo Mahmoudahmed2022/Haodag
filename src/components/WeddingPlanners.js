@@ -17,7 +17,6 @@ function WeddingPlanners() {
   }, []);
   return (
     <>
-      <NavbarWithSideBar />
 
       <div className="WeddingPlanners-container">
         <div className="land-container">

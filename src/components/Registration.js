@@ -1,6 +1,5 @@
 import "../Css/Registration.css";
 import "../Css/App.css";
-import NavbarWithSideBar from "./NavbarWithSideBar";
 
 import { FaUserLock } from "@react-icons/all-files/fa/FaUserLock";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
@@ -64,7 +63,6 @@ function Registration() {
   };
   return (
     <>
-      <NavbarWithSideBar />
 
       <div className="big-container">
         <h2 className="title">Sign Up</h2>

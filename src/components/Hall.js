@@ -16,7 +16,6 @@ function Hall(props) {
   }, []);
   return (
     <>
-      <NavbarWithSideBar />
       <div className="WeddingPlanner-big-container" key={hall.id}>
         <img src={user2} className="planner-img" alt={hall.title} />
         <p className="planner-title">{hall.title.slice(0, 20)}</p>
