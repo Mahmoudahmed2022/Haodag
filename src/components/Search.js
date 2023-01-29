@@ -4,9 +4,11 @@ import "../Css/Search.css";
 import "../Css/App.css";
 
 import NavbarWithSideBar from "./NavbarWithSideBar";
+import Footer from "./Footer";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import user from "./images/user.png";
+import { Link } from "react-router-dom";
 function Search() {
   const [halls, setHalls] = useState([]);
   const api_url = "https://fakestoreapi.com/products";
@@ -72,15 +74,19 @@ function Search() {
                 </div>
                 <div className="hall-body">
                   <p className="hall-title">{hall.title.slice(0, 20)}</p>
-                  <button className="details-btn s-d-hover" href="#">
+                  <Link
+                    className="details-btn s-d-hover"
+                    to={`/Hall/${hall.id}`}
+                  >
                     Details
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,9 @@ import user from "./images/user.png";
 import "../Css/WeddingPlanners.css";
 import { useEffect, useState } from "react";
 import user2 from "./images/user2.png";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import NavbarWithSideBar from "./NavbarWithSideBar";
+import Footer from "./Footer";
 
 function WeddingPlanners() {
   const [planners, setPlanners] = useState([]);
@@ -14,6 +17,8 @@ function WeddingPlanners() {
   }, []);
   return (
     <>
+      <NavbarWithSideBar />
+
       <div className="WeddingPlanners-container">
         <div className="land-container">
           <div className="sml-land-container">
@@ -54,9 +59,12 @@ function WeddingPlanners() {
                     <p className="planner-title">
                       {planner.title.slice(0, 20)}
                     </p>
-                    <button className="details-btn s-d-hover" href="#">
+                    <Link
+                      className="details-btn s-d-hover"
+                      to={`/WeddingPlanner/${planner.id}`}
+                    >
                       Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
               );
@@ -64,6 +72,7 @@ function WeddingPlanners() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

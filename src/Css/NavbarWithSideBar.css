@@ -108,7 +108,7 @@
   align-items: center;
 }
 
-span {
+.svgColor {
   margin-left: 16px;
 }
 
@@ -204,7 +204,7 @@ span {
 .search-bar .search-bar-content .search-text-and-rect .input1 {
   width: 200px;
   height: 21px;
-
+  margin-top: 0px;
   /* tittle/16 M */
   border: #f5f4f6;
   font-family: "DM Sans";
@@ -229,7 +229,7 @@ span {
   flex-grow: 0;
 }
 
-.profile-photo{
+.profile-photo {
   display: flex;
   float: right;
   width: 50px;
