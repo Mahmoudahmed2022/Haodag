@@ -7,6 +7,7 @@ import WeddingPlanners from "./components/WeddingPlanners";
 import Registration from "./components/Registration";
 import NavbarWithSideBar from "./components/NavbarWithSideBar";
 import Footer from "./components/Footer";
+import TermsOfUse from "./components/TermsOfUse";
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
         <Route path="registration" element={<Registration />} />
         <Route path="search" element={<Search />} />
         <Route path="WeddingPlanners" element={<WeddingPlanners />} />
+        <Route path="termsofuse" element={<TermsOfUse />} />
       </Routes>
       <Footer />
     </div>

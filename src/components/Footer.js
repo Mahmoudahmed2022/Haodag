@@ -19,22 +19,21 @@ function Footer() {
               <Link to="/" className="aLink color-facebook">
                 <FaFacebook className="icon-footer " />
               </Link>
-              <Link to="/"className="aLink">
+              <Link to="/" className="aLink">
                 <FaGithub className="icon-footer" />
               </Link>
-              <Link to="/"className="aLink color-linkden">
+              <Link to="/" className="aLink color-linkden">
                 <FaLinkedin className="icon-footer" />
               </Link>
-              <Link to="/"className="aLink color-google">
+              <Link to="/" className="aLink color-google">
                 <FaGooglePlus className="icon-footer" />
               </Link>
-              <Link to="/"className="aLink color-whatsapp">
+              <Link to="/" className="aLink color-whatsapp">
                 <FaWhatsapp className="icon-footer" />
               </Link>
-              <Link to="/"className="aLink color-twitter">
+              <Link to="/" className="aLink color-twitter">
                 <FaTwitterSquare className="icon-footer" />
               </Link>
-              
             </div>
             <div className="top-right-footer">
               <Link className="link-footrer" to="/">
@@ -43,7 +42,7 @@ function Footer() {
               <Link className="link-footrer" to="/">
                 Contact Us
               </Link>
-              <Link className="link-footrer" to="/">
+              <Link className="link-footrer" to="/termsofuse">
                 Terms Of Use
               </Link>
               <Link className="link-footrer" to="/">
@@ -52,11 +51,13 @@ function Footer() {
             </div>
           </div>
           <div className="bottom-footer">
-            <p className="copyRight">ِAll Rights Reserved To The Team of <Link to="/" className="avatar1">
+            <p className="copyRight">
+              ِAll Rights Reserved To The Team of{" "}
+              <Link to="/" className="avatar1">
                 HAODAG
-              {/* <img className="avatar1" src={image2} alt="" /> */}
-            </Link></p>
-           
+                {/* <img className="avatar1" src={image2} alt="" /> */}
+              </Link>
+            </p>
           </div>
         </div>
       </div>

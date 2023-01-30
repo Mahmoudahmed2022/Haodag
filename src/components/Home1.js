@@ -12,8 +12,6 @@ import { GoLocation } from "react-icons/go";
 import { HiOutlineMail } from "react-icons/hi";
 import { HiOutlinePhone } from "react-icons/hi";
 
-
-
 function Home() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -22,7 +20,7 @@ function Home() {
     console.log(email, name, message);
     event.preventDefault();
     axios
-      .post("https://fakestoreapi.com/products", { email, name , message })
+      .post("https://fakestoreapi.com/products", { email, name, message })
       .then((data) => {
         console.log(data);
       });
@@ -44,17 +42,17 @@ function Home() {
     allCardData();
   }, []);
 
-  const renderCard = (person) => {
+  const renderCard = (cardData) => {
     return (
       <>
-        <div className="hall-container" key={person.id}>
+        <div className="hall-container" key={cardData.id}>
           <div className="img-div">
             <img
               className="hall-img"
-              src={person.image}
-              alt={person.title}
+              src={cardData.image}
+              alt={cardData.title}
             ></img>
-            {person.title}
+            {cardData.title}
           </div>
           <div className="hall-body">
             <button className="details-btn s-d-hover" href="#">
@@ -114,8 +112,8 @@ function Home() {
           </button>
         )}
       </div>
-<div className="clo">
-      <div className="contact-us">
+      <div className="clo">
+        <div className="contact-us">
           <div className="left-details1">
             <div className="comp-row">
               <div className="first-row">
@@ -167,7 +165,7 @@ function Home() {
                   <label className="e-p-label">Email</label>
                 </div>
                 <div className="user-box1">
-                  <label className="textArea"  >Write Your Message</label>
+                  <label className="textArea">Write Your Message</label>
                   <input
                     type="text"
                     name=""
@@ -175,18 +173,15 @@ function Home() {
                     className="password-input1 e-p-input1"
                     onChange={(e) => setMessage(e.target.value)}
                   />
-                  
-                  </div>
+                </div>
                 <Link className="login-submit1 submit1" to="/WeddingPlanners">
-                 
                   Send
                 </Link>
-                
               </form>
             </div>
           </div>
         </div>
-        </div>
+      </div>
 
       <div className="about-us">
         <div className="left-photo-couple">
@@ -200,7 +195,6 @@ function Home() {
           </p>
         </div>
       </div>
-        
     </>
   );
 }

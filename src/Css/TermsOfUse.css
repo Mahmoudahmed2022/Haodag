@@ -1,0 +1,24 @@
+.big-term-container {
+  height: 390px;
+}
+.terms-div-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.terms-btn {
+  margin-left: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-color: #fcb414;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: cursive;
+  border: none;
+  color: #243b55;
+  box-shadow: 0 6px 15px #243b55;
+}
