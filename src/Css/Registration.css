@@ -6,14 +6,13 @@ body {
 
 .big-container {
   box-shadow: 0 6px 15px #a8acb1;
-
   border-radius: 30px;
   width: 50%;
   margin: auto;
-  position: absolute;
+  position: relative;
   flex: auto;
-  top: 20%;
-  left: 25%;
+  /* top: 20%; */
+  /* left: 25%; */
   padding: 10px;
   color: #263e61;
   background-color: #e4e9e4;

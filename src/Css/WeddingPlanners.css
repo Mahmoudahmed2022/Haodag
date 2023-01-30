@@ -37,7 +37,7 @@ body {
 .big-landing-text {
   font-size: 50px;
 }
-.details-btn {
+/* .details-btn {
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -45,9 +45,8 @@ body {
   outline: none;
   background-color: #263e61;
   border: none;
-  font-family: auto;
   border-radius: 10px;
-}
+} */
 .search-btn-div {
   background-color: #263e61;
   display: flex;
@@ -65,7 +64,7 @@ body {
   height: 30px;
   margin-bottom: 10px;
   text-decoration: none;
-  color: #c7862f;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

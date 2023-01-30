@@ -77,8 +77,8 @@ function Registration() {
               </label>
               <input
                 type="text"
-                className="FirstName-input"
-                id="FirstName registration-input"
+                className="FirstName-input registration-input"
+                id="FirstName "
                 required
                 onChange={(e) => setFirstName(e.target.value)}
               />

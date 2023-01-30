@@ -41,7 +41,7 @@ function Footer() {
                 Who We Are
               </Link>
               <Link className="link-footrer" to="/">
-                Contact With Us
+                Contact Us
               </Link>
               <Link className="link-footrer" to="/">
                 Terms Of Use
