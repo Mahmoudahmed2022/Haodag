@@ -1,24 +1,24 @@
-.big-privacy-text-container {
+.big-TermofUse-text-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 25px;
-  height: 250px;
+  margin: 20px;
 }
-.header-privacy-text {
+.header-TermofUse-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   color: #fcb414;
 }
-.body-privacy-text {
-  font-size: 20px;
+.body-TermofUse-text {
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #243b55;
+  margin: auto;
 }

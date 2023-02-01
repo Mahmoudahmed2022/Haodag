@@ -1,5 +1,5 @@
 .big-term-container {
-  height: 390px;
+  height: auto;
 }
 .terms-div-btns {
   display: flex;
@@ -21,4 +21,5 @@
   border: none;
   color: #243b55;
   box-shadow: 0 6px 15px #243b55;
+  cursor: pointer;
 }

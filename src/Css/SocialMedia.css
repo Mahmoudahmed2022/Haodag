@@ -1,4 +1,4 @@
-.big-privacy-text-container {
+.big-SocialMedia-text-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -6,7 +6,7 @@
   margin-top: 25px;
   height: 250px;
 }
-.header-privacy-text {
+.header-SocialMedia-text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@
   font-size: 25px;
   color: #fcb414;
 }
-.body-privacy-text {
+.body-SocialMedia-text {
   font-size: 20px;
   display: flex;
   align-items: center;
