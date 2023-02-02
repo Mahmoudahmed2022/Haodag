@@ -1,6 +1,13 @@
-import { GoLocation } from "react-icons/go";
-import { HiOutlineMail } from "react-icons/hi";
-import { HiOutlinePhone } from "react-icons/hi";
+import React from "react";
+import { FaFacebook } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGooglePlus } from "react-icons/fa";
+import image2 from "./images/logo1.png";
+import { FaTwitterSquare } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 import "../Css/SocialMedia.css";
 function SocialMedia() {
   return (
@@ -10,18 +17,57 @@ function SocialMedia() {
           <h2>Social media</h2>
         </div>
         <div className="body-SocialMedia-text">
-          <p>
-            This privacy policy has been developed in order to provide a better
-            service and to take into account the basics and international
-            standards for the use of "personally identifiable information" of
-            Internet users. Personally identifiable information is information
-            that can be used on its own or with other information in order to
-            identify, contact, or locate an individual, or to identify an
-            individual in a general context. Please read our Privacy Policy
-            carefully in order to get a clearer understanding of how we collect,
-            use, protect or otherwise handle your Personally Identifiable Data
-            in connection with our Website.
-          </p>
+          {" "}
+          <div className="top-SocialMedia">
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia color-facebook">
+                <FaFacebook className="icon-SocialMedia " />
+              </Link>
+              <a className="a-tag" href="#">
+                Haodag
+              </a>
+            </div>
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia git">
+                <FaGithub className="icon-SocialMedia" />
+              </Link>
+              <a className="a-tag" href="#">
+                Haodag
+              </a>
+            </div>
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia color-linkden">
+                <FaLinkedin className="icon-SocialMedia" />
+              </Link>
+              <a className="a-tag" href="#">
+                Haodag
+              </a>
+            </div>
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia color-google">
+                <FaGooglePlus className="icon-SocialMedia" />
+              </Link>
+              <a className="a-tag" href="#">
+                Haodag@gmail.com
+              </a>
+            </div>
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia color-whatsapp">
+                <FaWhatsapp className="icon-SocialMedia" />
+              </Link>
+              <a className="a-tag" href="#">
+                01154184217
+              </a>
+            </div>
+            <div className="sml-social-cont">
+              <Link to="/" className="aLink-SocialMedia color-twitter">
+                <FaTwitterSquare className="icon-SocialMedia" />
+              </Link>
+              <a className="a-tag" href="#">
+                Haodag@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
       </div>{" "}
     </>

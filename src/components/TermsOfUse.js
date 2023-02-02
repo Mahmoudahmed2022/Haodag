@@ -6,8 +6,9 @@ import SocialMedia from "./SocialMedia";
 import Developers from "./Developers";
 import "../Css/TermsOfUse.css";
 function TermsOfUse() {
-  const [button_Type, setButton_Type] = useState("TermsOfUse");
   let element;
+  const [button_Type, setButton_Type] = useState("TermsOfUse");
+  const [button_state, setButton_Active] = useState("terms-btn");
   if (button_Type === "TermsOfUse") {
     element = <TermofUse />;
   }
@@ -28,36 +29,52 @@ function TermsOfUse() {
       <div className="big-term-container">
         <div className="terms-div-btns">
           <button
-            className="terms-btn"
-            onClick={() => setButton_Type("TermsOfUse")}
+            className={button_state}
+            onClick={(e) => {
+              setButton_Type("TermsOfUse");
+              setButton_Active("terms-btn-active");
+            }}
+            on
           >
             Terms of use
           </button>
 
           <button
-            className="terms-btn"
-            onClick={() => setButton_Type("Privacy")}
+            className={button_state}
+            onClick={() => {
+              setButton_Type("Privacy");
+              setButton_Active("terms-btn-active");
+            }}
           >
             Privacy
           </button>
 
           <button
-            className="terms-btn"
-            onClick={() => setButton_Type("Advertisement")}
+            className={button_state}
+            onClick={() => {
+              setButton_Type("Advertisement");
+              setButton_Active("terms-btn-active");
+            }}
           >
             Advertisement
           </button>
 
           <button
-            className="terms-btn"
-            onClick={() => setButton_Type("SocialMedia")}
+            className={button_state}
+            onClick={() => {
+              setButton_Type("SocialMedia");
+              setButton_Active("terms-btn-active");
+            }}
           >
             Social media
           </button>
 
           <button
-            className="terms-btn"
-            onClick={() => setButton_Type("Developers")}
+            className={button_state}
+            onClick={() => {
+              setButton_Type("Developers");
+              setButton_Active("terms-btn-active");
+            }}
           >
             Developers
           </button>

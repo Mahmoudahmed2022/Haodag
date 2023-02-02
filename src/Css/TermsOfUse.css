@@ -14,7 +14,7 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  background-color: #fcb414;
+  background-color: rgb(252, 180, 20);
   font-size: 15px;
   font-weight: 600;
   font-family: cursive;
@@ -22,4 +22,20 @@
   color: #243b55;
   box-shadow: 0 6px 15px #243b55;
   cursor: pointer;
+  opacity: 0.5;
+}
+.terms-btn-active {
+  margin-left: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-color: rgb(252, 180, 20);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: cursive;
+  border: none;
+  color: #243b55;
+  box-shadow: 0 6px 15px #243b55;
+  cursor: pointer;
+  opacity: 1;
 }
