@@ -7,8 +7,52 @@ import Developers from "./Developers";
 import "../Css/TermsOfUse.css";
 function TermsOfUse() {
   let element;
+  const term = document.getElementById("term");
+  const privacy = document.getElementById("privacy");
+  const socialMedia = document.getElementById("socialMedia");
+  const advertisement = document.getElementById("advertisement");
+  const developers = document.getElementById("developers");
+
+  const cls = "terms-btn";
+  const cls_act = "terms-btn-active";
   const [button_Type, setButton_Type] = useState("TermsOfUse");
-  const [button_state, setButton_Active] = useState("terms-btn");
+  const chang_btn = (value) => {
+    if (value === "term") {
+      term.className = cls_act;
+      privacy.className = cls;
+      socialMedia.className = cls;
+      advertisement.className = cls;
+      developers.className = cls;
+    }
+    if (value === "privacy") {
+      term.className = cls;
+      privacy.className = cls_act;
+      socialMedia.className = cls;
+      advertisement.className = cls;
+      developers.className = cls;
+    }
+    if (value === "socialMedia") {
+      term.className = cls;
+      privacy.className = cls;
+      socialMedia.className = cls_act;
+      advertisement.className = cls;
+      developers.className = cls;
+    }
+    if (value === "advertisement") {
+      term.className = cls;
+      privacy.className = cls;
+      socialMedia.className = cls;
+      advertisement.className = cls_act;
+      developers.className = cls;
+    }
+    if (value === "developers") {
+      term.className = cls;
+      privacy.className = cls;
+      socialMedia.className = cls;
+      advertisement.className = cls;
+      developers.className = cls_act;
+    }
+  };
   if (button_Type === "TermsOfUse") {
     element = <TermofUse />;
   }
@@ -29,51 +73,60 @@ function TermsOfUse() {
       <div className="big-term-container">
         <div className="terms-div-btns">
           <button
-            className={button_state}
-            onClick={(e) => {
+            className={cls_act}
+            value="term"
+            id="term"
+            onClick={(term) => {
               setButton_Type("TermsOfUse");
-              setButton_Active("terms-btn-active");
+              chang_btn(term.target.value);
             }}
-            on
           >
             Terms of use
           </button>
 
           <button
-            className={button_state}
-            onClick={() => {
+            className={cls}
+            value="privacy"
+            id="privacy"
+            onClick={(privacy) => {
               setButton_Type("Privacy");
-              setButton_Active("terms-btn-active");
+              chang_btn(privacy.target.value);
             }}
           >
             Privacy
           </button>
 
           <button
-            className={button_state}
-            onClick={() => {
+            className={cls}
+            value="advertisement"
+            id="advertisement"
+            onClick={(advertisement) => {
               setButton_Type("Advertisement");
-              setButton_Active("terms-btn-active");
+              chang_btn(advertisement.target.value);
             }}
           >
             Advertisement
           </button>
 
           <button
-            className={button_state}
-            onClick={() => {
+            className={cls}
+            value="socialMedia"
+            id="socialMedia"
+            onClick={(socialMedia) => {
               setButton_Type("SocialMedia");
-              setButton_Active("terms-btn-active");
+              chang_btn(socialMedia.target.value);
             }}
           >
             Social media
           </button>
 
           <button
-            className={button_state}
-            onClick={() => {
+            className={cls}
+            value="developers"
+            id="developers"
+            onClick={(developers) => {
               setButton_Type("Developers");
-              setButton_Active("terms-btn-active");
+              chang_btn(developers.target.value);
             }}
           >
             Developers
