@@ -9,6 +9,8 @@ body {
   border-radius: 30px;
   width: 50%;
   margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
   position: relative;
   flex: auto;
   /* top: 20%; */
