@@ -4,6 +4,7 @@ import user2 from "./images/user2.png";
 import { useParams } from "react-router-dom";
 import "../Css/Hall.css";
 import axios from "axios";
+import Footer from "./Footer";
 function Hall() {
   const parms = useParams();
   const [hall, setHall] = useState({});
@@ -25,6 +26,7 @@ function Hall() {
           </div>
         </div>
       </div>
+      
     </>
   );
 }
