@@ -1,0 +1,82 @@
+body {
+  font-family: cursive;
+}
+.cover-cont {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: right;
+  background-repeat: no-repeat;
+  background-image: url("../components/images/cover.jpg");
+  background-size: cover;
+}
+.client-profile-photo-cont {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  background-color: rgb(108, 119, 136, 0.5);
+}
+
+.client-profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  filter: drop-shadow(0 0 8px #c7862f);
+  margin-right: 100px;
+  margin-bottom: -20px;
+  position: absolute;
+}
+.pic-client-cont {
+  width: 100%;
+}
+.client-info {
+  height: auto;
+  background-color: rgb(236, 244, 236);
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.prof-name {
+  background-color: rgb(108, 119, 136, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 250%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+.usr-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.role-type {
+  font-size: 20px;
+  margin-top: 10px;
+}
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.sml-cont {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  width: 500px;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: 0 6px 15px #555;
+  background-color: #a8acb1;
+  border-radius: 8px;
+  font: bolder;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.all-label {
+  display: flex;
+  margin: 10px;
+}

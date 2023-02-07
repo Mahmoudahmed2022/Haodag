@@ -8,6 +8,7 @@ import Registration from "./components/Registration";
 import NavbarWithSideBar from "./components/NavbarWithSideBar";
 import Footer from "./components/Footer";
 import TermsOfUse from "./components/TermsOfUse";
+import ClientProfile from "./components/ClientProfile";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
         <Route path="login" element={<Login />} />
+        <Route path="profile" element={<ClientProfile />} />
         <Route path="registration" element={<Registration />} />
         <Route path="search" element={<Search />} />
         <Route path="WeddingPlanners" element={<WeddingPlanners />} />

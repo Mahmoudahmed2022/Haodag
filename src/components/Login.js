@@ -50,7 +50,7 @@ function Login() {
             <label className="e-p-label">Password</label>
           </div>
 
-          <Link className="login-submit submit" to="/home">
+          <Link className="login-submit submit" to="/profile">
             <span className="s-span"></span>
             <span className="s-span"></span>
             <span className="s-span"></span>
