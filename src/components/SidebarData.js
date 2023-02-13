@@ -37,7 +37,7 @@ export const SidebarData = [
   },
   {
     title: "Great Packages",
-    path: "/great-packages",
+    path: "/TheBatman",
     icon: <BiPackage />,
     cName: "nav-text",
   },

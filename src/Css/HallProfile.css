@@ -1,0 +1,154 @@
+body{
+  font-family: cursive;
+}
+.item {
+  max-height: 25rem;
+  min-width: 30%;
+  padding: 40px 20px;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+.inner-carousel {
+  display: flex;
+}
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+}
+
+
+.mapImg {
+  width: 400px;
+  height: 200px;
+}
+.singleInfo {
+}
+.singleInfoMap {
+}
+.hallInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.mapAndData{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+.allInfo {
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.allInfo1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.dataall{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.nameWithdata{}
+.headcircle {
+}
+.imgcircle {
+  width: 260px;
+  height: 170px;
+  border-radius: 60px;
+}
+.attributeName {
+  margin-top: 10px;
+  border: none;
+  background-color: #9e9e9e21;
+  border-radius: 30px;
+  padding: 5px;
+
+}
+.attributeName1 {
+  margin-top: 10px;
+  border: none;
+  background-color: #9e9e9e21;
+  border-radius: 30px;
+  padding: 5px;
+  margin-bottom: 20px;
+
+}
+.p-attributeName,.headInfo 
+ {
+  color: #243b55;
+}
+.p-attributeName{
+  margin: 5px;
+
+}
+.button-Details{}
+.div-Details{}
+.p-headInfo {
+}
+.headData {
+}
+.buttonPrice {
+}
+.button-buttonPrice {
+}
+
+
+.allhalls-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  justify-content: space-evenly;
+  width: inherit;
+}
+.for-button2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.more1{
+  width: 150px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  background-color: #d2d2d2;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  /* color: white; */
+  font-family: cursive;
+}
+.hall-container{
+  width: 400px;
+  margin-bottom: 50px;
+
+}
+.img-div{}
+.hall-img{
+  width: 100%;
+  height: 300px;
+}
+
+.headInfoTop, .hallName{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #243b55;
+}
