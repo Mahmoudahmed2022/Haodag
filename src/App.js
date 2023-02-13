@@ -8,9 +8,7 @@ import Registration from "./components/Registration";
 import NavbarWithSideBar from "./components/NavbarWithSideBar";
 import Footer from "./components/Footer";
 import TermsOfUse from "./components/TermsOfUse";
-import HallProfile from "./components/HallProfile";
-// import DetailedData from "./components/DetailedData";
-function App(props) {
+function App() {
   return (
     <div className="App">
       {/* <NavbarWithSideBar /> */}
@@ -21,6 +19,7 @@ function App(props) {
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
         <Route path="login" element={<Login />} />
+        <Route path="profile" element={<ClientProfile />} />
         <Route path="registration" element={<Registration />} />
         <Route path="search" element={<Search />} />
         <Route path="WeddingPlanners" element={<WeddingPlanners />} />
