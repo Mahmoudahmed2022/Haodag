@@ -50,6 +50,9 @@ function ClientProfile() {
             </div>
           </div>
         </div>
+        <div className="booking-history">
+          <h1 className="deals-tit">Last deals</h1>
+        </div>
       </div>
     </>
   );
