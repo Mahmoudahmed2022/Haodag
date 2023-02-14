@@ -7,14 +7,17 @@ import WeddingPlanners from "./components/WeddingPlanners";
 import Registration from "./components/Registration";
 import NavbarWithSideBar from "./components/NavbarWithSideBar";
 import TermsOfUse from "./components/TermsOfUse";
+import HallProfile from "./components/HallProfile";
+import ClientProfile from "./components/ClientProfile";
 function App() {
   return (
     <div className="App">
       {/* <NavbarWithSideBar /> */}
-      <HallProfile/>
+      <NavbarWithSideBar />
       <Routes>
         <Route path="hallDetails" element={<HallProfile />} />
         {/* <Route path="TheBatman" element={<DetailedData />} /> */}
+        <Route path="hallprofile" element={<ClientProfile />} />
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
         <Route path="login" element={<Login />} />
