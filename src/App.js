@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import WeddingPlanners from "./components/WeddingPlanners";
 import Registration from "./components/Registration";
 import NavbarWithSideBar from "./components/NavbarWithSideBar";
-import Footer from "./components/Footer";
 import TermsOfUse from "./components/TermsOfUse";
 function App() {
   return (
