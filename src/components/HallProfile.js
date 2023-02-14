@@ -18,34 +18,10 @@ import image7 from "./images/map.jpg";
 // import image5 from "./images/hall3.jpeg";
 // import Info1ForHallCapacity from "./Info1ForHallCapacity";
 import InfoForMap from "./InfoForMap";
+import ImageSlider from "./ImageSlider ";
 
 const HallProfile = () => {
-  const [width, setWidth] = useState(0);
-  const carouselRef = useRef();
   const [products, setProducts] = useState([]);
-
-  // const infoElement = products.map((item) => {
-  //   const replaced = item.Title;
-  //   const replacedItem = replaced.split(' ').join('')
-  //   return (
-  //     <Info1ForHallCapacity
-  //       key={item.imdbID}
-  //       className="singleInfo"
-  //       title={item.Title}
-  //       year={item.Year}
-  //       img={image} //item.image from api
-  //       showButton={true} //item.is
-  //       pathD={replacedItem}
-  //     />
-  //   );
-  // });
-
-  // const replaceSpace = products.map((item) => {
-    
-  //     const replaced = item.Title;
-  //     console.log(replaced.split(' ').join(''))
-
-  // });
   const allData = async (title) => {
     const api2 = "https://fakestoreapi.com/products";
     const api = "https://www.omdbapi.com/?i=tt3896198&apikey=e2381709";
@@ -58,17 +34,24 @@ const HallProfile = () => {
       })
       .catch((err) => console.error(err));
   };
-
   useEffect(() => {
     allData("Batman");
-    forWIdth();
-    // console.log(carouselRef.current.scrollWidth);
-
-    // console.log(carouselRef.current.offsetWidth);
   }, []);
 
-  const forWIdth = () => {
-    setWidth(5000 - carouselRef.current.offsetWidth);
+  const renderCard = (cardData) => {
+    return (
+      <>
+        <div className="" key={cardData.imdbID}>
+          <div className="img-div">
+            <img
+              className="hall-img"
+              src={cardData.Poster}
+              alt={cardData.Title}
+            ></img>
+          </div>
+        </div>
+      </>
+    );
   };
 
   const count = () => {
@@ -83,46 +66,21 @@ const HallProfile = () => {
   const loadMore = () => {
     setVisible(visible + 5);
   };
-  const renderCard = (cardData) => {
-    return (
-      <>
-        <div className="" key={cardData.imdbID}>
-          <div className="img-div">
-            <img
-              className="hall-img"
-              src={cardData.Poster}
-              alt={cardData.Title}
-            ></img>
-          </div>
-          {/* <div className="hall-body">
-              <button className="details-btn s-d-hover" href="#">
-                Details
-              </button>
-            </div> */}
-        </div>
-      </>
-    );
-  };
+
   return (
     <div className="allHallProfile">
-      {/* Slider */}
       <h1 className="hallName">Hall's Name </h1>
-      <motion.div ref={carouselRef} className="carousel">
-        <motion.div
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}
-          whileTap={{ cursor: "grabbing" }}
-          className="inner-carousel"
-        >
-          {count()}
-        </motion.div>
-      </motion.div>
+      {/* Slider */}
+      <div className="imageSlider">
+        <ImageSlider products={products} />
+      </div>
+
       {/* End Slider */}
       {/* information */}
       <h1 className="headInfoTop">Information About Hall</h1>
 
       {/* <div className="hallInfo">{infoElement}</div> */}
-      
+
       <div className="mapAndData">
         <InfoForMap
           className="singleInfoMap"
@@ -131,8 +89,7 @@ const HallProfile = () => {
         />
       </div>
 
-
-
+      {/* For Video */}
       <div className="allhalls-container2">
         {products.slice(0, visible).map(renderCard)}
       </div>
@@ -148,3 +105,40 @@ const HallProfile = () => {
 };
 
 export default HallProfile;
+
+{
+  /* <motion.div ref={carouselRef} className="carousel">
+        <motion.div
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          whileTap={{ cursor: "grabbing" }}
+          className="inner-carousel"
+        >
+          {count()}
+        </motion.div>
+      </motion.div> */
+}
+
+// const infoElement = products.map((item) => {
+
+//   const replaced = item.Title;
+//   const replacedItem = replaced.split(' ').join('')
+//   return (
+//     <Info1ForHallCapacity
+//       key={item.imdbID}
+//       className="singleInfo"
+//       title={item.Title}
+//       year={item.Year}
+//       img={image} //item.image from api
+//       showButton={true} //item.is
+//       pathD={replacedItem}
+//     />
+//   );
+// });
+
+// const replaceSpace = products.map((item) => {
+
+//     const replaced = item.Title;
+//     console.log(replaced.split(' ').join(''))
+
+// });
