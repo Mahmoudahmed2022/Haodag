@@ -10,13 +10,13 @@ import TermsOfUse from "./components/TermsOfUse";
 import ClientProfile from "./components/ClientProfile";
 import HallProfile from "./components/HallProfile";
 import ImageSlider from "./components/ImageSlider ";
-
+import Footer from "./components/Footer";
 function App() {
   return (
     <div className="App">
-      <HallProfile/>
+      <NavbarWithSideBar />
+      {/*       <HallProfile/> */}
 
-      {/* <NavbarWithSideBar />
       <Routes>
         <Route path="hallDetails" element={<HallProfile />} />
         <Route path="hallprofile" element={<ClientProfile />} />
@@ -28,8 +28,8 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route path="WeddingPlanners" element={<WeddingPlanners />} />
         <Route path="termsofuse" element={<TermsOfUse />} />
-      </Routes> */}
-      {/* <Footer /> */}
+      </Routes>
+      <Footer />
     </div>
   );
 }

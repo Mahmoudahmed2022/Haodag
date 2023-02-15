@@ -1,6 +1,8 @@
 import "../Css/ClientProfile.css";
 import mahmoud from "./images/mahmoud (2).jpg";
-
+import { Link } from "react-router-dom";
+import "./ClientProfile.scss";
+import Cards from "./Cards";
 function ClientProfile() {
   return (
     <>
@@ -47,10 +49,27 @@ function ClientProfile() {
             <label className="client-label all-label">Gendr</label>
             <label className="client-data all-label">Male</label>
           </div>
+          <div className="prof-btn-div">
+            <Link
+              class="btn-flip"
+              data-back="Contact"
+              data-front="Contact"
+              to="#"
+            ></Link>
+          </div>
+          <div className="prof-btn-div">
+            <Link
+              class="btn-flip"
+              data-back="Edit"
+              data-front="Edit"
+              to="#"
+            ></Link>
+          </div>
         </div>
       </div>
       <div className="booking-history">
         <h1 className="deals-tit">Last deals</h1>
+        <Cards />
       </div>
     </>
   );

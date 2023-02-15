@@ -71,8 +71,8 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   box-shadow: 0 6px 15px #555;
-  background-color: #a8acb1;
-  border-radius: 8px;
+  /* background-color: #a8acb1; */
+  border-radius: 3px;
   font: bolder;
   border-top: none;
   border-left: none;
@@ -87,4 +87,22 @@ body {
 }
 .booking-history {
   height: auto;
+}
+.prof-btn-div {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  width: 500px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.booking-history {
+  background-color: rgb(236, 244, 236);
+  border-top: solid #c7862f;
+}
+.deals-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
