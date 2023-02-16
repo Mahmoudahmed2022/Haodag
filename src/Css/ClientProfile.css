@@ -38,6 +38,7 @@ body {
   flex-wrap: wrap;
   background-color: rgb(236, 244, 236);
   padding-top: 20px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: center;
 }
@@ -99,6 +100,7 @@ body {
 .booking-history {
   background-color: rgb(236, 244, 236);
   border-top: solid #c7862f;
+  padding-top: 50px;
 }
 .deals-container {
   display: flex;

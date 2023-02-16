@@ -198,14 +198,17 @@ body {
   display: none;
 }
 
-.btn-cont {
+.register-btn-cont {
   margin-top: 150px;
   margin-bottom: 50px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
-.btn {
+.register-btn {
   width: 60%;
-
+  display: flex;
+  justify-content: center;
   padding: 2% 2%;
   font-size: 16px;
   text-align: center;
@@ -213,16 +216,15 @@ body {
   text-decoration: none;
   outline: none;
   color: #c7862f;
-  /* background-color: #d4d4d4; */
   background-color: #263e61;
   border: none;
   font-family: auto;
   border-radius: 15px;
 }
-.btn:hover {
+.register-btn:hover {
   background-color: #4158d0;
 }
-.btn:active {
+.register-btn:active {
   background-color: #4158d0;
   box-shadow: 0 5px rgb(0, 0, 0);
   transform: translateY(4px);

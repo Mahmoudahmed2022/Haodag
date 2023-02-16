@@ -51,7 +51,7 @@ function ClientProfile() {
           </div>
           <div className="prof-btn-div">
             <Link
-              class="btn-flip"
+              className="btn-flip"
               data-back="Contact"
               data-front="Contact"
               to="#"
@@ -59,7 +59,7 @@ function ClientProfile() {
           </div>
           <div className="prof-btn-div">
             <Link
-              class="btn-flip"
+              className="btn-flip"
               data-back="Edit"
               data-front="Edit"
               to="#"

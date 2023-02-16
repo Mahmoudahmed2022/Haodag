@@ -13,6 +13,7 @@ import { FaAddressCard } from "@react-icons/all-files/fa/FaAddressCard";
 import { FaPhoneAlt } from "@react-icons/all-files/fa/FaPhoneAlt";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Registration() {
   const [firstName, setFirstName] = useState("");
@@ -269,10 +270,14 @@ function Registration() {
                 </option>
               </select>
             </div>
-            <div className="mb-3 form-check btn-cont">
-              <button type="submit" className="btn btn-primary">
+            <div className="mb-3 form-check register-btn-cont">
+              <Link
+                to="/home"
+                type="submit"
+                className="register-btn btn-primary"
+              >
                 Sign Up
-              </button>
+              </Link>
             </div>
           </div>
         </form>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import image10 from "./images/animation.png";
 import "../Css/Home1.css";
 import "../Css/App.css";
-import "../Css/Search.css";
 import axios from "axios";
 import image11 from "./images/12.jpeg";
 import { FaUserAlt } from "react-icons/fa";
@@ -45,16 +44,16 @@ function Home() {
   const renderCard = (cardData) => {
     return (
       <>
-        <div className="hall-container" key={cardData.id}>
-          <div className="img-div">
+        <div className="home-hall-container" key={cardData.id}>
+          <div className="home-hall-img-div">
             <img
-              className="hall-img"
+              className="home-hall-img"
               src={cardData.image}
               alt={cardData.title}
             ></img>
             {cardData.title}
           </div>
-          <div className="hall-body">
+          <div className="home-hall-body">
             <button className="details-btn s-d-hover" href="#">
               Details
             </button>
@@ -66,7 +65,7 @@ function Home() {
 
   return (
     <>
-      <div className="landing">
+      <div className="home-landing">
         <div className="all-content">
           <div className="text-content1">
             <div className="text-content2">
@@ -102,7 +101,7 @@ function Home() {
       </div>
       <h1 className="headForHalls">Our Recommendation For You</h1>
 
-      <div className="allhalls-container">
+      <div className="home-allhalls-container">
         {cardData.slice(0, visible).map(renderCard)}
       </div>
       <div className="for-button">

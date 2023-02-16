@@ -25,15 +25,23 @@ function Search() {
   const renderCard = (hall) => {
     return (
       <>
-        <div className="hall-container" key={hall.id}>
-          <div className="img-div">
-            <img className="hall-img" src={hall.image} alt={hall.title}></img>
+        <div className="search-hall-container" key={hall.id}>
+          <div className="search-img-div">
+            <img
+              className="search-hall-img"
+              src={hall.image}
+              alt={hall.title}
+            ></img>
             {hall.title}
           </div>
-          <div className="hall-body">
-            <button className="details-btn s-d-hover" href="#">
+          <div className="search-hall-body">
+            <Link
+              to="/hallDetails"
+              className="search-details-btn s-d-hover"
+              href="#"
+            >
               Details
-            </button>
+            </Link>
           </div>
         </div>
       </>

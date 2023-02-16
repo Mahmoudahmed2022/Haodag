@@ -12,9 +12,11 @@ import image2 from "./images/logo.png";
 import { BiSearch } from "react-icons/bi";
 import user from "./images/user.png";
 import "../Css/App.css";
+import { useNavigate } from "react-router-dom";
 
 function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);
+  const nav = useNavigate();
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -23,10 +25,9 @@ function NavbarWithSideBar() {
       <IconContext.Provider value={{}}>
         <div className="navbar">
           <div className="left">
-            
             <div className="svgColor1">
-              <FaArrowCircleLeft className="bigger" />
-              <FaArrowCircleRight className="bigger" />
+              <FaArrowCircleLeft className="bigger" onClick={() => nav(-1)} />
+              <FaArrowCircleRight className="bigger" onClick={() => nav(1)} />
             </div>
             <Link className="menu-bars">
               <FaAlignLeft className="svgColor" onClick={showSidebar} />

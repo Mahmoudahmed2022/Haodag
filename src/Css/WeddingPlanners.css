@@ -13,17 +13,6 @@ body {
   background-color: rgb(38, 62, 97, 0.6);
   height: inherit;
 }
-/* .user-pic {
-  display: flex;
-  float: right;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  border: 2px solid #263e61;
-  filter: drop-shadow(0 0 8px #c7862f);
-  margin-top: 30px;
-  margin-right: 30px;
-} */
 .landing-text {
   color: white;
 }
@@ -37,38 +26,25 @@ body {
 .big-landing-text {
   font-size: 50px;
 }
-/* .details-btn {
-  width: 100%;
+.planner-details-btn {
+  width: 80%;
   height: 100%;
   cursor: pointer;
   text-decoration: none;
-  outline: none;
   background-color: #263e61;
   border: none;
   border-radius: 10px;
-} */
-.search-btn-div {
-  background-color: #263e61;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-}
-.s-d-hover:hover {
-  background-color: #4158d0;
-}
-.s-d-hover:active {
-  background-color: #4158d0;
-}
-.details-btn {
-  width: 60%;
-  height: 30px;
-  margin-bottom: 10px;
-  text-decoration: none;
   color: white;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.s-d-hover:hover {
+  background-color: #4158d0;
+}
+
 .allPlanners-container {
   display: flex;
   flex-wrap: wrap;

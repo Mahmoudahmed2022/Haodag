@@ -19,7 +19,6 @@ function App() {
 
       <Routes>
         <Route path="hallDetails" element={<HallProfile />} />
-        <Route path="hallprofile" element={<ClientProfile />} />
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
         <Route path="login" element={<Login />} />
