@@ -51,10 +51,10 @@ function Home() {
               src={cardData.image}
               alt={cardData.title}
             ></img>
-            {cardData.title}
+            {cardData.title.slice(0, 20)}
           </div>
           <div className="home-hall-body">
-            <button className="details-btn s-d-hover" href="#">
+            <button className="home-details-btn s-d-hover" href="#">
               Details
             </button>
           </div>
