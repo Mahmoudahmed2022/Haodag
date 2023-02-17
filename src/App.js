@@ -16,6 +16,7 @@ function App() {
     <div className="App">
       <NavbarWithSideBar />
       {/*       <HallProfile/> */}
+      <HallProfile/>
 
       <Routes>
         <Route path="hallDetails" element={<HallProfile />} />

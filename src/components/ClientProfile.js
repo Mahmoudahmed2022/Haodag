@@ -1,7 +1,7 @@
 import "../Css/ClientProfile.css";
 import mahmoud from "./images/mahmoud (2).jpg";
 import { Link } from "react-router-dom";
-import "../Css/ClientProfile.scss";
+import "../Css/ClientProfile.css";
 import Cards from "./Cards";
 function ClientProfile() {
   return (

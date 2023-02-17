@@ -69,25 +69,57 @@ const HallProfile = () => {
 
   return (
     <div className="allHallProfile">
+    
       <h1 className="hallName">Hall's Name </h1>
       {/* Slider */}
       <div className="imageSlider">
         <ImageSlider products={products} />
+        <div className="mapAndData">
+          <InfoForMap
+            className="singleInfoMap"
+            products={products}
+            img={image7}
+          />
+          <div><p>hello</p><p>play</p></div>
+        </div>
       </div>
 
       {/* End Slider */}
       {/* information */}
-      <h1 className="headInfoTop">Information About Hall</h1>
+      {/* <h1 className="headInfoTop">Information About Hall</h1> */}
 
       {/* <div className="hallInfo">{infoElement}</div> */}
 
-      <div className="mapAndData">
-        <InfoForMap
-          className="singleInfoMap"
-          products={products}
-          img={image7}
-        />
+      <div className="allContInfo">
+        <div className="card-content">
+          <h2 className="section__title">The Amplitude</h2>
+          <ul className="uiForInfo">
+            <li className="liElement">
+              <p className="pForInfo">The number of stars of the hotel </p>
+              <p className="pForData">4 stars</p>
+            </li>
+            <li className="liElement">
+              <p className="pForInfo">The price is per person</p>
+              <p className="pForData">300-350 pound</p>
+            </li>
+            <li className="liElement">
+              <p className="pForInfo">Hall capacity</p>
+              <p className="pForData">250-100 people</p>
+            </li>
+            <li className="liElement">
+              <p className="pForInfo">food court capacity</p>
+              <p className="pForData">250-100 people </p>
+            </li>
+            <li className="liElement">
+              <p className="pForInfo">How many rooms are in the Hall?</p>
+              <p className="pForData">two Rooms</p>
+            </li>
+          </ul>
+        </div>
+        <div></div>
       </div>
+
+      
 
       {/* For Video */}
       <div className="allhalls-container2">

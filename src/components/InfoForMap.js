@@ -8,14 +8,14 @@ const InfoForMap = (props) => {
   return (
     <div className="allInfo">
       
-      <div className="attributeName1">
+      {/* <div className="attributeName1">
         <p className="p-attributeName">Map</p>
-      </div>
+      </div> */}
       <div className="headcircle">
         <img className="mapImg" src={img1} alt="" />
       </div>
       <div className="buttonPrice">
-      <button type="button" className="button-buttonPrice">Details</button>
+      <button type="button" className="button-buttonPrice">Map</button>
       </div>
       
     </div>
