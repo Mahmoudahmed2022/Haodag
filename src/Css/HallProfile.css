@@ -285,7 +285,8 @@ body {
   background-color: white;
 }
 
-.phonec, .whatsap {
+.phonec,
+.whatsap {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -316,21 +317,21 @@ body {
   align-items: center;
 }
 
-.dataModalContact a{
+.dataModalContact a {
   text-decoration: none;
   color: black;
 }
-.dataModalContact a:hover{
+.dataModalContact a:hover {
   color: rgb(47, 47, 219);
 }
-.colorSvg{
+.colorSvg {
   color: green;
 }
-.colorSvg1{
+.colorSvg1 {
   color: black;
 }
 
-.linkMoreD{
+.linkMoreD {
   /* background-color: aliceblue; */
   border: 1px solid #00abaa;
   width: 150px;
@@ -342,85 +343,98 @@ body {
   text-decoration: none;
 }
 
-.bLM{    display: flex;
-  justify-content: center;}
-  .linkMoreD:hover{
-    background-color: #00abaa;
-    color: white;
-  }
-  .contDataa{
-    display: flex;
-    flex-direction: row;
-  }
-  .contReview{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    
-  }
-   .reviewF, .reviewS{
-    padding: 30px;
-    width: 60%;
-    background-color: #3f51b554;
-    display: flex;
-    margin-bottom: 100px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #243b55;
-  }
-  .reviewF  p, .reviewS p{
-    font-size: 18px;
-    color: #243b55;
-  }
-  .firstColRate , .secondColLove, .thirdColLike{
-        display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .starsR .starsRSvg{
-    margin: 3px;
-  }
-  .starsRSvg:hover{
-    color: #FDCC0D;
-  }
-  .heartLove .heartLoveSvg, .starsRSvg,.LikeIcon{
-    color: white;
+.bLM {
+  display: flex;
+  justify-content: center;
+}
+.linkMoreD:hover {
+  background-color: #00abaa;
+  color: white;
+}
+.contDataa {
+  display: flex;
+  flex-direction: row;
+}
+.contReview {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.reviewF,
+.reviewS {
+  padding: 30px;
+  width: 60%;
+  background-color: #3f51b554;
+  display: flex;
+  margin-bottom: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #243b55;
+}
+.reviewF p,
+.reviewS p {
+  font-size: 18px;
+  color: #243b55;
+}
+.firstColRate,
+.secondColLove,
+.thirdColLike {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.starsR .starsRSvg {
+  margin: 3px;
+}
+.starsRSvg:hover {
+  color: #fdcc0d;
+}
+.heartLove .heartLoveSvg,
+.starsRSvg,
+.LikeIcon {
+  color: white;
+}
+.likeDown1 {
+  color: #243b55;
+}
+.likeDown {
+  color: white;
+  margin: 3px;
+}
 
-  }
-  .likeDown1{color: #243b55;}
-  .likeDown{color: white;margin: 3px;}
 
-  .heartLoveSvg{
-    width: 20px;
-    height: 20px; 
-  }
-  .heartLoveSvg:hover{
-    color: rgb(223, 41, 41);
-  }
-  .LikeIcon{
-    margin: 10px;
-    width: 20px;
-    height: 20px;    
-  }
-  .LikeIcon:hover{
-    color: #243b55;
-  }
-  .manyStarsR{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .manyStarsR div span{
-    margin-left: 10px;
-  }
+.heartLoveSvg {
+  width: 20px;
+  height: 20px;
+}
 
-  .PheartLove{    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;}
+
+.LikeIcon {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+}
+.LikeIcon:hover {
+  color: #243b55;
+}
+.manyStarsR {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.manyStarsR div span {
+  margin-left: 10px;
+}
+
+.PheartLove {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}

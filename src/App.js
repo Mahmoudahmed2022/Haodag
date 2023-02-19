@@ -12,15 +12,14 @@ import HallProfile from "./components/HallProfile";
 import ImageSlider from "./components/ImageSlider ";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
+import Rating from "./components/Rating";
 function App() {
   return (
     <div className="App">
-     
-      {/*       <HallProfile/> */}
-      {/* <HallProfile/> */}
+     {/* <Rating rating={3} isFavorite={true} visitorCount={100}/> */} 
 
-      <Routes>
-        {/* <Route path="modal" element={<Modal/>} /> */}
+     
+       <Routes>
         <Route path="modal" element={ <Modal isOpen="true" />} />
 
         <Route path="hallDetails" element={<HallProfile />} />

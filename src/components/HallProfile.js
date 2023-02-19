@@ -22,12 +22,12 @@ import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaThumbsDown } from "react-icons/fa";
-
+import { FaUserTie } from "react-icons/fa";
 
 
 import { FaPhoneAlt } from "react-icons/fa";
 
-const HallProfile = () => {
+const HallProfile = ({rating}) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
   let phoneNumber = "0";
   let message = "!";
@@ -84,7 +84,20 @@ const HallProfile = () => {
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     );
   };
+  const [hover, setHover] = useState(null);
+ const [hoverHeart, setHoverHeart] = useState(null);
+ const [Like, setLike] = useState(null);
+ const [disLike, setDisLike] = useState(null);
 
+  const handleHover = (ratingValue) => {
+    setHover(ratingValue);
+  };
+
+  const handleMouseLeave = () => {
+    setHover(null);
+  };
+
+  
   return (
     <div className="allHallProfile">
       <h1 className="hallName">Hall's Name </h1>
@@ -117,7 +130,7 @@ const HallProfile = () => {
 
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
-              <FaHandshake className="colorSvg1" />
+              <FaUserTie className="colorSvg1" />
               <p className=" pWhatsap">Owner : Kariem</p>
             </div>
             <div className="phonec">
@@ -130,7 +143,6 @@ const HallProfile = () => {
 
       {/* End Slider */}
       {/* information */}
-      {/* <h1 className="headInfoTop">Information About Hall</h1> */}
 
       {/* <div className="hallInfo">{infoElement}</div> */}
       <div className="contDataa">
@@ -171,31 +183,45 @@ const HallProfile = () => {
           <InfoServices products={products} />
         </div>
 
-
         <div className="contReview">
           <div className="reviewF">
             <div className="firstColRate">
               <p>Put Rate</p>
-              <div className="starsR">
-                <FaStar className="starsRSvg" />
-                <FaStar className="starsRSvg" />
-                <FaStar className="starsRSvg" />
-                <FaStar className="starsRSvg" />
-                <FaStar className="starsRSvg" />
-              </div>
+              <div className="rating-stars">
+        {[...Array(5)].map((star, i) => {
+          const ratingValue = i + 1;
+          return (
+            <label key={i}>
+              <FaStar
+                className="star"
+                color={ratingValue <= (hover || rating ) ? "#ffc107" : "#e4e5e9"}
+                onMouseEnter={() => handleHover(ratingValue)}
+                onMouseLeave={handleMouseLeave}
+              />
+            </label>
+          );
+        })}
+      </div>
             </div>
             <div className="secondColLove">
               <p>Add To Fav</p>
-              <div className="heartLove">
-                <FaHeart className="heartLoveSvg" />
+              <div className="heartLove ">
+                <FaHeart className="heartLoveSvg "
+                color={1 <= (hoverHeart || false ) ? "red" : ""}
+
+                 />
               </div>
             </div>
             <div className="thirdColLike">
               <p>Did You Like This </p>
               <div className="heartLove">
-                <FaThumbsDown className="LikeIcon" />
-                <FaThumbsUp className="LikeIcon" />
-
+                <FaThumbsDown className="LikeIcon "
+                color={1 <= (Like || true ) ? "#243b55" : ""}
+              
+                />
+                <FaThumbsUp className="LikeIcon"
+                color={2 <= (disLike || false ) ? "#243b55" : ""}
+                />
               </div>
             </div>
           </div>
@@ -206,25 +232,25 @@ const HallProfile = () => {
               <div className="manyStarsR">
                 <div>
                   <FaStar className="likeDown" />
-                  <span className="likeDown1" >15</span>
+                  <span className="likeDown1">15</span>
                 </div>
                 <div>
                   <FaStar className="likeDown" />
                   <FaStar className="likeDown" />
-                  <span className="likeDown1" >15</span>
-                </div>
-                <div>
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1" >15</span>
+                  <span className="likeDown1">15</span>
                 </div>
                 <div>
                   <FaStar className="likeDown" />
                   <FaStar className="likeDown" />
                   <FaStar className="likeDown" />
+                  <span className="likeDown1">15</span>
+                </div>
+                <div>
                   <FaStar className="likeDown" />
-                  <span className="likeDown1" >15</span>
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1">15</span>
                 </div>
                 <div>
                   <FaStar className="likeDown " />
@@ -232,15 +258,13 @@ const HallProfile = () => {
                   <FaStar className="likeDown" />
                   <FaStar className="likeDown" />
                   <FaStar className="likeDown" />
-                  <span className="likeDown1" >15</span>
+                  <span className="likeDown1">15</span>
                 </div>
-                              
               </div>
             </div>
             <div className="secondColLove">
               <p>Number Of Visits</p>
               <p>100</p>
-
             </div>
             <div className="thirdColLike">
               <p>Number Of Likes </p>
@@ -254,47 +278,10 @@ const HallProfile = () => {
                   <p>2</p>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
-      
-      {/* <div className="allContInfo">
-        <div className="card-content">
-          <h2 className="section__title">Services</h2>
-          <ul className="uiForInfo">
-            {products.map((element) => 
-              <li className="liElement">
-              <p className="pForData">{element.Title}</p>
-            </li>
-
-            )}
-            
-           
-          </ul>
-          <div className="bLM"><Link className="linkMoreD" to ="/">More Details</Link></div>
-
-        </div>
-        <div></div>
-      </div>
-      <div className="allContInfo">
-        <div className="card-content">
-          <h2 className="section__title">Shows</h2>
-          <ul className="uiForInfo">
-            {products.map((element) => 
-              <li className="liElement">
-              <p className="pForData">{element.Title}</p>
-            </li>
-
-            )}
-           
-          </ul>
-          <div className="bLM"><Link className="linkMoreD" to ="/">More Details</Link></div>
-
-        </div>
-        <div></div>
-      </div> */}
 
       {/* For Video */}
       <div className="allhalls-container2">
