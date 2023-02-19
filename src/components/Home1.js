@@ -54,9 +54,13 @@ function Home() {
             {cardData.title.slice(0, 20)}
           </div>
           <div className="home-hall-body">
-            <button className="home-details-btn s-d-hover" href="#">
+            <Link
+              to="/hallDetails"
+              className="home-details-btn s-d-hover"
+              href="#"
+            >
               Details
-            </button>
+            </Link>
           </div>
         </div>
       </>

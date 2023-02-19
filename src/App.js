@@ -11,12 +11,12 @@ import ClientProfile from "./components/ClientProfile";
 import HallProfile from "./components/HallProfile";
 import ImageSlider from "./components/ImageSlider ";
 import Footer from "./components/Footer";
+import PlannerProfile from "./components/PlannerProfile";
 function App() {
   return (
     <div className="App">
       <NavbarWithSideBar />
       {/*       <HallProfile/> */}
-      <HallProfile />
 
       <Routes>
         <Route path="hallDetails" element={<HallProfile />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path="registration" element={<Registration />} />
         <Route path="search" element={<Search />} />
         <Route path="WeddingPlanners" element={<WeddingPlanners />} />
-        <Route path="Planner_Profile/:hallId" element={<PlannerProfile />} />
+        <Route path="Planner_Profile/:plannerId" element={<PlannerProfile />} />
         <Route path="termsofuse" element={<TermsOfUse />} />
       </Routes>
       <Footer />
