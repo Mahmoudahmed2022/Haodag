@@ -3,6 +3,7 @@ import mahmoud from "./images/mahmoud (2).jpg";
 import { Link } from "react-router-dom";
 import "../Css/ClientProfile.css";
 import Cards from "./Cards";
+import "../Css/ClientProfile.scss";
 function ClientProfile() {
   return (
     <>
