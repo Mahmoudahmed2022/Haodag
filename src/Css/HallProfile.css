@@ -398,6 +398,9 @@ body {
 .LikeIcon {
   color: white;
 }
+.heartLoveSvg:hover{
+  color: red;
+}
 .likeDown1 {
   color: #243b55;
 }

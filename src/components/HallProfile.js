@@ -27,7 +27,7 @@ import { FaUserTie } from "react-icons/fa";
 
 import { FaPhoneAlt } from "react-icons/fa";
 
-const HallProfile = ({rating}) => {
+const HallProfile = ({rating,isFavourite}) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
   let phoneNumber = "0";
   let message = "!";
@@ -86,8 +86,12 @@ const HallProfile = ({rating}) => {
   };
   const [hover, setHover] = useState(null);
  const [hoverHeart, setHoverHeart] = useState(null);
- const [Like, setLike] = useState(null);
- const [disLike, setDisLike] = useState(null);
+ const [Like, setLike] = useState(false);
+ const [disLike, setDisLike] = useState(false);
+const [heartStyle,setHeartStyle] = useState({ color: 'white'})
+const [toggle, setToggle] = useState(true);
+const [LikeStyle,setLikeStyle] =useState({color:'white'})
+const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
 
   const handleHover = (ratingValue) => {
     setHover(ratingValue);
@@ -96,7 +100,41 @@ const HallProfile = ({rating}) => {
   const handleMouseLeave = () => {
     setHover(null);
   };
+  function handleClick() {
+    setHeartStyle({ color: 'red' });
+    setToggle(!toggle);
+  }
+  function handleClick2() {
+    setHeartStyle({ color: 'white' });
+    setToggle(!toggle);
 
+  }
+  const handleLikeDislike = () =>{
+   
+      setDisLikeStyle({color:'white'})
+      setDisLike(!disLike);
+    
+    setLikeStyle({color:'blue'});      
+    setLike(!Like);
+  }
+  const removeColor = () =>{
+    setLikeStyle({color:'white'});      
+    setLike(!Like);
+    console.log("colorRemoved")
+} 
+
+const handleDislike = () =>{
+  setLikeStyle({color:'white'});      
+  setLike(!Like);
+  setDisLikeStyle({color:'blue'});      
+  setDisLike(!disLike);
+}
+const removeDislikeColor = () =>{
+  setDisLikeStyle({color:'white'});      
+  setDisLike(!disLike);
+  console.log("colorRemoved")
+} 
+let temp;
   
   return (
     <div className="allHallProfile">
@@ -194,9 +232,12 @@ const HallProfile = ({rating}) => {
             <label key={i}>
               <FaStar
                 className="star"
+               
                 color={ratingValue <= (hover || rating ) ? "#ffc107" : "#e4e5e9"}
                 onMouseEnter={() => handleHover(ratingValue)}
                 onMouseLeave={handleMouseLeave}
+               
+                  
               />
             </label>
           );
@@ -207,8 +248,9 @@ const HallProfile = ({rating}) => {
               <p>Add To Fav</p>
               <div className="heartLove ">
                 <FaHeart className="heartLoveSvg "
-                color={1 <= (hoverHeart || false ) ? "red" : ""}
-
+                // color={1 <= (hoverHeart || false ) ? "red" : ""}
+                style={heartStyle}
+                onClick={ toggle? handleClick :handleClick2}
                  />
               </div>
             </div>
@@ -216,11 +258,15 @@ const HallProfile = ({rating}) => {
               <p>Did You Like This </p>
               <div className="heartLove">
                 <FaThumbsDown className="LikeIcon "
-                color={1 <= (Like || true ) ? "#243b55" : ""}
+                // color={(Like) ? "#243b55" : ""}
+                style={disLikeStyle}
+                onClick={disLike? handleDislike: removeDislikeColor}
               
                 />
                 <FaThumbsUp className="LikeIcon"
-                color={2 <= (disLike || false ) ? "#243b55" : ""}
+                // color={ (disLike) ? "#243b55" : ""}
+                style={LikeStyle}
+                onClick={Like? handleLikeDislike: removeColor}
                 />
               </div>
             </div>
