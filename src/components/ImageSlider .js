@@ -33,7 +33,7 @@ function ImageSlider(props) {
       <Carousel showThumbs={false} showIndicators={false}>
         {products1.map((image, index) => (
           <div className="media" key={index} >
-            <img  src={image.Poster} alt={image.Title} style={{ width: '100%', height: '100%' }} />
+            <img  src={image.Poster} alt={image.Title} style={{ width: '100%', height: '100%',borderRadius:'10px' }} />
           </div>
         ))}
       </Carousel>

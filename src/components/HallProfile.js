@@ -9,18 +9,28 @@ import image4 from "./images/time.jpg";
 import image5 from "./images/shows.jpg";
 import image6 from "./images/services.jpg";
 import image7 from "./images/map.jpg";
-// import image8 from "./images/phone.jpg";
-// import image9 from "./images/address.jpg";
 
-// import image1 from "./images/mostafa.jpg";
-// import image3 from "./images/hall1.jpeg";
-// import image4 from "./images/hall2.jpeg";
-// import image5 from "./images/hall3.jpeg";
-// import Info1ForHallCapacity from "./Info1ForHallCapacity";
 import InfoForMap from "./InfoForMap";
 import ImageSlider from "./ImageSlider ";
+import { Link } from "react-router-dom";
+import { AiOutlineWhatsApp } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
+import InfoShow from "./InfoShow";
+import InfoServices from "./InfoServices";
+import { FaHandshake } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
+
+
+
+import { FaPhoneAlt } from "react-icons/fa";
 
 const HallProfile = () => {
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let phoneNumber = "0";
+  let message = "!";
   const [products, setProducts] = useState([]);
   const allData = async (title) => {
     const api2 = "https://fakestoreapi.com/products";
@@ -36,6 +46,7 @@ const HallProfile = () => {
   };
   useEffect(() => {
     allData("Batman");
+    urlWhatSap();
   }, []);
 
   const renderCard = (cardData) => {
@@ -66,10 +77,16 @@ const HallProfile = () => {
   const loadMore = () => {
     setVisible(visible + 5);
   };
+  const urlWhatSap = () => {
+    phoneNumber = "01156349259"; // replace with the phone number you want to chat with
+    message = "Hello!"; // replace with the message you want to send
+    setWhatsappUrl(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    );
+  };
 
   return (
     <div className="allHallProfile">
-    
       <h1 className="hallName">Hall's Name </h1>
       {/* Slider */}
       <div className="imageSlider">
@@ -80,7 +97,34 @@ const HallProfile = () => {
             products={products}
             img={image7}
           />
-          <div><p>hello</p><p>play</p></div>
+          <div className="dataModalContact">
+            <Link className="contactWUs" to="/modal">
+              <FaHandshake className="colorSvg1" />
+              <p className=" pWhatsap">Contact (email)</p>
+            </Link>
+            <div className="whatsap">
+              <a className="linkWhats" href={whatsappUrl} target="_blank">
+                <AiOutlineWhatsApp className="colorSvg" />
+                <p className="pWhatsap">Contact (Whatsap)</p>
+              </a>
+            </div>
+
+            <div className="locationsvg">
+              <GoLocation />
+              <p className="pLocation">Location</p>
+            </div>
+          </div>
+
+          <div className="dataModalContact">
+            <div className="contactWUs" to="/modal">
+              <FaHandshake className="colorSvg1" />
+              <p className=" pWhatsap">Owner : Kariem</p>
+            </div>
+            <div className="phonec">
+              <FaPhoneAlt className="" />
+              <p className="pWhatsap">+165156</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -89,37 +133,168 @@ const HallProfile = () => {
       {/* <h1 className="headInfoTop">Information About Hall</h1> */}
 
       {/* <div className="hallInfo">{infoElement}</div> */}
+      <div className="contDataa">
+        <div className="contDataInfo">
+          <div className="allContInfo">
+            <div className="card-content">
+              <h2 className="section__title">The Amplitude</h2>
+              <ul className="uiForInfo">
+                <li className="liElement">
+                  <p className="pForInfo">The price is per person</p>
+                  <p className="pForData">300-350 pound</p>
+                </li>
+                <li className="liElement">
+                  <p className="pForInfo">Hall capacity</p>
+                  <p className="pForData">250-100 people</p>
+                </li>
+                <li className="liElement">
+                  <p className="pForInfo">food court capacity</p>
+                  <p className="pForData">250-100 people </p>
+                </li>
+                <li className="liElement">
+                  <p className="pForInfo">How many rooms are in the Hall?</p>
+                  <p className="pForData">two Rooms</p>
+                </li>
+                <li className="liElement">
+                  <p className="pForInfo">Type</p>
+                  <p className="pForData">Open/Closed Air</p>
+                </li>
+                <li className="liElement">
+                  <p className="pForInfo">Available</p>
+                  <p className="pForData">3 : 12 PM</p>
+                </li>
+              </ul>
+            </div>
+            <div></div>
+          </div>
+          <InfoShow products={products} />
+          <InfoServices products={products} />
+        </div>
 
-      <div className="allContInfo">
+
+        <div className="contReview">
+          <div className="reviewF">
+            <div className="firstColRate">
+              <p>Put Rate</p>
+              <div className="starsR">
+                <FaStar className="starsRSvg" />
+                <FaStar className="starsRSvg" />
+                <FaStar className="starsRSvg" />
+                <FaStar className="starsRSvg" />
+                <FaStar className="starsRSvg" />
+              </div>
+            </div>
+            <div className="secondColLove">
+              <p>Add To Fav</p>
+              <div className="heartLove">
+                <FaHeart className="heartLoveSvg" />
+              </div>
+            </div>
+            <div className="thirdColLike">
+              <p>Did You Like This </p>
+              <div className="heartLove">
+                <FaThumbsDown className="LikeIcon" />
+                <FaThumbsUp className="LikeIcon" />
+
+              </div>
+            </div>
+          </div>
+
+          <div className="reviewS">
+            <div className="firstColRate">
+              <p>Rating Percentage</p>
+              <div className="manyStarsR">
+                <div>
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1" >15</span>
+                </div>
+                <div>
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1" >15</span>
+                </div>
+                <div>
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1" >15</span>
+                </div>
+                <div>
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1" >15</span>
+                </div>
+                <div>
+                  <FaStar className="likeDown " />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <FaStar className="likeDown" />
+                  <span className="likeDown1" >15</span>
+                </div>
+                              
+              </div>
+            </div>
+            <div className="secondColLove">
+              <p>Number Of Visits</p>
+              <p>100</p>
+
+            </div>
+            <div className="thirdColLike">
+              <p>Number Of Likes </p>
+              <div className="PheartLove">
+                <div className="likeDown1">
+                  <FaThumbsDown className="heartLoveSvg" />
+                  <p>2</p>
+                </div>
+                <div className="likeDown1 ">
+                  <FaThumbsUp className="heartLoveSvg" />
+                  <p>2</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* <div className="allContInfo">
         <div className="card-content">
-          <h2 className="section__title">The Amplitude</h2>
+          <h2 className="section__title">Services</h2>
           <ul className="uiForInfo">
-            <li className="liElement">
-              <p className="pForInfo">The number of stars of the hotel </p>
-              <p className="pForData">4 stars</p>
+            {products.map((element) => 
+              <li className="liElement">
+              <p className="pForData">{element.Title}</p>
             </li>
-            <li className="liElement">
-              <p className="pForInfo">The price is per person</p>
-              <p className="pForData">300-350 pound</p>
-            </li>
-            <li className="liElement">
-              <p className="pForInfo">Hall capacity</p>
-              <p className="pForData">250-100 people</p>
-            </li>
-            <li className="liElement">
-              <p className="pForInfo">food court capacity</p>
-              <p className="pForData">250-100 people </p>
-            </li>
-            <li className="liElement">
-              <p className="pForInfo">How many rooms are in the Hall?</p>
-              <p className="pForData">two Rooms</p>
-            </li>
+
+            )}
+            
+           
           </ul>
+          <div className="bLM"><Link className="linkMoreD" to ="/">More Details</Link></div>
+
         </div>
         <div></div>
       </div>
+      <div className="allContInfo">
+        <div className="card-content">
+          <h2 className="section__title">Shows</h2>
+          <ul className="uiForInfo">
+            {products.map((element) => 
+              <li className="liElement">
+              <p className="pForData">{element.Title}</p>
+            </li>
 
-      
+            )}
+           
+          </ul>
+          <div className="bLM"><Link className="linkMoreD" to ="/">More Details</Link></div>
+
+        </div>
+        <div></div>
+      </div> */}
 
       {/* For Video */}
       <div className="allhalls-container2">

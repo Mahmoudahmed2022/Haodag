@@ -11,14 +11,18 @@ import ClientProfile from "./components/ClientProfile";
 import HallProfile from "./components/HallProfile";
 import ImageSlider from "./components/ImageSlider ";
 import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 function App() {
   return (
     <div className="App">
-      <NavbarWithSideBar />
+     
       {/*       <HallProfile/> */}
-      <HallProfile/>
+      {/* <HallProfile/> */}
 
       <Routes>
+        {/* <Route path="modal" element={<Modal/>} /> */}
+        <Route path="modal" element={ <Modal isOpen="true" />} />
+
         <Route path="hallDetails" element={<HallProfile />} />
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
