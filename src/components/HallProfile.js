@@ -26,6 +26,8 @@ import { FaUserTie } from "react-icons/fa";
 
 
 import { FaPhoneAlt } from "react-icons/fa";
+import InfoDescription from "./InfoDescription";
+import CommentSection from "./CommentSection";
 
 const HallProfile = ({rating,isFavourite}) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
@@ -85,7 +87,6 @@ const HallProfile = ({rating,isFavourite}) => {
     );
   };
   const [hover, setHover] = useState(null);
- const [hoverHeart, setHoverHeart] = useState(null);
  const [Like, setLike] = useState(false);
  const [disLike, setDisLike] = useState(false);
 const [heartStyle,setHeartStyle] = useState({ color: 'white'})
@@ -96,7 +97,6 @@ const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
   const handleHover = (ratingValue) => {
     setHover(ratingValue);
   };
-
   const handleMouseLeave = () => {
     setHover(null);
   };
@@ -109,7 +109,7 @@ const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
     setToggle(!toggle);
 
   }
-  const handleLikeDislike = () =>{
+  const handleLike = () =>{
    
       setDisLikeStyle({color:'white'})
       setDisLike(!disLike);
@@ -122,7 +122,6 @@ const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
     setLike(!Like);
     console.log("colorRemoved")
 } 
-
 const handleDislike = () =>{
   setLikeStyle({color:'white'});      
   setLike(!Like);
@@ -165,7 +164,6 @@ let temp;
               <p className="pLocation">Location</p>
             </div>
           </div>
-
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
               <FaUserTie className="colorSvg1" />
@@ -219,6 +217,7 @@ let temp;
           </div>
           <InfoShow products={products} />
           <InfoServices products={products} />
+          <InfoDescription products={products} />
         </div>
 
         <div className="contReview">
@@ -266,7 +265,7 @@ let temp;
                 <FaThumbsUp className="LikeIcon"
                 // color={ (disLike) ? "#243b55" : ""}
                 style={LikeStyle}
-                onClick={Like? handleLikeDislike: removeColor}
+                onClick={Like? handleLike: removeColor}
                 />
               </div>
             </div>
@@ -340,6 +339,9 @@ let temp;
           </button>
         )}
       </div>
+
+
+      <CommentSection />
     </div>
   );
 };

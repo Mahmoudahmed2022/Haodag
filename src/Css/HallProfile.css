@@ -120,6 +120,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
+  margin-top: 10px;
 }
 .allInfo1 {
   display: flex;
@@ -176,16 +177,16 @@ body {
   bottom: 50%;
 }
 .button-buttonPrice {
-  border: 1px solid #00abaa;
+  border: 2px solid #314569;
   font-size: 20px;
   border-radius: 25px;
   width: 110px;
   height: 45px;
-  color: #00abaa;
+  color: #314569;
   cursor: pointer;
 }
 .button-buttonPrice:hover {
-  background-color: #0ababa;
+  background-color: #314569;
   color: white;
 }
 
@@ -282,6 +283,7 @@ body {
   justify-content: space-evenly;
   width: 100%;
   height: 13%;
+  box-shadow: 0px 0px 2px #9e9e9e;
   background-color: white;
 }
 
@@ -355,6 +357,9 @@ body {
   display: flex;
   flex-direction: row;
 }
+.contDataInfo {
+  width: 70%;
+}
 .contReview {
   width: 50%;
   display: flex;
@@ -372,7 +377,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  box-shadow: 0 0 15px #243b55;
+  box-shadow: 0 0 5px #243b55;
 }
 .reviewF p,
 .reviewS p {
@@ -390,6 +395,9 @@ body {
 .starsR .starsRSvg {
   margin: 3px;
 }
+.star{
+  cursor: pointer;
+}
 .starsRSvg:hover {
   color: #fdcc0d;
 }
@@ -397,10 +405,9 @@ body {
 .starsRSvg,
 .LikeIcon {
   color: white;
+  cursor: pointer;
 }
-.heartLoveSvg:hover{
-  color: red;
-}
+
 .likeDown1 {
   color: #243b55;
 }
@@ -409,12 +416,10 @@ body {
   margin: 3px;
 }
 
-
 .heartLoveSvg {
   width: 20px;
   height: 20px;
 }
-
 
 .LikeIcon {
   margin: 10px;
@@ -441,3 +446,103 @@ body {
   align-items: center;
   width: 100%;
 }
+
+.ulDescription {
+  display: flex;
+  flex-direction: column;
+}
+.h3Title {
+}
+.pForDescription {
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.AllCommentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.containerCommentSection {
+  width: 50%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  /* margin-top: 20px; */
+}
+
+.FormCommentSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  background-color: #ededed;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.FirstDivForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.margin10Width90 {
+  margin-bottom: 10px;
+  width: 90%;
+}
+
+.FirstInput {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.Secondnput {
+  padding: 10px;
+  border: none;
+  width: 90%;
+  border-radius: 10px;
+  height: 27px;
+  resize: none;
+}
+
+.submitComment {
+  padding: 8px;
+  border: 1px solid #243b55;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #243b55;
+}
+.submitComment:hover{
+  color: rgb(178, 176, 176);
+  background-color: #243b55;
+}
+
+.commentData {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff61;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.ImgName {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.marginRight{    margin-right: 5px;}
+
+.pWrap{
+  word-wrap: break-word;
+  padding: 20px;
+  margin: 0;
+}
+.width90{width: 90%;}
