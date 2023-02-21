@@ -1,32 +1,77 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useParams, Link } from "react-router-dom";
 import Kariem from "./images/kariem.jpeg";
 import cover from "./images/openclosed.jpg";
 import "../Css/ClientProfile.scss";
 import "../Css/PlannerProfile.css";
+import axios from "axios";
 function WeddingPlanner(props) {
-  const planner_id = props.data;
-  console.log(planner_id);
-  const [planner, setPlanner] = useState([]);
-  const api_url = `https://fakestoreapi.com/products/${planner_id}`;
-  console.log(api_url);
+  // const planner_id = useParams();
+  // // console.log(planner_id.plannerId);
+  // const [planner, setPlanner] = useState([]);
+  // const api_url = `https://fakestoreapi.com/products/${planner_id.plannerId}`;
+  // useEffect(() => {
+  //   axios.get(api_url).then((data) => {
+  //     setPlanner(data.data);
+  //   });
+  // }, []);
+  // console.log(planner);
+  const [planners, setPlanners] = useState([]);
+  const [visible, setVisible] = useState(5);
+  const allPlanners = () => {
+    axios.get("https://fakestoreapi.com/products").then((data) => {
+      setPlanners(data.data);
+    });
+  };
+  const loadMore = () => {
+    setVisible(visible + 5);
+  };
+
   useEffect(() => {
-    fetch(api_url)
-      .then((res) => res.json())
-      .then((data) => setPlanner(data));
+    allPlanners();
   }, []);
+  const renderCard = (planner) => {
+    return (
+      <>
+        <div className="planner-container" key={planner.id}>
+          <div className="img-planner-div">
+            {/*   <img
+          src={planner.image}
+          className="planner-img"
+          alt={planner.title}
+        />
+  */}
+            <img
+              src={planner.image}
+              className="planner-img"
+              alt={`plane ${planner.id}`}
+            />
+          </div>
+          <div className="planner-body">
+            <p className="plan-title"> plane {planner.id}</p>
+            <Link
+              className="planner-details-btn s-d-hover"
+              to={`/Planner_Profile/${planner.id}`}
+            >
+              Details
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  };
   return (
     <>
       <div className="planner-big-cont">
         <div className="planner-cover-cont">
-          {/*<img
+          {/*  <img
             src={cover}
             className="planner-profile-cover"
             alt="planner cover"
   />*/}
           <div className="planner-div">
-            <label className="planner-name">Mahmoud Ahmed</label>
+            <label className="planner-name">Kariem Atef</label>
             <label className="role-type">Planner</label>
           </div>
           <div className="pic-planner-cont">
@@ -43,13 +88,13 @@ function WeddingPlanner(props) {
           <div className="planner-name-div planner-sml-cont">
             <label className="planner-label planner-all-label">Name</label>
             <label className="planner-data planner-all-label">
-              Mahmoud Ahmed
+              Kariem Atef
             </label>
           </div>
           <div className="planner-email-div planner-sml-cont">
             <label className="planner-label planner-all-label">Email</label>
             <label className="planner-data planner-all-label">
-              Mahmoud@gmail.com
+              Kariem Atef@gmail.com
             </label>
           </div>
           <div className="planner-address-div planner-sml-cont">
@@ -93,6 +138,29 @@ function WeddingPlanner(props) {
               data-front="Edit"
               to="#"
             ></Link>
+          </div>
+        </div>
+        <div className="plans-cont">
+          <div className="plans-tit-div">
+            <h2 className="plans-tit">plans</h2>
+          </div>
+          <div className="Planners-container">
+            <div className="allPlanners-container">
+              {planners.slice(0, visible).map(renderCard)}
+            </div>
+            <div className="for-button">
+              {visible < planners.length && (
+                <button className="more" onClick={loadMore}>
+                  Load 5 More
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="state-cont">
+            <p className="statement">
+              Each plan differs from the other in terms of prices, features,
+              presentation and organization of the party
+            </p>
           </div>
         </div>
       </div>

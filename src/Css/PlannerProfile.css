@@ -7,15 +7,17 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: right;
-  background-color: rgb(108, 119, 136, 0.5);
   background-image: url("../components/images/openclosed.jpg");
-  background-size: contain;
+  background-color: rgb(108, 119, 136, 0.5);
+  background-size: cover;
 }
+
 .planner-profile-photo-cont {
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: end;
+  background-color: rgb(108, 119, 136, 0.5);
 }
 
 .planner-profile-photo {
@@ -48,6 +50,7 @@ body {
   align-items: flex-end;
   justify-content: flex-end;
   padding-bottom: 20px;
+  background-color: rgb(108, 119, 136, 0.5);
 }
 .planner-name {
   font-size: 20px;
@@ -85,4 +88,18 @@ body {
   width: 500px;
   align-items: flex-start;
   justify-content: center;
+}
+.plans-tit {
+  font-size: 30px;
+}
+
+.plans-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(228, 233, 228);
+}
+.plan-title {
+  font-size: 15px;
 }
