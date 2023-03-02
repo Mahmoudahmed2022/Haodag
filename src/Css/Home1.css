@@ -151,6 +151,83 @@ body {
   top: 0;
   border-radius: 10px;
 }
+
+.containerHalls{    
+      /* background-color: antiquewhite; */
+      display: flex;
+      flex-direction: column;
+      width: 65%;
+      height: 350px;
+      margin-bottom: 60px;
+      border-radius: 6px;
+      padding: 40px;
+      border: 2px solid #dadadd;
+
+}
+.containerHalls:hover{    
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+}
+
+  .RigthAndLeft{
+    display: flex;
+    width: 100%;
+    height: 80%;
+  }
+
+  .imageForHall{
+    width: 40%;
+    margin-right: 40px;
+    height: 80%;
+  }
+.imginside{
+  width: 100%;
+  height: 100%;
+}
+
+.rightContentInfo{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 2px solid #dadadd; */
+  padding: 5px;
+}
+.iconsForDiscription{
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+}
+.priceAndLocation{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #f4f4f5;
+  padding: 10px;
+}
+.priceHall{}
+.lastButtonForDetails{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.lastButtonForDetails-button:hover{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+}
+
+.lastButtonForDetails-button{
+  width: 10%;
+  border: none;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+}
 .home-hall-container {
   border: 0.5px solid #afb2b8;
   border-radius: 5px;
@@ -177,8 +254,10 @@ body {
 .home-allhalls-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 80px;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  align-items: center;
   width: inherit;
 }
 .home-details-btn {

@@ -24,7 +24,7 @@ function CommentSection() {
 
             </div>
             <div className="width90%">
-            <p className="pWrap">{comment.comment}</p>
+            <li className="pWrap">{comment.comment}</li>
 
             </div>
           </div>

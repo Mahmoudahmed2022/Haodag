@@ -6,10 +6,14 @@ import "../Css/App.css";
 import axios from "axios";
 import image11 from "./images/12.jpeg";
 import { FaUserAlt } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+import { FaParking } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineMail } from "react-icons/hi";
 import { HiOutlinePhone } from "react-icons/hi";
+import { MdFastfood } from "react-icons/md";
+import { MdEmojiFoodBeverage } from "react-icons/md";
+import { MdLocationPin } from "react-icons/md";
+import { MdDirectionsCarFilled } from "react-icons/md";
 
 function Home() {
   const [email, setEmail] = useState("");
@@ -67,6 +71,44 @@ function Home() {
     );
   };
 
+  const renderCard2 = (cardData) => {
+    return (
+      <>
+        <div className="containerHalls" key={cardData.id}>
+          <div className="RigthAndLeft">
+              <div className="imageForHall">
+                <img className="imginside" src={cardData.image} alt={cardData.title}></img>
+              </div>
+            <div className="rightContentInfo">
+              <div>
+              <h2>Hall Name</h2>
+              <div className="iconsForDiscription">
+                <MdFastfood />
+                <MdEmojiFoodBeverage />
+                <MdDirectionsCarFilled />
+                <FaParking />
+              </div>
+              </div>
+            
+              <div className="priceAndLocation">
+              <div className="priceHall">
+                  <p>{cardData.price}$</p>
+                </div>
+                <div>
+               
+                <p> {cardData.title}<MdLocationPin/></p>
+                </div>
+              </div>
+                
+            </div>
+          </div>
+          <div className="lastButtonForDetails">
+              <Link className="lastButtonForDetails-button" to="/hallDetails">Details</Link>
+            </div>
+        </div>
+      </>
+    );
+  };
   return (
     <>
       <div className="home-landing">
@@ -106,7 +148,7 @@ function Home() {
       <h1 className="headForHalls">Our Recommendation For You</h1>
 
       <div className="home-allhalls-container">
-        {cardData.slice(0, visible).map(renderCard)}
+        {cardData.slice(0, visible).map(renderCard2)}
       </div>
       <div className="for-button">
         {visible < cardData.length && (
