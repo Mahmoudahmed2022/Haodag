@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Css/HallProfile.css";
-import { motion } from "framer-motion";
-import image from "./images/chair1.jpg";
-import image1 from "./images/price.jpg";
-import image2 from "./images/tables1.jpg";
-import image3 from "./images/openclosed.jpg";
-import image4 from "./images/time.jpg";
-import image5 from "./images/shows.jpg";
-import image6 from "./images/services.jpg";
+
 import image7 from "./images/map.jpg";
 
 import InfoForMap from "./InfoForMap";
@@ -24,13 +17,16 @@ import { FaThumbsUp } from "react-icons/fa";
 import { FaThumbsDown } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
 
-
 import { FaPhoneAlt } from "react-icons/fa";
 import InfoDescription from "./InfoDescription";
 import CommentSection from "./CommentSection";
+import Modal from "./Modal";
 
-const HallProfile = ({rating,isFavourite}) => {
+const HallProfile = ({ rating, isFavourite }) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
+  const [show, setShow] = useState(false);
+
+  const [openModal, setOpenModal] = useState("false");
   let phoneNumber = "0";
   let message = "!";
   const [products, setProducts] = useState([]);
@@ -67,13 +63,6 @@ const HallProfile = ({rating,isFavourite}) => {
     );
   };
 
-  const count = () => {
-    return products.map((data) => (
-      <motion.div className="item" key={data.imdbID}>
-        <img src={data.Poster} alt={data.title} />
-      </motion.div>
-    ));
-  };
   const [visible, setVisible] = useState(5);
 
   const loadMore = () => {
@@ -87,12 +76,12 @@ const HallProfile = ({rating,isFavourite}) => {
     );
   };
   const [hover, setHover] = useState(null);
- const [Like, setLike] = useState(false);
- const [disLike, setDisLike] = useState(false);
-const [heartStyle,setHeartStyle] = useState({ color: 'white'})
-const [toggle, setToggle] = useState(true);
-const [LikeStyle,setLikeStyle] =useState({color:'white'})
-const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
+  const [Like, setLike] = useState(false);
+  const [disLike, setDisLike] = useState(false);
+  const [heartStyle, setHeartStyle] = useState({ color: "white" });
+  const [toggle, setToggle] = useState(true);
+  const [LikeStyle, setLikeStyle] = useState({ color: "white" });
+  const [disLikeStyle, setDisLikeStyle] = useState({ color: "white" });
 
   const handleHover = (ratingValue) => {
     setHover(ratingValue);
@@ -101,40 +90,39 @@ const [disLikeStyle,setDisLikeStyle] =useState({color:'white'})
     setHover(null);
   };
   function handleClick() {
-    setHeartStyle({ color: 'red' });
+    setHeartStyle({ color: "red" });
     setToggle(!toggle);
   }
   function handleClick2() {
-    setHeartStyle({ color: 'white' });
+    setHeartStyle({ color: "white" });
     setToggle(!toggle);
+  }
+  const handleLike = () => {
+    setDisLikeStyle({ color: "white" });
+    setDisLike(!disLike);
 
-  }
-  const handleLike = () =>{
-   
-      setDisLikeStyle({color:'white'})
-      setDisLike(!disLike);
-    
-    setLikeStyle({color:'blue'});      
+    setLikeStyle({ color: "blue" });
     setLike(!Like);
-  }
-  const removeColor = () =>{
-    setLikeStyle({color:'white'});      
+  };
+  const removeColor = () => {
+    setLikeStyle({ color: "white" });
     setLike(!Like);
-    console.log("colorRemoved")
-} 
-const handleDislike = () =>{
-  setLikeStyle({color:'white'});      
-  setLike(!Like);
-  setDisLikeStyle({color:'blue'});      
-  setDisLike(!disLike);
-}
-const removeDislikeColor = () =>{
-  setDisLikeStyle({color:'white'});      
-  setDisLike(!disLike);
-  console.log("colorRemoved")
-} 
-let temp;
-  
+    console.log("colorRemoved");
+  };
+  const handleDislike = () => {
+    setLikeStyle({ color: "white" });
+    setLike(!Like);
+    setDisLikeStyle({ color: "blue" });
+    setDisLike(!disLike);
+  };
+  const removeDislikeColor = () => {
+    setDisLikeStyle({ color: "white" });
+    setDisLike(!disLike);
+    console.log("colorRemoved");
+  };
+
+
+
   return (
     <div className="allHallProfile">
       <h1 className="hallName">Hall's Name </h1>
@@ -147,11 +135,14 @@ let temp;
             products={products}
             img={image7}
           />
+
           <div className="dataModalContact">
-            <Link className="contactWUs" to="/modal">
+            <Link className="contactWUs" onClick={() => setShow(true)}>
               <FaHandshake className="colorSvg1" />
               <p className=" pWhatsap">Contact (email)</p>
             </Link>
+             <Modal   onClose= {()=>setShow(false)} show = {show} />
+
             <div className="whatsap">
               <a className="linkWhats" href={whatsappUrl} target="_blank">
                 <AiOutlineWhatsApp className="colorSvg" />
@@ -225,47 +216,50 @@ let temp;
             <div className="firstColRate">
               <p>Put Rate</p>
               <div className="rating-stars">
-        {[...Array(5)].map((star, i) => {
-          const ratingValue = i + 1;
-          return (
-            <label key={i}>
-              <FaStar
-                className="star"
-               
-                color={ratingValue <= (hover || rating ) ? "#ffc107" : "#e4e5e9"}
-                onMouseEnter={() => handleHover(ratingValue)}
-                onMouseLeave={handleMouseLeave}
-               
-                  
-              />
-            </label>
-          );
-        })}
-      </div>
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  return (
+                    <label key={i}>
+                      <FaStar
+                        className="star"
+                        color={
+                          ratingValue <= (hover || rating)
+                            ? "#ffc107"
+                            : "#e4e5e9"
+                        }
+                        onMouseEnter={() => handleHover(ratingValue)}
+                        onMouseLeave={handleMouseLeave}
+                      />
+                    </label>
+                  );
+                })}
+              </div>
             </div>
             <div className="secondColLove">
               <p>Add To Fav</p>
               <div className="heartLove ">
-                <FaHeart className="heartLoveSvg "
-                // color={1 <= (hoverHeart || false ) ? "red" : ""}
-                style={heartStyle}
-                onClick={ toggle? handleClick :handleClick2}
-                 />
+                <FaHeart
+                  className="heartLoveSvg "
+                  // color={1 <= (hoverHeart || false ) ? "red" : ""}
+                  style={heartStyle}
+                  onClick={toggle ? handleClick : handleClick2}
+                />
               </div>
             </div>
             <div className="thirdColLike">
               <p>Did You Like This </p>
               <div className="heartLove">
-                <FaThumbsDown className="LikeIcon "
-                // color={(Like) ? "#243b55" : ""}
-                style={disLikeStyle}
-                onClick={disLike? handleDislike: removeDislikeColor}
-              
+                <FaThumbsDown
+                  className="LikeIcon "
+                  // color={(Like) ? "#243b55" : ""}
+                  style={disLikeStyle}
+                  onClick={disLike ? handleDislike : removeDislikeColor}
                 />
-                <FaThumbsUp className="LikeIcon"
-                // color={ (disLike) ? "#243b55" : ""}
-                style={LikeStyle}
-                onClick={Like? handleLike: removeColor}
+                <FaThumbsUp
+                  className="LikeIcon"
+                  // color={ (disLike) ? "#243b55" : ""}
+                  style={LikeStyle}
+                  onClick={Like ? handleLike : removeColor}
                 />
               </div>
             </div>
@@ -339,7 +333,6 @@ let temp;
           </button>
         )}
       </div>
-
 
       <CommentSection />
     </div>

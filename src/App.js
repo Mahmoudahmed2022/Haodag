@@ -9,9 +9,13 @@ import NavbarWithSideBar from "./components/NavbarWithSideBar";
 import TermsOfUse from "./components/TermsOfUse";
 import ClientProfile from "./components/ClientProfile";
 import HallProfile from "./components/HallProfile";
-import ImageSlider from "./components/ImageSlider ";
+// import Modal from "./components/Modal ";
 import Footer from "./components/Footer";
 import PlannerProfile from "./components/PlannerProfile";
+import HallForm from "./components/HallForm";
+import HallOwnerProfile from "./components/HallOwnerProfile";
+import Modal from "./components/Modal";
+
 function App() {
   return (
     <div className="App">
