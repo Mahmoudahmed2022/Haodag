@@ -12,6 +12,8 @@ import HallProfile from "./components/HallProfile";
 import ImageSlider from "./components/ImageSlider ";
 import Footer from "./components/Footer";
 import PlannerProfile from "./components/PlannerProfile";
+import HallForm from "./components/HallForm";
+import Modal from "./components/Modal";
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,9 @@ function App() {
       {/*       <HallProfile/> */}
 
       <Routes>
+        <Route path="hallForm" element={<HallForm/>} />
+        <Route path="modal" element={<Modal/>} />
+
         <Route path="hallDetails" element={<HallProfile />} />
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
