@@ -1,27 +1,94 @@
+.exit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonExit {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 24px;
+  cursor: pointer;
+}
+.headContact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  width: 350px;
+  position: absolute;
+  right: 10%;
+}
 
+.modal h2 {
+  margin-top: 0;
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
+.modal label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal input,
+.modal textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+textarea{
+    resize: none;
+}
+
+.resetAndCancel {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
   }
-  
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 101;
+  .cancel {
+    width: 30%;
+    padding: 5px;
+    border: none;
+    background-color: #dd2727;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+
   }
-  
-  
+  .submitForm {
+      width: 30%;
+      padding: 5px;
+      border: none;
+      background-color: #007bff;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+.submitForm:hover{
+    background-color:#0468d4;
+}
+.cancel:hover {
+  background-color: #ff0000;
+}

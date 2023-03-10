@@ -17,61 +17,7 @@ body {
 .imgImge {
   width: 30%;
 }
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  width: 350px;
-}
-
-.modal h2 {
-  margin-top: 0;
-}
-
-.modal label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.modal input,
-.modal textarea {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.modal button[type="submit"],
-.modal button[type="button"] {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-.modal button[type="submit"]:hover,
-.modal button[type="button"]:hover {
-  background-color: #0062cc;
-}
 .item {
   max-height: 25rem;
   min-width: 30%;
@@ -98,6 +44,21 @@ body {
   height: 250px;
   opacity: 0.5;
 }
+
+.askBooking{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  background-color: #607d8b;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.askBooking:hover{
+  background-color: #546d79;
+}
 .singleInfo {
 }
 .singleInfoMap {
@@ -119,7 +80,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
   margin-top: 10px;
 }
 .allInfo1 {
@@ -132,7 +92,16 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
+.topShape{
+  border-radius: 20px 20px 0px 0px;
+  width: 94%;
+  height: 30px;
+  background-color: #243b55;
+  margin-left: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .nameWithdata {
 }
 .headcircle {
@@ -257,11 +226,11 @@ body {
   border-radius: 5px;
 }
 .card-content {
-  width: 80%;
-  background-color: #f7f7f7;
-  padding: 30px;
-  margin-left: 6%;
-  margin-bottom: 50px;
+    /* width: 80%; */
+    background-color: #efefef;
+    padding: 30px;
+    margin-left: 6%;
+    margin-bottom: 50px;
 }
 
 .section-title {
@@ -335,10 +304,10 @@ body {
 
 .linkMoreD {
   /* background-color: aliceblue; */
-  border: 1px solid #00abaa;
+  border: 1px solid #243b55;
   width: 150px;
   display: flex;
-  color: #00abaa;
+  color: #243b55;
   justify-content: center;
   padding: 7px;
   border-radius: 20px;
@@ -350,7 +319,7 @@ body {
   justify-content: center;
 }
 .linkMoreD:hover {
-  background-color: #00abaa;
+  background-color: #243b55;
   color: white;
 }
 .contDataa {

@@ -15,6 +15,7 @@ import PlannerProfile from "./components/PlannerProfile";
 import HallForm from "./components/HallForm";
 import HallOwnerProfile from "./components/HallOwnerProfile";
 import Modal from "./components/Modal";
+import PlanDetails from "./components/PlanDetails";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
         <Route path="Planner_Profile/:plannerId" element={<PlannerProfile />} />
         <Route path="termsofuse" element={<TermsOfUse />} />{" "}
         <Route path="ownerprofile" element={<HallOwnerProfile />} />
+        <Route path="Planner_Profile/plan:plannerId" element={<PlanDetails />} />
+
       </Routes>
 
       <Footer />

@@ -16,6 +16,9 @@ import { FaHeart } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaThumbsDown } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
+import { BiMailSend } from "react-icons/bi";
+import { AiOutlineMail } from "react-icons/ai";
+
 
 import { FaPhoneAlt } from "react-icons/fa";
 import InfoDescription from "./InfoDescription";
@@ -82,6 +85,9 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [toggle, setToggle] = useState(true);
   const [LikeStyle, setLikeStyle] = useState({ color: "white" });
   const [disLikeStyle, setDisLikeStyle] = useState({ color: "white" });
+  // const [starStyle, setStarStyle] = useState({ color: "white" });
+  // const [toggle1, setToggle1] = useState(true);
+  // const [toggle3, setToggle3] = useState("5");
 
   const handleHover = (ratingValue) => {
     setHover(ratingValue);
@@ -89,6 +95,16 @@ const HallProfile = ({ rating, isFavourite }) => {
   const handleMouseLeave = () => {
     setHover(null);
   };
+  // function handleClickStar(i) {
+
+  //   setStarStyle({ color: "gold" });
+  //   setToggle1(!toggle1);
+  // }
+  // function handleOutClickStar() {
+
+  //   setStarStyle({ color: "white" });
+  //   setToggle1(!toggle1);
+  // }
   function handleClick() {
     setHeartStyle({ color: "red" });
     setToggle(!toggle);
@@ -138,7 +154,7 @@ const HallProfile = ({ rating, isFavourite }) => {
 
           <div className="dataModalContact">
             <Link className="contactWUs" onClick={() => setShow(true)}>
-              <FaHandshake className="colorSvg1" />
+              <AiOutlineMail className="colorSvg1" />
               <p className=" pWhatsap">Contact (email)</p>
             </Link>
              <Modal   onClose= {()=>setShow(false)} show = {show} />
@@ -165,6 +181,13 @@ const HallProfile = ({ rating, isFavourite }) => {
               <p className="pWhatsap">+165156</p>
             </div>
           </div>
+          <div className="dataModalContact">
+            <div className="contactWUs" to="/modal">
+              
+              <button className="askBooking"><BiMailSend className="colorSvg1" />Ask To Book</button>
+            </div>
+            
+          </div>
         </div>
       </div>
 
@@ -175,6 +198,8 @@ const HallProfile = ({ rating, isFavourite }) => {
       <div className="contDataa">
         <div className="contDataInfo">
           <div className="allContInfo">
+          <div className="topShape"></div>
+
             <div className="card-content">
               <h2 className="section__title">The Amplitude</h2>
               <ul className="uiForInfo">
@@ -218,6 +243,8 @@ const HallProfile = ({ rating, isFavourite }) => {
               <div className="rating-stars">
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
+                 
+                  
                   return (
                     <label key={i}>
                       <FaStar
@@ -227,6 +254,9 @@ const HallProfile = ({ rating, isFavourite }) => {
                             ? "#ffc107"
                             : "#e4e5e9"
                         }
+                        // style={starStyle}
+                        // onClick={toggle1 ? handleClickStar : handleOutClickStar }
+                        // onClick={() => {toggle1 ? handleClickStar(ratingValue) : handleOutClickStar(ratingValue)  }}
                         onMouseEnter={() => handleHover(ratingValue)}
                         onMouseLeave={handleMouseLeave}
                       />

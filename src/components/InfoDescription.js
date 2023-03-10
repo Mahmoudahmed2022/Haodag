@@ -6,6 +6,8 @@ const InfoDescription = (props) => {
   return (
     <>
       <div className="allContInfo">
+      <div className="topShape"></div>
+
         <div className="card-content">
           <h2 className="section__title">Discription</h2>
 

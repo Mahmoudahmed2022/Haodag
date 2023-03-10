@@ -1,0 +1,27 @@
+.modal1 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    width: 350px;
+    z-index: 1000;
+ 
+  }
+  .modal1 h2 {
+    margin-top: 0;
+  }
+  
+  .modal1 label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .modal1 input,
+  .modal1 textarea {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
