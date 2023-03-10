@@ -70,12 +70,14 @@ const HallProfile = ({ rating, isFavourite }) => {
 
   const loadMore = () => {
     setVisible(visible + 5);
-  };
+  };//201555578007
   const urlWhatSap = () => {
-    phoneNumber = "01156349259"; // replace with the phone number you want to chat with
+    phoneNumber = "201026249568"; // replace with the phone number you want to chat with
     message = "Hello!"; // replace with the message you want to send
     setWhatsappUrl(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+      `https://api.whatsapp.com/send/?phone=${phoneNumber}&text&type=phone_number&app_absent=0`
+
+      //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     );
   };
   const [hover, setHover] = useState(null);
