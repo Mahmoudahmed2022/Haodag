@@ -18,7 +18,7 @@ function WeddingPlanner(props) {
   //   });
   // }, []);
   // console.log(planner);
-  const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const [planners, setPlanners] = useState([]);
   const [visible, setVisible] = useState(5);
   const allPlanners = () => {
@@ -33,13 +33,6 @@ function WeddingPlanner(props) {
   useEffect(() => {
     allPlanners();
   }, []);
-
-
-
-
-
-
-
 
   const renderCard = (planner) => {
     return (
@@ -62,7 +55,7 @@ function WeddingPlanner(props) {
             <p className="plan-title"> plane {planner.id}</p>
             <Link
               className="planner-details-btn s-d-hover"
-              to={`/Planner_Profile/plan${planner.id}`}
+              to={`/Plandetails/${planner.id}`}
             >
               Details
             </Link>
@@ -141,7 +134,7 @@ function WeddingPlanner(props) {
               to="#"
             ></Link>
           </div>
-         
+
           <div className="planner-prof-btn-div">
             <Link
               className="btn-flip"
@@ -152,13 +145,13 @@ function WeddingPlanner(props) {
           </div>
           <div className="planner-prof-btn-div">
             <Link
-            onClick={() => setShow(true)}
+              onClick={() => setShow(true)}
               className="btn-flip"
               data-back="AddPlan"
               data-front="AddPlan"
               to="#"
             ></Link>
-            <ModalAddplan   onClose= {()=>setShow(false)} show = {show} />
+            <ModalAddplan onClose={() => setShow(false)} show={show} />
           </div>
         </div>
         <div className="plans-cont">

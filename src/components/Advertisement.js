@@ -1,10 +1,25 @@
 import "../Css/Advertisement.css";
 import { FaGooglePlus } from "react-icons/fa";
-
+import { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Advertisement() {
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let phoneNumber = "0";
+  let message = "!";
+  const urlWhatSap = () => {
+    phoneNumber = "201026249568"; // replace with the phone number you want to chat with
+    message = "Hello!"; // replace with the message you want to send
+    setWhatsappUrl(
+      `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${message}&type=phone_number&app_absent=0`
+
+      //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    );
+  };
+  useEffect(() => {
+    urlWhatSap();
+  }, []);
   return (
     <>
       <div className="big-Advertisement-text-container">
@@ -15,11 +30,14 @@ function Advertisement() {
           <div className="sml-Advertisement-cont">
             <p className="adv-txt">contact with : </p>
             <div className="adv-log">
-              <Link to="/" className="aLink-Advertisement color-whatsapp">
+              <a
+                href={whatsappUrl}
+                className="aLink-Advertisement color-whatsapp"
+              >
                 <FaWhatsapp className="icon-Advertisement" />
-              </Link>
-              <a className="a-tag" href="#">
-                01154184217
+              </a>
+              <a className="a-tag" href={whatsappUrl} target="_blank">
+                Haodag (Whatsap)
               </a>
             </div>
           </div>
@@ -29,9 +47,16 @@ function Advertisement() {
               <Link to="/" className="aLink-Advertisement color-google">
                 <FaGooglePlus className="icon-Advertisement" />
               </Link>
-              <a className="a-tag" href="#">
+              <a
+                className="a-tag"
+                href="mailto:oramahmoud6@gmail.com?subject=Contact for Advertisement&body=Hello"
+                target="_blank"
+              >
                 Haodag@gmail.com
               </a>
+              {/*window.open(
+                "mailto:oramahmoud6@gmail.com?subject=Subject&body=Body%20goes%20here"
+              )*/}
             </div>
           </div>
         </div>
