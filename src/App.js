@@ -39,6 +39,7 @@ function App() {
         <Route path="ownerprofile" element={<HallOwnerProfile />} />
         <Route path="Planner_Profile/plan:plannerId" element={<PlanDetails />} />
 
+
       </Routes>
 
       <Footer />

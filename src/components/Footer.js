@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import "../Css/Footer.css";
 function Footer() {
   return (
-    <>
       <div className="container-footer">
         <div className="footer">
           <div className="top-footer">
@@ -61,7 +60,6 @@ function Footer() {
           </div>
         </div>
       </div>
-    </>
   );
 }
 
