@@ -23,9 +23,8 @@ function App() {
       <NavbarWithSideBar />
       {/*       <HallProfile/> */}
       <Routes>
-        <Route path="hallForm" element={<HallForm/>} />
-        <Route path="modal" element={<Modal/>} />
-
+        <Route path="hallForm" element={<HallForm />} />
+        <Route path="modal" element={<Modal />} />
         <Route path="hallDetails" element={<HallProfile />} />
         <Route path="home" element={<Home1 />} />
         <Route path="hall/:hallId" element={<Hall />} />
@@ -38,7 +37,6 @@ function App() {
         <Route path="termsofuse" element={<TermsOfUse />} />{" "}
         <Route path="ownerprofile" element={<HallOwnerProfile />} />
         <Route path="Planner_Profile/plan:plannerId" element={<PlanDetails />} />
-
 
       </Routes>
 

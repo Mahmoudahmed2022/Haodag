@@ -6,10 +6,25 @@ import { FaGooglePlus } from "react-icons/fa";
 import image2 from "./images/logo1.png";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Css/SocialMedia.css";
 function SocialMedia() {
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let phoneNumber = "0";
+  let message = "!";
+  const urlWhatSap = () => {
+    phoneNumber = "201026249568"; // replace with the phone number you want to chat with
+    message = "Hello!"; // replace with the message you want to send
+    setWhatsappUrl(
+      `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${message}&type=phone_number&app_absent=0`
+
+      //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    );
+  };
+  useEffect(() => {
+    urlWhatSap();
+  }, []);
   return (
     <>
       <div className="big-SocialMedia-text-container">
@@ -47,7 +62,11 @@ function SocialMedia() {
               <Link to="/" className="aLink-SocialMedia color-google">
                 <FaGooglePlus className="icon-SocialMedia" />
               </Link>
-              <a className="a-tag" href="#">
+              <a
+                className="a-tag"
+                href="mailto:oramahmoud6@gmail.com?subject=Contact for Advertisement&body=Hello"
+                target="_blank"
+              >
                 Haodag@gmail.com
               </a>
             </div>
@@ -55,8 +74,9 @@ function SocialMedia() {
               <Link to="/" className="aLink-SocialMedia color-whatsapp">
                 <FaWhatsapp className="icon-SocialMedia" />
               </Link>
-              <a className="a-tag" href="#">
-                01154184217
+
+              <a className="a-tag" href={whatsappUrl} target="_blank">
+                Haodag (Whatsap)
               </a>
             </div>
             <div className="sml-social-cont">
