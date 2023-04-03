@@ -1,0 +1,258 @@
+/* .profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 40px;
+  }
+  
+  .profile-details {
+    flex-grow: 1;
+  }
+  
+  .profile-name {
+    margin-top: 0;
+  }
+  
+  .profile-bio {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    font-size: 24px;
+  }
+  
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0
+  }
+  .plan-image{
+    width: 200px;
+    height: 200px;
+  } */
+
+  /* .profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #333;
+    font-size: 2rem;
+    line-height: 50px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .profile-content {
+    margin-top: 50px;
+  }
+  
+  .profile-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .plan-grid {
+  }   */
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    width: 100%;
+  }
+  .smallParent{
+    width: 80%;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 2rem;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-bio {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  .nameUser{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .plan {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+    animation-name: slideIn;
+    animation-duration: 1s;
+    padding: 20px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .plan-image {
+    width: 20rem;
+    height: 18rem;
+    object-fit: cover;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  
+  .plan-details {
+    padding: 1rem;
+  }
+  
+  .plan-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .plan-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .plan-price {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  

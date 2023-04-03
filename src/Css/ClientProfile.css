@@ -16,7 +16,7 @@ body {
   display: flex;
   /* justify-content: right; */
   background-repeat: no-repeat;
-  /* background-image: url(http://localhost:3001/static/media/cover.c80c02b….jpg); */
+  background-image: url("../components/images/profileimage.jpg");
   background-size: cover;
 }
 .client-profile-photo-cont {

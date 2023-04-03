@@ -1,91 +1,145 @@
+/* Footer Styles */
 .container-footer {
-  /* position: absolute;
-  bottom: 0; */
-  width: 100%;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 50px 0;
+  font-size: 16px;
 }
+
 .footer {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  height: 140px;
-  justify-content: center;
-  background-color: #263e61;
   flex-direction: column;
-}
-.footer .top-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 29px;
-}
-
-.top-footer .top-left-footer {
+  justify-content: space-between;
   align-items: center;
-  display: flex;
-  justify-content: space-around;
-  width: 180px;
-}
-.top-footer .top-right-footer {
-  display: flex;
-  justify-content: space-around;
-  width: 500px;
 }
 
-.icon-footer {
-  color: white;
- 
+.top-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.footer .bottom-footer {
-  width: 400px;
+.top-left-footer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.avatar1 {
-     /* width: 60px; */
-     text-decoration: none;
-     color: #ef9011;
+
+.top-right-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .link-footrer {
+  color: #fff;
+  margin: 0 20px;
   text-decoration: none;
-  color: white;
-  font-size: 18px;
-}
-.link-footrer:hover {
-  color: #c7862f;
-}
-.copyRight {
-  font-size: 18px;
-  color: white;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
 }
 
-.aLink{
-    background-color: #000;
-    border-radius: 3px;
-    width: 24px;
-    height: 30px;
-    line-height: 34px;
-    display: block;
-    text-align: center;
+.link-footrer:hover {
+  color: rgb(34, 34, 93);
 }
-.color-facebook{
-    background-color: #1877f2;
+
+.icon-footer {
+  font-size: 30px;
+  margin: 0 15px;
+  transition: all 0.2s ease-in-out;
 }
-.color-linkden{
-    background-color: #2962ff;
+
+.icon-footer:hover {
+  transform: scale(1.2);
 }
-.color-twitter{
-    background-color: #55acee;
+
+.color-facebook {
+  color: #3b5998;
 }
-.color-instgram{
-    background: linear-gradient(29.61deg,#f38334,#da2e7d 50.39%,#6b54c6);
+
+.color-linkden {
+  color: #0077b5;
 }
-.color-whatsapp{
-    background-color: #25D366;
+
+.color-google {
+  color: #db4437;
 }
-.color-google{
-    background-color: red;
+
+.color-whatsapp {
+  color: #25d366;
+}
+
+.color-twitter {
+  color: #00acee;
+}
+
+.bottom-footer {
+  margin-top: 30px;
+}
+
+.copyRight {
+  font-size: 14px;
+  text-align: center;
+}
+
+.avatar1 {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar1:hover {
+  color: gold;
+}
+
+/* Animation Styles */
+.top-left-footer a,
+.top-right-footer a {
+  animation-name: bounceIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.top-left-footer a:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.top-left-footer a:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.top-left-footer a:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.top-left-footer a:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.top-left-footer a:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+.top-left-footer a:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

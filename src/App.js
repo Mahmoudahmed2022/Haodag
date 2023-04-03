@@ -16,6 +16,7 @@ import HallForm from "./components/HallForm";
 import HallOwnerProfile from "./components/HallOwnerProfile";
 import Modal from "./components/Modal";
 import PlanDetails from "./components/PlanDetails";
+import WeddingPlannerProfile from "./components/WeddingPlannerProfile ";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
         <Route path="termsofuse" element={<TermsOfUse />} />{" "}
         <Route path="ownerprofile" element={<HallOwnerProfile />} />
         <Route path="Planner_Profile/plan:plannerId" element={<PlanDetails />} />
+        <Route path="planner" element={<WeddingPlannerProfile/>} />
+
 
       </Routes>
 

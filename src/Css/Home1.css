@@ -406,16 +406,16 @@ body {
 }
 
 .login-box1 {
-  /* position: relative; */
-  /* top: 50%; */
-  /* left: 50%; */
-  width: 400px;
-  padding: 40px;
-  /* transform: translate(-50%, -50%); */
-  background: rgb(210 210 210);
-  box-sizing: border-box;
-  box-shadow: 0 6px 15px #a8acb1;
-  border-radius: 10px;
+     /* position: relative; */
+    /* top: 50%; */
+    /* left: 50%; */
+    width: 400px;
+    padding: 40px;
+    /* transform: translate(-50%, -50%); */
+    background: rgb(210 210 210);
+    box-sizing: border-box;
+    box-shadow: 0 8px 17px #242525;
+    border-radius: 10px;
 }
 .login-title {
   margin: 0 0 30px;
