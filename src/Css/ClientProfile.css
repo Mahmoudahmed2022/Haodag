@@ -50,12 +50,13 @@ body {
   /* width: 100%;
   overflow: auto;
   flex-wrap: wrap;
-  background-color: rgb(236, 244, 236);
   padding-top: 20px;
   padding-bottom: 50px;
   display: flex;
   justify-content: center; */
-  width: 90%;
+  /* background-color: rgb(236, 244, 236);
+
+  width: 100%;
   overflow: auto;
   flex-wrap: wrap;
   padding-top: 20px;
@@ -63,13 +64,23 @@ body {
   display: flex;
   justify-content: center;
   margin: auto;
-  flex-direction: column;
+  flex-direction: column; */
+
+  width: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: rgb(236, 244, 236);
+  padding-top: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 .contentProf{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 .editAndContactForProf{
   display: flex;
@@ -126,15 +137,18 @@ body {
   margin: 10px;
 }
 .inputLable{
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   margin: 10px;
   justify-content: center;
+  align-items: center;
 }
 .inputLable label{
   font-size: 18px;
-}
+  display: flex;
+  align-items: flex-start;
+  width: 87%;}
 .allLable{
     
   width: 85%;

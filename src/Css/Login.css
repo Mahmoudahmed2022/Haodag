@@ -22,6 +22,7 @@ body {
   box-shadow: 0 6px 15px #a8acb1;
   border-radius: 10px;
   margin-bottom: 50px;
+  height: 402px;
 }
 .login-submit {
   background-color: rgb(210 210 210);
@@ -92,16 +93,16 @@ body {
   letter-spacing: 4px;
 }
 .login-box .login-form .register {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #141e30;
-  font-size: 12px;
-  top: 10px;
-  left: 35%;
-  text-decoration: none;
-  overflow: hidden;
-  margin-top: 30px;
+      /* position: relative; */
+    /* display: inline-block; */
+    /* padding: 10px 20px; */
+    color: #141e30;
+    font-size: 14px;
+    /* top: 10px; */
+    /* left: 35%; */
+    text-decoration: none;
+    /* overflow: hidden; */
+    /* margin-top: 30px; */
 }
 .login-box .register:hover {
   color: red;
@@ -128,7 +129,11 @@ body {
   background: linear-gradient(90deg, transparent, #243b55);
   animation: btn-anim1 1s linear infinite;
 }
-
+.divsubmitnewvisitor{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
 @keyframes btn-anim1 {
   0% {
     left: -100%;
@@ -181,7 +186,7 @@ body {
 
 .login-box .login-submit .s-span:nth-child(4) {
   bottom: -100%;
-  left: -15px;
+  left: 0px;
   width: 2px;
   height: 100%;
 

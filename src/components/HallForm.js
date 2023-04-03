@@ -70,7 +70,7 @@ const HallForm = () => {
   console.log("haha", hallType);
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
-      <h2>Sign up for your hall</h2>
+      <h2>Add Hall</h2>
       <div className="form-group">
         <label htmlFor="hallName">Hall Name:</label>
         <input

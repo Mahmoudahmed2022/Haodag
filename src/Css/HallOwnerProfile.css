@@ -85,7 +85,6 @@ body {
   display: flex;
   flex-direction: row;
   margin: 15px;
-  width: 500px;
   align-items: flex-start;
   justify-content: center;
 }

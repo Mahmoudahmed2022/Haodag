@@ -202,8 +202,7 @@ body {
 .priceAndLocation{
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  background-color: #f4f4f5;
+  background-color: #fbfbfb;
   padding: 10px;
 }
 .priceHall{}
@@ -302,15 +301,16 @@ body {
 
 .more {
   width: 150px;
-  height: 30px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   background-color: var(--main-color);
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 18px;
   color: white;
   font-family: cursive;
 }

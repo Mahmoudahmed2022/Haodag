@@ -11,7 +11,12 @@ body {
   background-color: rgb(108, 119, 136, 0.5);
   background-size: cover;
 }
-
+.btnsPlannerProf{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
 .planner-profile-photo-cont {
   height: 100%;
   display: flex;
@@ -85,7 +90,6 @@ body {
   display: flex;
   flex-direction: row;
   margin: 15px;
-  width: 500px;
   align-items: flex-start;
   justify-content: center;
 }

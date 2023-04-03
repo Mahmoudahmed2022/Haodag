@@ -7,6 +7,7 @@ import "../Css/ClientProfile.scss";
 import "../Css/PlannerProfile.css";
 import axios from "axios";
 import ModalAddplan from "./ModalAddplan";
+import ModalEditClientProfile from "./ModalEditClientProfile";
 function WeddingPlanner(props) {
   // const planner_id = useParams();
   // // console.log(planner_id.plannerId);
@@ -18,7 +19,16 @@ function WeddingPlanner(props) {
   //   });
   // }, []);
   // console.log(planner);
+  const [formData, setFormData] = useState({
+    Name: "",
+    Address: "",
+    Phone: "",
+    Gender: "",
+    Email: "",
+  });
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+
   const [planners, setPlanners] = useState([]);
   const [visible, setVisible] = useState(5);
   const allPlanners = () => {
@@ -88,8 +98,60 @@ function WeddingPlanner(props) {
           </div>
         </div>
         <div className="planner-info">
-          <div className="planner-name-div planner-sml-cont">
-            <label className="planner-label planner-all-label">Name</label>
+          <div className="contentProf">
+            <div className="inputLable">
+              <label htmlFor="Name">Name</label>
+              <input
+                id="Name"
+                name="Name"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>
+            <div className="inputLable">
+              <label htmlFor="Email">Email</label>
+              <input
+                id="Email"
+                name="Email"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Phone">Phone</label>
+              <input
+                id="Phone"
+                name="Phone"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Address">Address</label>
+              <input
+                id="Address"
+                name="Address"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Gender">Gender</label>
+              <input
+                id="Gender"
+                name="Gender"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+          </div>
+          {/* <div className="planner-name-div planner-sml-cont"> */}
+          {/* <label className="planner-label planner-all-label">Name</label>
             <label className="planner-data planner-all-label">
               Kariem Atef
             </label>
@@ -125,33 +187,39 @@ function WeddingPlanner(props) {
           <div className="planner-gender-div planner-sml-cont">
             <label className="planner-label planner-all-label">Gendr</label>
             <label className="planner-data planner-all-label">Male</label>
-          </div>
-          <div className="planner-prof-btn-div">
-            <Link
-              className="btn-flip"
-              data-back="Contact"
-              data-front="Contact"
-              to="#"
-            ></Link>
-          </div>
-
-          <div className="planner-prof-btn-div">
-            <Link
-              className="btn-flip"
-              data-back="Edit"
-              data-front="Edit"
-              to="#"
-            ></Link>
-          </div>
-          <div className="planner-prof-btn-div">
-            <Link
-              onClick={() => setShow(true)}
-              className="btn-flip"
-              data-back="AddPlan"
-              data-front="AddPlan"
-              to="#"
-            ></Link>
-            <ModalAddplan onClose={() => setShow(false)} show={show} />
+          </div> */}
+          <div className="btnsPlannerProf">
+            <div className="planner-prof-btn-div">
+              <Link
+                className="btn-flip"
+                data-back="Contact"
+                data-front="Contact"
+                to="#"
+              ></Link>
+            </div>
+            <div className="planner-prof-btn-div">
+              <Link
+                onClick={() => setShowEdit(true)}
+                className="btn-flip"
+                data-back="Edit"
+                data-front="Edit"
+              ></Link>
+              <ModalEditClientProfile
+                onClose={() => setShowEdit(false)}
+                show={showEdit}
+                formData={formData}
+              />
+            </div>
+            <div className="planner-prof-btn-div">
+              <Link
+                onClick={() => setShow(true)}
+                className="btn-flip"
+                data-back="AddPlan"
+                data-front="AddPlan"
+                to="#"
+              ></Link>
+              <ModalAddplan onClose={() => setShow(false)} show={show} />
+            </div>
           </div>
         </div>
         <div className="plans-cont">

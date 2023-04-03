@@ -96,7 +96,7 @@ function Home() {
                 </div>
                 <div>
                
-                <p> {cardData.title}<MdLocationPin/></p>
+                <p> <MdLocationPin/> {cardData.title}</p>
                 </div>
               </div>
                 

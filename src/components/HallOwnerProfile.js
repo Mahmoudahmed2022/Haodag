@@ -10,7 +10,17 @@ import { MdFastfood } from "react-icons/md";
 import { MdEmojiFoodBeverage } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdDirectionsCarFilled } from "react-icons/md";
+import ModalEditClientProfile from "./ModalEditClientProfile";
 function HallOwnerProfile() {
+  const [formData, setFormData] = useState({
+    Name: "",
+    Address: "",
+    Phone: "",
+    Gender: "",
+    Email: "",
+  });
+  const [showEdit, setShowEdit] = useState(false);
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -91,13 +101,14 @@ function HallOwnerProfile() {
 
               <div className="priceAndLocation">
                 <div className="priceHall">
-                  <p>{cardData.price}$</p>
+                  <p>${cardData.price}</p>
                 </div>
                 <div>
                   <p>
                     {" "}
-                    {cardData.title}
                     <MdLocationPin />
+                    {cardData.title}
+                    
                   </p>
                 </div>
               </div>
@@ -136,45 +147,57 @@ function HallOwnerProfile() {
           </div>
         </div>
         <div className="hallowner-info">
-          <div className="hallowner-name-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">Name</label>
-            <label className="hallowner-data hallowner-all-label">
-              Omar Salama
-            </label>
-          </div>
-          <div className="hallowner-email-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">Email</label>
-            <label className="hallowner-data hallowner-all-label">
-              OmarSalama@gmail.com
-            </label>
-          </div>
-          <div className="hallowner-address-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">
-              Address
-            </label>
-            <label className="hallowner-data hallowner-all-label">
-              Egypt-cairo-elsalam
-            </label>
-          </div>
-          <div className="hallowner-nationalid-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">
-              National Id
-            </label>
-            <label className="hallowner-data hallowner-all-label">
-              30105012102357
-            </label>
-          </div>
-          <div className="hallowner-phone-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">
-              Phone Number
-            </label>
-            <label className="hallowner-data hallowner-all-label">
-              01154184217
-            </label>
-          </div>
-          <div className="hallowner-gender-div hallowner-sml-cont">
-            <label className="hallowner-label hallowner-all-label">Gendr</label>
-            <label className="hallowner-data hallowner-all-label">Male</label>
+        <div className="contentProf">
+            <div className="inputLable">
+              <label htmlFor="Name">Name</label>
+              <input
+                id="Name"
+                name="Name"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>
+            <div className="inputLable">
+              <label htmlFor="Email">Email</label>
+              <input
+                id="Email"
+                name="Email"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Phone">Phone</label>
+              <input
+                id="Phone"
+                name="Phone"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Address">Address</label>
+              <input
+                id="Address"
+                name="Address"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
+            <div className="inputLable">
+              <label htmlFor="Gender">Gender</label>
+              <input
+                id="Gender"
+                name="Gender"
+                className="allLable"
+                disabled
+                placeholder={formData.Name}
+              />
+            </div>{" "}
           </div>
           <div className="hallowner-prof-btn-div">
             <Link
@@ -185,12 +208,17 @@ function HallOwnerProfile() {
             ></Link>
           </div>
           <div className="hallowner-prof-btn-div">
-            <Link
+          <Link
+              onClick={() => setShowEdit(true)}
               className="btn-flip"
               data-back="Edit"
               data-front="Edit"
-              to="#"
             ></Link>
+            <ModalEditClientProfile
+              onClose={() => setShowEdit(false)}
+              show={showEdit}
+              formData={formData}
+            />
           </div>
         </div>
         <div className="halls">

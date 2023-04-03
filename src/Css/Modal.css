@@ -36,8 +36,6 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
   width: 350px;
-  position: absolute;
-  right: 10%;
 }
 
 .modal h2 {

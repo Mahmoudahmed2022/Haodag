@@ -20,6 +20,7 @@ import PlanDetails from "./components/PlanDetails";
 function App() {
   return (
     <div className="App">
+      <div className="ParentDivForAll">
       <NavbarWithSideBar />
       {/*       <HallProfile/> */}
       <Routes>
@@ -41,6 +42,7 @@ function App() {
       </Routes>
 
       <Footer />
+      </div>
     </div>
   );
 }
