@@ -1,0 +1,26 @@
+.plantit {
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+}
+
+.top-shape {
+  border-radius: 20px 20px 0px 0px;
+  width: 85%;
+  height: 30px;
+  background-color: #243b55;
+  margin-left: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plan-description {
+  width: 80%;
+  height: 400px;
+  background-color: #efefef;
+  padding: 34px;
+  margin-left: 6%;
+  margin-bottom: 50px;
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+}
