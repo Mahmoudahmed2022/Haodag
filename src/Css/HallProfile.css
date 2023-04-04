@@ -145,14 +145,40 @@ body {
   position: relative;
   bottom: 50%;
 }
+.butns>button{
+  width: 80px;
+  font-size: 18px;
+  border: navajowhite;
+  background-color: #243b55;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.butns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px;
+}
+.groupDots{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .button-buttonPrice {
   border: 2px solid #314569;
   font-size: 20px;
   border-radius: 25px;
-  width: 110px;
-  height: 45px;
+  width: 80px;
+  height: 40px;
   color: #314569;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+  text-decoration: none;
+  justify-content: center;
 }
 .button-buttonPrice:hover {
   background-color: #314569;

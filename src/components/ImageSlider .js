@@ -30,13 +30,38 @@ function ImageSlider(props) {
   return (
     <>
       <div className="media" >
-      <Carousel showThumbs={false} showIndicators={false}>
+
+      <CarouselProvider
+        className="PureCarousel "
+        naturalSlideWidth={600}
+        naturalSlideHeight={400}
+        totalSlides={products1.length}
+      >
+        <Slider className="PureCarousel_Slider ">
+          {products1.map((image, index) => (
+            <Slide className="PureCarousel_Slide " index={index} key={index}>
+              <img
+                className="PureCarousel_Image "
+                src={image.Poster}
+                alt={`Slide ${index + 1}`}
+              />
+            </Slide>
+          ))}
+        </Slider>
+        <div className="butns">
+        <ButtonBack>Back</ButtonBack>
+        <ButtonNext>Next</ButtonNext>
+        </div>
+       
+        <DotGroup className="groupDots PureCarousel_DotGroup " />
+      </CarouselProvider>
+      {/* <Carousel showThumbs={false} showIndicators={false}>
         {products1.map((image, index) => (
           <div className="media" key={index} >
             <img  src={image.Poster} alt={image.Title} style={{ width: '100%', height: '100%',borderRadius:'10px' }} />
           </div>
         ))}
-      </Carousel>
+      </Carousel> */}
 
     </div>
 
