@@ -197,15 +197,18 @@
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 21px;
   background: #f5f4f6;
   box-shadow: none;
   padding-left: 10px;
-  color: #7c7c8d;
+  color: #e3920f;
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+.input1:focus{
+  outline: none;
 }
 
 .profile-photo {

@@ -5,7 +5,7 @@ import "../Css/ClientProfile.css";
 import Cards from "./Cards";
 import "../Css/ClientProfile.scss";
 import { useState } from "react";
-import ModalEditClientProfile from "./ModalEditClientProfile";
+import HeaderDataProfile from "./HeaderDataProfile";
 
 function ClientProfile() {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ function ClientProfile() {
 
   return (
     <>
-      <div className="client-big-cont">
+      {/* <div className="client-big-cont">
         <div className="cover-cont">
           <div className="prof-name">
             <h4>Name</h4>
@@ -113,10 +113,15 @@ function ClientProfile() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <div className="profile-container">
+      <div className="smallParent">
+      <HeaderDataProfile formData={formData}/>
       <div className="booking-history">
         <h1 className="deals-tit">Last deals</h1>
         <Cards />
+      </div>
+      </div>
       </div>
     </>
   );

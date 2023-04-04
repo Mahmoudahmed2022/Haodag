@@ -10,7 +10,7 @@ import { MdFastfood } from "react-icons/md";
 import { MdEmojiFoodBeverage } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdDirectionsCarFilled } from "react-icons/md";
-import ModalEditClientProfile from "./ModalEditClientProfile";
+import HeaderDataProfile from "./HeaderDataProfile";
 function HallOwnerProfile() {
   const [formData, setFormData] = useState({
     Name: "",
@@ -108,7 +108,6 @@ function HallOwnerProfile() {
                     {" "}
                     <MdLocationPin />
                     {cardData.title}
-                    
                   </p>
                 </div>
               </div>
@@ -125,112 +124,21 @@ function HallOwnerProfile() {
   };
   return (
     <>
-      <div className="hallowner-big-cont">
-        <div className="hallowner-cover-cont">
-          {/*  <img
-        src={cover}
-        className="planner-profile-cover"
-        alt="planner cover"
-/>*/}
-          <div className="hallowner-div">
-            <label className="hallowner-name">Omar Salama</label>
-            <label className="role-type">Hall Owner</label>
-          </div>
-          <div className="pic-hallowner-cont">
-            <div className="hallowner-profile-photo-cont">
-              <img
-                src={omar}
-                className="hallowner-profile-photo"
-                alt="Hallowner pic"
-              />
+      <div className="profile-container">
+      <div className="smallParent">
+          <HeaderDataProfile formData={formData} />
+
+          <div className="halls">
+            <div className="home-allhalls-container">
+              {cardData.slice(0, visible).map(renderCard2)}
             </div>
-          </div>
-        </div>
-        <div className="hallowner-info">
-        <div className="contentProf">
-            <div className="inputLable">
-              <label htmlFor="Name">Name</label>
-              <input
-                id="Name"
-                name="Name"
-                className="allLable"
-                disabled
-                placeholder={formData.Name}
-              />
+            <div className="for-button">
+              {visible < cardData.length && (
+                <button className="more" onClick={loadMore}>
+                  Load 5 More
+                </button>
+              )}
             </div>
-            <div className="inputLable">
-              <label htmlFor="Email">Email</label>
-              <input
-                id="Email"
-                name="Email"
-                className="allLable"
-                disabled
-                placeholder={formData.Name}
-              />
-            </div>{" "}
-            <div className="inputLable">
-              <label htmlFor="Phone">Phone</label>
-              <input
-                id="Phone"
-                name="Phone"
-                className="allLable"
-                disabled
-                placeholder={formData.Name}
-              />
-            </div>{" "}
-            <div className="inputLable">
-              <label htmlFor="Address">Address</label>
-              <input
-                id="Address"
-                name="Address"
-                className="allLable"
-                disabled
-                placeholder={formData.Name}
-              />
-            </div>{" "}
-            <div className="inputLable">
-              <label htmlFor="Gender">Gender</label>
-              <input
-                id="Gender"
-                name="Gender"
-                className="allLable"
-                disabled
-                placeholder={formData.Name}
-              />
-            </div>{" "}
-          </div>
-          <div className="hallowner-prof-btn-div">
-            <Link
-              className="btn-flip"
-              data-back="Contact"
-              data-front="Contact"
-              to="#"
-            ></Link>
-          </div>
-          <div className="hallowner-prof-btn-div">
-          <Link
-              onClick={() => setShowEdit(true)}
-              className="btn-flip"
-              data-back="Edit"
-              data-front="Edit"
-            ></Link>
-            <ModalEditClientProfile
-              onClose={() => setShowEdit(false)}
-              show={showEdit}
-              formData={formData}
-            />
-          </div>
-        </div>
-        <div className="halls">
-          <div className="home-allhalls-container">
-            {cardData.slice(0, visible).map(renderCard2)}
-          </div>
-          <div className="for-button">
-            {visible < cardData.length && (
-              <button className="more" onClick={loadMore}>
-                Load 5 More
-              </button>
-            )}
           </div>
         </div>
       </div>

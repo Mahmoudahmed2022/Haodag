@@ -24,12 +24,6 @@ function WeddingPlanners() {
       <>
         <div className="planner-container" key={planner.id}>
           <div className="img-planner-div">
-            {/*   <img
-          src={planner.image}
-          className="planner-img"
-          alt={planner.title}
-        />
-  */}
             <img src={user2} className="planner-img" alt={planner.title} />
           </div>
           <div className="planner-body">
