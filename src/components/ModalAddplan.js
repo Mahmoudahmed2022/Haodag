@@ -59,9 +59,10 @@ const ModalAddplan = (props) => {
 
         <h2 className="headContact">Add Plan</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form className="formAddPlan" onSubmit={handleSubmit}>
           <label htmlFor="name">Plan Name:</label>
           <input
+          className="inputPlanData"
             type="text"
             id="name"
             value={name}
@@ -70,6 +71,8 @@ const ModalAddplan = (props) => {
           />
           <label htmlFor="price">Price:</label>
           <input
+                    className="inputPlanData"
+
             type="number"
             id="price"
             value={price}
@@ -80,6 +83,8 @@ const ModalAddplan = (props) => {
           <label htmlFor="description">Description:</label>
           <textarea
           
+          className="inputPlanData"
+
             id="description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
@@ -87,6 +92,7 @@ const ModalAddplan = (props) => {
           />
           <label htmlFor="hallImage">Choose Your Plan Images:</label>
          <input
+         className="chooseImages"
           type="file"
           id="hallImage"
           onChange={handleImageChange}

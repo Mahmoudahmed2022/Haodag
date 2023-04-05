@@ -1,10 +1,12 @@
 .modal1 {
-    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0 0 0 / 50%);
     width: 350px;
     z-index: 1000;
+    background-image: url("../components/images/planModalImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
  
   }
   .modal1 h2 {
@@ -25,3 +27,25 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+  .formAddPlan .inputPlanData{
+    width: 100%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    padding: 10px;
+    padding-left: 20px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 15px #cbced1, inset 0px 0px 0px 20px white;
+    letter-spacing: 1px;
+    
+
+  }
+  .formAddPlan label{
+    font-weight: bold;
+  }
+
+ 

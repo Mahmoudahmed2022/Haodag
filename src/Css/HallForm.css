@@ -1,0 +1,88 @@
+.hall-signup-page1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+   .signup-form1>h2{
+    font-size: 36px;
+    text-align: center;
+   }
+  
+  .signup-form1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-group1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+    .form-group1 label{
+        font-size: 18px;
+    margin-bottom: 10px;
+    }
+  
+      .form-group1 input,.form-group1 textarea,.form-group1 select{
+
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 95%;
+  }
+  
+  .addHallbtn {
+    background-color: #008cba;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+    .addHallbtn:hover {
+    background-color: #005b82;
+  }
+  
+  .inputImages {
+    margin-top: 10px;
+  }
+  
+  .cp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-group label {
+    margin-right: 20px;
+    font-size: 18px;
+  }
+  
+  .checkbox-group input[type='checkbox'] {
+    margin-right: 5px;
+  }
+  .form-group1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-group1.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
