@@ -55,6 +55,8 @@ function ImageSlider(props) {
        
         <DotGroup className="groupDots PureCarousel_DotGroup " />
       </CarouselProvider>
+
+
       {/* <Carousel showThumbs={false} showIndicators={false}>
         {products1.map((image, index) => (
           <div className="media" key={index} >
@@ -62,6 +64,7 @@ function ImageSlider(props) {
           </div>
         ))}
       </Carousel> */}
+
 
     </div>
 
