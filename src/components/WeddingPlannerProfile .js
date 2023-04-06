@@ -54,7 +54,7 @@ if(plan===null){
   return (
     <div className="profile-container">
       <div className="smallParent">
-        <HeaderDataProfile plannerData={plannerData} plan={plan} />
+        <HeaderDataProfile name1="Kariem" plannerData={plannerData} plan={plan} />
 
         {/* Past Code */}
 

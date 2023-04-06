@@ -5,7 +5,7 @@ import ModalAddplan from "./ModalAddplan";
 import ModalEditClientProfile from "./ModalEditClientProfile";
 import kariem from "./images/user.png";
 import { useState } from "react";
-
+import "../Css/ProfileData.css"
 const HeaderDataProfile = (props) =>{
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false);

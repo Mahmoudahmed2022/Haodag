@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import "../Css/Modal.css"
-import "../Css/ModalAddPlan.css"
 
 const ModalAddplan = (props) => {
   const [name, setName] = useState("");

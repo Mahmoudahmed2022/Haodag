@@ -30,7 +30,7 @@ function WeddingPlanners() {
             <p className="planner-title">{planner.title.slice(0, 20)}</p>
             <Link
               className="planner-details-btn s-d-hover"
-              to={`/Planner_Profile/${planner.id}`}
+              to={`/planner_Profile/${planner.id}`}
             >
               Details
             </Link>

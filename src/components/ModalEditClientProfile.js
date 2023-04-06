@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Css/Modal.css";
-import "../Css/ModalAddPlan.css";
 
 const ModalEditClientProfile = (props) => {
   const [formData, setFormData] = useState(props.formData);
@@ -54,6 +53,14 @@ const ModalEditClientProfile = (props) => {
       };
     });
   }
+  function ResetLoginData(event) {
+    event.preventDefault();
+    setFormData((prevFormData) => {
+      return {
+        prevFormData :event.target.value =""
+      };
+    });
+  }
 
   const reset = () => {
     setName("");
@@ -90,9 +97,9 @@ console.log(formData)
             </button>
           </div>
 
-          <h1>Edit Profile {params.productID}</h1>
-          <form onSubmit={onSubmitted}>
-            <div className="mb-3">
+          <h1 className="h1Modal">Edit Profile </h1>
+          <form onSubmit={onSubmitted} className="FOrmCont" >
+            <div className="DivModalWithinINputLabel">
               <label htmlFor="Name" className="form-label">
                 Name
               </label>
@@ -103,10 +110,10 @@ console.log(formData)
                 id="Name"
                 name="Name"
 
-                // defaultValue={product.name}
+                defaultValue={props.formData.name}
               />
             </div>
-            <div className="mb-3">
+            <div className="DivModalWithinINputLabel">
               <label htmlFor="Email" className="form-label">
                 Email
               </label>
@@ -120,13 +127,13 @@ console.log(formData)
                 // defaultValue={product.email}
               />
             </div>
-            <div className="mb-3">
+            <div className="DivModalWithinINputLabel">
               <label htmlFor="Phone" className="form-label">
                 Phone Number
               </label>
               <input
                 onChange={getLoginData}
-                type="text"
+                type="number"
                 className="form-control"
                 id="Phone"
                 name="Phone"
@@ -134,21 +141,8 @@ console.log(formData)
                 // defaultValue={product.name}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="Gender" className="form-label">
-                Gender
-              </label>
-              <input
-                onChange={getLoginData}
-                type="text"
-                className="form-control"
-                id="Gender"
-                name="Gender"
-
-                // defaultValue={product.name}
-              />
-            </div>
-            <div className="mb-3">
+           
+            <div className="DivModalWithinINputLabel">
               <label htmlFor="Adderss" className="form-label">
                 Adderss
               </label>
@@ -162,9 +156,29 @@ console.log(formData)
                 // defaultValue={product.name}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <div className="DivModalWithinINputLabel">
+              <label htmlFor="description" className="form-label">
+              description
+              </label>
+              <textarea
+                onChange={getLoginData}
+                type="text"
+                className="form-control"
+                id="description"
+                name="description"
+
+                // defaultValue={product.name}
+              />
+            </div>
+            <div className="DivbtnModal">
+            <button type="submit" className="btnModal">
               Edit Profile
             </button>
+            <button  className="btnModal" onClick={ResetLoginData}>
+              Reset
+            </button>
+            </div>
+           
           </form>
         </div>
       </div>

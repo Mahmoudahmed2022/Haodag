@@ -6,9 +6,12 @@
 .buttonExit {
   background-color: transparent;
   border: none;
-  color: red;
+  color: black;
   font-size: 24px;
   cursor: pointer;
+}
+.buttonExit:hover{
+  color: red;
 }
 .headContact {
   display: flex;
@@ -47,15 +50,7 @@
   margin-bottom: 10px;
 }
 
-.modal input,
-.modal textarea {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+
 textarea{
     resize: none;
 }
@@ -90,3 +85,97 @@ textarea{
 .cancel:hover {
   background-color: #ff0000;
 }
+.DivModalWithinINputLabel{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.FormModal{
+  width: 60%;
+}
+
+
+/* Add Plan Part */
+
+.modal1 {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  width: 30%;
+  z-index: 1000;
+  background-image: url("../components/images/planModalImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.modal1 h2 {
+  margin-top: 0;
+}
+.h1Modal{    text-align: center;
+  color: #121517;}
+
+.modal1 label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #121517;
+}
+
+
+  .modal1 input,
+  .modal1 textarea {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+
+.FOrmCont{
+  width: 100%;
+}
+.DivbtnModal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btnModal{
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  width: 40%;
+  color: #121517;
+  margin-top: 10px;
+}
+.btnModal:hover{
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+}
+.formAddPlan .inputPlanData{
+  width: 100%;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background: #f2f2f2;
+  padding: 10px;
+  /* padding-left: 20px; */
+  /* height: 40px; */
+  font-size: 16px;
+  border-radius: 8px;
+  /* box-shadow: inset 0px 0px 15px #cbced1, inset 0px 0px 0px 20px white; */
+  letter-spacing: 1px;
+  
+
+}
+.formAddPlan label{
+  font-weight: bold;
+}
+
