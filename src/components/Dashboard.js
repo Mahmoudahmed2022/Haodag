@@ -58,7 +58,7 @@ const Dashboard = () => {
     <div className="parentDashboard">
       <h1 className="adminHeader"> Admin Dashboard</h1>
       <div className="categories">
-        <button onClick={() => setSelectedComponent("client")}>
+        <button  onClick={() => setSelectedComponent("client")}>
           <CategoreyInDashboard className="carduser" client={client} />
         </button>
         <button onClick={() => setSelectedComponent("weddingPlanner")}>

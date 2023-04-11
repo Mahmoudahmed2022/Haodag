@@ -18,6 +18,7 @@ import Modal from "./components/Modal";
 import PlanDetails from "./components/PlanDetails";
 import WeddingPlannerProfile from "./components/WeddingPlannerProfile ";
 import Dashboard from "./components/Dashboard";
+import HeaderDataProfile from "./components/HeaderDataProfile";
 
 function App() {
   return (
@@ -28,24 +29,25 @@ function App() {
         <Routes>
         <Route path="dashboard" element={<Dashboard/>} />
 
-          <Route path="hallForm" element={<HallForm />} />
-          <Route path="modal" element={<Modal />} />
-          <Route path="hallDetails" element={<HallProfile />} />
-          <Route path="home" element={<Home1 />} />
-          <Route path="hall/:hallId" element={<Hall />} />
-          <Route path="login" element={<Login />} />
-          <Route path="clientprofile" element={<ClientProfile />} />
-          <Route path="registration" element={<Registration />} />
-          <Route path="search" element={<Search />} />
-          <Route path="WeddingPlanners" element={<WeddingPlanners />} />
+          <Route path="/hallForm" element={<HallForm />} />
+          <Route path="/modal" element={<Modal />} />
+          <Route path="/hallDetails" element={<HallProfile />} />
+          <Route path="/home" element={<Home1 />} />
+          <Route path="/hall/:hallId" element={<Hall />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/clientprofile" element={<ClientProfile />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
           <Route
-            path="planner_Profile/:plannerId"
+            path="/planner_Profile/:plannerId"
             element={<WeddingPlannerProfile />}
           />
-          <Route path="termsofuse" element={<TermsOfUse />} />{" "}
-          <Route path="ownerprofile" element={<HallOwnerProfile />} />
-          <Route path="Plandetails/:plannerId" element={<PlanDetails />} />
-          <Route path="plannerprofile" element={<WeddingPlannerProfile />} />
+          <Route path="/test/:param" element={<HeaderDataProfile/>} />
+          <Route path="/termsofuse" element={<TermsOfUse />} />{" "}
+          <Route path="/ownerprofile" element={<HallOwnerProfile />} />
+          <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
+          <Route path="/plannerprofile" element={<WeddingPlannerProfile />} />
         </Routes>
 
         <Footer />

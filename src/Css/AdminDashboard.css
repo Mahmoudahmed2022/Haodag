@@ -1,67 +1,152 @@
-.parentDashboard{
-    display: flex;
-    flex-direction: column;
-    width: 67%;
-    margin: auto;
-    /* align-items: center; */
-    /* padding: 0px 50px; */
+.parentDashboard {
+  display: flex;
+  flex-direction: column;
+  /* width: 67%; */
+  /* margin: auto; */
+  align-items: center;
+  padding: 0px 50px;
+  background-color: #282828;
+}
+.adminHeader {
+  text-align: center;
+  color: white;
+}
+.categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: space-evenly;
+}
+.categories button:hover {
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.categories button {
+  border: none;
+  background-color: #1d1d1d;
+  width: 25%;
+  color: white;
+  border-radius: 10px;
+  /* box-shadow: 5px 4px #888888; */
+  /* box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+/* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+.contsvgCard svg {
+  color: white;
+  width: 80%;
+  display: block;
+  height: 80%;
+}
+.contsvgCard {
+  width: 20%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carduser {
+}
+.usersmap {
+  width: 70%;
+}
+
+.divcategory {
+  align-items: center;
+  height: 150px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  /* gap: 60%; */
+  justify-content: space-around;
+  cursor: pointer;
+}
+.imagetableuser {
+  width: 60px;
+}
+.contNameImg {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.contDataDiv {
+  border-top: 1px solid black;
+  margin: 50px;
+}
+
+.id {
+  width: 15%;
+}
+
+.truserData th,
+.truserData td {
+    text-align: start;
+    color: white;
+}
+
+.red{
+    background-color: #eb1919;
 
 }
-.adminHeader{
-    text-align: center;
+.green{
+    background-color: #159015;
 
-}
-.categories{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-evenly;
-}
-.carduser{
+}.blue{
+    background-color: #2d82cbf5;
 
-}
-.usersmap{}
-
-.divcategory{
-    align-items: center;
-    height: 150px;
-    width: 25%;
-    border-radius: 10px;
-    background-color: aliceblue;
-    padding: 10px;
-    display: flex;
-    /* gap: 60%; */
-    justify-content: space-around;
-    cursor: pointer;
-}
-.imagetableuser{
-    width: 60px;
-}
-.contNameImg{
-    display: flex;
-    gap: 10px;
-
-}
-.contDataDiv{
-    border-top: 1px solid black;
-    margin: 50px;
-}
-.contDataDiv>td{
-    width: 30%;
-}
-.truserData{
-    width: 100%;
-}
-.truserData {
-    border: 1px solid black;
-
-}
-.truserData th, .truserData td{
-    width: 30%;
-    text-align: start;    
-    
 }
 .tableUsersData{
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    padding: 10px;
     width: 100%;
+    border-top: 1px solid white;
 }
+.btnoperations {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    width: 25%;
+}
+/* .tdoperations{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+} */
+.ss {
+    display: flex;
+    gap: 10px;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 90%; */
+    /* margin: auto; */
+}
+
+.tableUsersData {
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Spacing between rows */
+    padding: 10px; /* Padding for the table */
+  }
+  
+  .trUsersDatahead {
+    background-color: #1d1d1d;  }
+  
+    .trUsersDatabody {
+        background-color: #3e3e3e;  }
+      
+  .truserData {
+    border: 1px solid white; /* Border for each row */
+  }
+  
+  .id {
+    padding-right: 10px; /* Padding for the ID column */
+  }
+  
+  td, th {
+    padding: 8px; /* Padding for cells */
+  }
+  

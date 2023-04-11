@@ -10,7 +10,7 @@ const FetchAllData = (props) => {
   return (
     <div className="contDataDiv">
       <table className="tableUsersData">
-        <thead  >
+        <thead className="trUsersData" >
           <tr className="truserData" >
             <th className="id" >ID</th>
 
@@ -26,30 +26,33 @@ const FetchAllData = (props) => {
                 <td>
                   <div className="contNameImg"> 
                     <img className="imagetableuser" src={product.image} alt="image" />
-                    <p>{product.name}</p>
+                    <p>{product.category}</p>
                   </div>
                 </td>
-                <td>
+                <td className="tdoperations">
+                  <div className="ss">
                   <Link
-                    className="btn btn-danger btn-sm margin"
+                    className="btnoperations blue"
+                    // to={`/products/${product.id}`}
+                  >
+                    View
+                  </Link>
+                  {/* <Link
+                    className="btnoperations green"
+                    // to={`/products/editProduct/${product.id}`}
+                  >
+                    Edit
+                  </Link> */}
+                  <Link
+                    className="btnoperations red" 
                     // onClick={() => {
                     //   Delete(product);
                     // }}
                   >
                     Delete
                   </Link>
-                  <Link
-                    className=""
-                    // to={`/products/${product.id}`}
-                  >
-                    View
-                  </Link>
-                  <Link
-                    className=""
-                    // to={`/products/editProduct/${product.id}`}
-                  >
-                    Edit
-                  </Link>
+                  </div>
+                 
                 </td>
               </tr>
             );
