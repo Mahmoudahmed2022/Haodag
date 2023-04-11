@@ -1,0 +1,67 @@
+.parentDashboard{
+    display: flex;
+    flex-direction: column;
+    width: 67%;
+    margin: auto;
+    /* align-items: center; */
+    /* padding: 0px 50px; */
+
+}
+.adminHeader{
+    text-align: center;
+
+}
+.categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.carduser{
+
+}
+.usersmap{}
+
+.divcategory{
+    align-items: center;
+    height: 150px;
+    width: 25%;
+    border-radius: 10px;
+    background-color: aliceblue;
+    padding: 10px;
+    display: flex;
+    /* gap: 60%; */
+    justify-content: space-around;
+    cursor: pointer;
+}
+.imagetableuser{
+    width: 60px;
+}
+.contNameImg{
+    display: flex;
+    gap: 10px;
+
+}
+.contDataDiv{
+    border-top: 1px solid black;
+    margin: 50px;
+}
+.contDataDiv>td{
+    width: 30%;
+}
+.truserData{
+    width: 100%;
+}
+.truserData {
+    border: 1px solid black;
+
+}
+.truserData th, .truserData td{
+    width: 30%;
+    text-align: start;    
+    
+}
+.tableUsersData{
+    width: 100%;
+}

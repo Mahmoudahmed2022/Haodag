@@ -54,7 +54,7 @@ const ModalAddplan = (props) => {
   
      <div className="modal-overlay">
       <div className="modal1">
-      <div className="exit"><button className="buttonExit" onClick={()=>props.onClose()}>X</button></div>
+      <div className="exit"><button className="buttonExit" onClick={()=>{props.onClose();reset()}}>X</button></div>
 
         <h2 className="headContact">Add Plan</h2>
 

@@ -17,6 +17,7 @@ import HallOwnerProfile from "./components/HallOwnerProfile";
 import Modal from "./components/Modal";
 import PlanDetails from "./components/PlanDetails";
 import WeddingPlannerProfile from "./components/WeddingPlannerProfile ";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <NavbarWithSideBar />
         {/*       <HallProfile/> */}
         <Routes>
+        <Route path="dashboard" element={<Dashboard/>} />
+
           <Route path="hallForm" element={<HallForm />} />
           <Route path="modal" element={<Modal />} />
           <Route path="hallDetails" element={<HallProfile />} />
