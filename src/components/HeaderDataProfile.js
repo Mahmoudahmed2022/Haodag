@@ -6,6 +6,8 @@ import ModalEditClientProfile from "./ModalEditClientProfile";
 import kariem from "./images/user.png";
 import { useState } from "react";
 import "../Css/ProfileData.css";
+import "../Css/MainProfileForAllUsers.css"
+import "../Css/ClientProfile.scss";
 import {
   MdDirectionsCarFilled,
   MdEmojiFoodBeverage,
@@ -119,9 +121,9 @@ const HeaderDataProfile = (props) => {
   };
   console.log(isPlanner);
   return (
-    <div>
+    <div className="contProfileAll"> 
       <div className="profile-header">
-        <div>
+        <div className="divContImgType">
           <img src={kariem} alt="Profile" className="profile-image" />
           <p className="nameUser">Wedding Planner</p>
         </div>
@@ -133,13 +135,13 @@ const HeaderDataProfile = (props) => {
           </p>
           <div className="social-icons">
             <a href="#">
-              <FaInstagram />
+              <FaInstagram className="widthHieht"/>
             </a>
             <a href="#">
-              <FaFacebook />
+              <FaFacebook className="widthHieht"/>
             </a>
             <a href="#">
-              <FaTwitter />
+              <FaTwitter className="widthHieht"/>
             </a>
           </div>
          
@@ -180,13 +182,7 @@ const HeaderDataProfile = (props) => {
           )}
           </div>
       </div>
-
-      
-      
-      
-      
-      
-      
+  
       {isPlanner && (
         
 

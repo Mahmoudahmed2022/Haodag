@@ -1,4 +1,4 @@
-.profile-header {
+/* .profile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,13 +63,7 @@
   }
   
   .btnsPlannerProf {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
+   
   }
   
   .planner-prof-btn-div {
@@ -156,4 +150,4 @@
       transform: scale(1);
     }
   }
-  
+   */
