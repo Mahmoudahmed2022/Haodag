@@ -1,234 +1,165 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: cursive;
+.containerAddHall {
+  width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgb(210 210 210);
+
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.password-wrapper {
+  position: relative;
 }
 
-.big-container {
-  box-shadow: 0 6px 15px #a8acb1;
-  border-radius: 30px;
-  width: 50%;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  position: relative;
-  flex: auto;
-  /* top: 20%; */
-  /* left: 25%; */
-  padding: 10px;
-  color: #263e61;
-  background-color: #e4e9e4;
-  border-color: #555;
-  font-family: auto;
-  display: block;
+.toggle-password {
+  
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+}
+
+
+.HideCOn{}
+.h2AddHall {
+  margin-bottom: 20px;
   text-align: center;
+  font-size: 32px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.svg-registrer {
-  color: #c7862f;
-}
-.title {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 60px;
-}
-.mb-3 {
+
+.form-group-AddHall {
   margin-bottom: 20px;
 }
-.registration-input {
-  box-shadow: 0 6px 15px #555;
-  background-color: #a8acb1;
-  height: 35px;
-  margin-top: 15px;
-  padding-left: 40px;
-  border-radius: 8px;
-  font: bolder;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.registration-label,
-.form-logo {
+
+.form-group-AddHall label {
   display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
-.input-wrapper {
-  position: static;
-}
-.logo {
-  width: 200px;
-  height: 80px;
-}
-
-.FirstName-label,
-.LastName-label,
-.email-label,
-.userName-label,
-.password-1-label,
-.password-2-label,
-.Address-label,
-.NationalID-label,
-.phone-label,
-.male-input,
-.female-label,
-.role-select,
-.role-label,
-.male-label,
-.female-input {
-  position: absolute;
-  z-index: 1;
-  padding: 0px 5px;
-}
-
-.FirstName-label {
-  top: 17ex;
-  left: 4em;
-}
-.LastName-label {
-  top: 17ex;
-  left: 23em;
-}
-.LastName {
-  position: absolute;
-  right: 142px;
-}
-
-.LastName-input,
-.FirstName-input {
-  width: 38%;
-  margin-left: 10px;
-}
-
-.email-label {
-  top: 27.5ex;
-  left: 4em;
-}
-.email-input {
-  margin-left: 10px;
-  width: 83%;
-}
-.userName-label {
-  top: 37.8ex;
-  left: 4em;
-}
-.userName-input {
-  margin-left: 10px;
-  width: 83%;
-}
-.password-1-label {
-  top: 48ex;
-  left: 4em;
-}
-.password-1-input {
-  width: 38%;
-  margin-left: 10px;
-}
-.password-2-label {
-  top: 48ex;
-  left: 23em;
-}
-.password-2-input {
-  width: 38%;
-  margin-left: 10px;
-}
-.Address-label {
-  top: 59ex;
-  left: 4em;
-}
-.Address-input {
-  width: 83%;
-  margin-left: 10px;
-}
-.NationalID-label {
-  top: 69ex;
-  left: 4em;
-}
-.NationalID-input {
-  width: 83%;
-  margin-left: 10px;
-}
-.phone-label {
-  top: 79ex;
-  left: 4em;
-}
-.phone-input {
-  width: 83%;
-  margin-left: 10px;
-}
-.gender,
-.role {
-  margin-bottom: 100px;
-}
-.male-label {
-  top: 93ex;
-  left: 4em;
-}
-.male-input {
-  top: 93.2ex;
-  left: 10em;
-  box-shadow: none;
-}
-.female-label {
-  top: 93ex;
-  left: 12em;
-}
-.female-input {
-  top: -2.8ex;
-  left: 6em;
-  box-shadow: none;
-}
-.role-label {
-  top: 98.5ex;
-  left: 4em;
-}
-.role-select {
-  top: 101.5ex;
-  left: 15em;
-}
-.registration-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #243b55;
-  color: #c7862f;
-  border-radius: 10px;
-  width: 250px;
-  height: 30px;
-  text-align: center;
-}
-.registration-select::-ms-expand {
-  display: none;
-}
-
-.register-btn-cont {
-  margin-top: 150px;
-  margin-bottom: 50px;
-  text-align: center;
+.ContTwoDivInOneLine{
   display: flex;
-  justify-content: center;
+gap: 25px;}
+.Width47{
+  width: 47%;
 }
-.register-btn {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  padding: 2% 2%;
-  font-size: 16px;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  outline: none;
-  color: #c7862f;
-  background-color: #263e61;
+.input-field-AddHall {
+  width: 97%;
+  padding: 10px;
   border: none;
-  font-family: auto;
-  border-radius: 15px;
+  border-radius: 5px;
+  background-color: #efefef;
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
 }
-.register-btn:hover {
-  background-color: #4158d0;
+
+.input-field-AddHall:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.register-btn:active {
-  background-color: #4158d0;
-  box-shadow: 0 5px rgb(0, 0, 0);
-  transform: translateY(4px);
+
+.radio-buttons {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px; */
+}
+
+.radio-buttons-AddHall label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.radio-buttons-AddHall input[type="radio"] {
+  margin-right: 10px;
+}
+
+.radio-buttons-AddHall label:hover {
+  color: #007bff;
+}
+
+.select-field-AddHall {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #efefef;
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.select-field-AddHall:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btnAddHall {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnAddHall:hover {
+  background-color: #0062cc;
 }
 
 
+.cancelBtnReg{
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: #ca3636;
+  padding: 8px 20px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+.cancelBtnReg:hover{
+  background-color: #a62e2e;
+  
+}
+.COntLableHide{
+  display: flex;
+}
+.form-group-AddHall.animated .input-field-AddHall,
+.form-group-AddHall.animated .select-field-AddHall,
+.form-group-AddHall.animated label,
+.form-group-AddHall.animated span,
 
+.form-group-AddHall.animated .radio-buttons-AddHall label {
+  animation: slideInUp 0.5s ease-in-out forwards;
+}
+.marginBottomLeft{
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

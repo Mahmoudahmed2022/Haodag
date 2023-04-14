@@ -1,288 +1,228 @@
-import "../Css/Registration.css";
-import "../Css/App.css";
-
-import { FaUserLock } from "@react-icons/all-files/fa/FaUserLock";
-import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
-import { MdEmail } from "react-icons/md";
-import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
-import { RiRotateLockFill } from "react-icons/ri";
-import { FaMale } from "@react-icons/all-files/fa/FaMale";
-import { FaFemale } from "@react-icons/all-files/fa/FaFemale";
-import { IoHome, IoIdCard } from "react-icons/io5";
-import { FaAddressCard } from "@react-icons/all-files/fa/FaAddressCard";
-import { FaPhoneAlt } from "@react-icons/all-files/fa/FaPhoneAlt";
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-
+import "../Css/Registration.css";
+import ass from "./images/eye.png";
 function Registration() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [verifyPassword, setVerifyPassword] = useState("");
-  const [Address, setAddress] = useState("");
-  const [nationalID, setNationalID] = useState("");
-  const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("male");
-  const [role, setRole] = useState("Customer");
-  const [gendercheck, setGendercheck] = useState("male");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    verifyPassword: "",
+    address: "",
+    nationalID: "",
+    phone: "",
+    gender: "",
+    role: "Customer",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(
-      firstName,
-      lastName,
-      email,
-      userName,
-      password,
-      verifyPassword,
-      Address,
-      nationalID,
-      phone,
-      gender,
-      role
-    );
-    axios
-      .post("https://fakestoreapi.com/products", {
-        firstName,
-        lastName,
-        userName,
-        email,
-        password,
-        verifyPassword,
-        Address,
-        nationalID,
-        phone,
-        gender,
-        role,
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    console.log(formData);
+    axios.post("http://localhost:9001/products", formData).then((data) => {
+      console.log(data);
+    });
   };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  function togglePasswordVisibility() {
+    var passwordField = document.getElementById("verifyPassword");
+    console.log(passwordField, "Input");
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+    } else {
+      passwordField.type = "password";
+    }
+  }
+  function togglePasswordVisibility1() {
+    var passwordField = document.getElementById("password");
+    console.log(passwordField, "Input");
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+    } else {
+      passwordField.type = "password";
+    }
+  }
   return (
-    <>
-      <div className="big-container">
-        <h2 className="title">Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="sml-container">
-            <div className="mb-3">
-              <label
-                htmlFor="FirstName"
-                className="FirstName-label registration-label"
-              >
-                <FaUserAlt className="svg-registrer" />
-                &nbsp;First Name
-              </label>
-              <input
-                type="text"
-                className="FirstName-input registration-input"
-                id="FirstName "
-                required
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <label
-                htmlFor="LastName"
-                id="form-label"
-                className="LastName-label registration-label"
-              >
-                <FaUserAlt className="svg-registrer" />
-                &nbsp;Last Name
-              </label>
-              <input
-                type="text"
-                className="LastName-input registration-input"
-                id="LastName"
-                required
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="exampleInputEmail1"
-                className="email-label registration-label"
-              >
-                <MdEmail className="svg-registrer" />
-                &nbsp;Email Address
-              </label>
-              <input
-                type="email"
-                className="email-input registration-input"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="userName"
-                className="userName-label registration-label"
-              >
-                <FaUserCircle className="svg-registrer" />
-                &nbsp;User Name
-              </label>
-              <input
-                type="text"
-                className="userName-input registration-input"
-                id="userName"
-                required
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="password"
-                className="password-1-label registration-label"
-              >
-                <FaUserLock className="svg-registrer" />
-                &nbsp;Password
-              </label>
-              <input
-                type="password"
-                className="password-1-input registration-input"
-                id="password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label
-                htmlFor="password"
-                className="password-2-label registration-label"
-              >
-                <RiRotateLockFill className="svg-registrer" />
-                &nbsp;Verify Password
-              </label>
-              <input
-                type="password"
-                className="password-2-input registration-input"
-                id="verify-password"
-                required
-                onChange={(e) => setVerifyPassword(e.target.value)}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label
-                htmlFor="Address"
-                className="Address-label registration-label"
-              >
-                <IoHome className="svg-registrer" />
-                &nbsp;Address
-              </label>
-              <input
-                type="text"
-                className="Address-input registration-input"
-                id="Address"
-                required
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="NationalID"
-                className="NationalID-label registration-label"
-              >
-                <FaAddressCard className="svg-registrer" />
-                &nbsp;National ID
-              </label>
-              <input
-                type="number"
-                className="NationalID-input registration-input"
-                id="NationalID"
-                required
-                onChange={(e) => setNationalID(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="phone" className="phone-label registration-label">
-                <FaPhoneAlt className="svg-registrer" />
-                &nbsp;Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="phone-input registration-input"
-                required
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <div className="mb-3 gender">
-              <label className="male-label checkoption registration-label">
-                <FaMale className="svg-registrer" />
-                &nbsp;Male
-              </label>
-              <input
-                type="checkbox"
-                className="male-input registration-input"
-                checked={gendercheck === "male"}
-                onChange={() => {
-                  setGendercheck("male");
-                  setGender("male");
-                }}
-              />
-              <span className="checkmark"></span>
-
-              <label className="female-label checkoption registration-label">
-                <FaFemale className="svg-registrer" />
-                &nbsp;Female
-                <input
-                  type="checkbox"
-                  className="female-input registration-input"
-                  checked={gendercheck === "female"}
-                  onChange={() => {
-                    setGendercheck("female");
-                    setGender("female");
-                  }}
-                />
-                <span className="checkmark"></span>
-              </label>
-            </div>
-            <div className="mb-3 role">
-              <label htmlFor="role" className="role-label registration-label">
-                <IoIdCard className="svg-registrer" />
-                Choose a Role:
-              </label>
-              <select
-                name="Role"
-                id="role"
-                className="role-select registration-select"
-              >
-                <option
-                  value="Customer"
-                  onChange={(e) => setFirstName(e.target.value)}
-                >
-                  Customer
-                </option>
-                <option
-                  value="Hall Owner"
-                  onChange={(e) => setFirstName(e.target.value)}
-                >
-                  Hall Owner
-                </option>
-                <option
-                  value="Wedding Planner"
-                  onChange={(e) => setFirstName(e.target.value)}
-                >
-                  Wedding Planner
-                </option>
-              </select>
-            </div>
-            <div className="mb-3 form-check register-btn-cont">
-              <Link
-                to="/home"
-                type="submit"
-                className="register-btn btn-primary"
-              >
-                Sign Up
-              </Link>
-            </div>
+    <div className="containerAddHall">
+      <h2 className="h2AddHall">Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="ContTwoDivInOneLine">
+          <div className="form-group-AddHall animated Width47">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              className="input-field-AddHall"
+              id="firstName"
+              name="firstName"
+              required
+              onChange={handleChange}
+            />
           </div>
-        </form>
-      </div>
-    </>
+          <div className="form-group-AddHall animated Width47">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              className="input-field-AddHall"
+              id="lastName"
+              name="lastName"
+              required
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="userName">User Name</label>
+          <input
+            type="text"
+            className="input-field-AddHall"
+            id="userName"
+            name="userName"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="email">Email Address</label>
+          <input
+            type="email"
+            className="input-field-AddHall"
+            id="email"
+            name="email"
+            required
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="ContTwoDivInOneLine">
+          <div className="form-group-AddHall animated Width47 password-wrapper">
+            <div className="COntLableHide">
+              {" "}
+              <label htmlFor="password">Password</label>{" "}
+              <span
+                className="toggle-password animated marginBottomLeft"
+                onClick={togglePasswordVisibility1}
+              >
+                Hide/Appear
+              </span>
+            </div>
+            <input
+              type="password"
+              className="input-field-AddHall"
+              id="password"
+              name="password"
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group-AddHall animated Width47 password-wrapper">
+            <div className="COntLableHide">
+              {" "}
+              <label htmlFor="password">Verify Password</label>{" "}
+              <span
+                className="toggle-password animated marginBottomLeft"
+                onClick={togglePasswordVisibility}
+              >
+                Hide/Appear
+              </span>
+            </div>
+            <input
+              type="password"
+              className="input-field-AddHall"
+              id="verifyPassword"
+              name="verifyPassword"
+              required
+              onChange={handleChange}
+            />
+          </div>
+          
+        </div>
+
+        <div className="form-group-AddHall animated">
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            className="input-field-AddHall"
+            id="address"
+            name="address"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="nationalID">National ID</label>
+          <input
+            type="number"
+            className="input-field-AddHall"
+            id="nationalID"
+            name="nationalID"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            type="tel"
+            className="input-field-AddHall"
+            id="phone"
+            name="phone"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="radio-buttons-AddHall animated">
+          <label>Gender</label>
+          <div>
+            <label className="mr-3">
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                onChange={handleChange}
+              />{" "}
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                onChange={handleChange}
+              />{" "}
+              Female
+            </label>
+          </div>
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="role">Choose a Role:</label>
+          <select
+            name="role"
+            id="role"
+            className="select-field-AddHall"
+            onChange={handleChange}
+          >
+            <option value="Customer">Customer</option>
+            <option value="Hall Owner">Hall Owner</option>
+            <option value="Wedding Planner">Wedding Planner</option>
+          </select>
+        </div>
+        <button type="submit" className="btnAddHall">
+          Sign Up
+        </button>
+        <Link to="/home" className="cancelBtnReg">
+          Cancel
+        </Link>
+      </form>
+    </div>
   );
 }
 
