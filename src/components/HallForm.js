@@ -26,23 +26,8 @@ const HallForm = (props) => {
     });
   }
 
-  console.log(formData);
 
-  function sendRegisterData(e) {
-    e.preventDefault();
-    if (formData) {
-      fetch("http://localhost:9001/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-    }
-  }
-
+  
   console.log(formData);
 
   function handleSubmit(e) {
@@ -340,18 +325,7 @@ const HallForm = (props) => {
                 />
                 Traditional cultural performances
               </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="selectedCheckboxes"
-                  value="Fireworks"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
-                    "Fireworks"
-                  )}
-                  onChange={ShowshandleCheckboxChange}
-                />
-                Fireworks
-              </label>
+             
               <label>
                 <input
                   type="checkbox"
@@ -418,10 +392,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Venue rental"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Venue rental"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Venue rental
               </label>
@@ -430,10 +404,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Catering "
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Catering "
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Catering
               </label>
@@ -442,10 +416,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Open Buffet"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Open Buffet"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Open Buffet
               </label>
@@ -454,10 +428,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Drinks Section"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Drinks Section"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Drinks Section
               </label>
@@ -466,8 +440,8 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Parking"
-                  checked={formData.ShowsSelectedCheckboxes.includes("Parking")}
-                  onChange={ShowshandleCheckboxChange}
+                  checked={formData.ServicesSelectedCheckboxes.includes("Parking")}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Parking
               </label>
@@ -476,10 +450,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Accommodations"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Accommodations"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Accommodations (Bridal suite and groom's room)
               </label>
@@ -488,10 +462,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Audio and visual equipment"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Audio and visual equipment"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Audio and visual equipment
               </label>
@@ -500,10 +474,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Event coordination"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Event coordination"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Event Planning coordination
               </label>
@@ -512,10 +486,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Decorations"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Decorations"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Decorations
               </label>
@@ -524,10 +498,10 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="selectedCheckboxes"
                   value="Photography and videograph"
-                  checked={formData.ShowsSelectedCheckboxes.includes(
+                  checked={formData.ServicesSelectedCheckboxes.includes(
                     "Photography and videograph"
                   )}
-                  onChange={ShowshandleCheckboxChange}
+                  onChange={ServiceshandleCheckboxChange}
                 />
                 Photography and videograph
               </label>
