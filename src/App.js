@@ -10,11 +10,11 @@ import TermsOfUse from "./components/TermsOfUse";
 import HallProfile from "./components/HallProfile";
 // import Modal from "./components/Modal ";
 import Footer from "./components/Footer";
-import HallForm from "./components/HallForm";
 import Modal from "./components/Modal";
 import PlanDetails from "./components/PlanDetails";
 import Dashboard from "./components/Dashboard";
 import HeaderDataProfile from "./components/HeaderDataProfile";
+import HallForm from "./components/HallForm";
 
 function App() {
   return (
@@ -23,9 +23,9 @@ function App() {
         <NavbarWithSideBar />
         {/*       <HallProfile/> */}
         <Routes>
-        <Route path="dashboard" element={<Dashboard/>} />
+        <Route path="/AdminDashboard" element={<Dashboard/>} />
+        <Route path="/hallForm" element={<HallForm/>}/>
 
-          <Route path="/hallForm" element={<HallForm />} />
           <Route path="/modal" element={<Modal />} />
           <Route path="/hallDetails" element={<HallProfile />} />
           <Route path="/home" element={<Home1 />} />

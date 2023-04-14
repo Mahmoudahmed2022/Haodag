@@ -7,14 +7,15 @@ import { FaHandsHelping } from "react-icons/fa";
 import { AiOutlineLogout } from "react-icons/ai";
 import { BiPackage } from "react-icons/bi";
 import { FaMale } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 export const SidebarData = [
-  {
-    title: "Dashboard",
-    path: "/dashboard",
-    icon: <GoDashboard />,
-    cName: "nav-text",
-  },
+  // {
+  //   title:"Dashboard",
+  //   path: "/AdminDashboard",
+  //   icon: <GoDashboard />,
+  //   cName: "nav-text",
+  // },
 
   ,
   {
@@ -41,12 +42,12 @@ export const SidebarData = [
     icon: <BiPackage />,
     cName: "nav-text",
   },
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: <FaCog />,
-    cName: "nav-text  ",
-  },
+  // {
+  //   title: "Settings",
+  //   path: "/settings",
+  //   icon: <FaCog />,
+  //   cName: "nav-text  ",
+  // },
   {
     title: " Log Out",
     path: "/ log-out",

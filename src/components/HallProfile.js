@@ -24,6 +24,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import InfoDescription from "./InfoDescription";
 import CommentSection from "./CommentSection";
 import Modal from "./Modal";
+import Slider from "./Slider";
 
 const HallProfile = ({ rating, isFavourite }) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
@@ -146,7 +147,7 @@ const HallProfile = ({ rating, isFavourite }) => {
       <h1 className="hallName">Hall's Name </h1>
       {/* Slider */}
       <div className="imageSlider">
-        <ImageSlider products={products} />
+        <Slider products={products} />
         <div className="mapAndData">
           <InfoForMap
             className="singleInfoMap"

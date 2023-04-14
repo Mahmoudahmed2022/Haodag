@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 70%;
+  width: 85%;
   justify-content: space-evenly;
 }
 .categories button:hover {
@@ -27,7 +27,7 @@
 .categories button {
   border: none;
   background-color: #1d1d1d;
-  width: 25%;
+  width: 20%;
   color: white;
   border-radius: 10px;
   /* box-shadow: 5px 4px #888888; */
@@ -151,4 +151,8 @@
   td, th {
     padding: 8px; /* Padding for cells */
   }
+  .tableUsersData tr {
+    border: 1px solid black;
+  }
+
   

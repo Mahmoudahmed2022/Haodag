@@ -11,16 +11,34 @@
    }
   
   .signup-form1 {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    align-items: center; */
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    z-index: 1000;
+    background-image:url("../components/images/backgroundAddHall.jpg");
+        background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
   }
   
+ 
+
+
+
+
+
   .form-group1 {
     display: flex;
     flex-direction: column;
@@ -31,34 +49,80 @@
         font-size: 18px;
     margin-bottom: 10px;
     }
+  .ContTwoDivInOneRow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .Width47{
+    width: 47%;
+  }
+  .form-group1 input:focus,.form-group1 textarea:focus, .form-group1 select:focus{
+
+    outline: none ;
+        
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);}
   
       .form-group1 input,.form-group1 textarea,.form-group1 select{
 
-    font-size: 16px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 95%;
+       
+    border-radius: 4px;
+    border: 0.01em solid #cbc7c7;
+    padding: 10px 10px;
+    margin: 5px 0 0 0;
+    font-size: 18px;
+    background-color: #eee;
+    margin-bottom: 10px;
+    color: rgb(28, 28, 28);
   }
   
   .addHallbtn {
-    background-color: #008cba;
+    background-color: #b47029;
     color: white;
     font-size: 20px;
     padding: 10px;
     border: none;
     border-radius: 5px;
+    width: 100%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
   }
   
     .addHallbtn:hover {
-    background-color: #005b82;
+    background-color:#9d6427;
   }
-  
+  .contCheckBoxes{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .ShowsHall, .ServicesHall{
+    padding: 10px;
+    width: 45%;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  .AllChecBoxes{    display: flex;
+    justify-content: space-between;}
+    .DivBtnAddHall{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    }
   .inputImages {
     margin-top: 10px;
   }
+  /* .btnSubmitAddHall{
+    width: 100%;
+    padding: 8px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background-color: #314569;
+  } */
   
   .cp {
     display: flex;

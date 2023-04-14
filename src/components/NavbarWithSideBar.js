@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../Css/NavbarWithSideBar.css";
 import { IconContext } from "react-icons";
@@ -13,12 +13,16 @@ import { BiSearch } from "react-icons/bi";
 import user from "./images/user.png";
 import "../Css/App.css";
 import { useNavigate } from "react-router-dom";
+import { GoDashboard } from "react-icons/go";
 
 function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);
   const nav = useNavigate();
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const location = useLocation();
+const IsAdmin = location.pathname.includes("Admin")
 
   return (
     <>
@@ -63,9 +67,18 @@ function NavbarWithSideBar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
+            {IsAdmin&&(
+              <li key="Admin" className="nav-text" >
+              <Link className="aAll  " to="/AdminDashboard">
+              <GoDashboard />
+                <span className="svgColor">Dashboard</span>
+              </Link>
+            </li>
+            )}
+            
+              {SidebarData.map((item, index) => {
+  return (
+                <li key={index} className={`${item.cName} `} >
                   <Link className="aAll  " to={item.path}>
                     {item.icon}
                     <span className="svgColor">{item.title}</span>

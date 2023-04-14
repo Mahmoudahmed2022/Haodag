@@ -6,7 +6,7 @@ import ModalEditClientProfile from "./ModalEditClientProfile";
 import kariem from "./images/user.png";
 import { useState } from "react";
 import "../Css/ProfileData.css";
-import "../Css/MainProfileForAllUsers.css"
+import "../Css/MainProfileForAllUsers.css";
 import "../Css/ClientProfile.scss";
 import {
   MdDirectionsCarFilled,
@@ -17,6 +17,7 @@ import {
 import Cards from "./Cards";
 import axios from "axios";
 import { useEffect } from "react";
+import HallForm2 from "./HallForm";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
 
@@ -119,9 +120,8 @@ const HeaderDataProfile = (props) => {
       </>
     );
   };
-  console.log(isPlanner);
   return (
-    <div className="contProfileAll"> 
+    <div className="contProfileAll">
       <div className="profile-header">
         <div className="divContImgType">
           <img src={kariem} alt="Profile" className="profile-image" />
@@ -135,18 +135,17 @@ const HeaderDataProfile = (props) => {
           </p>
           <div className="social-icons">
             <a href="#">
-              <FaInstagram className="widthHieht"/>
+              <FaInstagram className="widthHieht" />
             </a>
             <a href="#">
-              <FaFacebook className="widthHieht"/>
+              <FaFacebook className="widthHieht" />
             </a>
             <a href="#">
-              <FaTwitter className="widthHieht"/>
+              <FaTwitter className="widthHieht" />
             </a>
           </div>
-         
         </div>
-         <div className="btnsPlannerProf">
+        <div className="btnsPlannerProf">
           <div className="planner-prof-btn-div">
             <Link
               className="btn-flip"
@@ -180,24 +179,34 @@ const HeaderDataProfile = (props) => {
               <ModalAddplan onClose={() => setShow(false)} show={show} />
             </div>
           )}
-          </div>
-      </div>
-  
-      {isPlanner && (
-        
-
-          <div className="profile-content">
-            <h2 className="section-heading">Wedding Plans</h2>
-
-            {plan.slice(0, visible).map(renderCard)}
-            <div className="for-button">
-              {visible < plannerData.length && (
-                <button className="more" onClick={loadMore}>
-                  Load 5 More
-                </button>
-              )}
+          {isOwner && (
+            <div className="planner-prof-btn-div">
+              <Link
+                // onClick={() => setShow(true)}
+                className="btn-flip"
+                data-back="AddHall"
+                data-front="AddHall"
+                to="/hallForm"
+              ></Link>
+              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
+          )}
+        </div>
+      </div>
+
+      {isPlanner && (
+        <div className="profile-content">
+          <h2 className="section-heading">Wedding Plans</h2>
+
+          {plan.slice(0, visible).map(renderCard)}
+          <div className="for-button">
+            {visible < plannerData.length && (
+              <button className="more" onClick={loadMore}>
+                Load 5 More
+              </button>
+            )}
           </div>
+        </div>
       )}
 
       {isOwner && (

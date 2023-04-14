@@ -12,13 +12,15 @@ const Dashboard = () => {
   const api_url = "https://fakestoreapi.com/products";
 
   const getClients = () => {
-    if (client.length === 0) {
-      // check if client data has already been fetched
-      fetch(api_url)
-        .then((res) => res.json())
-        .then((data) => setClient(data))
-        .catch((error) => console.error(error));
-    }
+     if (client.length === 0) {
+    fetch(api_url)
+      .then((res) => res.json())
+      .then((data) => setClient(data))
+      .catch((error) => console.error(error));
+  } else {
+    // Reset client state variable
+    setClient([]);
+  }
   };
 
   const getHallOwner = () => {
@@ -69,6 +71,9 @@ const Dashboard = () => {
         </button>
         <button onClick={() => setSelectedComponent("hallOwner")}>
           <CategoreyInDashboard className="carduser" hallOwner={hallOwner} />
+        </button>
+        <button  onClick={() => setSelectedComponent("client")}>
+          <CategoreyInDashboard className="carduser" client={client} />
         </button>
       </div>
       <div className="usersmap">{content}</div>
