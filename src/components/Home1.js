@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import image10 from "./images/animation.png";
 import "../Css/Home1.css";
 import "../Css/App.css";
@@ -14,8 +14,11 @@ import { MdFastfood } from "react-icons/md";
 import { MdEmojiFoodBeverage } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdDirectionsCarFilled } from "react-icons/md";
+import HallCard from "./HallCard";
 
 function Home() {
+  const location = useLocation();
+  const IsHallOwner = location.pathname.includes("hallowner");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -45,70 +48,83 @@ function Home() {
     allCardData();
   }, []);
 
-  const renderCard = (cardData) => {
-    return (
-      <>
-        <div className="home-hall-container" key={cardData.id}>
-          <div className="home-hall-img-div">
-            <img
-              className="home-hall-img"
-              src={cardData.image}
-              alt={cardData.title}
-            ></img>
-            {cardData.title.slice(0, 20)}
-          </div>
-          <div className="home-hall-body">
-            <Link
-              to="/hallDetails"
-              className="home-details-btn s-d-hover"
-              href="#"
-            >
-              Details
-            </Link>
-          </div>
-        </div>
-      </>
-    );
-  };
+  // const renderCard = (cardData) => {
+  //   return (
+  //     <>
+  //       <div className="home-hall-container" key={cardData.id}>
+  //         <div className="home-hall-img-div">
+  //           <img
+  //             className="home-hall-img"
+  //             src={cardData.image}
+  //             alt={cardData.title}
+  //           ></img>
+  //           {cardData.title.slice(0, 20)}
+  //         </div>
+  //         <div className="home-hall-body">
+  //           <Link
+  //             to="/hallDetails"
+  //             className="home-details-btn s-d-hover"
+  //             href="#"
+  //           >
+  //             Details
+  //           </Link>
+  //         </div>
+  //       </div>
+  //     </>
+  //   );
+  // };
 
   const renderCard2 = (cardData) => {
     return (
       <>
         <div className="containerHalls" key={cardData.id}>
           <div className="RigthAndLeft">
-              <div className="imageForHall">
-                <img className="imginside" src={cardData.image} alt={cardData.title}></img>
-              </div>
+            <div className="imageForHall">
+              <img
+                className="imginside"
+                src={cardData.image}
+                alt={cardData.title}
+              ></img>
+            </div>
             <div className="rightContentInfo">
               <div>
-              <h2>Hall Name</h2>
-              <div className="iconsForDiscription">
-                <MdFastfood />
-                <MdEmojiFoodBeverage />
-                <MdDirectionsCarFilled />
-                <FaParking />
+                <h2>Hall Name</h2>
+                <div className="iconsForDiscription">
+                  <MdFastfood />
+                  <MdEmojiFoodBeverage />
+                  <MdDirectionsCarFilled />
+                  <FaParking />
+                </div>
               </div>
-              </div>
-            
+
               <div className="priceAndLocation">
-              <div className="priceHall">
+                <div className="priceHall">
                   <p>{cardData.price}$</p>
                 </div>
                 <div>
-               
-                <p> <MdLocationPin/> {cardData.title}</p>
+                  <p>
+                    {" "}
+                    <MdLocationPin /> {cardData.title}
+                  </p>
                 </div>
               </div>
-                
             </div>
           </div>
           <div className="lastButtonForDetails">
-              <Link className="lastButtonForDetails-button" to="/hallDetails">Details</Link>
-            </div>
+            <Link className="lastButtonForDetails-button" to="/hallDetails">
+              Details
+            </Link>
+            {IsHallOwner && (
+              <Link className="lastButtonForDetails" to="/AddHall">
+                Edit Hall
+              </Link>
+            )}
+          </div>
         </div>
       </>
     );
   };
+  console.log(IsHallOwner);
   return (
     <>
       <div className="home-landing">
@@ -148,7 +164,9 @@ function Home() {
       <h1 className="headForHalls">Our Recommendation For You</h1>
 
       <div className="home-allhalls-container">
-        {cardData.slice(0, visible).map(renderCard2)}
+        {cardData.slice(0, visible).map((data, index) => (
+          <HallCard key={index} cardData={data} />
+        ))}{" "}
       </div>
       <div className="for-button">
         {visible < cardData.length && (

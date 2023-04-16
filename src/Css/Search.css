@@ -71,7 +71,8 @@ body {
   display: block;
   color: #c7862f;
   height: 20px;
-  width: 40px;
+  width: 20px;
+  /* font-size: 27px; */
 }
 
 .search-btn,
@@ -183,3 +184,91 @@ body {
     width: 300px;
   }
 }
+
+
+/* Styles for the form and its container */
+.search-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.advanced-search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.search-inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.amenity-checkboxes {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* Styles for labels */
+.search-input-container label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Styles for inputs and selects */
+.search-input-container input[type="number"],
+select {
+      /* height: 35px; */
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+}
+
+.search-input-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Styles for the search button */
+.search-btn-div {
+  text-align: center;
+  /* margin-top: 20px; */
+}
+
+.search-btn {
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.s-d-hover:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.search-icon {
+  margin-right: 5px;
+}
+

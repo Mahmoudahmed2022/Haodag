@@ -1,7 +1,28 @@
 
+/* .allHallProfile {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */
+.contactWUs:hover .colorSvg1 {
+  transform: scale(1.2);
+}
 
-
+.whatsap:hover .colorSvg {
+  transform: scale(1.2);
+}
+.gap{
+  display: flex;
+  gap: 10px;
+}
 
 .imageSlider {
   display: flex;
@@ -158,14 +179,35 @@
 }
 .butns{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin: 10px;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* gap: 20px; */
+  /* margin: 10px; */
+}
+.dott button{
+  border: none;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+}
+.btnnextback{
+  border: none !important;
+  background-color: transparent !important;
+  text-decoration: underline !important;
+  color: #243b55 !important;
+
+}
+.btnnextback:hover{
+  background-color: #607d8b !important;
+}
+
+.carousel__dot--selected{
+  background-color: #607d8b !important;
 }
 .groupDots{
   display: flex;
   align-items: center;
+  gap: 2px;
   justify-content: center;
 }
 .button-buttonPrice {
@@ -247,7 +289,6 @@
 @media only screen and (min-width: 993px) {
   .media {
     width: 740px;
-    height: 500px;
   }
 }
 .media {

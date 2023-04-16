@@ -18,6 +18,10 @@ import Cards from "./Cards";
 import axios from "axios";
 import { useEffect } from "react";
 import HallForm2 from "./HallForm";
+import DeleteHall from "./DeleteHall";
+import HallCard from "./HallCard";
+import DeletePlan from "./DeletePlan";
+
 const HeaderDataProfile = (props) => {
   const location = useLocation();
 
@@ -25,6 +29,8 @@ const HeaderDataProfile = (props) => {
   const isOwner = location.pathname.includes("owner");
   const isClient = location.pathname.includes("client");
   const [show, setShow] = useState(false);
+  const [showDeletePlan, setShowDeletePlan] = useState(false);
+
   const [showEdit, setShowEdit] = useState(false);
   const [visible, setVisible] = useState(5);
   const [ownerData, setOwnerData] = useState([]);
@@ -74,52 +80,7 @@ const HeaderDataProfile = (props) => {
       </>
     );
   };
-  const renderCard2 = (cardData) => {
-    return (
-      <>
-        <div className="containerHalls" key={cardData.id}>
-          <div className="RigthAndLeft">
-            <div className="imageForHall">
-              <img
-                className="imginside"
-                src={cardData.image}
-                alt={cardData.title}
-              ></img>
-            </div>
-            <div className="rightContentInfo">
-              <div>
-                <h2>Hall Name</h2>
-                <div className="iconsForDiscription">
-                  <MdFastfood />
-                  <MdEmojiFoodBeverage />
-                  <MdDirectionsCarFilled />
-                  <FaParking />
-                </div>
-              </div>
 
-              <div className="priceAndLocation">
-                <div className="priceHall">
-                  <p>${cardData.price}</p>
-                </div>
-                <div>
-                  <p>
-                    {" "}
-                    <MdLocationPin />
-                    {cardData.title}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="lastButtonForDetails">
-            <Link className="lastButtonForDetails-button" to="/hallDetails">
-              Details
-            </Link>
-          </div>
-        </div>
-      </>
-    );
-  };
   return (
     <div className="contProfileAll">
       <div className="profile-header">
@@ -176,7 +137,27 @@ const HeaderDataProfile = (props) => {
                 data-front="AddPlan"
                 to="#"
               ></Link>
-              <ModalAddplan onClose={() => setShow(false)} show={show} />
+              <ModalAddplan
+                onClose={() => setShow(false)}
+                show={show}
+              />
+              
+            </div>
+            
+          )}
+          {isPlanner && (
+            <div className="planner-prof-btn-div">
+              <Link
+                onClick={() => setShowDeletePlan(true)}
+                className="btn-flip"
+                data-back="DeletePlan"
+                data-front="DeletePlan"
+                
+              ></Link>
+              <DeletePlan
+                onClose={() => setShowDeletePlan(false)}
+                show={showDeletePlan}
+              />
             </div>
           )}
           {isOwner && (
@@ -188,6 +169,20 @@ const HeaderDataProfile = (props) => {
                 data-front="AddHall"
                 to="/hallForm"
               ></Link>
+              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
+            </div>
+          )}
+          {isOwner && (
+            <div className="planner-prof-btn-div">
+              <Link
+                onClick={() => setShow(true)}
+                className="btn-flip"
+                data-back="DeleteHall"
+                data-front="DeleteHall"
+                to="#"
+              ></Link>
+              <DeleteHall onClose={() => setShow(false)} show={show} />
+
               {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
           )}
@@ -212,7 +207,9 @@ const HeaderDataProfile = (props) => {
       {isOwner && (
         <div className="halls">
           <div className="home-allhalls-container">
-            {ownerData.slice(0, visible).map(renderCard2)}
+            {ownerData.slice(0, visible).map((data, index) => (
+              <HallCard key={index} cardData={data} />
+            ))}{" "}
           </div>
           <div className="for-button">
             {visible < ownerData.length && (

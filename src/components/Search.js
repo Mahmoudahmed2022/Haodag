@@ -10,11 +10,43 @@ import axios from "axios";
 function Search() {
   const [halls, setHalls] = useState([]);
   const [visible, setVisible] = useState(5);
+  const [city, setCity] = useState("");
+  const [priceRange, setPriceRange] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [amenities, setAmenities] = useState([]);
+
+  const searchHalls = async (e) => {
+    e.preventDefault();
+
+    // Construct the search query
+    let searchQuery = "https://fakestoreapi.com/products?";
+
+    if (city) {
+      searchQuery += `city=${city}&`;
+    }
+    if (priceRange) {
+      searchQuery += `price_range=${priceRange}&`;
+    }
+    if (capacity) {
+      searchQuery += `capacity=${capacity}&`;
+    }
+    if (amenities.length > 0) {
+      searchQuery += `amenities=${amenities.join(",")}&`;
+    }
+
+    // Send the search request
+    const response = await axios.post(searchQuery);
+    setHalls(response.data);
+  };
+  
+  
+  
   const allHalls = () => {
     axios.get("https://fakestoreapi.com/products").then((data) => {
       setHalls(data.data);
     });
   };
+
   const loadMore = () => {
     setVisible(visible + 5);
   };
@@ -65,32 +97,108 @@ function Search() {
               </div>
             </div>
             <div className="search-form-container">
-              <form className="search-form">
-                <div className="city-div">
-                  <select required className="city-input">
-                    <option value="" disabled selected hidden>
-                      Choose your city...
-                    </option>
-                    <option value="Cairo">Cairo</option>
-                    <option value="Giza">Giza</option>
-                    <option value="Alex">Alex</option>
-                  </select>
-                </div>
+            <form onSubmit={searchHalls} className="advanced-search-form">
+        <div className="search-inputs-container">
+          <div className="search-input-container">
+            <label htmlFor="city">City:</label>
+            <select
+              id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option value="">--Select a city--</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Giza">Giza</option>
+              <option value="Alexandria">Alexandria</option>
+            </select>
+          </div>
 
-                <div className="price-div">
-                  <input
-                    type="number"
-                    placeholder="Type your price"
-                    className="price-input"
-                    required
-                  />
-                </div>
-                <div className="search-btn-div">
-                  <button type="submit" className="search-btn s-d-hover">
-                    <IoMdSearch className="search-icon" />
-                  </button>
-                </div>
-              </form>
+          <div className="search-input-container">
+            <label htmlFor="price-range">Price Range:</label>
+            <select
+              id="price-range"
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+            >
+              <option value="">--Select a price range--</option>
+              <option value="0-500">0-500 EGP</option>
+              <option value="500-1000">500-1000 EGP</option>
+              <option value="1000-2000">1000-2000 EGP</option>
+              <option value="2000+">2000+ EGP</option>
+            </select>
+          </div>
+
+          <div className="search-input-container">
+            <label htmlFor="capacity">Capacity:</label>
+            <input
+              type="number"
+              id="capacity"
+              value={capacity}
+              onChange={(e) => setCapacity(e.target.value)}
+            />
+          </div>
+
+          <div className="search-input-container">
+            <label htmlFor="amenities">Amenities:</label>
+            <div className="amenity-checkboxes">
+              <label>
+                <input
+                  type="checkbox"
+                  value="catering"
+                  checked={amenities.includes("catering")}
+                  onChange={(e) =>
+                    setAmenities((prev) =>
+                      e.target.checked
+                        ? [...prev, e.target.value]
+                        : prev.filter((a) => a !== e.target.value)
+                    )
+                  }
+                />
+                Catering
+              </label>
+
+              <label>
+                <input
+                  type="checkbox"
+                  value="music"
+                  checked={amenities.includes("music")}
+                  onChange={(e) =>
+                    setAmenities((prev) =>
+                      e.target.checked
+                        ? [...prev, e.target.value]
+                        : prev.filter((a) => a !== e.target.value)
+                    )
+                  }
+                />
+                Live Music
+              </label>
+
+              <label>
+                <input
+                  type="checkbox"
+                  value="photography"
+                  checked={amenities.includes("photography")}
+                  onChange={(e) =>
+                    setAmenities((prev) =>
+                      e.target.checked
+                        ? [...prev, e.target.value]
+                        : prev.filter((a) => a !== e.target.value)
+                    )
+                  }
+                />
+                Photography
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="search-btn-div">
+          <button type="submit" className="search-btn s-d-hover">
+            <IoMdSearch className="search-icon" />
+            Search
+          </button>
+        </div>
+      </form>
             </div>
           </div>
         </div>

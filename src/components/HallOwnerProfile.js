@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Routes, Route, useParams, Link } from "react-router-dom";
+import { Routes, Route, useParams, Link, useLocation } from "react-router-dom";
 import omar from "./images/omar.jpg";
 import "../Css/ClientProfile.scss";
 import "../Css/HallOwnerProfile.css";
@@ -12,6 +12,9 @@ import { MdLocationPin } from "react-icons/md";
 import { MdDirectionsCarFilled } from "react-icons/md";
 import HeaderDataProfile from "./HeaderDataProfile";
 function HallOwnerProfile() {
+  const location = useLocation();
+  const IsHallOwner = location.pathname.includes("hallowner");
+  console.log(IsHallOwner)
   const [formData, setFormData] = useState({
     Name: "",
     Address: "",
@@ -117,6 +120,12 @@ function HallOwnerProfile() {
             <Link className="lastButtonForDetails-button" to="/hallDetails">
               Details
             </Link>
+
+            {IsHallOwner && (
+              <div className="planner-prof-btn-div">
+                <Link to="/AddHall">Edit Hall</Link>
+              </div>
+            )}
           </div>
         </div>
       </>
@@ -125,7 +134,7 @@ function HallOwnerProfile() {
   return (
     <>
       <div className="profile-container">
-      <div className="smallParent">
+        <div className="smallParent">
           <HeaderDataProfile formData={formData} />
 
           <div className="halls">

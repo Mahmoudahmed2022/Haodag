@@ -210,22 +210,24 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  gap: 10px;
 }
 .lastButtonForDetails-button:hover{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #1f314b;
 
 }
 
 .lastButtonForDetails-button{
-  width: 10%;
+  width: 100px;
   border: none;
-  background-color: aliceblue;
-  padding: 10px;
-  border-radius: 30px;
+  color: white;
+  background-color: #263e61;
+  padding: 7px;
+  border-radius: 11px;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 600;
 }
 .home-hall-container {
   border: 0.5px solid #afb2b8;
