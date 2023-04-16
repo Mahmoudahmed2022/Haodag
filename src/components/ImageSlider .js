@@ -17,21 +17,29 @@ function ImageSlider(props) {
   // const [images, setImages] = useState([]);
   const products1 = props.products;
 
-  // useEffect(() => {
-  //   axios.get('https://fakestoreapi.com/products')
-  //     .then(response => {
-  //       setImages(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  
 
   return (
     <>
-      <div className="media" >
+      <div className="media">
+       
+        <Carousel width={900} height={400} showArrows>
+          {products1.map((image) => (
+            <img key={image.imdbID} src={image.Poster} alt={image.Title} />
+          ))}
+        </Carousel>
+      </div>
 
-      {/* <CarouselProvider
+     
+    </>
+  );
+}
+
+export default ImageSlider;
+
+
+
+ {/* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={600}
         naturalSlideHeight={400}
@@ -56,25 +64,16 @@ function ImageSlider(props) {
         <DotGroup className="groupDots PureCarousel_DotGroup " />
       </CarouselProvider> */}
 
-
-      <Carousel showThumbs={false} showIndicators={false}>
+        {/* <Carousel showThumbs={false} showIndicators={false}>
         {products1.map((image, index) => (
           <div className="media" key={index} >
             <img  src={image.Poster} alt={image.Title} style={{ width: '100%', height: '100%',borderRadius:'10px' }} />
           </div>
         ))}
-      </Carousel>
+      </Carousel> */}
 
 
-    </div>
-
-      {/* <Carousel width={900} height={400} showArrows autoPlay>
-      {products1.map((image) => (
-        <img key={image.imdbID} src={image.Poster} alt={image.Title} />
-      ))}
-    </Carousel> */}
-
-      {/* <CarouselProvider
+ {/* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={700}
         naturalSlideHeight={400}
@@ -143,8 +142,3 @@ function ImageSlider(props) {
         <ButtonNext>Next</ButtonNext>
         <DotGroup className="PureCarousel_DotGroup " />
       </CarouselProvider> */}
-    </>
-  );
-}
-
-export default ImageSlider;

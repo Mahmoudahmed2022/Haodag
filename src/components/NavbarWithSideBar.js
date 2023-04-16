@@ -51,7 +51,7 @@ const IsAdmin = location.pathname.includes("Admin")
               </div>
             </div>
             <div className="right">
-              <Link className="logo">
+              <Link className="logo" to="/home">
                 <img className="avatar" src={image2} alt="" />
               </Link>
             </div>

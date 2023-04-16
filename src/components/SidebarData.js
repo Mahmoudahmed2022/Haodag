@@ -26,7 +26,7 @@ export const SidebarData = [
   },
   {
     title: "Suggested Halls",
-    path: "/hall",
+    path: "/search",
     icon: <FaHandsHelping />,
     cName: "nav-text",
   },

@@ -147,7 +147,7 @@ const HallProfile = ({ rating, isFavourite }) => {
       <h1 className="hallName">Hall's Name </h1>
       {/* Slider */}
       <div className="imageSlider">
-        <Slider products={products} />
+        <ImageSlider products={products} />
         <div className="mapAndData">
           <InfoForMap
             className="singleInfoMap"

@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../Css/Registration.css";
-import ass from "./images/eye.png";
 function Registration() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -210,7 +209,8 @@ function Registration() {
             className="select-field-AddHall"
             onChange={handleChange}
           >
-            <option value="Customer">Customer</option>
+            <option checked value="">Choose a Role</option>
+            <option value="Client">Client</option>
             <option value="Hall Owner">Hall Owner</option>
             <option value="Wedding Planner">Wedding Planner</option>
           </select>
