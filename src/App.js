@@ -27,8 +27,8 @@ function App() {
         <Route path="/hallForm" element={<HallForm/>}/>
 
           <Route path="/modal" element={<Modal />} />
-          <Route path="/hallDetails" element={<HallProfile />} />
-          <Route path="/home" element={<Home1 />} />
+          <Route path="/hallDetails/:hallId" element={<HallProfile />} />
+          <Route path="/" element={<Home1 />} />
           <Route path="/hall/:hallId" element={<Hall />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
@@ -38,7 +38,7 @@ function App() {
             path="/planner_Profile/:plannerId"
             element={<WeddingPlannerProfile />}
           /> */}
-          <Route path="/test/:param" element={<HeaderDataProfile/>} />
+          <Route path="/test/:param/:id" element={<HeaderDataProfile/>} />
           <Route path="/termsofuse" element={<TermsOfUse />} />{" "}
           {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> */}
           <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />

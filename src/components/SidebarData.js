@@ -20,7 +20,7 @@ export const SidebarData = [
   ,
   {
     title: "Home",
-    path: "/home",
+    path: "/",
     icon: <FaHome />,
     cName: "nav-text",
   },

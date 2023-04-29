@@ -39,7 +39,7 @@ const Modal = (props) => {
 
         <h2 className="headContact">Contact Us</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="FormModal">
           <label htmlFor="name">Name:</label>
           <input
             type="text"

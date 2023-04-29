@@ -57,9 +57,9 @@ function Login() {
               <span className="s-span"></span>
               Submit
             </Link>
-            <a className="register" href="#">
+            <Link className="register" to="/registration">
               new visitor
-            </a>
+            </Link>
           </div>
         </form>
       </div>

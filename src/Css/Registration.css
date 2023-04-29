@@ -84,9 +84,10 @@ gap: 25px;}
   margin-right: 10px;
 }
 
-.radio-buttons-AddHall label:hover {
+
+/* .radio-buttons-AddHall label:hover {
   color: #007bff;
-}
+} */
 
 .select-field-AddHall {
   width: 100%;

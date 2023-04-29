@@ -218,7 +218,7 @@ function Registration() {
         <button type="submit" className="btnAddHall">
           Sign Up
         </button>
-        <Link to="/home" className="cancelBtnReg">
+        <Link to="/" className="cancelBtnReg">
           Cancel
         </Link>
       </form>

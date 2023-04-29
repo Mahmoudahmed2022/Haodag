@@ -68,7 +68,7 @@ function Search() {
           </div>
           <div className="search-hall-body">
             <Link
-              to="/hallDetails"
+              to={`/hallDetails/${hall.id}`}
               className="search-details-btn s-d-hover"
               href="#"
             >

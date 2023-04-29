@@ -51,7 +51,7 @@ const HallCard = (props)=>{
                     </div>
                   </div>
                   <div className="lastButtonForDetails">
-                    <Link className="lastButtonForDetails-button" to="/hallDetails">
+                    <Link className="lastButtonForDetails-button" to={`/hallDetails/${cardData.id}`}>
                       Details
                     </Link>
                     {IsHallOwner && (
