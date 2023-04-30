@@ -15,6 +15,7 @@ import PlanDetails from "./components/PlanDetails";
 import Dashboard from "./components/Dashboard";
 import HeaderDataProfile from "./components/HeaderDataProfile";
 import HallForm from "./components/HallForm";
+import GreatePackages from "./components/GreatePackages";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Routes>
         <Route path="/AdminDashboard" element={<Dashboard/>} />
         <Route path="/hallForm" element={<HallForm/>}/>
+        <Route path="/greatepackages" element={<GreatePackages />} />
 
           <Route path="/modal" element={<Modal />} />
           <Route path="/hallDetails/:hallId" element={<HallProfile />} />

@@ -25,6 +25,7 @@ import InfoDescription from "./InfoDescription";
 import CommentSection from "./CommentSection";
 import Modal from "./Modal";
 import Slider from "./Slider";
+import ModalForAskToBook from "./ModalForAskToBook";
 
 const HallProfile = ({ rating, isFavourite }) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
@@ -187,7 +188,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
               
-              <button className="askBooking"><BiMailSend className="colorSvg1" />Ask To Book</button>
+              <Link className="askBooking" onClick={() => setShow(true)}><BiMailSend className="colorSvg1" />Ask To Book</Link>
+              <ModalForAskToBook   onClose= {()=>setShow(false)} show = {show}/>
             </div>
             
           </div>

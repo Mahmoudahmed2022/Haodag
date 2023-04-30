@@ -255,11 +255,11 @@ body {
 .home-allhalls-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 80px;
-  /* justify-content: space-evenly; */
+  justify-content: center;
   align-items: center;
-  width: inherit;
+  gap: 40px;
 }
 .home-details-btn {
   width: 80%;
@@ -486,3 +486,10 @@ body {
   box-shadow: 0 0 5px #243b55, 0 0 25px #243b55, 0 0 50px #243b55,
     0 0 100px #243b55;
 }
+.contTrashAndName{display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;}
+  .W90{
+    width: 90%;
+  }

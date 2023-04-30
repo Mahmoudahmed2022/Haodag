@@ -15,6 +15,7 @@ import { MdEmojiFoodBeverage } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdDirectionsCarFilled } from "react-icons/md";
 import HallCard from "./HallCard";
+import NewCardTemplate from "./NewCardTemplate";
 
 function Home() {
   const location = useLocation();
@@ -165,7 +166,7 @@ function Home() {
 
       <div className="home-allhalls-container">
         {cardData.slice(0, visible).map((data, index) => (
-          <HallCard key={index} cardData={data} />
+          <NewCardTemplate key={index} cardData={data} />
         ))}{" "}
       </div>
       <div className="for-button">
@@ -203,44 +204,48 @@ function Home() {
           <div className="right-form">
             <div className="login-box1">
               <h2 className="login-title">Contact Us</h2>
-              <form className="login-form1" onSubmit={handleSubmit}>
-                <div className="user-box1">
-                  <FaUserAlt className="svg1" />
-                  <input
-                    type="text"
-                    name=""
-                    className="email-input1 e-p-input1"
-                    required=""
-                    onChange={(e) => setName(e.target.value)}
-                  />
+              <form className="login-form1" action={`mailto:Haowdag@gmail.com?subject=New message from ${name}&body=${message}`} method="post">
+  <div className="user-box1">
+    <FaUserAlt className="svg1" />
+    <input
+      type="text"
+      name=""
+      className="email-input1 e-p-input1"
+      required=""
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+    <label className="e-p-label">Name</label>
+  </div>
+  {/* <div className="user-box1">
+    <HiOutlineMail className="svg1" />
+    <input
+      type="email"
+      name=""
+      required=""
+      className="password-input1 e-p-input1"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+    <label className="e-p-label">Email</label>
+  </div> */}
+  <div className="user-box1">
+    <label className="textArea">Write Your Message</label>
+    <input
+      type="text"
+      name=""
+      required=""
+      className="password-input1 e-p-input1"
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+    />
+  </div>
+  <button className="login-submit1 submit1" type="submit">
+    Send
+  </button>
+</form>
 
-                  <label className="e-p-label">Name</label>
-                </div>
-                <div className="user-box1">
-                  <HiOutlineMail className="svg1" />
-                  <input
-                    type="email"
-                    name=""
-                    required=""
-                    className="password-input1 e-p-input1"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <label className="e-p-label">Email</label>
-                </div>
-                <div className="user-box1">
-                  <label className="textArea">Write Your Message</label>
-                  <input
-                    type="text"
-                    name=""
-                    required=""
-                    className="password-input1 e-p-input1"
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </div>
-                <Link className="login-submit1 submit1" to="/WeddingPlanners">
-                  Send
-                </Link>
-              </form>
+
             </div>
           </div>
         </div>
