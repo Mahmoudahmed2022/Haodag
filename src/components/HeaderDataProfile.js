@@ -57,14 +57,14 @@ const HeaderDataProfile = (props) => {
       setOwnerData(data.data);
     });
   };
-  function deletePlan(){
-    fetch(`https://fakestoreapi.com/products/${plan.id}`,{
-      method:"DELETE",
-    }).then(res=>{
-      if(res.ok){
-        window.location.reload()
-      }else alert('Error Happened Please Try Again Later')
-    })
+  function deletePlan() {
+    fetch(`https://fakestoreapi.com/products/${plan.id}`, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        window.location.reload();
+      } else alert("Error Happened Please Try Again Later");
+    });
   }
   useEffect(() => {
     fetchPlannerData();
@@ -81,24 +81,27 @@ const HeaderDataProfile = (props) => {
         <div className="planD" key={plan.id}>
           <div className="wrapper">
             {/* <div class="banner-image"> </div> */}
-            <img src={plan.image} alt={plan.title}
-            className="banner-image"
-            //  className="plan-image" 
-             />
-             <div className="pad20">
-             <h1> {plan.title}</h1>
-            <p>{plan.description}</p>
-             </div>
-             <div className="button-wrapper">
-          
-          <Link  to={`/Plandetails/${plan.id}`} className="btnForPlan outline">DETAILS</Link>
-        </div>
-        <div>{isPlanner && <FaTrash onClick={deletePlan} />}</div>
-        
+            <img
+              src={plan.image}
+              alt={plan.title}
+              className="banner-image"
+              //  className="plan-image"
+            />
+            <div className="pad20">
+              <h1> {plan.title}</h1>
+              <p>{plan.description}</p>
+            </div>
+            <div className="button-wrapper">
+              <Link
+                to={`/Plandetails/${plan.id}`}
+                className="btnForPlan outline"
+              >
+                DETAILS
+              </Link>
+            </div>
+            <div>{isPlanner && <FaTrash onClick={deletePlan} />}</div>
           </div>
-          
-        </div>
-        {" "}
+        </div>{" "}
         {/* <div className="plan" key={plan.id}>
           // <img src={plan.image} alt={plan.title} className="plan-image" />
           // {isPlanner && <FaTrash onClick={deletePlan} />}
@@ -171,13 +174,8 @@ const HeaderDataProfile = (props) => {
                 data-front="AddPlan"
                 to="#"
               ></Link>
-              <ModalAddplan
-                onClose={() => setShow(false)}
-                show={show}
-              />
-              
+              <ModalAddplan onClose={() => setShow(false)} show={show} />
             </div>
-            
           )}
           {/* {isPlanner && (
             <div className="planner-prof-btn-div">
@@ -206,6 +204,18 @@ const HeaderDataProfile = (props) => {
               {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
           )}
+          {isOwner && (
+            <div className="planner-prof-btn-div">
+              <Link
+                // onClick={() => setShow(true)}
+                className="btn-flip reservation-btn"
+                data-back="Reservations"
+                data-front="Reservations"
+                to="/Reservations"
+              ></Link>
+              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
+            </div>
+          )}
           {/* {isOwner && (
             <div className="planner-prof-btn-div">
               <Link
@@ -224,19 +234,17 @@ const HeaderDataProfile = (props) => {
 
       {isPlanner && (
         <>
-        <h2 className="section-heading">Wedding Plans</h2>
-        <div className="profile-content">
-          
-
-          {plan.slice(0, visible).map(renderCard)}
-          <div className="for-button">
-            {visible < plannerData.length && (
-              <button className="more" onClick={loadMore}>
-                Load 5 More
-              </button>
-            )}
+          <h2 className="section-heading">Wedding Plans</h2>
+          <div className="profile-content">
+            {plan.slice(0, visible).map(renderCard)}
+            <div className="for-button">
+              {visible < plannerData.length && (
+                <button className="more" onClick={loadMore}>
+                  Load 5 More
+                </button>
+              )}
+            </div>
           </div>
-        </div>
         </>
       )}
 

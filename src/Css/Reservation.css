@@ -1,0 +1,106 @@
+.reserv-big-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.reserv-sml-cont {
+  border-radius: 10px;
+  background: #616161;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 550px;
+  margin: auto;
+  margin-bottom: 50px;
+  transition: all 0.2s ease-in-out;
+}
+.reserv-sml-cont:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+.reserve-user-pic {
+  display: flex;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  filter: drop-shadow(0 0 8px #c7862f);
+  margin-right: 100px;
+}
+.reserve-hall-pic {
+  width: 95%;
+  height: 200px;
+  border-radius: 10px;
+}
+.buttons {
+  display: flex;
+  margin: 10px;
+}
+.accept-btn {
+  color: #fff !important;
+  background-color: #4caf50 !important;
+  width: 49%;
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.decline-btn {
+  color: #fff !important;
+  background-color: #f44336 !important;
+  width: 49%;
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.reserve-btn {
+  margin: 5px;
+}
+.reserve-tit {
+  display: flex;
+  justify-content: center;
+}
+.user-div {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 50px;
+}
+
+.user-info-div {
+  display: flex;
+  flex-direction: column;
+}
+.user-pic-cont,
+.user-info-div,
+.user-div,
+.hall-name {
+  color: #fff;
+  font-size: 16px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+.user-pic-cont,
+.user-info-div {
+  width: 100px;
+  margin-right: 20px;
+}
+.reserve-btn:hover {
+  color: #000 !important;
+  background-color: #f1f1f1 !important;
+}

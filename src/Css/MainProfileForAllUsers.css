@@ -1,13 +1,11 @@
-.widthHieht{
-
-    width: 50%;
-    height: 50%;
+.widthHieht {
+  width: 50%;
+  height: 50%;
 }
 
-
-                                /* Client  */
-  .cover-cont {
-    /* width: 100%;
+/* Client  */
+.cover-cont {
+  /* width: 100%;
     height: 250px;
     overflow: hidden;
     display: flex;
@@ -15,265 +13,252 @@
     background-repeat: no-repeat;
     background-image: url("../components/images/cover.jpg");
     background-size: cover; */
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    display: flex;
-    /* justify-content: right; */
-    background-repeat: no-repeat;
-    background-image: url("../components/images/profileimage.jpg");
-    background-size: cover;
-  }
-  .client-profile-photo-cont {
-    /* height: 100%;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  /* justify-content: right; */
+  background-repeat: no-repeat;
+  background-image: url("../components/images/profileimage.jpg");
+  background-size: cover;
+}
+.client-profile-photo-cont {
+  /* height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: end;
     background-color: rgb(108, 119, 136, 0.5); */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    background-color: rgb(108, 119, 136, 0.5);
-  }
-  
-  .client-profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 2px solid var(--main-color);
-    filter: drop-shadow(0 0 8px #c7862f);
-    margin-right: 100px;
-    margin-bottom: -20px;
-    position: absolute;
-  }
-  .pic-client-cont {
-    width: 25%;
-  }
-  .client-info {
-   
-  
-    width: 100%;
-    overflow: auto;
-    flex-wrap: wrap;
-    background-color: rgb(236, 244, 236);
-    padding-top: 20px;
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: center;
-  }
-  .contentProf{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-  .editAndContactForProf{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 90%;
-  }
-  .prof-name {
-    
-    background-color: rgb(108, 119, 136, 0.5);
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding-bottom: 0;
-  }
-  .usr-name {
-    font-size: 20px;
-    font-weight: 600;
-  }
-  .role-type {
-    font-size: 20px;
-    margin-top: 10px;
-  }
-  .info-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .sml-cont {
-    display: flex;
-    flex-direction: row;
-    margin: 15px;
-    width: 500px;
-    align-items: flex-start;
-    justify-content: space-between;
-    box-shadow: 0 6px 15px #555;
-    border-radius: 3px;
-    font: bolder;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-  .all-label {
-    display: flex;
-    margin: 10px;
-  }
-  .inputLable{
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    justify-content: center;
-    align-items: center;
-  }
-  .inputLable label{
-    font-size: 18px;
-    display: flex;
-    align-items: flex-start;
-    width: 87%;}
-  .allLable{
-      
-    width: 85%;
-    box-shadow: 0 3px 8px #555;
-    border-radius: 4px;
-    border: 0.01em solid #cbc7c7;
-    padding: 10px 10px;
-    margin: 5px 0 0 0;
-    font-size: 16px;
-    background-color: #eeeeee5c;
-    margin-bottom: 10px;
-    color: rgb(28, 28, 28);
-  }
-  .deals-tit {
-    text-align: center;
-  }
-  .booking-history {
-    height: auto;
-  }
-  .prof-btn-div {
-    display: flex;
-    flex-direction: row;
-    margin: 15px;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .booking-history {
-    background-color: rgb(236, 244, 236);
-    border-top: solid #c7862f;
-    padding-top: 50px;
-  }
-  .deals-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  background-color: rgb(108, 119, 136, 0.5);
+}
 
+.client-profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  filter: drop-shadow(0 0 8px #c7862f);
+  margin-right: 100px;
+  margin-bottom: -20px;
+  position: absolute;
+}
+.pic-client-cont {
+  width: 25%;
+}
+.reservation-btn {
+  font-size: 13px;
+}
+.client-info {
+  width: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: rgb(236, 244, 236);
+  padding-top: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+.contentProf {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.editAndContactForProf {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90%;
+}
+.prof-name {
+  background-color: rgb(108, 119, 136, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 0;
+}
+.usr-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.role-type {
+  font-size: 20px;
+  margin-top: 10px;
+}
+.info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.sml-cont {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  width: 500px;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: 0 6px 15px #555;
+  border-radius: 3px;
+  font: bolder;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.all-label {
+  display: flex;
+  margin: 10px;
+}
+.inputLable {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.inputLable label {
+  font-size: 18px;
+  display: flex;
+  align-items: flex-start;
+  width: 87%;
+}
+.allLable {
+  width: 85%;
+  box-shadow: 0 3px 8px #555;
+  border-radius: 4px;
+  border: 0.01em solid #cbc7c7;
+  padding: 10px 10px;
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  background-color: #eeeeee5c;
+  margin-bottom: 10px;
+  color: rgb(28, 28, 28);
+}
+.deals-tit {
+  text-align: center;
+}
+.booking-history {
+  height: auto;
+}
+.prof-btn-div {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.booking-history {
+  background-color: rgb(236, 244, 236);
+  border-top: solid #c7862f;
+  padding-top: 50px;
+}
+.deals-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-            /* HallOwner */
+/* HallOwner */
 
+.hallowner-cover-cont {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: right;
+  background-image: url("../components/images/chairs.jpg");
+  background-color: rgb(108, 119, 136, 0.5);
+  background-size: cover;
+}
 
+.hallowner-profile-photo-cont {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  background-color: rgb(108, 119, 136, 0.5);
+}
 
+.hallowner-profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  filter: drop-shadow(0 0 8px #c7862f);
+  margin-right: 100px;
+  margin-bottom: -20px;
+  position: absolute;
+}
+.pic-hallowner-cont {
+  width: 100%;
+}
+.hallowner-info {
+  width: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: rgb(236, 244, 236);
+  padding-top: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+.hallowner-div {
+  display: flex;
+  flex-direction: column;
+  width: 250%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  background-color: rgb(108, 119, 136, 0.5);
+}
+.hallowner-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.role-type {
+  font-size: 20px;
+  margin-top: 10px;
+}
 
-            .hallowner-cover-cont {
-                width: 100%;
-                height: 250px;
-                overflow: hidden;
-                display: flex;
-                justify-content: right;
-                background-image: url("../components/images/chairs.jpg");
-                background-color: rgb(108, 119, 136, 0.5);
-                background-size: cover;
-              }
-              
-              .hallowner-profile-photo-cont {
-                height: 100%;
-                display: flex;
-                justify-content: flex-end;
-                align-items: end;
-                background-color: rgb(108, 119, 136, 0.5);
-              }
-              
-              .hallowner-profile-photo {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                border: 2px solid var(--main-color);
-                filter: drop-shadow(0 0 8px #c7862f);
-                margin-right: 100px;
-                margin-bottom: -20px;
-                position: absolute;
-              }
-              .pic-hallowner-cont {
-                width: 100%;
-              }
-              .hallowner-info {
-                width: 100%;
-                overflow: auto;
-                flex-wrap: wrap;
-                background-color: rgb(236, 244, 236);
-                padding-top: 20px;
-                padding-bottom: 50px;
-                display: flex;
-                justify-content: center;
-              }
-              .hallowner-div {
-                display: flex;
-                flex-direction: column;
-                width: 250%;
-                align-items: flex-end;
-                justify-content: flex-end;
-                padding-bottom: 20px;
-                background-color: rgb(108, 119, 136, 0.5);
-              }
-              .hallowner-name {
-                font-size: 20px;
-                font-weight: 600;
-              }
-              .role-type {
-                font-size: 20px;
-                margin-top: 10px;
-              }
-              
-              .hallowner-sml-cont {
-                display: flex;
-                flex-direction: row;
-                margin: 15px;
-                width: 500px;
-                align-items: flex-start;
-                justify-content: space-between;
-                box-shadow: 0 6px 15px #555;
-                /* background-color: #a8acb1; */
-                border-radius: 3px;
-                font: bolder;
-                border-top: none;
-                border-left: none;
-                border-right: none;
-              }
-              .hallowner-all-label {
-                display: flex;
-                margin: 10px;
-              }
-              
-              .hallowner-prof-btn-div {
-                display: flex;
-                flex-direction: row;
-                margin: 15px;
-                align-items: flex-start;
-                justify-content: center;
-              }
-              
+.hallowner-sml-cont {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  width: 500px;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: 0 6px 15px #555;
+  /* background-color: #a8acb1; */
+  border-radius: 3px;
+  font: bolder;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.hallowner-all-label {
+  display: flex;
+  margin: 10px;
+}
 
+.hallowner-prof-btn-div {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  align-items: flex-start;
+  justify-content: center;
+}
 
+/* weddingPlanner */
 
-
-
-
-
-                        /* weddingPlanner */
-
-
-                        /* .profile-container {
+/* .profile-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -329,7 +314,7 @@
     height: 200px;
   } */
 
-  /* .profile-container {
+/* .profile-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 50px;
@@ -401,233 +386,233 @@
   .plan-grid {
   }   */
 
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    animation-name: fadeIn;
-    animation-duration: 1s;
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+.smallParent {
+  width: 80%;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
   }
-  .smallParent{
-    width: 80%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-1rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .profile-header {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  
-  .profile-image {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .profile-details {
-    display: flex;
-    flex-direction: column;
-  }
-  .divContImgType{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .profile-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .profile-bio {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .social-icons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: #fff;
-    margin-right: 1rem;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .social-icons a:hover {
-    transform: scale(1.2);
-  }
-  .nameUser{
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .plan {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 1.5rem;
-    animation-name: slideIn;
-    animation-duration: 1s;
-    padding: 20px;
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-1rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  .plan-image {
-    width: 20rem;
-    height: 18rem;
-    object-fit: cover;
-    border-radius: 0.5rem 0 0 0.5rem;
-  }
-  
-  .plan-details {
-    padding: 1rem;
-  }
-  
-  .plan-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .plan-description {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .plan-price {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  .planD {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f5f5f5;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .banner-image {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .wrapper h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .wrapper p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-  
-  .button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .btnForPlan {
-    display: inline-block;
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none;
-  }
-  
-  .btnForPlan:hover {
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .outline {
-    background-color: transparent;
-    color: #333;
-  }
-  
+}
 
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  justify-content: space-evenly;
+  width: 100%;
+}
 
-.contProfileAll{display: flex;
+.profile-image {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+}
+.divContImgType {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.profile-bio {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+.nameUser {
+  font-size: 16px;
+  font-weight: bold;
+}
+.plan {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  animation-name: slideIn;
+  animation-duration: 1s;
+  padding: 20px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.plan-image {
+  width: 20rem;
+  height: 18rem;
+  object-fit: cover;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.plan-details {
+  padding: 1rem;
+}
+
+.plan-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.plan-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.planD {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.banner-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.wrapper h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.wrapper p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btnForPlan {
+  display: inline-block;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.btnForPlan:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.outline {
+  background-color: transparent;
+  color: #333;
+}
+
+.contProfileAll {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
   min-height: calc(100vh - 250px);
 
-  margin: auto;}
-  
-  .planner-prof-btn-div{
-    margin: 0 0 10px 0;
-  }
-  .profile-content{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
+  margin: auto;
+}
+
+.planner-prof-btn-div {
+  margin: 0 0 10px 0;
+}
+.profile-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

@@ -16,7 +16,8 @@ import Dashboard from "./components/Dashboard";
 import HeaderDataProfile from "./components/HeaderDataProfile";
 import HallForm from "./components/HallForm";
 import GreatePackages from "./components/GreatePackages";
-
+import AddPackage from "./components/AddPackage";
+import Reservations from "./components/Reservations";
 function App() {
   return (
     <div className="App">
@@ -24,10 +25,10 @@ function App() {
         <NavbarWithSideBar />
         {/*       <HallProfile/> */}
         <Routes>
-        <Route path="/AdminDashboard" element={<Dashboard/>} />
-        <Route path="/hallForm" element={<HallForm/>}/>
-        <Route path="/greatepackages" element={<GreatePackages />} />
-
+          <Route path="/AdminDashboard" element={<Dashboard />} />
+          <Route path="/hallForm" element={<HallForm />} />
+          <Route path="/greatepackages" element={<GreatePackages />} />
+          <Route path="/addpackage" element={<AddPackage />} />
           <Route path="/modal" element={<Modal />} />
           <Route path="/hallDetails/:hallId" element={<HallProfile />} />
           <Route path="/" element={<Home1 />} />
@@ -40,10 +41,12 @@ function App() {
             path="/planner_Profile/:plannerId"
             element={<WeddingPlannerProfile />}
           /> */}
-          <Route path="/test/:param/:id" element={<HeaderDataProfile/>} />
-          <Route path="/termsofuse" element={<TermsOfUse />} />{" "}
-          {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> */}
           <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
+          <Route path="/test/:param/:id" element={<HeaderDataProfile />} />
+          <Route path="/termsofuse" element={<TermsOfUse />} />
+          <Route path="/Reservations" element={<Reservations />} />
+
+          {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> 
           {/* <Route path="/plannerprofile" element={<WeddingPlannerProfile />} /> */}
         </Routes>
 
