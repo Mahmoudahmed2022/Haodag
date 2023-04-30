@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import "../Css/Registration.css";
 function Registration() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
+    // firstName: "",
+    // lastName: "",
+    name: "",
     email: "",
     password: "",
     verifyPassword: "",
-    address: "",
+    // address: "",
     nationalID: "",
     phone: "",
     gender: "",
@@ -55,7 +55,7 @@ function Registration() {
       <h2 className="h2AddHall">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="ContTwoDivInOneLine">
-          <div className="form-group-AddHall animated Width47">
+          {/* <div className="form-group-AddHall animated Width47">
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
@@ -76,15 +76,15 @@ function Registration() {
               required
               onChange={handleChange}
             />
-          </div>
+          </div> */}
         </div>
         <div className="form-group-AddHall animated">
-          <label htmlFor="userName">User Name</label>
+          <label htmlFor="userName">Name</label>
           <input
             type="text"
             className="input-field-AddHall"
             id="userName"
-            name="userName"
+            name="name"
             required
             onChange={handleChange}
           />
@@ -145,7 +145,7 @@ function Registration() {
           
         </div>
 
-        <div className="form-group-AddHall animated">
+        {/* <div className="form-group-AddHall animated">
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -155,7 +155,7 @@ function Registration() {
             required
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="form-group-AddHall animated">
           <label htmlFor="nationalID">National ID</label>
           <input

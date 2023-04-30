@@ -8,6 +8,8 @@ import { useState } from "react";
 import "../Css/ProfileData.css";
 import "../Css/MainProfileForAllUsers.css";
 import "../Css/ClientProfile.scss";
+import { FaTrash } from "react-icons/fa";
+
 import {
   MdDirectionsCarFilled,
   MdEmojiFoodBeverage,
@@ -55,6 +57,15 @@ const HeaderDataProfile = (props) => {
       setOwnerData(data.data);
     });
   };
+  function deletePlan(){
+    fetch(`https://fakestoreapi.com/products/${plan.id}`,{
+      method:"DELETE",
+    }).then(res=>{
+      if(res.ok){
+        window.location.reload()
+      }else alert('Error Happened Please Try Again Later')
+    })
+  }
   useEffect(() => {
     fetchPlannerData();
     fetchplan();
@@ -67,16 +78,39 @@ const HeaderDataProfile = (props) => {
   const renderCard = (plan) => {
     return (
       <>
-        <div className="plan" key={plan.id}>
-          <img src={plan.image} alt={plan.title} className="plan-image" />
-          <div className="plan-details">
-            <h3 className="plan-title">{plan.title}</h3>
-            <p className="plan-description">{plan.description}</p>
-            <p className="plan-price">
-              <strong>Price:</strong> {plan.price}$
-            </p>
-          </div>
+        <div className="planD" key={plan.id}>
+          <div className="wrapper">
+            {/* <div class="banner-image"> </div> */}
+            <img src={plan.image} alt={plan.title}
+            className="banner-image"
+            //  className="plan-image" 
+             />
+             <div className="pad20">
+             <h1> {plan.title}</h1>
+            <p>{plan.description}</p>
+             </div>
+             <div className="button-wrapper">
+          
+          <Link  to={`/Plandetails/${plan.id}`} className="btnForPlan outline">DETAILS</Link>
         </div>
+        <div>{isPlanner && <FaTrash onClick={deletePlan} />}</div>
+        
+          </div>
+          
+        </div>
+        {" "}
+        {/* <div className="plan" key={plan.id}>
+          // <img src={plan.image} alt={plan.title} className="plan-image" />
+          // {isPlanner && <FaTrash onClick={deletePlan} />}
+          //{" "}
+          <div className="plan-details">
+            // <h3 className="plan-title">{plan.title}</h3>
+            // <p className="plan-description">{plan.description}</p>
+            // <p className="plan-price">// Price: {plan.price}$ // </p>
+            //{" "}
+          </div>
+          //{" "}
+        </div> */}
       </>
     );
   };
@@ -145,7 +179,7 @@ const HeaderDataProfile = (props) => {
             </div>
             
           )}
-          {isPlanner && (
+          {/* {isPlanner && (
             <div className="planner-prof-btn-div">
               <Link
                 onClick={() => setShowDeletePlan(true)}
@@ -159,7 +193,7 @@ const HeaderDataProfile = (props) => {
                 show={showDeletePlan}
               />
             </div>
-          )}
+          )} */}
           {isOwner && (
             <div className="planner-prof-btn-div">
               <Link
@@ -172,7 +206,7 @@ const HeaderDataProfile = (props) => {
               {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
           )}
-          {isOwner && (
+          {/* {isOwner && (
             <div className="planner-prof-btn-div">
               <Link
                 onClick={() => setShow(true)}
@@ -183,15 +217,16 @@ const HeaderDataProfile = (props) => {
               ></Link>
               <DeleteHall onClose={() => setShow(false)} show={show} />
 
-              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
-          )}
+          )} */}
         </div>
       </div>
 
       {isPlanner && (
+        <>
+        <h2 className="section-heading">Wedding Plans</h2>
         <div className="profile-content">
-          <h2 className="section-heading">Wedding Plans</h2>
+          
 
           {plan.slice(0, visible).map(renderCard)}
           <div className="for-button">
@@ -202,6 +237,7 @@ const HeaderDataProfile = (props) => {
             )}
           </div>
         </div>
+        </>
       )}
 
       {isOwner && (

@@ -1,0 +1,54 @@
+.CardContainer{
+    width: 600px;
+    height: 300px;
+    background-color: beige;
+    display: flex;
+    gap: 10px;
+    border: 1px solid beige;
+    border-radius: 10px;
+
+}
+.CardContainer:hover{
+    box-shadow: 6px 6px 15px #a8acb1;
+
+}
+.ContImgCard{
+    width: 40%;
+    height: 100%;
+}
+.ContImgCard img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}
+.AllRightData{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;}
+.AllRightData .ContH3AndTrash h3{}
+.AllRightData .ContH3AndTrash svg{
+
+}
+.AllRightData p{
+    text-align: justify;
+}
+.AllRightData a{
+    box-sizing: border-box;
+    padding: 6px 25px;
+    background-color: transparent;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid rgb(40, 40, 210);
+    color: rgb(40, 40, 210);
+    border-radius: 20px;
+}
+.AllRightData a:hover{
+    color: beige;
+    background-color: rgb(40, 40, 210);
+    cursor: pointer;
+}
