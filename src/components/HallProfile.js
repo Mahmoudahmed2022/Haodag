@@ -30,6 +30,7 @@ import ModalForAskToBook from "./ModalForAskToBook";
 const HallProfile = ({ rating, isFavourite }) => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [show, setShow] = useState(false);
+  const [showBook, setShowBook] = useState(false);
 
   const [openModal, setOpenModal] = useState("false");
   let phoneNumber = "0";
@@ -188,8 +189,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
               
-              <Link className="askBooking" onClick={() => setShow(true)}><BiMailSend className="colorSvg1" />Ask To Book</Link>
-              <ModalForAskToBook   onClose= {()=>setShow(false)} show = {show}/>
+              <Link className="askBooking" onClick={() => setShowBook(true)}><BiMailSend className="colorSvg1" />Ask To Book</Link>
+              <ModalForAskToBook   onClose= {()=>setShowBook(false)} show = {showBook}/>
             </div>
             
           </div>
