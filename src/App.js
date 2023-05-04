@@ -1,23 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Search from "./components/Search";
+import Search from "./components/Main Pages/Search";
 import Hall from "./components/Hall";
-import Home1 from "./components/Home1";
-import Login from "./components/Login";
-import WeddingPlanners from "./components/WeddingPlanners";
-import Registration from "./components/Registration";
-import NavbarWithSideBar from "./components/NavbarWithSideBar";
-import TermsOfUse from "./components/TermsOfUse";
-import HallProfile from "./components/HallProfile";
+import Home1 from "./components/Main Pages/Home1";
+import Login from "./components/Main Pages/Login";
+import WeddingPlanners from "./components/Main Pages/WeddingPlanners";
+import Registration from "./components/Main Pages/Registration";
+import NavbarWithSideBar from "./components/Main Pages/NavbarWithSideBar";
+import TermsOfUse from "./components/Main Pages/TermsOfUse";
+import HallProfile from "./components/Secondary Pages/Hall/HallProfile";
 // import Modal from "./components/Modal ";
-import Footer from "./components/Footer";
-import Modal from "./components/Modal";
-import PlanDetails from "./components/PlanDetails";
-import Dashboard from "./components/Dashboard";
-import HeaderDataProfile from "./components/HeaderDataProfile";
-import HallForm from "./components/HallForm";
-import GreatePackages from "./components/GreatePackages";
-import AddPackage from "./components/AddPackage";
-import Reservations from "./components/Reservations";
+import Footer from "./components/Secondary Pages/Footer";
+import Modal from "./components/Secondary Pages/Modals/Modal";
+import PlanDetails from "./components/Secondary Pages/Plan/PlanDetails";
+import Dashboard from "./components/Main Pages/Dashboard";
+import HeaderDataProfile from "./components/Secondary Pages/HeaderDataProfile";
+import HallForm from "./components/Secondary Pages/Hall/HallForm";
+import GreatePackages from "./components/Main Pages/GreatePackages";
+import AddPackage from "./components/Secondary Pages/Hall/AddPackage";
+import Reservations from "./components/Secondary Pages/Reservations";
 function App() {
   return (
     <div className="App">

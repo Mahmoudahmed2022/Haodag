@@ -4,7 +4,7 @@ import user2 from "./images/user2.png";
 import { useParams } from "react-router-dom";
 import "../Css/Hall.css";
 import axios from "axios";
-import Footer from "./Footer";
+import Footer from "./Secondary Pages/Footer";
 function Hall() {
   const parms = useParams();
   const [hall, setHall] = useState({});
