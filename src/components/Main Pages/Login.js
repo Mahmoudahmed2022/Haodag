@@ -1,25 +1,43 @@
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
 
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
+  const navigate = useNavigate()
+const [formData,setFormData] = useState({
+  email:"",
+  password:""
+})
+const [loginData,setLoginData]=useState(null);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const getLoginData = (e)=>{
+  setFormData(prev=>{
+    return {
+      ...prev,
+      [e.target.name]:e.target.value
+    }
+  })
+
+}
+console.log(formData);
   const handleSubmit = (event) => {
-    console.log(email, password);
     event.preventDefault();
     axios
-      .post("https://fakestoreapi.com/products", { email, password })
+      .post("https://fakestoreapi.com/products", formData)
       .then((data) => {
-        console.log(data);
+        setLoginData(data);
       });
   };
+  useEffect(()=>{
+    if(loginData){
+      navigate(`/`, { state: { data: loginData } });
+    }
+  },[loginData])
   return (
     <div className="cont">
       <div className="login-box">
@@ -29,10 +47,10 @@ function Login() {
             <FaUserAlt className="svg1" />
             <input
               type="email"
-              name=""
+              name="email"
               className="email-input e-p-input"
               required=""
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={getLoginData}
             />
 
             <label className="e-p-label">Email</label>
@@ -41,10 +59,10 @@ function Login() {
             <FaLock className="svg1" />
             <input
               type="password"
-              name=""
+              name="password"
               required=""
               className="password-input e-p-input"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={getLoginData}
             />
             <label className="e-p-label">Password</label>
           </div>
