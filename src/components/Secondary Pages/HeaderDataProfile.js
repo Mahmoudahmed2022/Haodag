@@ -157,7 +157,8 @@ const HeaderDataProfile = (props) => {
               formData={clientData}
             />
           </div>
-          {isPlanner && (
+          {isPlanner && 
+          (
             <div className="planner-prof-btn-div">
               <Link
                 onClick={() => setShow(true)}

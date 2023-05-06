@@ -14,7 +14,7 @@ import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 
 function Home() {
   const location = useLocation();
-  const userData=useLocation().state?.data;
+  const userToken=location?.state?.data;
 
   const IsHallOwner = location.pathname.includes("hallowner");
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ function Home() {
       setCardData(data.data);
     });
   };
-
+console.log(userToken+"user")
   const loadMore = () => {
     setVisible(visible + 5);
   };
@@ -122,7 +122,6 @@ function Home() {
       </>
     );
   };
-  console.log(IsHallOwner);
   return (
     <>
       <div className="home-landing">
