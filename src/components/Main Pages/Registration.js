@@ -2,25 +2,27 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../Css/Registration.css";
+import { useEffect } from "react";
 function Registration() {
+  const [userToken,setUserToken] = useState(null);
+  const [verifyPassword,setVerifyPassword] = useState('');
+
   const [formData, setFormData] = useState({
-    // firstName: "",
-    // lastName: "",
     name: "",
     email: "",
     password: "",
-    verifyPassword: "",
-    // address: "",
-    nationalID: "",
+    country:"",
     phone: "",
     gender: "",
-    role: "Customer",
+    religion: "",
+    role: "",
+    photo:"",
   });
-
+  // localhost:8000/api/auth/switchRegister
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-    axios.post("http://localhost:9001/products", formData).then((data) => {
+    axios.post("localhost:8000/api/auth/switchRegister", formData).then((data) => {
       console.log(data);
     });
   };
@@ -32,6 +34,48 @@ function Registration() {
       [name]: value,
     }));
   };
+  // const handleFileSelect = (event) => {
+  //   const file = event.target.files[0];
+  //   setFormData(prevFormData => ({
+  //     ...prevFormData,
+  //     photo: file
+  //   }));
+  // }
+  // // const handleFileSelect = (event) => {
+  // //   setFormData.photo(event.target.files[0]);
+  // // }
+
+  function sendRegisterData(e){
+    e.preventDefault();
+    if(formData.password===verifyPassword){
+    fetch("localhost:8000/api/auth/switchRegister", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        formData
+      ),
+    })
+    .then((response) => response.json())
+    .then(data=>console.log(data));
+  }else{
+    alert('Password and Confirm Password Does not Match')
+  }
+  }
+
+// useEffect(()=>{
+//   if(userToken){
+//     navigate('/',{state:{data:userToken}})
+//   }
+// },[userToken])
+
+
+
+console.log(verifyPassword+"vreify")
+console.log(formData.password)
+
+
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
     console.log(passwordField, "Input");
@@ -53,7 +97,7 @@ function Registration() {
   return (
     <div className="containerAddHall">
       <h2 className="h2AddHall">Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendRegisterData}>
         <div className="ContTwoDivInOneLine">
           {/* <div className="form-group-AddHall animated Width47">
             <label htmlFor="firstName">First Name</label>
@@ -79,11 +123,11 @@ function Registration() {
           </div> */}
         </div>
         <div className="form-group-AddHall animated">
-          <label htmlFor="userName">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
             className="input-field-AddHall"
-            id="userName"
+            id="name"
             name="name"
             required
             onChange={handleChange}
@@ -139,7 +183,7 @@ function Registration() {
               id="verifyPassword"
               name="verifyPassword"
               required
-              onChange={handleChange}
+              onChange={(e)=>{setVerifyPassword(e.target.value)}}
             />
           </div>
           
@@ -156,13 +200,24 @@ function Registration() {
             onChange={handleChange}
           />
         </div> */}
-        <div className="form-group-AddHall animated">
+        {/* <div className="form-group-AddHall animated">
           <label htmlFor="nationalID">National ID</label>
           <input
             type="number"
             className="input-field-AddHall"
             id="nationalID"
             name="nationalID"
+            required
+            onChange={handleChange}
+          />
+        </div> */}
+         <div className="form-group-AddHall animated">
+          <label htmlFor="country">Country</label>
+          <input
+            type="text"
+            className="input-field-AddHall"
+            id="country"
+            name="country"
             required
             onChange={handleChange}
           />
@@ -174,6 +229,17 @@ function Registration() {
             className="input-field-AddHall"
             id="phone"
             name="phone"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-AddHall animated">
+          <label htmlFor="religion">Religion</label>
+          <input
+            type="tel"
+            className="input-field-AddHall"
+            id="religion"
+            name="religion"
             required
             onChange={handleChange}
           />
@@ -201,6 +267,10 @@ function Registration() {
             </label>
           </div>
         </div>
+        {/* <div>
+      <input type="file" name="photo" onChange={handleFileSelect} />
+      
+    </div> */}
         <div className="form-group-AddHall animated">
           <label htmlFor="role">Choose a Role:</label>
           <select
