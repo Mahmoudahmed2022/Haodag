@@ -27,12 +27,12 @@ function Registration() {
     event.preventDefault();
     console.log(formData);
     axios
-      .post("localhost:8000/api/auth/switchRegister", formData)
+      .post("localhost:3000/api/auth/switchRegister", formData)
       .then((data) => {
         console.log(data);
       });
   };
-
+  console.log(formData);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -45,7 +45,7 @@ function Registration() {
   function sendRegisterData(e) {
     e.preventDefault();
     if (formData.password === verifyPassword) {
-      fetch("localhost:8000/api/auth/switchRegister", {
+      fetch("localhost:3000/api/auth/switchRegister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

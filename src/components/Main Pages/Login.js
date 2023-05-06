@@ -8,36 +8,79 @@ import "../../Css/Login.css";
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
-  const navigate = useNavigate()
-const [formData,setFormData] = useState({
-  email:"",
-  password:""
-})
-const [loginData,setLoginData]=useState(null);
+  const [userToken, setUserToken] = useState("");
+  const [person, setPerson] = useState({});
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [loginData, setLoginData] = useState(null);
 
-const getLoginData = (e)=>{
-  setFormData(prev=>{
-    return {
-      ...prev,
-      [e.target.name]:e.target.value
-    }
-  })
-
-}
-console.log(formData);
+  const getLoginData = (e) => {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+  const api = "http://127.0.0.1:8000/api/auth/switchLogin";
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("https://fakestoreapi.com/products", formData)
+    fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((response) => response.json())
       .then((data) => {
-        setLoginData(data);
+        setLoginData(data.data);
+        console.log(loginData);
+        if (loginData?.message) {
+          alert(loginData?.message);
+        } else {
+          if (loginData?.owner) {
+            setPerson(loginData?.owner);
+          } else if (loginData?.user) {
+            setPerson(loginData?.user);
+          } else if (loginData?.planner) {
+            setPerson(loginData?.planner);
+          }
+          setUserToken(person?.api_token);
+          // console.log(loginData);
+          // console.log(person);
+        }
       });
   };
-  useEffect(()=>{
-    if(loginData){
-      navigate(`/`, { state: { data: loginData } });
-    }
-  },[loginData])
+
+  /////////////////////////////////////*
+
+  // axios.post(api, formData).then((data) => {
+  //   setLoginData(data.data);
+  //   if (loginData?.message) {
+  //     alert(loginData?.message);
+  //   } else {
+  //     if (loginData?.owner) {
+  //       setPerson(loginData?.owner);
+  //     } else if (loginData?.user) {
+  //       setPerson(loginData?.user);
+  //     } else if (loginData?.planner) {
+  //       setPerson(loginData?.planner);
+  //     }
+  //     setUserToken(person?.api_token);
+  //     console.log(loginData);
+  //     console.log(person);
+  //   }
+  // });
+  /////////////////////////////////////
+  // useEffect(() => {
+  //   if (loginData) {
+  //     // navigate(`/`, { state: { data: loginData } });
+  //   }
+  // }, [loginData]);
   return (
     <div className="cont">
       <div className="login-box">
@@ -67,13 +110,13 @@ console.log(formData);
             <label className="e-p-label">Password</label>
           </div>
           <div className="divsubmitnewvisitor">
-            <Link className="login-submit submit" to="/profile">
+            <button className="login-submit submit">
               <span className="s-span"></span>
               <span className="s-span"></span>
               <span className="s-span"></span>
               <span className="s-span"></span>
               Submit
-            </Link>
+            </button>
             <Link className="register" to="/registration">
               new visitor
             </Link>
