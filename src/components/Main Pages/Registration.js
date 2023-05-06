@@ -3,28 +3,34 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../Css/Registration.css";
 import { useEffect } from "react";
-function Registration() {
-  const [userToken,setUserToken] = useState(null);
-  const [verifyPassword,setVerifyPassword] = useState('');
+import { useNavigate } from "react-router-dom";
 
+function Registration() {
+  const [userToken, setUserToken] = useState(null);
+  const navigate = useNavigate();
+
+  const [verifyPassword, setVerifyPassword] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    country:"",
+    country: "",
     phone: "",
     gender: "",
     religion: "",
     role: "",
-    photo:"",
+    photo: "",
   });
   // localhost:8000/api/auth/switchRegister
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-    axios.post("localhost:8000/api/auth/switchRegister", formData).then((data) => {
-      console.log(data);
-    });
+    axios
+      .post("localhost:8000/api/auth/switchRegister", formData)
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   const handleChange = (event) => {
@@ -34,47 +40,33 @@ function Registration() {
       [name]: value,
     }));
   };
-  // const handleFileSelect = (event) => {
-  //   const file = event.target.files[0];
-  //   setFormData(prevFormData => ({
-  //     ...prevFormData,
-  //     photo: file
-  //   }));
-  // }
-  // // const handleFileSelect = (event) => {
-  // //   setFormData.photo(event.target.files[0]);
-  // // }
 
-  function sendRegisterData(e){
+  console.log(formData);
+  function sendRegisterData(e) {
     e.preventDefault();
-    if(formData.password===verifyPassword){
-    fetch("localhost:8000/api/auth/switchRegister", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(
-        formData
-      ),
-    })
-    .then((response) => response.json())
-    .then(data=>console.log(data));
-  }else{
-    alert('Password and Confirm Password Does not Match')
-  }
+    if (formData.password === verifyPassword) {
+      fetch("localhost:8000/api/auth/switchRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    } else {
+      alert("Password and Confirm Password Does not Match");
+    }
   }
 
-// useEffect(()=>{
-//   if(userToken){
-//     navigate('/',{state:{data:userToken}})
-//   }
-// },[userToken])
+  useEffect(() => {
+    if (userToken) {
+      navigate("/", { state: { data: userToken } });
+    }
+  }, [userToken]);
 
-
-
-console.log(verifyPassword+"vreify")
-console.log(formData.password)
-
+  console.log(verifyPassword + "vreify");
+  console.log(formData.password);
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
@@ -98,30 +90,7 @@ console.log(formData.password)
     <div className="containerAddHall">
       <h2 className="h2AddHall">Sign Up</h2>
       <form onSubmit={sendRegisterData}>
-        <div className="ContTwoDivInOneLine">
-          {/* <div className="form-group-AddHall animated Width47">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              className="input-field-AddHall"
-              id="firstName"
-              name="firstName"
-              required
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group-AddHall animated Width47">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              className="input-field-AddHall"
-              id="lastName"
-              name="lastName"
-              required
-              onChange={handleChange}
-            />
-          </div> */}
-        </div>
+        <div className="ContTwoDivInOneLine"></div>
         <div className="form-group-AddHall animated">
           <label htmlFor="name">Name</label>
           <input
@@ -183,10 +152,11 @@ console.log(formData.password)
               id="verifyPassword"
               name="verifyPassword"
               required
-              onChange={(e)=>{setVerifyPassword(e.target.value)}}
+              onChange={(e) => {
+                setVerifyPassword(e.target.value);
+              }}
             />
           </div>
-          
         </div>
 
         {/* <div className="form-group-AddHall animated">
@@ -211,7 +181,7 @@ console.log(formData.password)
             onChange={handleChange}
           />
         </div> */}
-         <div className="form-group-AddHall animated">
+        <div className="form-group-AddHall animated">
           <label htmlFor="country">Country</label>
           <input
             type="text"
@@ -244,7 +214,7 @@ console.log(formData.password)
             onChange={handleChange}
           />
         </div>
-        <div className="radio-buttons-AddHall animated">
+        <div className="form-group-AddHall animated">
           <label>Gender</label>
           <div>
             <label className="mr-3">
@@ -267,10 +237,21 @@ console.log(formData.password)
             </label>
           </div>
         </div>
-        {/* <div>
-      <input type="file" name="photo" onChange={handleFileSelect} />
-      
-    </div> */}
+        <div className="form-group-AddHall animated">
+          {/* <input type="file" name="photo" onChange={(e)=>{setPhoto(e.target.files[0])}} /> */}
+          <input
+            type="file"
+            name="photo"
+            onChange={(e) => {
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  photo: e.target.files[0].name,
+                };
+              });
+            }}
+          />
+        </div>
         <div className="form-group-AddHall animated">
           <label htmlFor="role">Choose a Role:</label>
           <select
@@ -279,7 +260,9 @@ console.log(formData.password)
             className="select-field-AddHall"
             onChange={handleChange}
           >
-            <option checked value="">Choose a Role</option>
+            <option checked value="">
+              Choose a Role
+            </option>
             <option value="Client">Client</option>
             <option value="Hall Owner">Hall Owner</option>
             <option value="Wedding Planner">Wedding Planner</option>

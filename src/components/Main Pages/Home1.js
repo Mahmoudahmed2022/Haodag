@@ -14,6 +14,8 @@ import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 
 function Home() {
   const location = useLocation();
+  const userData=useLocation().state?.data;
+
   const IsHallOwner = location.pathname.includes("hallowner");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
