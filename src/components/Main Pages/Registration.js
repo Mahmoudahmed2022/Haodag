@@ -20,14 +20,14 @@ function Registration() {
     gender: "",
     religion: "",
     role: "",
-    photo: "",
+    photo: null,
   });
   // localhost:8000/api/auth/switchRegister
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
     axios
-      .post("localhost:8000/api/auth/switchRegister", formData)
+      .post("localhost:3000/api/auth/switchRegister", formData)
       .then((data) => {
         console.log(data);
       });
@@ -41,11 +41,62 @@ function Registration() {
     }));
   };
 
+
+  // async function uploadFile(file) {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  
+  //   return fetch('http://localhost:9000/products', {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data);
+  //     console.log(file);
+
+  //     setPhoto(file);
+  //     return data; // You can return the response data if you want to use it somewhere else
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //     throw error; // You can throw the error if you want to handle it somewhere else
+  //   });
+  // }
+  
+  
+
+
+
+
+
+
+
+
+
+
+//   function uploadClinicPhoto(e){
+//     e.preventDefault();
+//     const formData = new FormData();
+//     formData.append('file', photo, photo);
+
+// setPhoto(formData)
+//     console.log(formData)
+
+//     }
+
+
+   
+
+
+
+
+console.log(formData)
   console.log(formData);
   function sendRegisterData(e) {
     e.preventDefault();
     if (formData.password === verifyPassword) {
-      fetch("localhost:8000/api/auth/switchRegister", {
+      fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +104,7 @@ function Registration() {
         body: JSON.stringify(formData),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => setUserToken(data));
     } else {
       alert("Password and Confirm Password Does not Match");
     }
@@ -65,8 +116,8 @@ function Registration() {
     }
   }, [userToken]);
 
-  console.log(verifyPassword + "vreify");
-  console.log(formData.password);
+  // console.log(verifyPassword + "vreify");
+  console.log(userToken);
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
@@ -242,11 +293,12 @@ function Registration() {
           <input
             type="file"
             name="photo"
+            // onChange={uploadFile}
             onChange={(e) => {
               setFormData((prev) => {
                 return {
                   ...prev,
-                  photo: e.target.files[0].name,
+                  photo: e.target.files[0],
                 };
               });
             }}
@@ -263,9 +315,9 @@ function Registration() {
             <option checked value="">
               Choose a Role
             </option>
-            <option value="Client">Client</option>
-            <option value="Hall Owner">Hall Owner</option>
-            <option value="Wedding Planner">Wedding Planner</option>
+            <option value="user">Client</option>
+            <option value="hallowner">Hall Owner</option>
+            <option value="planner">Wedding Planner</option>
           </select>
         </div>
         <button type="submit" className="btnAddHall">
