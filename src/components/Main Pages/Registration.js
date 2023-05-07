@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Registration() {
   const [userToken, setUserToken] = useState(null);
   const navigate = useNavigate();
+  const [status, setStatus] = useState(null);
 
   const [verifyPassword, setVerifyPassword] = useState("");
   const [photo, setPhoto] = useState(null);
@@ -20,7 +21,7 @@ function Registration() {
     gender: "",
     religion: "",
     role: "",
-    photo: null,
+    photo: "",
   });
   // localhost:8000/api/auth/switchRegister
   const handleSubmit = (event) => {
@@ -51,15 +52,45 @@ function Registration() {
         },
         body: JSON.stringify(formData),
       })
-        .then((response) => response.json())
-        .then((data) => setUserToken(data.userToken));
+        .then((response) => {
+          
+          return response.json();
+        })
+        .then((data) => {
+          
+          setUserToken(data.data);
+          setStatus(data);
+        });
     } else {
       alert("Password and Confirm Password Does not Match");
     }
   }
+  
 console.log(formData)
   console.log(userToken);
-
+  useEffect(() => {
+    if (userToken) {
+      navigate("/", { state: { data: userToken } });
+    }
+    if (status) {
+      if (status.message) {
+        alert(status.message);
+      } else if (status.msg) {
+        alert(status.msg);
+        navigate("/login")
+      }
+    }
+  }, [userToken, status]);
+  // useEffect(() => {
+  //   if (userToken) {
+  //     navigate("/", { state: { data: userToken } });
+  //   }
+  //   if (status.message) {
+  //     alert(status.message);
+  //   } else if (status.msg) {
+  //     alert(status.msg);
+  //   }
+  // }, [userToken, status.message, status.msg]);
   // useEffect(() => {
   //   if (userToken) {
   //     navigate("/", { state: { data: userToken } });
@@ -68,6 +99,14 @@ console.log(formData)
 
   // console.log(verifyPassword + "vreify");
   // console.log(userToken);
+
+  const handlimg = (event) => {
+    const file = event.target.files[0];
+    setPhoto(file);
+  };
+console.log(photo)
+console.log(formData)
+console.log(userToken)
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
@@ -234,17 +273,54 @@ console.log(formData)
           <input
             type="file"
             name="photo"
+            // onChange={handlimg}
+            // onChange={(e) => {
+            //   const file = e.target.files[0];
+            //   const path = URL.createObjectURL(file);
+
+            //   setPhoto((prev) => {
+            //     return {
+            //       ...prev,
+            //       photo: path,
+            //     };
+            //   });
+            //   formData.append('photo1',photo)
+            // }}
+            // onChange={(e) => {
+            //   const file = e.target.files[0];
+            //   const path = URL.createObjectURL(file);
+          
+            //   setPhoto((prev) => {
+            //     return {
+            //       ...prev,
+            //       photo: path,
+            //     };
+            //   });
+              
+            //   setFormData((prev) => {
+            //     const formData = new FormData();
+            //     formData.append('photo1', file);
+            //     return { ...prev, formData };
+            //   });
+            // }}
             onChange={(e) => {
               const file = e.target.files[0];
               const path = URL.createObjectURL(file);
-
-              setFormData((prev) => {
+          
+              setPhoto((prev) => {
                 return {
                   ...prev,
                   photo: path,
                 };
               });
+              
+              setFormData((prev) => {
+                return { ...prev, photo: path };
+              });
             }}
+
+
+            
           />
         </div>
         <div className="form-group-AddHall animated">

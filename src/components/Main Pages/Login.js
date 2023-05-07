@@ -57,7 +57,7 @@ function Login() {
         } else alert("email or password doesnt exist");
       })
 
-      .then((data) => setUserToken(data))
+      .then((data) => setUserToken(data.data))
       .catch((error) => {
         console.error(error.message);
         // display the error message to the user using an alert or some other method

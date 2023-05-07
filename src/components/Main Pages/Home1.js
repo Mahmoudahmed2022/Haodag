@@ -44,6 +44,8 @@ console.log("user",userToken)
 
   useEffect(() => {
     allCardData();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
   }, []);
   // const renderCard = (cardData) => {
   //   return (
