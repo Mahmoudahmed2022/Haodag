@@ -37,7 +37,7 @@ function Home() {
       setCardData(data.data);
     });
   };
-console.log(userToken+"user")
+console.log("user",userToken)
   const loadMore = () => {
     setVisible(visible + 5);
   };
@@ -45,7 +45,6 @@ console.log(userToken+"user")
   useEffect(() => {
     allCardData();
   }, []);
-
   // const renderCard = (cardData) => {
   //   return (
   //     <>
@@ -130,6 +129,8 @@ console.log(userToken+"user")
             <div className="text-content2">
               <h1 className="head-text">
                 All Because Two People Fell In Love.
+                <p>this statement from api {userToken?.msg} </p>
+
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it

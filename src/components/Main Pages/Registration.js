@@ -27,7 +27,7 @@ function Registration() {
     event.preventDefault();
     console.log(formData);
     axios
-      .post("localhost:3000/api/auth/switchRegister", formData)
+      .post("http://127.0.0.1:8000/api/auth/switchRegister", formData)
       .then((data) => {
         console.log(data);
       });
@@ -78,7 +78,7 @@ function Registration() {
   function sendRegisterData(e) {
     e.preventDefault();
     if (formData.password === verifyPassword) {
-      fetch("localhost:8000/api/auth/switchRegister", {
+      fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ function Registration() {
   }, [userToken]);
 
   // console.log(verifyPassword + "vreify");
-  console.log(userToken);
+  // console.log(userToken);
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");

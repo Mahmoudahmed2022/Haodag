@@ -4,18 +4,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
+import { message } from "antd";
 
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
-  const [userToken, setUserToken] = useState("");
-  const [person, setPerson] = useState({});
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [loginData, setLoginData] = useState(null);
+  const [userToken, setUserToken] = useState(null);
 
   const getLoginData = (e) => {
     setFormData((prev) => {
@@ -25,62 +24,94 @@ function Login() {
       };
     });
   };
-  const api = "http://127.0.0.1:8000/api/auth/switchLogin";
+  // console.log(formData);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   fetch("http://127.0.0.1:8000/api/auth/switchLogin", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => setUserToken(data));
+
+  //   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(api, {
+    fetch("http://127.0.0.1:8000/api/auth/switchLogin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginData),
+      body: JSON.stringify(formData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setLoginData(data.data);
-        console.log(loginData);
-        if (loginData?.message) {
-          alert(loginData?.message);
-        } else {
-          if (loginData?.owner) {
-            setPerson(loginData?.owner);
-          } else if (loginData?.user) {
-            setPerson(loginData?.user);
-          } else if (loginData?.planner) {
-            setPerson(loginData?.planner);
-          }
-          setUserToken(person?.api_token);
-          // console.log(loginData);
-          // console.log(person);
-        }
+      .then((response) => {
+        console.log(response);
+
+        if (response.status === 200) {
+          return response.json();
+        } else alert("email or password doesnt exist");
+      })
+
+      .then((data) => setUserToken(data))
+      .catch((error) => {
+        console.error(error.message);
+        // display the error message to the user using an alert or some other method
       });
   };
 
-  /////////////////////////////////////*
+  // axios
+  //   .post("http://127.0.0.1:8000/api/auth/switchLogin", formData)
+  //   .then((data) => {
+  //     setUserToken(data);
 
-  // axios.post(api, formData).then((data) => {
-  //   setLoginData(data.data);
-  //   if (loginData?.message) {
-  //     alert(loginData?.message);
-  //   } else {
-  //     if (loginData?.owner) {
-  //       setPerson(loginData?.owner);
-  //     } else if (loginData?.user) {
-  //       setPerson(loginData?.user);
-  //     } else if (loginData?.planner) {
-  //       setPerson(loginData?.planner);
-  //     }
-  //     setUserToken(person?.api_token);
-  //     console.log(loginData);
-  //     console.log(person);
-  //   }
-  // });
-  /////////////////////////////////////
-  // useEffect(() => {
-  //   if (loginData) {
-  //     // navigate(`/`, { state: { data: loginData } });
-  //   }
-  // }, [loginData]);
+  //   });
+
+  console.log(userToken);
+  // const handleSubmit1 = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //     .post("localhost:8000/api/auth/logout", formData)
+  //     .then((data) => {
+  //       setLoginData(data);
+  //       console.log(loginData)
+  //     });
+  // };
+  useEffect(() => {
+    if (userToken) {
+      navigate("/", { state: { data: userToken } });
+    }
+  }, [userToken]);
+
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+
+  function handleLogout() {
+    fetch("http://127.0.0.1:8000/api/auth/logout", {
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsLoggedOut(true);
+        } else {
+          throw new Error("Logout failed.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    if (isLoggedOut) {
+      alert("You Logged out");
+      navigate("/login");
+    }
+  }, [isLoggedOut]);
+
   return (
     <div className="cont">
       <div className="login-box">
@@ -92,7 +123,7 @@ function Login() {
               type="email"
               name="email"
               className="email-input e-p-input"
-              required=""
+              required
               onChange={getLoginData}
             />
 
@@ -103,23 +134,24 @@ function Login() {
             <input
               type="password"
               name="password"
-              required=""
+              required
               className="password-input e-p-input"
               onChange={getLoginData}
             />
             <label className="e-p-label">Password</label>
           </div>
           <div className="divsubmitnewvisitor">
-            <button className="login-submit submit">
+            <button className="login-submit submit" to="/profile">
               <span className="s-span"></span>
               <span className="s-span"></span>
               <span className="s-span"></span>
               <span className="s-span"></span>
               Submit
             </button>
-            <Link className="register" to="/registration">
+            <button onClick={handleLogout}>Logout</button>
+            {/* <button onClick={handleSubmit1} className="register" >
               new visitor
-            </Link>
+            </button> */}
           </div>
         </form>
       </div>

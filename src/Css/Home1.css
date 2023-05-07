@@ -17,16 +17,19 @@ body {
   justify-content: space-around;
   height: 100%;
   width: 100%;
+  align-items: center;
 }
 .text-content1 {
   width: 40%;
 }
 
 .text-content2 {
+  margin-top: 80px;
   height: 520px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  gap: 40px;
 }
 
 .head-text {

@@ -36,6 +36,10 @@ const IsAdmin = location.pathname.includes("Admin")
               <FaAlignLeft className="svgColor" onClick={showSidebar} />
             </Link>
           </div>
+          {/* {!userData&&<div className="headerBtnsContainer">
+            <button className="headerSignBtn">Login</button>
+            <button className="headerSignBtn">Signup</button>
+          </div>} */}
           <div className="right2">
             <div className="search-bar">
               <div className="search-bar-content">
