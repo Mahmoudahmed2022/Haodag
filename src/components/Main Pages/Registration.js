@@ -32,7 +32,7 @@ function Registration() {
         console.log(data);
       });
   };
-  console.log(formData);
+  // console.log(formData);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -41,40 +41,6 @@ function Registration() {
     }));
   };
 
-  // async function uploadFile(file) {
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-
-  //   return fetch('http://localhost:9000/products', {
-  //     method: 'POST',
-  //     body: formData,
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data);
-  //     console.log(file);
-
-  //     setPhoto(file);
-  //     return data; // You can return the response data if you want to use it somewhere else
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //     throw error; // You can throw the error if you want to handle it somewhere else
-  //   });
-  // }
-
-  //   function uploadClinicPhoto(e){
-  //     e.preventDefault();
-  //     const formData = new FormData();
-  //     formData.append('file', photo, photo);
-
-  // setPhoto(formData)
-  //     console.log(formData)
-
-  //     }
-
-  console.log(formData);
-  console.log(formData);
   function sendRegisterData(e) {
     e.preventDefault();
     if (formData.password === verifyPassword) {
@@ -86,17 +52,19 @@ function Registration() {
         body: JSON.stringify(formData),
       })
         .then((response) => response.json())
-        .then((data) => setUserToken(data));
+        .then((data) => setUserToken(data.userToken));
     } else {
       alert("Password and Confirm Password Does not Match");
     }
   }
+console.log(formData)
+  console.log(userToken);
 
-  useEffect(() => {
-    if (userToken) {
-      navigate("/", { state: { data: userToken } });
-    }
-  }, [userToken]);
+  // useEffect(() => {
+  //   if (userToken) {
+  //     navigate("/", { state: { data: userToken } });
+  //   }
+  // }, [userToken]);
 
   // console.log(verifyPassword + "vreify");
   // console.log(userToken);
@@ -192,28 +160,6 @@ function Registration() {
           </div>
         </div>
 
-        {/* <div className="form-group-AddHall animated">
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            className="input-field-AddHall"
-            id="address"
-            name="address"
-            required
-            onChange={handleChange}
-          />
-        </div> */}
-        {/* <div className="form-group-AddHall animated">
-          <label htmlFor="nationalID">National ID</label>
-          <input
-            type="number"
-            className="input-field-AddHall"
-            id="nationalID"
-            name="nationalID"
-            required
-            onChange={handleChange}
-          />
-        </div> */}
         <div className="form-group-AddHall animated">
           <label htmlFor="country">Country</label>
           <input
@@ -272,7 +218,7 @@ function Registration() {
         </div>
         <div className="form-group-AddHall animated">
           {/* <input type="file" name="photo" onChange={(e)=>{setPhoto(e.target.files[0])}} /> */}
-          <input
+          {/* <input
             type="file"
             name="photo"
             // onChange={uploadFile}
@@ -281,6 +227,21 @@ function Registration() {
                 return {
                   ...prev,
                   photo: e.target.files[0],
+                };
+              });
+            }}
+          /> */}
+          <input
+            type="file"
+            name="photo"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              const path = URL.createObjectURL(file);
+
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  photo: path,
                 };
               });
             }}
