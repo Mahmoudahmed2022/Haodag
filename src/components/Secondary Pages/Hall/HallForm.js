@@ -169,7 +169,6 @@ const HallForm = (props) => {
             required
           />
         </div>
-
         <div className="form-group1">
           <label htmlFor="address" className="labelDAtaForAddHall">
             Hall Address:
@@ -265,17 +264,29 @@ const HallForm = (props) => {
             required
           />
         </div>
-
-        <div className="form-group1">
-          <label htmlFor="hours" className="labelDAtaForAddHall">
-            Hours of reservtions :
-          </label>
-          <input
-            className="inputDAtaForAddHall"
-            type="number"
-            name="hours"
-            onChange={getRegisterData}
-          />
+        <div className="ContTwoDivInOneRow">
+          <div className="form-group1 Width47">
+            <label htmlFor="hours" className="labelDAtaForAddHall">
+              Hours of reservtions :
+            </label>
+            <input
+              className="inputDAtaForAddHall"
+              type="number"
+              name="hours"
+              onChange={getRegisterData}
+            />
+          </div>
+          <div className="form-group1 Width47">
+            <label htmlFor="price" className="labelDAtaForAddHall">
+              Price :
+            </label>
+            <input
+              className="inputDAtaForAddHall"
+              type="number"
+              name="price"
+              onChange={getRegisterData}
+            />
+          </div>
         </div>
 
         <div className="ContTwoDivInOneRow">
@@ -304,7 +315,6 @@ const HallForm = (props) => {
             />
           </div>
         </div>
-
         <div className="form-group1">
           <label className="labelDAtaForAddHall">Choose Images</label>
 
