@@ -131,8 +131,8 @@ console.log("user",userToken)
             <div className="text-content2">
               <h1 className="head-text">
                 All Because Two People Fell In Love.
-                <p>this statement from api {userToken?.msg} </p>
-
+                <p>this statement from api i'm a {userToken?.role} </p>
+{/* <img src={userToken.photo} alt=""/> */}
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it

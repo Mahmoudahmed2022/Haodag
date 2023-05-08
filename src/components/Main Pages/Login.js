@@ -15,6 +15,7 @@ function Login() {
     password: "",
   });
   const [userToken, setUserToken] = useState(null);
+  const [status, setStatus] = useState(null)
 
   const getLoginData = (e) => {
     setFormData((prev) => {
@@ -57,7 +58,9 @@ function Login() {
         } else alert("email or password doesnt exist");
       })
 
-      .then((data) => setUserToken(data.data))
+      .then((data) => {
+        setUserToken(data.data);
+        setStatus(data);})
       .catch((error) => {
         console.error(error.message);
         // display the error message to the user using an alert or some other method
@@ -70,6 +73,7 @@ function Login() {
   //     setUserToken(data);
 
   //   });
+  console.log(status);
 
   console.log(userToken);
   // const handleSubmit1 = (event) => {
@@ -81,36 +85,52 @@ function Login() {
   //       console.log(loginData)
   //     });
   // };
+  // useEffect(() => {
+  //   if (userToken) {
+  //     navigate("/", { state: { data: userToken } });
+  //   }
+  // }, [userToken]);
   useEffect(() => {
     if (userToken) {
       navigate("/", { state: { data: userToken } });
     }
+    // if (status) {
+    //   if (status.message) {
+    //     alert(status.message);
+    //   } else if (status.msg) {
+    //     alert(status.msg);
+    //     navigate("/");
+    //   }
+    // }
   }, [userToken]);
 
-  const [isLoggedOut, setIsLoggedOut] = useState(false);
+// Logout
 
-  function handleLogout() {
-    fetch("http://127.0.0.1:8000/api/auth/logout", {
-      method: "POST",
-    })
-      .then((response) => {
-        if (response.ok) {
-          setIsLoggedOut(true);
-        } else {
-          throw new Error("Logout failed.");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  // const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  useEffect(() => {
-    if (isLoggedOut) {
-      alert("You Logged out");
-      navigate("/login");
-    }
-  }, [isLoggedOut]);
+  // function handleLogout() {
+  //   fetch("http://127.0.0.1:8000/api/auth/logout", {
+  //     method: "POST",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         setIsLoggedOut(true);
+  //       } else {
+  //         throw new Error("Logout failed.");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   if (isLoggedOut) {
+  //     alert("You Logged out");
+  //     navigate("/login");
+  //   }
+  // }, [isLoggedOut]);
+  // <button onClick={handleLogout}>Logout</button>
 
   return (
     <div className="cont">
@@ -148,10 +168,9 @@ function Login() {
               <span className="s-span"></span>
               Submit
             </button>
-            <button onClick={handleLogout}>Logout</button>
-            {/* <button onClick={handleSubmit1} className="register" >
+            <Link to="/registration"  className="register" >
               new visitor
-            </button> */}
+            </Link>
           </div>
         </form>
       </div>

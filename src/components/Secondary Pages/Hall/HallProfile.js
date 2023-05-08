@@ -3,10 +3,16 @@ import "../../../Css/HallProfile.css";
 
 import image7 from "../../images/map.jpg";
 
-
 import { AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
 import { BiMailSend } from "react-icons/bi";
-import { FaHeart, FaPhoneAlt, FaStar, FaThumbsDown, FaThumbsUp, FaUserTie } from "react-icons/fa";
+import {
+  FaHeart,
+  FaPhoneAlt,
+  FaStar,
+  FaThumbsDown,
+  FaThumbsUp,
+  FaUserTie,
+} from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 import CommentSection from "../Cards/CommentSection";
@@ -32,24 +38,32 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [disLikeStyle, setDisLikeStyle] = useState({ color: "white" });
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
-  let message="!"
+  let message = "!";
   const allData = async (title) => {
     // const api2 = "https://fakestoreapi.com/products";
-    const api = "https://www.omdbapi.com/?i=tt3896198&apikey=e2381709";
-    await fetch(`${api}&s=${title}`)
+    const api = "http://127.0.0.1:8000/user/auth/getAllHalls";
+    await fetch(api)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.Search);
-        console.log("from api");
-        setProducts(response.Search);
+        console.log(response);
+        setProducts(response);
       })
       .catch((err) => console.error(err));
   };
+  console.log(products);
   useEffect(() => {
-    allData("Batman");
+    allData();
     urlWhatSap();
   }, []);
 
+  // fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log(data);
+  // })
+  // .catch(error => {
+  //   console.error(error);
+  // });
   const renderCard = (cardData) => {
     return (
       <>
@@ -70,7 +84,7 @@ const HallProfile = ({ rating, isFavourite }) => {
 
   const loadMore = () => {
     setVisible(visible + 5);
-  };//201555578007
+  }; //201555578007
   const urlWhatSap = () => {
     phoneNumber = "201026249568"; // replace with the phone number you want to chat with
     message = "Hello!"; // replace with the message you want to send
@@ -80,10 +94,8 @@ const HallProfile = ({ rating, isFavourite }) => {
       //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     );
   };
+
   
-  // const [starStyle, setStarStyle] = useState({ color: "white" });
-  // const [toggle1, setToggle1] = useState(true);
-  // const [toggle3, setToggle3] = useState("5");
 
   const handleHover = (ratingValue) => {
     setHover(ratingValue);
@@ -133,8 +145,6 @@ const HallProfile = ({ rating, isFavourite }) => {
     console.log("colorRemoved");
   };
 
-
-
   return (
     <div className="allHallProfile">
       <h1 className="hallName">Hall's Name </h1>
@@ -153,7 +163,7 @@ const HallProfile = ({ rating, isFavourite }) => {
               <AiOutlineMail className="colorSvg1" />
               <p className=" pWhatsap">Contact (email)</p>
             </Link>
-             <Modal   onClose= {()=>setShow(false)} show = {show} />
+            <Modal onClose={() => setShow(false)} show={show} />
 
             <div className="whatsap">
               <a className="linkWhats" href={whatsappUrl} target="_blank">
@@ -179,11 +189,15 @@ const HallProfile = ({ rating, isFavourite }) => {
           </div>
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
-              
-              <Link className="askBooking" onClick={() => setShowBook(true)}><BiMailSend className="colorSvg1" />Ask To Book</Link>
-              <ModalForAskToBook   onClose= {()=>setShowBook(false)} show = {showBook}/>
+              <Link className="askBooking" onClick={() => setShowBook(true)}>
+                <BiMailSend className="colorSvg1" />
+                Ask To Book
+              </Link>
+              <ModalForAskToBook
+                onClose={() => setShowBook(false)}
+                show={showBook}
+              />
             </div>
-            
           </div>
         </div>
       </div>
@@ -195,7 +209,7 @@ const HallProfile = ({ rating, isFavourite }) => {
       <div className="contDataa">
         <div className="contDataInfo">
           <div className="allContInfo">
-          <div className="topShape"></div>
+            <div className="topShape"></div>
 
             <div className="card-content">
               <h2 className="section__title">The Amplitude</h2>
@@ -240,8 +254,7 @@ const HallProfile = ({ rating, isFavourite }) => {
               <div className="rating-stars">
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
-                 
-                  
+
                   return (
                     <label key={i}>
                       <FaStar
