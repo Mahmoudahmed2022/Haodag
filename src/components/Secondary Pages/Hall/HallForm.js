@@ -33,40 +33,35 @@ const HallForm = (props) => {
       };
     });
   }
+  const token =
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1MTc2MTAsImV4cCI6MTY4MzUyMTIxMCwibmJmIjoxNjgzNTE3NjEwLCJqdGkiOiJobnc1QVV2NGVoSVNSY3lBIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.pwXcY5jgHViovekNAZWNPh-gwnKnNS-RI46AnYkNPaQ"; // Replace with your actual token
+
   const [data, setData] = useState(null);
-  const sub = () => {
-    const token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1MTc2MTAsImV4cCI6MTY4MzUyMTIxMCwibmJmIjoxNjgzNTE3NjEwLCJqdGkiOiJobnc1QVV2NGVoSVNSY3lBIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.pwXcY5jgHViovekNAZWNPh-gwnKnNS-RI46AnYkNPaQ"; // Replace with your actual token
-    const headers = new Headers({
-      "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json",
-    });
-
-  console.log(formData);
+  
     function handleSubmit(e) {
-    e.preventDefault();
-    if (formData) {
-      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-          Authorization: `Bearer${token}`,
-        },
-
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          response.json();
-          console.log(response);
+      e.preventDefault();
+      if (formData) {
+        fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+            Authorization: `Bearer${token}`,
+          },
+  
+          body: JSON.stringify(formData),
         })
-        .then((data) => {
-          setResponseObj(data);
-          console.log(responseObj);
-        });
-      // console.log("Posted");
+          .then((response) => {
+            response.json();
+            console.log(response);
+          })
+          .then((data) => {
+            setResponseObj(data);
+            console.log(responseObj);
+          });
+        // console.log("Posted");
+      }
     }
-  }}
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];
