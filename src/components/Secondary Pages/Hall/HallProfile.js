@@ -14,7 +14,7 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CommentSection from "../Cards/CommentSection";
 import InfoDescription from "../Hall/Component In Hall details/InfoDescription";
 import InfoForMap from "../Hall/Component In Hall details/InfoForMap";
@@ -39,9 +39,11 @@ const HallProfile = ({ rating, isFavourite }) => {
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
   let message = "!";
-  const allData = async (title) => {
+  const Id = useParams();
+  const hall_Id = Id.hallId;
+  const allData = async (hall_Id) => {
     // const api2 = "https://fakestoreapi.com/products";
-    const api = "http://127.0.0.1:8000/user/auth/getAllHalls";
+    const api = `http://127.0.0.1:8000/api/auth/getHall/${hall_Id}`;
     await fetch(api)
       .then((response) => response.json())
       .then((response) => {
@@ -52,7 +54,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   };
   console.log(products);
   useEffect(() => {
-    allData();
+    allData(hall_Id);
     urlWhatSap();
   }, []);
 
@@ -94,8 +96,6 @@ const HallProfile = ({ rating, isFavourite }) => {
       //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     );
   };
-
-  
 
   const handleHover = (ratingValue) => {
     setHover(ratingValue);

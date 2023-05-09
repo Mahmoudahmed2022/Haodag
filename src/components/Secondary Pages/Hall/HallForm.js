@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-import axios from "axios";
+import { t } from "i18next";
 
 const HallForm = (props) => {
   const [responseObj, setResponseObj] = useState({});
@@ -35,32 +35,36 @@ const HallForm = (props) => {
   }
 
   console.log(formData);
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1MDI5OTMsImV4cCI6MTY4MzUwNjU5MywibmJmIjoxNjgzNTAyOTkzLCJqdGkiOiJROTI4aXVnZm1kWUlFMFJsIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.ijHifT5skrt0DY3lqsrEfIH3x8Iu8e1sVNa2DR1ht4U";
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (formData) {
-      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-          Authorization: `Bearer${token}`,
-        },
+  
+   // preceding code block or function
 
-        body: JSON.stringify(formData),
+function handleSubmit(e) {
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1ODk5NDIsImV4cCI6MTY4MzU5MzU0MiwibmJmIjoxNjgzNTg5OTQyLCJqdGkiOiJCUFFMTGc5bTJ5blFHbmZsIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.BUCuBP3x7cIyj85P1EZsOE44xCGumwVDUH-_cXQa5z8";
+  e.preventDefault();
+  if (formData) {
+    fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Origin":"*",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        "auth-token":`${token}`,
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setResponseObj(data);
+        console.log(responseObj);
       })
-        .then((response) => {
-          response.json();
-          console.log(response);
-        })
-        .then((data) => {
-          setResponseObj(data);
-          console.log(responseObj);
-        });
-      // console.log("Posted");
-    }
+      .catch((error) => {
+        console.error(error);
+      });
   }
+} // added closing curly brace
+
+    
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];
@@ -586,7 +590,7 @@ const HallForm = (props) => {
         </div>
         <div className="DivBtnAddHall">
           {" "}
-          <button className="addHallbtn" onClick={handleSubmit}>
+          <button className="addHallbtn" type="submit">
             submit
           </button>
         </div>

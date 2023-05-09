@@ -17,52 +17,47 @@ function ImageSlider(props) {
   // const [images, setImages] = useState([]);
   const products1 = props.products;
 
-  
-
   return (
     <>
       <div className="media">
         <CarouselProvider
-        className="PureCarousel "
-        naturalSlideWidth={600}
-        naturalSlideHeight={400}
-        totalSlides={products1.length}
-      >
-        <Slider className="PureCarousel_Slider ">
-          {products1.map((image, index) => (
-            <Slide className="PureCarousel_Slide " index={index} key={index}>
-              <img
-                className="PureCarousel_Image "
-                src={image.Poster}
-                alt={`Slide ${index + 1}`}
-              />
-            </Slide>
-          ))}
-        </Slider>
-        <div className="butns">
-        <ButtonBack className="btnnextback">Back</ButtonBack>
-        <ButtonNext className="btnnextback">Next</ButtonNext>
-        </div>
-       
-        <DotGroup className="groupDots gap dott" />
-      </CarouselProvider>
+          className="PureCarousel "
+          naturalSlideWidth={600}
+          naturalSlideHeight={400}
+          totalSlides={products1.length}
+        >
+          <Slider className="PureCarousel_Slider ">
+            {products1.map((image, index) => (
+              <Slide className="PureCarousel_Slide " index={index} key={index}>
+                <img
+                  className="PureCarousel_Image "
+                  src={image.Poster}
+                  alt={`Slide ${index + 1}`}
+                />
+              </Slide>
+            ))}
+          </Slider>
+          <div className="butns">
+            <ButtonBack className="btnnextback">Back</ButtonBack>
+            <ButtonNext className="btnnextback">Next</ButtonNext>
+          </div>
+
+          <DotGroup className="groupDots gap dott" />
+        </CarouselProvider>
         {/* <Carousel width={900} height={400} showArrows>
           {products1.map((image) => (
             <img key={image.imdbID} src={image.Poster} alt={image.Title} />
           ))}
         </Carousel> */}
       </div>
-
-     
     </>
   );
 }
 
 export default ImageSlider;
 
-
-
- {/* <CarouselProvider
+{
+  /* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={600}
         naturalSlideHeight={400}
@@ -85,18 +80,21 @@ export default ImageSlider;
         </div>
        
         <DotGroup className="groupDots PureCarousel_DotGroup " />
-      </CarouselProvider> */}
+      </CarouselProvider> */
+}
 
-        {/* <Carousel showThumbs={false} showIndicators={false}>
+{
+  /* <Carousel showThumbs={false} showIndicators={false}>
         {products1.map((image, index) => (
           <div className="media" key={index} >
             <img  src={image.Poster} alt={image.Title} style={{ width: '100%', height: '100%',borderRadius:'10px' }} />
           </div>
         ))}
-      </Carousel> */}
+      </Carousel> */
+}
 
-
- {/* <CarouselProvider
+{
+  /* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={700}
         naturalSlideHeight={400}
@@ -117,9 +115,11 @@ export default ImageSlider;
           <ButtonBack className="button-back">Back</ButtonBack>
           <ButtonNext className="button-next">Next</ButtonNext>
         </div>
-      </CarouselProvider> */}
+      </CarouselProvider> */
+}
 
-      {/* <CarouselProvider
+{
+  /* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={500}
         naturalSlideHeight={300}
@@ -142,9 +142,11 @@ export default ImageSlider;
         </div>
 
         <DotGroup className="PureCarousel_DotGroup " />
-      </CarouselProvider> */}
+      </CarouselProvider> */
+}
 
-      {/* <CarouselProvider
+{
+  /* <CarouselProvider
         className="PureCarousel "
         naturalSlideWidth={600}
         naturalSlideHeight={400}
@@ -164,4 +166,5 @@ export default ImageSlider;
         <ButtonBack>Back</ButtonBack>
         <ButtonNext>Next</ButtonNext>
         <DotGroup className="PureCarousel_DotGroup " />
-      </CarouselProvider> */}
+      </CarouselProvider> */
+}

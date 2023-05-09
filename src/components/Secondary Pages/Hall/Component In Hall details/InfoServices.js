@@ -6,10 +6,9 @@ const InfoServices = (props) => {
   return (
     <>
       <div className="allContInfo">
-      <div className="topShape"></div>
+        <div className="topShape"></div>
 
         <div className="card-content">
-
           <h2 className="section__title">Services</h2>
           <ul className="uiForInfo">
             {product.map((element) => (
