@@ -33,38 +33,40 @@ const HallForm = (props) => {
       };
     });
   }
+  const [data, setData] = useState(null);
+  const sub = () => {
+    const token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1MTc2MTAsImV4cCI6MTY4MzUyMTIxMCwibmJmIjoxNjgzNTE3NjEwLCJqdGkiOiJobnc1QVV2NGVoSVNSY3lBIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.pwXcY5jgHViovekNAZWNPh-gwnKnNS-RI46AnYkNPaQ"; // Replace with your actual token
+    const headers = new Headers({
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json",
+    });
 
   console.log(formData);
-  
-   // preceding code block or function
+    function handleSubmit(e) {
+    e.preventDefault();
+    if (formData) {
+      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+          Authorization: `Bearer${token}`,
+        },
 
-function handleSubmit(e) {
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM1ODk5NDIsImV4cCI6MTY4MzU5MzU0MiwibmJmIjoxNjgzNTg5OTQyLCJqdGkiOiJCUFFMTGc5bTJ5blFHbmZsIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.BUCuBP3x7cIyj85P1EZsOE44xCGumwVDUH-_cXQa5z8";
-  e.preventDefault();
-  if (formData) {
-    fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-      method: "POST",
-      headers: {
-        "Access-Control-Allow-Origin":"*",
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        "auth-token":`${token}`,
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setResponseObj(data);
-        console.log(responseObj);
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-} // added closing curly brace
-
-    
+        .then((response) => {
+          response.json();
+          console.log(response);
+        })
+        .then((data) => {
+          setResponseObj(data);
+          console.log(responseObj);
+        });
+      // console.log("Posted");
+    }
+  }}
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];

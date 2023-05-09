@@ -33,10 +33,20 @@ function Home() {
   const [visible, setVisible] = useState(5);
 
   const allCardData = () => {
-    axios.get("https://fakestoreapi.com/products").then((data) => {
+      fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
+    .then(response => response.json())
+    .then(data => {
       setCardData(data.data);
+    })
+    .catch(error => {
+      console.error(error);
     });
+    
+  
+   
   };
+  console.log(cardData);
+  
 console.log("user",userToken)
   const loadMore = () => {
     setVisible(visible + 5);
