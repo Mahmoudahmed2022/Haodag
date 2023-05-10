@@ -6,8 +6,10 @@
   align-items: center;
   padding: 0px 50px;
   background-color: #282828;
-  min-height: calc(100vh -  250px);
-
+  min-height: calc(100vh - 250px);
+}
+.categories div {
+  margin: 20px;
 }
 .adminHeader {
   text-align: center;
@@ -83,35 +85,33 @@
 
 .truserData th,
 .truserData td {
-    text-align: start;
-    color: white;
+  text-align: start;
+  color: white;
 }
 
-.red{
-    background-color: #eb1919;
-
+.red {
+  background-color: #eb1919;
 }
-.green{
-    background-color: #159015;
-
-}.blue{
-    background-color: #2d82cbf5;
-
+.green {
+  background-color: #159015;
 }
-.tableUsersData{
-    border-collapse: separate;
-    border-spacing: 0px 10px;
-    padding: 10px;
-    width: 100%;
-    border-top: 1px solid white;
+.blue {
+  background-color: #2d82cbf5;
+}
+.tableUsersData {
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+  padding: 10px;
+  width: 100%;
+  border-top: 1px solid white;
 }
 .btnoperations {
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    padding: 6px;
-    border-radius: 5px;
-    width: 25%;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  width: 25%;
 }
 /* .tdoperations{
         display: flex;
@@ -120,39 +120,40 @@
         gap: 10px;
 } */
 .ss {
-    display: flex;
-    gap: 10px;
-    /* justify-content: center; */
-    align-items: center;
-    /* width: 90%; */
-    /* margin: auto; */
+  display: flex;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+  /* width: 90%; */
+  /* margin: auto; */
 }
 
 .tableUsersData {
-    border-collapse: separate;
-    border-spacing: 0 8px; /* Spacing between rows */
-    padding: 10px; /* Padding for the table */
-  }
-  
-  .trUsersDatahead {
-    background-color: #1d1d1d;  }
-  
-    .trUsersDatabody {
-        background-color: #3e3e3e;  }
-      
-  .truserData {
-    border: 1px solid white; /* Border for each row */
-  }
-  
-  .id {
-    padding-right: 10px; /* Padding for the ID column */
-  }
-  
-  td, th {
-    padding: 8px; /* Padding for cells */
-  }
-  .tableUsersData tr {
-    border: 1px solid black;
-  }
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Spacing between rows */
+  padding: 10px; /* Padding for the table */
+}
 
-  
+.trUsersDatahead {
+  background-color: #1d1d1d;
+}
+
+.trUsersDatabody {
+  background-color: #3e3e3e;
+}
+
+.truserData {
+  border: 1px solid white; /* Border for each row */
+}
+
+.id {
+  padding-right: 10px; /* Padding for the ID column */
+}
+
+td,
+th {
+  padding: 8px; /* Padding for cells */
+}
+.tableUsersData tr {
+  border: 1px solid black;
+}
