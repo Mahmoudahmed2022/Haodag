@@ -44,7 +44,7 @@ function App() {
             element={<WeddingPlannerProfile />}
           /> */}
           <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
-          <Route path="/test/:param/:id" element={<HeaderDataProfile />} />
+          <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
           <Route path="/Reservations" element={<Reservations />} />
 

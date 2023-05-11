@@ -12,6 +12,9 @@ function Login() {
     email: "",
     password: "",
   });
+  const [id, setId] = useState(null);
+  const [token, setToken] = useState(null);
+
   const [userToken, setUserToken] = useState(null);
   const [status, setStatus] = useState(null);
 
@@ -57,7 +60,10 @@ function Login() {
       })
 
       .then((data) => {
-        setUserToken(data.data.token);
+        setUserToken(data.data);
+        setId(data.data.id);
+        setToken(data.data.token);
+
         setStatus(data);
       })
       .catch((error) => {
@@ -66,16 +72,30 @@ function Login() {
       });
   };
 
-  // axios
-  //   .post("http://127.0.0.1:8000/api/auth/switchLogin", formData)
-  //   .then((data) => {
-  //     setUserToken(data);
-
-  //   });
+ 
   console.log(status);
-
   console.log(userToken);
-  // const handleSubmit1 = (event) => {
+  console.log(token);
+
+  console.log(id);
+
+ 
+  useEffect(() => {
+    if (userToken) {
+      navigate(`/:${userToken.role}/${id}`, { state: { data: userToken,token:token } });
+
+    }
+    // if (status) {
+    //   if (status.message) {
+    //     alert(status.message);
+    //   } else if (status.msg) {
+    //     alert(status.msg);
+    //     navigate("/");
+    //   }
+    // }
+  }, [userToken]);
+
+   // const handleSubmit1 = (event) => {
   //   event.preventDefault();
   //   axios
   //     .post("localhost:8000/api/auth/logout", formData)
@@ -89,24 +109,6 @@ function Login() {
   //     navigate("/", { state: { data: userToken } });
   //   }
   // }, [userToken]);
-  useEffect(() => {
-    if (userToken) {
-<<<<<<< Updated upstream
-      navigate("/hallForm", { state: { data: userToken } });
-=======
-      navigate("/hallform", { state: { data: userToken } });
->>>>>>> Stashed changes
-    }
-    // if (status) {
-    //   if (status.message) {
-    //     alert(status.message);
-    //   } else if (status.msg) {
-    //     alert(status.msg);
-    //     navigate("/");
-    //   }
-    // }
-  }, [userToken]);
-
   // Logout
 
   // const [isLoggedOut, setIsLoggedOut] = useState(false);

@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-<<<<<<< Updated upstream
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-const HallForm = (props) => {
-  const location = useLocation();
-  const token = location?.state?.data;
-=======
-import { t } from "i18next";
-import { useLocation } from "react-router-dom";
 
 const HallForm = (props) => {
   const [responseObj, setResponseObj] = useState({});
   const location = useLocation();
-  const userToken=location?.state?.data;
->>>>>>> Stashed changes
+  const userToken = location?.state?.data;
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -36,9 +28,8 @@ const HallForm = (props) => {
   // const [formData1, setFormData1] = useState({
   //   password: "kariem51652",
   //   email:"kariem@gmail.com"
-    
-  // });
 
+  // });
 
   function getRegisterData(event) {
     setFormData((prevFormData) => {
@@ -48,7 +39,6 @@ const HallForm = (props) => {
       };
     });
   }
-<<<<<<< Updated upstream
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -88,44 +78,38 @@ const HallForm = (props) => {
     //   // console.log("Posted");
     // }
   }
-=======
-  const token =
-  ""; // Replace with your actual token
+  const token = ""; // Replace with your actual token
   formData.owner_id = userToken.id;
   const [data, setData] = useState(null);
   // console.log(userToken);
   // console.log(userToken.id)
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      if (formData) {
-        // http://127.0.0.1:8000/api/auth/switchLogin
-        // http://127.0.0.1:8000/owner/auth/addHall
-        fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-          method: "POST",
-          // mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization":`Bearer${userToken.token}`,
-            // "auth-token":`${userToken.token}`
-          },
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (formData) {
+      // http://127.0.0.1:8000/api/auth/switchLogin
+      // http://127.0.0.1:8000/owner/auth/addHall
+      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+        method: "POST",
+        // mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer${userToken.token}`,
+          // "auth-token":`${userToken.token}`
+        },
 
-          
-  
-          body:formData,
+        body: formData,
+      })
+        .then((response) => {
+          console.log(response);
         })
-          .then((response) => {
-            
-            console.log(response)
-          })
-          .then((data) => {
-            setResponseObj(data);
-            console.log(responseObj);
-          });
-        // console.log("Posted");
-      }
+        .then((data) => {
+          setResponseObj(data);
+          console.log(responseObj);
+        });
+      // console.log("Posted");
     }
->>>>>>> Stashed changes
+  }
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];

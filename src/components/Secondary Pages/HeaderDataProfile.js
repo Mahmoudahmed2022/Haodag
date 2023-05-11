@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaFacebook, FaInstagram, FaTrash, FaTwitter } from "react-icons/fa";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "../../Css/ClientProfile.scss";
 import "../../Css/MainProfileForAllUsers.css";
 import "../../Css/ProfileData.css";
@@ -32,6 +32,17 @@ const HeaderDataProfile = (props) => {
   const [plannerData, setPlannerData] = useState([]);
   const [plan, setplan] = useState([]);
   let { param } = useParams();
+  const navigate = useNavigate();
+
+  const userToken=location?.state?.data;
+  const token=location?.state?.token;
+
+  console.log(userToken)
+  console.log(token)
+
+
+
+
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
@@ -58,7 +69,13 @@ const HeaderDataProfile = (props) => {
       } else alert("Error Happened Please Try Again Later");
     });
   }
+  // useEffect(() => {
+  //   navigate(`/:planner/${userToken}`, { state: { data: userToken } });
+
+  // },[])
+
   useEffect(() => {
+
     fetchPlannerData();
     fetchplan();
     fetchOwnerData();
