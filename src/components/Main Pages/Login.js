@@ -91,7 +91,11 @@ function Login() {
   // }, [userToken]);
   useEffect(() => {
     if (userToken) {
+<<<<<<< Updated upstream
       navigate("/hallForm", { state: { data: userToken } });
+=======
+      navigate("/hallform", { state: { data: userToken } });
+>>>>>>> Stashed changes
     }
     // if (status) {
     //   if (status.message) {

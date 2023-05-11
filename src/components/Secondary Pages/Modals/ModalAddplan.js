@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../../Css/Modal.css";
+import { useNavigate } from "react-router-dom";
 
 const ModalAddplan = (props) => {
   const [name, setName] = useState("");
@@ -41,6 +42,69 @@ const ModalAddplan = (props) => {
     setPrice("");
     setDescription("");
   };
+  const [userToken, setUserToken] = useState(null);
+  const navigate = useNavigate();
+  const [status, setStatus] = useState(null);
+
+  const [verifyPassword, setVerifyPassword] = useState("");
+  const [photo, setPhoto] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    country: "",
+    phone: "",
+    gender: "",
+    religion: "",
+    role: "",
+    photo: "",
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handlePhotoChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      photo: event.target.files[0],
+    }));
+  };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const formDataObj = new FormData();
+  //   formDataObj.append("name", formData.name);
+  //   formDataObj.append("email", formData.email);
+  //   formDataObj.append("password", formData.password);
+  //   formDataObj.append("country", formData.country);
+  //   formDataObj.append("phone", formData.phone);
+  //   formDataObj.append("gender", formData.gender);
+  //   formDataObj.append("religion", formData.religion);
+  //   formDataObj.append("role", formData.role);
+  //   formDataObj.append("photo", formData.photo);
+  //   if (formData.password === verifyPassword){
+  //   fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
+  //     method: "POST",
+  //     body: formDataObj,
+  //   })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setUserToken(data.data);
+  //       setStatus(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });}
+  //     else{alert("Password and Confirm Password Does not Match");}
+  // };
+console.log(userToken);
+console.log(status);
 
   if (!props.show) {
     return null;

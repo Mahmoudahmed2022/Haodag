@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../../Css/Registration.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 function Registration() {
   const [userToken, setUserToken] = useState(null);
   const navigate = useNavigate();
@@ -163,7 +162,7 @@ console.log(status);
   // console.log(userToken);
   useEffect(() => {
     if (userToken) {
-      navigate("/", { state: { data: userToken } });
+      navigate("/hallform", { state: { data: userToken } });
     }
     if (status) {
       if (status.message) {
