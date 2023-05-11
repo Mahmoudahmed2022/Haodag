@@ -54,6 +54,22 @@
   cursor: pointer;
   white-space: nowrap;
 }
+.view-btn {
+  color: #fff !important;
+  background-color: #2d82cbf5 !important;
+  width: 49%;
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
 .decline-btn {
   color: #fff !important;
   background-color: #f44336 !important;

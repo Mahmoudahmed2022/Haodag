@@ -6,7 +6,7 @@ import "../../Css/AdminDashboard.css";
 
 const FetchAllData = (props) => {
   const user = props.person;
-
+  console.log(props);
   return (
     <div className="contDataDiv">
       <table className="tableUsersData">

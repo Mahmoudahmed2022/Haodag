@@ -18,6 +18,7 @@ import HallForm from "./components/Secondary Pages/Hall/HallForm";
 import GreatePackages from "./components/Main Pages/GreatePackages";
 import AddPackage from "./components/Secondary Pages/Hall/AddPackage";
 import Reservations from "./components/Secondary Pages/Reservations";
+import HallsRequests from "./components/Secondary Pages/Hall/HallsRequests";
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/AdminDashboard" element={<Dashboard />} />
           <Route path="/hallForm" element={<HallForm />} />
+          <Route path="/hallsrequests" element={<HallsRequests />} />
           <Route path="/greatepackages" element={<GreatePackages />} />
           <Route path="/addpackage" element={<AddPackage />} />
           <Route path="/modal" element={<Modal />} />

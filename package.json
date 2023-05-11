@@ -1,6 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
+  "proxy": "http://127.0.0.1:8000",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -38,7 +39,7 @@
   },
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-},
+  },
   "scripts": {
     "start": " react-scripts start",
     "build": "react-scripts build",

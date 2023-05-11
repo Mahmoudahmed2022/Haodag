@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-import { t } from "i18next";
-
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 const HallForm = (props) => {
-  const [responseObj, setResponseObj] = useState({});
+  const location = useLocation();
+  const token = location?.state?.data;
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -14,9 +15,7 @@ const HallForm = (props) => {
     chairs: 0,
     tables: 0,
     price: 0,
-    // hallDescription: "",
     capacity: "",
-    // statTime: "",
     hours: 0,
     type: "",
     photos: [],
@@ -33,35 +32,45 @@ const HallForm = (props) => {
       };
     });
   }
-  const token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvc3dpdGNoTG9naW4iLCJpYXQiOjE2ODM2NzI0MzgsImV4cCI6MTY4MzY3NjAzOCwibmJmIjoxNjgzNjcyNDM4LCJqdGkiOiJsOFNqZ3k2N2dtVXBIdVZBIiwic3ViIjoiNCIsInBydiI6ImEyZGMwNmUzZjY5YjEyMmQ1YWQzOTViOGVkMTQwOTMxOWQxZmU2NjYifQ.THVrDJi0ZK1pHwC445phVhQ_6qgtXWJa56Ghxq0IaHg"; // Replace with your actual token
 
-  const [data, setData] = useState(null);
-  
-    function handleSubmit(e) {
-      e.preventDefault();
-      if (formData) {
-        fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-            Authorization: `Bearer${token}`,
-          },
-  
-          body: JSON.stringify(formData),
-        })
-          .then((response) => {
-            response.json();
-            console.log(response);
-          })
-          .then((data) => {
-            setResponseObj(data);
-            console.log(responseObj);
-          });
-        // console.log("Posted");
-      }
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    axios
+      .post("http://127.0.0.1:8000/owner/auth/addHall", formData, {
+        headers: {
+          Authorization: `Bearer${token}`,
+          "auth-token": `${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // if (formData) {
+    //   fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "auth-token": token,
+    //       Authorization: `Bearer${token}`,
+    //     },
+
+    //     body: JSON.stringify(formData),
+    //   })
+    //     .then((response) => {
+    //       response.json();
+    //       console.log(response);
+    //     })
+    //     .then((data) => {
+    //       setResponseObj(data);
+    //       console.log(responseObj);
+    //     });
+    //   // console.log("Posted");
+    // }
+  }
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];

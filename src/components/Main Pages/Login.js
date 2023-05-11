@@ -1,10 +1,8 @@
 import { FaLock } from "@react-icons/all-files/fa/FaLock";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
-import { message } from "antd";
 
 function Login() {
   // let body = document.getElementsByTagName("body");
@@ -15,7 +13,7 @@ function Login() {
     password: "",
   });
   const [userToken, setUserToken] = useState(null);
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState(null);
 
   const getLoginData = (e) => {
     setFormData((prev) => {
@@ -59,8 +57,9 @@ function Login() {
       })
 
       .then((data) => {
-        setUserToken(data.data);
-        setStatus(data);})
+        setUserToken(data.data.token);
+        setStatus(data);
+      })
       .catch((error) => {
         console.error(error.message);
         // display the error message to the user using an alert or some other method
@@ -92,7 +91,7 @@ function Login() {
   // }, [userToken]);
   useEffect(() => {
     if (userToken) {
-      navigate("/", { state: { data: userToken } });
+      navigate("/hallForm", { state: { data: userToken } });
     }
     // if (status) {
     //   if (status.message) {
@@ -104,7 +103,7 @@ function Login() {
     // }
   }, [userToken]);
 
-// Logout
+  // Logout
 
   // const [isLoggedOut, setIsLoggedOut] = useState(false);
 
@@ -168,7 +167,7 @@ function Login() {
               <span className="s-span"></span>
               Submit
             </button>
-            <Link to="/registration"  className="register" >
+            <Link to="/registration" className="register">
               new visitor
             </Link>
           </div>
