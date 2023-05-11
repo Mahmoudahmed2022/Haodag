@@ -41,10 +41,11 @@
 .accept-btn {
   color: #fff !important;
   background-color: #4caf50 !important;
-  width: 49%;
+  width: 55%;
   border: none;
   display: inline-block;
   padding: 8px 16px;
+  padding-right: 10px;
   vertical-align: middle;
   overflow: hidden;
   text-decoration: none;
@@ -53,6 +54,11 @@
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
+}
+.Requests-tit {
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 .view-btn {
   color: #fff !important;

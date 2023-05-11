@@ -18,7 +18,7 @@ function HallsRequests() {
   return (
     <>
       <div>
-        <h1 className="reserve-tit">Halls Confirmation Requests</h1>
+        <h1 className="Requests-tit">Halls Confirmation Requests</h1>
         <div className="reserv-big-cont">
           {reservations.map((reservation) => {
             return (

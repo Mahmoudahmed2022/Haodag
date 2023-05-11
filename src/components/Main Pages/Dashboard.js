@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../Css/AdminDashboard.css";
 import CategoreyInDashboard from "../Secondary Pages/Cards/CategoreyInDashboard";
 import FetchAllData from "../Secondary Pages/FetchAllData";
+import HallsRequests from "../Secondary Pages/Hall/HallsRequests";
 const Dashboard = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [client, setClient] = useState([]);
@@ -59,7 +60,7 @@ const Dashboard = () => {
   } else if (selectedComponent === "weddingPlanner") {
     content = <FetchAllData person={weddingPlanner} />;
   } else if (selectedComponent === "hallsRequest") {
-    content = <FetchAllData person={hallsRequest} />;
+    content = <HallsRequests />;
   }
   return (
     <div className="parentDashboard">
