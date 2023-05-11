@@ -7,7 +7,7 @@ import "../../Css/ProfileData.css";
 import ModalAddplan from "../Secondary Pages/Modals/ModalAddplan";
 import ModalEditClientProfile from "../Secondary Pages/Modals/ModalEditClientProfile";
 import kariem from "../images/user.png";
-
+import Dashboard from "../Main Pages/Dashboard.js"
 import axios from "axios";
 import { useEffect } from "react";
 import Cards from "./Cards/Cards";
@@ -18,10 +18,13 @@ import HallCard from "./Cards/HallCard";
 
 const HeaderDataProfile = (props) => {
   const location = useLocation();
+  const userToken=location?.state?.data;
 
-  const isPlanner = location.pathname.includes("planner");
-  const isOwner = location.pathname.includes("owner");
-  const isClient = location.pathname.includes("client");
+  const isAdmin = userToken.role==='admin'
+
+  const isPlanner = userToken.role==='planner'
+  const isOwner = userToken.role==='owner'
+  const isClient = userToken.role==='user'
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
 
@@ -34,11 +37,12 @@ const HeaderDataProfile = (props) => {
   let { param } = useParams();
   const navigate = useNavigate();
 
-  const userToken=location?.state?.data;
-  const token=location?.state?.token;
+  // const token=location?.state?.token;
 
-  console.log(userToken)
-  console.log(token)
+  console.log('From Header',userToken)
+  console.log(' Token',userToken.token)
+
+  // console.log(token)
 
 
 
@@ -130,15 +134,15 @@ const HeaderDataProfile = (props) => {
   return (
     <div className="contProfileAll">
       <div className="profile-header">
+        <div className="cOntLeftData">
         <div className="divContImgType">
           <img src={kariem} alt="Profile" className="profile-image" />
-          <p className="nameUser">Wedding Planner</p>
+          <p className="nameUser">{userToken.role}</p>
         </div>
         <div className="profile-details">
-          <h1 className="profile-name">Kariem Atef</h1>
+          <h1 className="profile-name">{userToken.name}</h1>
           <p className="profile-bio">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            beatae non rerum ab es.
+           {userToken.email}
           </p>
           <div className="social-icons">
             <a href="#">
@@ -152,6 +156,9 @@ const HeaderDataProfile = (props) => {
             </a>
           </div>
         </div>
+        </div>
+        
+
         <div className="btnsPlannerProf">
           <div className="planner-prof-btn-div">
             <Link
@@ -241,7 +248,10 @@ const HeaderDataProfile = (props) => {
           )} */}
         </div>
       </div>
-
+      {isAdmin && (
+        <Dashboard />
+       
+      )}
       {isPlanner && (
         <>
           <h2 className="section-heading">Wedding Plans</h2>

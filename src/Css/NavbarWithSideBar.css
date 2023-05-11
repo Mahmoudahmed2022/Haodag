@@ -222,6 +222,9 @@
   /* margin-top: 30px; */
   margin-right: 30px;
 }
+.profile-photo img{
+  cursor: pointer;
+}
 /* .activeDashboard{
   display: flex;
 

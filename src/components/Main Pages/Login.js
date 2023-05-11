@@ -72,18 +72,17 @@ function Login() {
       });
   };
 
- 
   console.log(status);
   console.log(userToken);
   console.log(token);
 
   console.log(id);
 
- 
   useEffect(() => {
     if (userToken) {
-      navigate(`/:${userToken.role}/${id}`, { state: { data: userToken,token:token } });
-
+      // navigate(`/:${userToken.role}/${id}`, { state: { data: userToken,token:token } });
+      //  navigate(`/hallForm`, { state: { data: userToken,token:token } });
+      navigate(`/`, { state: { data: userToken } });
     }
     // if (status) {
     //   if (status.message) {
@@ -95,7 +94,7 @@ function Login() {
     // }
   }, [userToken]);
 
-   // const handleSubmit1 = (event) => {
+  // const handleSubmit1 = (event) => {
   //   event.preventDefault();
   //   axios
   //     .post("localhost:8000/api/auth/logout", formData)

@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { FaParking, FaUserAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
-import { MdDirectionsCarFilled, MdEmojiFoodBeverage, MdFastfood, MdLocationPin } from "react-icons/md";
+import {
+  MdDirectionsCarFilled,
+  MdEmojiFoodBeverage,
+  MdFastfood,
+  MdLocationPin,
+} from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import "../../Css/App.css";
 import "../../Css//Home1.css";
@@ -11,12 +16,13 @@ import image11 from "../images/12.jpeg";
 import image10 from "../images/animation.png";
 // import HallCard from "../HallCard";
 import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
+import NavbarWithSideBar from "./NavbarWithSideBar";
 
 function Home() {
   const location = useLocation();
-  const userToken=location?.state?.data;
+  const userToken = location?.state?.data;
 
-  const IsHallOwner = location.pathname.includes("hallowner");
+ 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -33,21 +39,18 @@ function Home() {
   const [visible, setVisible] = useState(5);
 
   const allCardData = () => {
-      fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
-    .then(response => response.json())
-    .then(data => {
-      setCardData(data.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    
-  
-   
+    fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
+      .then((response) => response.json())
+      .then((data) => {
+        setCardData(data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   console.log(cardData);
-  
-console.log("user",userToken)
+
+  console.log("user", userToken);
   const loadMore = () => {
     setVisible(visible + 5);
   };
@@ -55,7 +58,6 @@ console.log("user",userToken)
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
-
   }, []);
   // const renderCard = (cardData) => {
   //   return (
@@ -120,10 +122,13 @@ console.log("user",userToken)
             </div>
           </div>
           <div className="lastButtonForDetails">
-            <Link className="lastButtonForDetails-button" to={`/hallDetails/${cardData.id}`}>
+            <Link
+              className="lastButtonForDetails-button"
+              to={`/hallDetails/${cardData.id}`}
+            >
               Details
             </Link>
-            {IsHallOwner && (
+            {userToken.role==='owner' && (
               <Link className="lastButtonForDetails" to="/AddHall">
                 Edit Hall
               </Link>
@@ -135,6 +140,7 @@ console.log("user",userToken)
   };
   return (
     <>
+    <NavbarWithSideBar userToken={userToken} />
       <div className="home-landing">
         <div className="all-content">
           <div className="text-content1">
@@ -142,7 +148,7 @@ console.log("user",userToken)
               <h1 className="head-text">
                 All Because Two People Fell In Love.
                 <p>this statement from api i'm a {userToken?.role} </p>
-{/* <img src={userToken.photo} alt=""/> */}
+                {/* <img src={userToken.photo} alt=""/> */}
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it
@@ -175,7 +181,7 @@ console.log("user",userToken)
 
       <div className="home-allhalls-container">
         {cardData.slice(0, visible).map((data, index) => (
-          <NewCardTemplate key={index} cardData={data} />
+          <NewCardTemplate userToken={userToken}  key={index} cardData={data} />
         ))}{" "}
       </div>
       <div className="for-button">
@@ -213,20 +219,24 @@ console.log("user",userToken)
           <div className="right-form">
             <div className="login-box1">
               <h2 className="login-title">Contact Us</h2>
-              <form className="login-form1" action={`mailto:Haowdag@gmail.com?subject=New message from ${name}&body=${message}`} method="post">
-  <div className="user-box1">
-    <FaUserAlt className="svg1" />
-    <input
-      type="text"
-      name=""
-      className="email-input1 e-p-input1"
-      required=""
-      value={name}
-      onChange={(e) => setName(e.target.value)}
-    />
-    <label className="e-p-label">Name</label>
-  </div>
-  {/* <div className="user-box1">
+              <form
+                className="login-form1"
+                action={`mailto:Haowdag@gmail.com?subject=New message from ${name}&body=${message}`}
+                method="post"
+              >
+                <div className="user-box1">
+                  <FaUserAlt className="svg1" />
+                  <input
+                    type="text"
+                    name=""
+                    className="email-input1 e-p-input1"
+                    required=""
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <label className="e-p-label">Name</label>
+                </div>
+                {/* <div className="user-box1">
     <HiOutlineMail className="svg1" />
     <input
       type="email"
@@ -238,23 +248,21 @@ console.log("user",userToken)
     />
     <label className="e-p-label">Email</label>
   </div> */}
-  <div className="user-box1">
-    <label className="textArea">Write Your Message</label>
-    <input
-      type="text"
-      name=""
-      required=""
-      className="password-input1 e-p-input1"
-      value={message}
-      onChange={(e) => setMessage(e.target.value)}
-    />
-  </div>
-  <button className="login-submit1 submit1" type="submit">
-    Send
-  </button>
-</form>
-
-
+                <div className="user-box1">
+                  <label className="textArea">Write Your Message</label>
+                  <input
+                    type="text"
+                    name=""
+                    required=""
+                    className="password-input1 e-p-input1"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </div>
+                <button className="login-submit1 submit1" type="submit">
+                  Send
+                </button>
+              </form>
             </div>
           </div>
         </div>

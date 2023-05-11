@@ -58,6 +58,7 @@ function Registration() {
         return response.json();
       })
       .then((data) => {
+        console.log(data)
         setUserToken(data.data);
         setStatus(data);
       })
@@ -66,8 +67,8 @@ function Registration() {
       });}
       else{alert("Password and Confirm Password Does not Match");}
   };
-console.log(userToken);
-console.log(status);
+console.log('userToken',userToken);
+console.log('status',status);
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setFormData((prevState) => ({
@@ -160,9 +161,13 @@ console.log(status);
 
   // console.log(formData);
   // console.log(userToken);
+
+
   useEffect(() => {
     if (userToken) {
-      navigate("/hallform", { state: { data: userToken } });
+      // navigate("/hallform", { state: { data: userToken } });
+      navigate(`/:${userToken.role}/${userToken.id}`, { state: { data: userToken } });
+
     }
     if (status) {
       if (status.message) {
@@ -173,6 +178,16 @@ console.log(status);
       }
     }
   }, [userToken, status]);
+
+
+
+
+
+
+
+
+
+
   // useEffect(() => {
   //   if (userToken) {
   //     navigate("/", { state: { data: userToken } });

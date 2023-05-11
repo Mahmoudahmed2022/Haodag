@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-        <NavbarWithSideBar />
+        
         {/*       <HallProfile/> */}
         <Routes>
           <Route path="/AdminDashboard" element={<Dashboard />} />

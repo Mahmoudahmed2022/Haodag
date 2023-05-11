@@ -163,7 +163,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 /* HallOwner */
@@ -416,7 +417,13 @@
   align-items: center;
   margin: 2rem 0;
   justify-content: space-evenly;
-  width: 100%;
+  width: 80%;
+}
+.cOntLeftData{
+  width: 60%;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 
 .profile-image {
@@ -429,6 +436,12 @@
 .profile-details {
   display: flex;
   flex-direction: column;
+}
+.btnsPlannerProf{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .divContImgType {
   display: flex;

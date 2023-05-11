@@ -7,6 +7,7 @@ const HallForm = (props) => {
   const [responseObj, setResponseObj] = useState({});
   const location = useLocation();
   const userToken = location?.state?.data;
+
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -17,6 +18,8 @@ const HallForm = (props) => {
     chairs: 0,
     tables: 0,
     price: 0,
+    available: "",
+
     capacity: "",
     hours: 0,
     type: "",
@@ -40,13 +43,13 @@ const HallForm = (props) => {
     });
   }
 
-  function handleSubmit(e) {
+  function handleSubmit1(e) {
     e.preventDefault();
 
     axios
       .post("http://127.0.0.1:8000/owner/auth/addHall", formData, {
         headers: {
-          Authorization: `Bearer${token}`,
+          "Authorization": `Bearer${token}`,
           "auth-token": `${token}`,
         },
       })
@@ -87,29 +90,31 @@ const HallForm = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
     if (formData) {
-      // http://127.0.0.1:8000/api/auth/switchLogin
-      // http://127.0.0.1:8000/owner/auth/addHall
       fetch("http://127.0.0.1:8000/owner/auth/addHall", {
         method: "POST",
-        // mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer${userToken.token}`,
-          // "auth-token":`${userToken.token}`
+          "auth-token": `${userToken.token}`,
         },
-
-        body: formData,
+        body: JSON.stringify(formData),
       })
         .then((response) => {
-          console.log(response);
+          return response
+          // console.log(response)
         })
         .then((data) => {
           setResponseObj(data);
           console.log(responseObj);
+          
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      // console.log("Posted");
     }
   }
+  
+  
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImagesArray = [];
@@ -309,6 +314,19 @@ const HallForm = (props) => {
             className="inputDAtaForAddHall"
             type="number"
             name="tables"
+            onChange={getRegisterData}
+            required
+          />
+        </div>
+        <div className="form-group1">
+          <label htmlFor="available" className="labelDAtaForAddHall">
+          available:
+          </label>
+
+          <input
+            className="inputDAtaForAddHall"
+            type="number"
+            name="available"
             onChange={getRegisterData}
             required
           />

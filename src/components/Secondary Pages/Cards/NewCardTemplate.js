@@ -5,9 +5,9 @@ import "../../../Css/NewCardTemplate.css";
 // import image from "../components/images/tabels.jpg";
 const NewCardTemplate = (props)=>{
     const cardData = props.cardData
-    const location = useLocation();
-
-    const isOwner = location.pathname.includes("owner");
+    const userToken = props.userToken;
+    console.log('fromNewCardp',props.userToken)
+    const isOwner = props.userToken.role==='owner';
     function deleteHall(){
         fetch(`https://fakestoreapi.com/products/${cardData.id}`,{
           method:"DELETE",
@@ -17,20 +17,26 @@ const NewCardTemplate = (props)=>{
           }else alert('Error Happened Please Try Again Later')
         })
       }
+      console.log(cardData.photos[0]);
     return(
         <div className="CardContainer " >
             <div className="ContImgCard">
-                <img src={cardData.image} alt=""></img>
+                <img src={cardData?.photos[0]} alt=""></img>
             </div>
             <div className="AllRightData">
                 <div className="ContH3AndTrash">
-                <h3>{cardData.title} </h3>
+                <h3>{cardData.name} </h3>
                 {isOwner&&(<FaTrash onClick={deleteHall}  />)}
                 </div>
                 
                 <p>{cardData.title}</p>
                 <p>Price: {cardData.price} </p>
+                <div>
                 <Link to={`/hallDetails/${cardData.id}`}>Details</Link>
+                {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>}
+                </div>
+                
+                
             </div>
             
         </div>
