@@ -3,11 +3,13 @@ import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
-
+import Loader from "../images/loader.gif"
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
   const navigate = useNavigate();
+  const [load,setLoad]=useState(false)
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -43,6 +45,8 @@ function Login() {
 
   //   }
   const handleSubmit = (event) => {
+    setLoad(true)
+
     event.preventDefault();
     fetch("http://127.0.0.1:8000/api/auth/switchLogin", {
       method: "POST",
@@ -93,7 +97,14 @@ function Login() {
     //   }
     // }
   }, [userToken]);
-
+  if(load){
+    return(
+      <div style={{width:'100%',minHeight:'100vh',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'white'}}>
+        <img src={Loader} />
+      </div>
+    )
+  }
+  
   // const handleSubmit1 = (event) => {
   //   event.preventDefault();
   //   axios
