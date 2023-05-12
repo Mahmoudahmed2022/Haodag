@@ -49,6 +49,7 @@ function Registration() {
     formDataObj.append("religion", formData.religion);
     formDataObj.append("role", formData.role);
     formDataObj.append("photo", formData.photo);
+
     if (formData.password === verifyPassword) {
       fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
         method: "POST",
@@ -111,16 +112,16 @@ function Registration() {
   //     });
   // };
 
-  // localhost:8000/api/auth/switchRegister
-  const handleSubmit1 = (event) => {
-    event.preventDefault();
-    console.log(formData);
-    axios
-      .post("http://127.0.0.1:8000/api/auth/switchRegister", formData)
-      .then((data) => {
-        console.log(data);
-      });
-  };
+  // // localhost:8000/api/auth/switchRegister
+  // const handleSubmit1 = (event) => {
+  //   event.preventDefault();
+  //   console.log(formData);
+  //   axios
+  //     .post("http://127.0.0.1:8000/api/auth/switchRegister", formData)
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // };
   // console.log(formData);
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;

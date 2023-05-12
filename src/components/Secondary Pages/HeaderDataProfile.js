@@ -26,10 +26,8 @@ const HeaderDataProfile = (props) => {
   const isClient = userToken.role === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
-  const [ownersHallsCard,setownersHallsCard] = useState([])
-  const [hall,setHall] = useState([])
-
-  
+  const [ownersHallsCard, setownersHallsCard] = useState([]);
+  const [hall, setHall] = useState([]);
 
   const [showEdit, setShowEdit] = useState(false);
   const [visible, setVisible] = useState(5);
@@ -43,10 +41,10 @@ const HeaderDataProfile = (props) => {
   // const token=location?.state?.token;
 
   // console.log(token)
-   const id = userToken.id;
+  const id = userToken.id;
   //  const idHall = ownersHallsCard.id;
 
-   const fetchPlannerData = async () => {
+  const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
   };
@@ -63,29 +61,29 @@ const HeaderDataProfile = (props) => {
       setOwnerData(data.data);
     });
   };
-const getownersHallsCard = (id) => {
-  fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${userToken.token}`,
-      "auth-token": `${userToken.token}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+  const getownersHallsCard = (id) => {
+    fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`,
+      },
     })
-    .then((data) => {
-      console.log('Data received from server:', data);
-      setownersHallsCard(data.data);
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error);
-    });
-};
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Data received from server:", data);
+        setownersHallsCard(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
 
   function deletePlan() {
     fetch(`https://fakestoreapi.com/products/${plan.id}`, {
@@ -106,13 +104,17 @@ const getownersHallsCard = (id) => {
   //   setContent(userToken.photo);
   // }
 
+  function handleClick() {
+    navigate(`/hallForm`, { state: { data: userToken } });
+  }
+
   useEffect(() => {
     fetchPlannerData();
     fetchplan();
     fetchOwnerData();
     fetchClientData();
-    getownersHallsCard(id)
-    console.log("ownershalls",ownersHallsCard);
+    getownersHallsCard(id);
+    console.log("ownershalls", ownersHallsCard);
 
     // console.log("From Header", userToken);
     // console.log(" Token", userToken.token);
@@ -162,7 +164,7 @@ const getownersHallsCard = (id) => {
       </>
     );
   };
-console.log(userToken)
+  console.log(userToken);
   return (
     <div className="contProfileAll">
       <div className="profile-header">
@@ -244,13 +246,13 @@ console.log(userToken)
           )} */}
           {isOwner && (
             <div className="planner-prof-btn-div">
-              <Link
-                // onClick={() => setShow(true)}
-                className="btn-flip"
+              <button
+                onClick={handleClick}
+                className="btn-flip add-hall-btn"
                 data-back="AddHall"
                 data-front="AddHall"
-                to="/hallForm"
-              ></Link>
+              ></button>
+
               {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
           )}
@@ -302,7 +304,7 @@ console.log(userToken)
         <div className="halls">
           <div className="home-allhalls-container">
             {ownersHallsCard.slice(0, visible).map((data, index) => (
-              <HallCard key={index} userToken={userToken} hall={data}   />
+              <HallCard key={index} userToken={userToken} hall={data} />
             ))}{" "}
           </div>
           <div className="for-button">
