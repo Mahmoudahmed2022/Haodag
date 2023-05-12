@@ -14,12 +14,12 @@ const InfoDescription = (props) => {
           <h3></h3>
 
           <ul className="ulDescription">
-            {product.map((element) => (
+            {/* {product.map((element) => (
               <div>
                 <h3 className="h3Title">{element.Title} </h3>
                 <p className="pForDescription">{element.Poster}</p>
               </div>
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>

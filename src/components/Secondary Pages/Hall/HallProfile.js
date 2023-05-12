@@ -39,11 +39,12 @@ const HallProfile = ({ rating, isFavourite }) => {
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
   let message = "!";
-  const Id = useParams();
-  const hall_Id = Id.hallId;
-  const allData = async (hall_Id) => {
+  const {hallId} = useParams();
+  console.log(hallId)
+  // const hallId = Id.hallId;
+  const allData = async (hallId) => {
     // const api2 = "https://fakestoreapi.com/products";
-    const api = `http://127.0.0.1:8000/api/auth/getHall/${hall_Id}`;
+    const api = `http://127.0.0.1:8000/api/auth/getHall/${hallId}`;
     await fetch(api)
       .then((response) => response.json())
       .then((response) => {
@@ -54,7 +55,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   };
   console.log(products);
   useEffect(() => {
-    allData(hall_Id);
+    allData(hallId);
     urlWhatSap();
   }, []);
 
@@ -363,7 +364,7 @@ const HallProfile = ({ rating, isFavourite }) => {
       </div>
 
       {/* For Video */}
-      <div className="allhalls-container2">
+      {/* <div className="allhalls-container2">
         {products.slice(0, visible).map(renderCard)}
       </div>
       <div className="for-button2">
@@ -372,7 +373,7 @@ const HallProfile = ({ rating, isFavourite }) => {
             Load 5 More
           </button>
         )}
-      </div>
+      </div> */}
 
       <CommentSection />
     </div>

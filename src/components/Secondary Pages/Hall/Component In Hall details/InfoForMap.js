@@ -4,7 +4,7 @@ import "../../../../Css/HallProfile.css";
 const InfoForMap = (props) => {
   let products1 = props.products;
   let img1 = props.img;
-  let filteredData = products1.filter((item) => item.Year === "2005"); //instead of map
+  // let filteredData = products1.filter((item) => item.Year === "2005"); //instead of map
   return (
     <div className="allInfo">
       {/* <div className="attributeName1">

@@ -26,6 +26,10 @@ const HeaderDataProfile = (props) => {
   const isClient = userToken.role === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
+  const [ownersHallsCard,setownersHallsCard] = useState([])
+  const [hall,setHall] = useState([])
+
+  
 
   const [showEdit, setShowEdit] = useState(false);
   const [visible, setVisible] = useState(5);
@@ -39,8 +43,10 @@ const HeaderDataProfile = (props) => {
   // const token=location?.state?.token;
 
   // console.log(token)
+   const id = userToken.id;
+  //  const idHall = ownersHallsCard.id;
 
-  const fetchPlannerData = async () => {
+   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
   };
@@ -57,6 +63,30 @@ const HeaderDataProfile = (props) => {
       setOwnerData(data.data);
     });
   };
+const getownersHallsCard = (id) => {
+  fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${userToken.token}`,
+      "auth-token": `${userToken.token}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Data received from server:', data);
+      setownersHallsCard(data.data);
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+};
+
   function deletePlan() {
     fetch(`https://fakestoreapi.com/products/${plan.id}`, {
       method: "DELETE",
@@ -81,8 +111,11 @@ const HeaderDataProfile = (props) => {
     fetchplan();
     fetchOwnerData();
     fetchClientData();
-    console.log("From Header", userToken);
-    console.log(" Token", userToken.token);
+    getownersHallsCard(id)
+    console.log("ownershalls",ownersHallsCard);
+
+    // console.log("From Header", userToken);
+    // console.log(" Token", userToken.token);
   }, []);
   const loadMore = () => {
     setVisible(visible + 5);
@@ -129,13 +162,12 @@ const HeaderDataProfile = (props) => {
       </>
     );
   };
-
+console.log(userToken)
   return (
     <div className="contProfileAll">
       <div className="profile-header">
         <div className="cOntLeftData">
           <div className="divContImgType">
-            //{" "}
             <img
               src={userToken.photo}
               alt="Profile"
@@ -269,8 +301,8 @@ const HeaderDataProfile = (props) => {
       {isOwner && (
         <div className="halls">
           <div className="home-allhalls-container">
-            {ownerData.slice(0, visible).map((data, index) => (
-              <HallCard key={index} cardData={userToken} />
+            {ownersHallsCard.slice(0, visible).map((data, index) => (
+              <HallCard key={index} userToken={userToken} hall={data}   />
             ))}{" "}
           </div>
           <div className="for-button">

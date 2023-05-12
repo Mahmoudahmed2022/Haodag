@@ -13,10 +13,11 @@ import {
   DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-function ImageSlider(props) {
+function ImageSlider({products}) {
   // const [images, setImages] = useState([]);
-  const products1 = props.products;
-
+//   const hall = props.hall;
+// console.log(hall)
+console.log("from image slider",products?.data?.photos);
   return (
     <>
       <div className="media">
@@ -24,14 +25,14 @@ function ImageSlider(props) {
           className="PureCarousel "
           naturalSlideWidth={600}
           naturalSlideHeight={400}
-          totalSlides={products1.length}
+          totalSlides={products?.data?.photos?.length}
         >
           <Slider className="PureCarousel_Slider ">
-            {products1.map((image, index) => (
+            {products?.data?.photos?.map((image, index) => (
               <Slide className="PureCarousel_Slide " index={index} key={index}>
                 <img
                   className="PureCarousel_Image "
-                  src={image.Poster}
+                  src={image}
                   alt={`Slide ${index + 1}`}
                 />
               </Slide>

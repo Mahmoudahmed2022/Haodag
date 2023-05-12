@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../../../Css/HallProfile.css";
-const InfoServices = (props) => {
-  const product = props.products;
+const InfoServices = ({products}) => {
   return (
     <>
       <div className="allContInfo">
@@ -11,9 +10,9 @@ const InfoServices = (props) => {
         <div className="card-content">
           <h2 className="section__title">Services</h2>
           <ul className="uiForInfo">
-            {product.map((element) => (
+            {products?.data?.service?.map((element) => (
               <li className="liElement">
-                <p className="pForData">{element.Type}</p>
+                <p className="pForData">{element}</p>
               </li>
             ))}
           </ul>
