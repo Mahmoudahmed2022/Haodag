@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../../../Css/HallProfile.css";
-
 import image7 from "../../images/map.jpg";
 
 import { AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
@@ -38,9 +37,11 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [disLikeStyle, setDisLikeStyle] = useState({ color: "white" });
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
+  const [hall, sethall] = useState([]);
+
   let message = "!";
-  const {hallId} = useParams();
-  console.log(hallId)
+  const { hallId } = useParams();
+  console.log(hallId);
   // const hallId = Id.hallId;
   const allData = async (hallId) => {
     // const api2 = "https://fakestoreapi.com/products";
@@ -50,10 +51,11 @@ const HallProfile = ({ rating, isFavourite }) => {
       .then((response) => {
         console.log(response);
         setProducts(response);
+        sethall(response.data);
       })
       .catch((err) => console.error(err));
   };
-  console.log(products);
+  console.log(products.name);
   useEffect(() => {
     allData(hallId);
     urlWhatSap();
@@ -148,7 +150,7 @@ const HallProfile = ({ rating, isFavourite }) => {
 
   return (
     <div className="allHallProfile">
-      <h1 className="hallName">Hall's Name </h1>
+      <h1 className="hallName">{hall.name}</h1>
       {/* Slider */}
       <div className="imageSlider">
         <ImageSlider products={products} />
