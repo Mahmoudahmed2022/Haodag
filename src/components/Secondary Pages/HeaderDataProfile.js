@@ -7,7 +7,7 @@ import "../../Css/ProfileData.css";
 import ModalAddplan from "../Secondary Pages/Modals/ModalAddplan";
 import ModalEditClientProfile from "../Secondary Pages/Modals/ModalEditClientProfile";
 import kariem from "../images/user.png";
-import Dashboard from "../Main Pages/Dashboard.js"
+import Dashboard from "../Main Pages/Dashboard.js";
 import axios from "axios";
 import { useEffect } from "react";
 import Cards from "./Cards/Cards";
@@ -18,13 +18,12 @@ import HallCard from "./Cards/HallCard";
 
 const HeaderDataProfile = (props) => {
   const location = useLocation();
-  const userToken=location?.state?.data;
+  const userToken = location?.state?.data;
+  const isAdmin = userToken.role === "admin";
 
-  const isAdmin = userToken.role==='admin'
-
-  const isPlanner = userToken.role==='planner'
-  const isOwner = userToken.role==='owner'
-  const isClient = userToken.role==='user'
+  const isPlanner = userToken.role === "planner";
+  const isOwner = userToken.role === "owner";
+  const isClient = userToken.role === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
 
@@ -36,16 +35,10 @@ const HeaderDataProfile = (props) => {
   const [plan, setplan] = useState([]);
   let { param } = useParams();
   const navigate = useNavigate();
-
+  const [content, setContent] = useState();
   // const token=location?.state?.token;
 
-  console.log('From Header',userToken)
-  console.log(' Token',userToken.token)
-
   // console.log(token)
-
-
-
 
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
@@ -77,13 +70,19 @@ const HeaderDataProfile = (props) => {
   //   navigate(`/:planner/${userToken}`, { state: { data: userToken } });
 
   // },[])
+  // if (userToken.photo === null) {
+  //   setContent(kariem);
+  // } else {
+  //   setContent(userToken.photo);
+  // }
 
   useEffect(() => {
-
     fetchPlannerData();
     fetchplan();
     fetchOwnerData();
     fetchClientData();
+    console.log("From Header", userToken);
+    console.log(" Token", userToken.token);
   }, []);
   const loadMore = () => {
     setVisible(visible + 5);
@@ -135,29 +134,32 @@ const HeaderDataProfile = (props) => {
     <div className="contProfileAll">
       <div className="profile-header">
         <div className="cOntLeftData">
-        <div className="divContImgType">
-          <img src={kariem} alt="Profile" className="profile-image" />
-          <p className="nameUser">{userToken.role}</p>
-        </div>
-        <div className="profile-details">
-          <h1 className="profile-name">{userToken.name}</h1>
-          <p className="profile-bio">
-           {userToken.email}
-          </p>
-          <div className="social-icons">
-            <a href="#">
-              <FaInstagram className="widthHieht" />
-            </a>
-            <a href="#">
-              <FaFacebook className="widthHieht" />
-            </a>
-            <a href="#">
-              <FaTwitter className="widthHieht" />
-            </a>
+          <div className="divContImgType">
+            //{" "}
+            <img
+              src={userToken.photo}
+              alt="Profile"
+              className="profile-image"
+            />
+            <p className="nameUser">{userToken.role}</p>
+          </div>
+          <div className="profile-details">
+            <h1 className="profile-name">{userToken.name}</h1>
+            <p className="profile-bio">{userToken.email}</p>
+            <p className="profile-bio">{userToken.phone}</p>
+            <div className="social-icons">
+              <a href="#">
+                <FaInstagram className="widthHieht" />
+              </a>
+              <a href="#">
+                <FaFacebook className="widthHieht" />
+              </a>
+              <a href="#">
+                <FaTwitter className="widthHieht" />
+              </a>
+            </div>
           </div>
         </div>
-        </div>
-        
 
         <div className="btnsPlannerProf">
           <div className="planner-prof-btn-div">
@@ -181,8 +183,7 @@ const HeaderDataProfile = (props) => {
               formData={clientData}
             />
           </div>
-          {isPlanner && 
-          (
+          {isPlanner && (
             <div className="planner-prof-btn-div">
               <Link
                 onClick={() => setShow(true)}
@@ -201,7 +202,7 @@ const HeaderDataProfile = (props) => {
                 className="btn-flip"
                 data-back="DeletePlan"
                 data-front="DeletePlan"
-                
+
               ></Link>
               <DeletePlan
                 onClose={() => setShowDeletePlan(false)}
@@ -248,10 +249,7 @@ const HeaderDataProfile = (props) => {
           )} */}
         </div>
       </div>
-      {isAdmin && (
-        <Dashboard />
-       
-      )}
+      {isAdmin && <Dashboard />}
       {isPlanner && (
         <>
           <h2 className="section-heading">Wedding Plans</h2>
@@ -272,7 +270,7 @@ const HeaderDataProfile = (props) => {
         <div className="halls">
           <div className="home-allhalls-container">
             {ownerData.slice(0, visible).map((data, index) => (
-              <HallCard key={index} cardData={data} />
+              <HallCard key={index} cardData={userToken} />
             ))}{" "}
           </div>
           <div className="for-button">

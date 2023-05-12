@@ -49,26 +49,28 @@ function Registration() {
     formDataObj.append("religion", formData.religion);
     formDataObj.append("role", formData.role);
     formDataObj.append("photo", formData.photo);
-    if (formData.password === verifyPassword){
-    fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
-      method: "POST",
-      body: formDataObj,
-    })
-      .then((response) => {
-        return response.json();
+    if (formData.password === verifyPassword) {
+      fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
+        method: "POST",
+        body: formDataObj,
       })
-      .then((data) => {
-        console.log(data)
-        setUserToken(data.data);
-        setStatus(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });}
-      else{alert("Password and Confirm Password Does not Match");}
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setUserToken(data.data);
+          setStatus(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      alert("Password and Confirm Password Does not Match");
+    }
   };
-console.log('userToken',userToken);
-console.log('status',status);
+  console.log("userToken", userToken);
+  console.log("status", status);
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setFormData((prevState) => ({
@@ -162,12 +164,12 @@ console.log('status',status);
   // console.log(formData);
   // console.log(userToken);
 
-
   useEffect(() => {
     if (userToken) {
       // navigate("/hallform", { state: { data: userToken } });
-      navigate(`/:${userToken.role}/${userToken.id}`, { state: { data: userToken } });
-
+      navigate(`/:${userToken.role}/${userToken.id}`, {
+        state: { data: userToken },
+      });
     }
     if (status) {
       if (status.message) {
@@ -178,15 +180,6 @@ console.log('status',status);
       }
     }
   }, [userToken, status]);
-
-
-
-
-
-
-
-
-
 
   // useEffect(() => {
   //   if (userToken) {
