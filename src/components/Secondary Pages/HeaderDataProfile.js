@@ -11,24 +11,19 @@ import Dashboard from "../Main Pages/Dashboard.js";
 import axios from "axios";
 import { useEffect } from "react";
 import Cards from "./Cards/Cards";
-// import HallForm2 from "./Hall/HallForm";
-// import DeleteHall from "./Hall/DeleteHall";
 import HallCard from "./Cards/HallCard";
-// import DeletePlan from "../DeletePlan";
 
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const userToken = location?.state?.data;
-  const isAdmin = userToken.role === "admin";
-
-  const isPlanner = userToken.role === "planner";
-  const isOwner = userToken.role === "owner";
-  const isClient = userToken.role === "user";
+  const isAdmin = userToken?.role === "admin";
+  const isPlanner = userToken?.role === "planner";
+  const isOwner = userToken?.role === "owner";
+  const isClient = userToken?.role === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
   const [ownersHallsCard, setownersHallsCard] = useState([]);
   const [hall, setHall] = useState([]);
-
   const [showEdit, setShowEdit] = useState(false);
   const [visible, setVisible] = useState(5);
   const [ownerData, setOwnerData] = useState([]);
@@ -38,11 +33,7 @@ const HeaderDataProfile = (props) => {
   let { param } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState();
-  // const token=location?.state?.token;
-
-  // console.log(token)
   const id = userToken.id;
-  //  const idHall = ownersHallsCard.id;
 
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
@@ -94,30 +85,31 @@ const HeaderDataProfile = (props) => {
       } else alert("Error Happened Please Try Again Later");
     });
   }
-  // useEffect(() => {
-  //   navigate(`/:planner/${userToken}`, { state: { data: userToken } });
 
-  // },[])
-  // if (userToken.photo === null) {
-  //   setContent(kariem);
-  // } else {
-  //   setContent(userToken.photo);
-  // }
-
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let message = "!";
+  let whatsappNum = "0";
+  const urlWhatSap = () => {
+    message = "Hello!";
+    whatsappNum = userToken.phone;
+    setWhatsappUrl(
+      `https://api.whatsapp.com/send/?phone=${whatsappNum}&text=${message}&type=phone_number&app_absent=0`
+    );
+  };
+  console.log(whatsappUrl, userToken);
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
-
+  function handleLink() {
+    window.location.href = whatsappUrl;
+  }
   useEffect(() => {
     fetchPlannerData();
     fetchplan();
     fetchOwnerData();
     fetchClientData();
     getownersHallsCard(id);
-    console.log("ownershalls", ownersHallsCard);
-
-    // console.log("From Header", userToken);
-    // console.log(" Token", userToken.token);
+    urlWhatSap();
   }, []);
   const loadMore = () => {
     setVisible(visible + 5);
@@ -164,7 +156,6 @@ const HeaderDataProfile = (props) => {
       </>
     );
   };
-  console.log(userToken);
   return (
     <div className="contProfileAll">
       <div className="profile-header">
@@ -202,6 +193,7 @@ const HeaderDataProfile = (props) => {
               data-back="Contact"
               data-front="Contact"
               to="#"
+              onClick={handleLink}
             ></Link>
           </div>
           <div className="planner-prof-btn-div">
@@ -214,7 +206,7 @@ const HeaderDataProfile = (props) => {
             <ModalEditClientProfile
               onClose={() => setShowEdit(false)}
               show={showEdit}
-              formData={clientData}
+              formData={userToken}
             />
           </div>
           {isPlanner && (
