@@ -13,7 +13,7 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import CommentSection from "../Cards/CommentSection";
 import InfoDescription from "../Hall/Component In Hall details/InfoDescription";
 import InfoForMap from "../Hall/Component In Hall details/InfoForMap";
@@ -22,9 +22,11 @@ import InfoShow from "../Hall/Component In Hall details/InfoShow";
 import Modal from "../Modals/Modal";
 import ImageSlider from "./Component In Hall details/ImageSlider ";
 // import Slider from "../../Slider";
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar"
 import ModalForAskToBook from "../Modals/ModalForAskToBook";
 
 const HallProfile = ({ rating, isFavourite }) => {
+  
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [show, setShow] = useState(false);
   const [showBook, setShowBook] = useState(false);
@@ -38,7 +40,8 @@ const HallProfile = ({ rating, isFavourite }) => {
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
   const [hall, sethall] = useState([]);
-
+  const location = useLocation();
+ 
   let message = "!";
   const { hallId } = useParams();
   console.log(hallId);
@@ -59,6 +62,8 @@ const HallProfile = ({ rating, isFavourite }) => {
   useEffect(() => {
     allData(hallId);
     urlWhatSap();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
   }, []);
 
   // fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
@@ -149,6 +154,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   };
 
   return (
+    <>    
     <div className="allHallProfile">
       <h1 className="hallName">{hall.name}</h1>
       {/* Slider */}
@@ -379,6 +385,8 @@ const HallProfile = ({ rating, isFavourite }) => {
 
       <CommentSection />
     </div>
+    </>
+
   );
 };
 

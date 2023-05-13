@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as AiIcons from "react-icons/ai";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../../Css/NavbarWithSideBar.css";
 import { IconContext } from "react-icons";
@@ -14,14 +14,14 @@ import "../../Css/App.css";
 import { useNavigate } from "react-router-dom";
 import { GoDashboard } from "react-icons/go";
 
-function NavbarWithSideBar(props) {
+function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);
   const nav = useNavigate();
   const showSidebar = () => setSidebar(!sidebar);
 
   const location = useLocation();
-  const userToken = props.userToken;
-
+  const userToken = location?.state?.data;
+console.log(userToken)
 const IsAdmin = location.pathname.includes("Admin")
 
   return (
@@ -55,17 +55,12 @@ const IsAdmin = location.pathname.includes("Admin")
               </div>
             </div>
             <div className="right">
-              <Link className="logo" to='/'>
+              <Link className="logo" >
                 <img className="avatar" src={image2} alt="" />
               </Link>
             </div>
-            <div className="profile-photo">
-            
-            <img src={user} alt="user pic" onClick={()=> nav(`/:${userToken.role}/${userToken.id}`
-             , { state: { data: userToken } }
-             )
-             }/>
-              
+            <div onClick={()=>nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken}})}  className="profile-photo">
+              <img src={user} alt="user pic" />
             </div>
           </div>
         </div>

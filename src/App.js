@@ -19,11 +19,12 @@ import GreatePackages from "./components/Main Pages/GreatePackages";
 import AddPackage from "./components/Secondary Pages/Hall/AddPackage";
 import Reservations from "./components/Secondary Pages/Reservations";
 import HallsRequests from "./components/Secondary Pages/Hall/HallsRequests";
-function App() {
+function App({userToken}) {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-        
+      <NavbarWithSideBar userToken={userToken} />
+
         {/*       <HallProfile/> */}
         <Routes>
           <Route path="/AdminDashboard" element={<Dashboard />} />

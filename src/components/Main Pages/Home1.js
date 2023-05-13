@@ -140,7 +140,7 @@ function Home() {
   };
   return (
     <>
-    <NavbarWithSideBar userToken={userToken} />
+    {/* <NavbarWithSideBar userToken={userToken} /> */}
       <div className="home-landing">
         <div className="all-content">
           <div className="text-content1">

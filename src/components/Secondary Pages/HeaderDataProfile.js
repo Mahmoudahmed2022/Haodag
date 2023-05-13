@@ -16,6 +16,10 @@ import HallCard from "./Cards/HallCard";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const userToken = location?.state?.data;
+  console.log(userToken)
+  // const { userToken } = location.state.data;
+  // console.log(userToken)
+
   const isAdmin = userToken?.role === "admin";
   const isPlanner = userToken?.role === "planner";
   const isOwner = userToken?.role === "owner";
@@ -30,11 +34,11 @@ const HeaderDataProfile = (props) => {
   const [clientData, setClientData] = useState([]);
   const [plannerData, setPlannerData] = useState([]);
   const [plan, setplan] = useState([]);
-  let { param } = useParams();
+  let { id } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState();
-  const id = userToken.id;
-
+//   const id = userToken.id;
+// console.log(id)
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
@@ -162,16 +166,16 @@ const HeaderDataProfile = (props) => {
         <div className="cOntLeftData">
           <div className="divContImgType">
             <img
-              src={userToken.photo}
+              src={userToken?.photo}
               alt="Profile"
               className="profile-image"
             />
-            <p className="nameUser">{userToken.role}</p>
+            <p className="nameUser">{userToken?.role}</p>
           </div>
           <div className="profile-details">
-            <h1 className="profile-name">{userToken.name}</h1>
-            <p className="profile-bio">{userToken.email}</p>
-            <p className="profile-bio">{userToken.phone}</p>
+            <h1 className="profile-name">{userToken?.name}</h1>
+            <p className="profile-bio">{userToken?.email}</p>
+            <p className="profile-bio">{userToken?.phone}</p>
             <div className="social-icons">
               <a href="#">
                 <FaInstagram className="widthHieht" />
