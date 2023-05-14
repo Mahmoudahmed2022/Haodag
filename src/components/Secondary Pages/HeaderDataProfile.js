@@ -103,6 +103,7 @@ const HeaderDataProfile = (props) => {
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
+  console.log(userToken)
 
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });

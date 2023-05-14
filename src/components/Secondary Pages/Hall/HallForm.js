@@ -21,7 +21,7 @@ const HallForm = (props) => {
     country: "",
     city: "",
     street: "",
-    photoname: [],
+    photos: [],
     videos: [],
     shows: [],
     services: [],
@@ -87,66 +87,8 @@ const HallForm = (props) => {
   //   }
   // }
 
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (formData) {
-      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const hallId = data.data.id;
-          const photoPromises = formData.photoname.map((photo) =>
-            fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userToken.token}`,
-                "auth-token": `${userToken.token}`,
-              },
-              body: JSON.stringify({ photoname: photo }),
-            }).then((response) => response.json())
-          );
-          Promise.all(photoPromises).then((responses) => {
-            const photoNames = responses.map((response) => response.data.photoname);
-            setFormData({ ...formData, photoname: photoNames });
-            setResponseObj(data.data);
-            const updatedResponseObj = { ...responseObj, photoname: data.photoname };
-            setResponseObj(updatedResponseObj);
-            console.log(updatedResponseObj)
-
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }
-  console.log(responseObj)
-  console.log(formData)
-
-
-
-
-
-
-
-
-
-
-
-
-
   // function handleSubmit(e) {
   //   e.preventDefault();
-  
   //   if (formData) {
   //     fetch("http://127.0.0.1:8000/owner/auth/addHall", {
   //       method: "POST",
@@ -157,45 +99,138 @@ const HallForm = (props) => {
   //       },
   //       body: JSON.stringify(formData),
   //     })
-  //       .then((response) => response.json())
+  //       .then((response) => {return response.json();})
   //       .then((data) => {
-  //         const hallId = data.data.id; // extract the hall id from the response
-  
-  //         // construct the URL for the second API call using the hall id
-  //         const photoUrl = `http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`;
-  
-  //         // create a new FormData object and append the photos to it
-  //         const photoData = new FormData();
-  //         formData.photoname.forEach((photo) => {
-  //           photoData.append("photoname", photo);
+  //         console.log(data)
+  //         const hallId = data.data.id;
+  //         const photoPromises = formData.photoname.map((photo) =>
+  //           fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //               Authorization: `Bearer ${userToken.token}`,
+  //               "auth-token": `${userToken.token}`,
+  //             },
+  //             body: JSON.stringify({ photoname: photo }),
+  //           }).then((response) =>  {return response.json();})
+  //         );
+  //         Promise.all(photoPromises).then((responses) => {
+  //           const photoNames = responses.map((response) => response.data.photos);
+  //           setFormData({ ...formData, photos: photoNames });
+  //           setResponseObj(data);
+  //           console.log(data)
+  //           const updatedResponseObj = { ...responseObj, photoname: data.photos };
+  //           setResponseObj(updatedResponseObj);
+  //           console.log(updatedResponseObj)
+
   //         });
-  
-  //         // make the second API call to upload the photos
-  //         fetch(photoUrl, {
-  //           method: "POST",
-  //           headers: {
-  //             Authorization: `Bearer ${userToken.token}`,
-  //             "auth-token": `${userToken.token}`,
-  //           },
-  //           body: photoData,
-  //         })
-  //           .then((response) => response.json())
-  //           .then((data) => {
-  //             console.log(data);
-  //           })
-  //           .catch((error) => {
-  //             console.log(error);
-  //           });
-  
-  //         setResponseObj(data.data);
-  //         console.log(responseObj);
   //       })
   //       .catch((error) => {
   //         console.log(error);
   //       });
   //   }
   // }
-  
+
+  console.log(userToken);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (formData) {
+      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken.token}`,
+          "auth-token": `${userToken.token}`,
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          const hallId = data.data.id; // extract the hall id from the response
+          setResponseObj(data);
+          console.log(responseObj);
+          // construct the URL for the second API call using the hall id
+
+          // create a new FormData object and append the photos to it
+          const photoData = new FormData();
+          formData.photos.forEach((photo) => {
+            photoData.append("photo", photo);
+            console.log(photoData)
+          });
+
+          // make the second API call to upload the photos
+          fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+              "auth-token": `${userToken.token}`,
+            },
+            body: photoData,
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+  // async function addHallWithPhotos(formData, photos) {
+  //   const response = await fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `Bearer ${userToken.token}`,
+  //       "auth-token": `${userToken.token}`,
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+
+  //   const result = await response.json();
+
+  //   if (response.ok) {
+  //     const hallId = result.hallId;
+
+  //     // Add photos to the hall
+  //     for (const photo of photos) {
+  //       await addPhotoToHall(hallId, photo);
+  //     }
+  //   } else {
+  //     throw new Error(result.message);
+  //   }
+  // }
+
+  // async function addPhotoToHall(hallId, photo) {
+  //   const response = await fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${userToken.token}`,
+  //       "auth-token": `${userToken.token}`,
+  //     },
+  //     body: JSON.stringify({ photo }),
+  //   });
+
+  //   const result = await response.json();
+
+  //   if (!response.ok) {
+  //     throw new Error(result.message);
+  //   }
+  // }
 
   const handleImageChange = (e) => {
     const files = e.target.files;
@@ -207,7 +242,7 @@ const HallForm = (props) => {
 
       reader.onload = (e) => {
         newImagesArray.push(e.target.result);
-        setFormData({ ...formData, photoname: newImagesArray });
+        setFormData({ ...formData, photos: newImagesArray });
       };
 
       reader.readAsDataURL(file);
