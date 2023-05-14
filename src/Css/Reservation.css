@@ -8,10 +8,9 @@
   background: #616161;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 350px;
-  height: 550px;
+  width: 300px;
   margin: auto;
   margin-bottom: 50px;
   transition: all 0.2s ease-in-out;
@@ -20,20 +19,7 @@
   transform: translateY(-5px);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
-.reserve-user-pic {
-  display: flex;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px solid var(--main-color);
-  filter: drop-shadow(0 0 8px #c7862f);
-  margin-right: 100px;
-}
-.reserve-hall-pic {
-  width: 95%;
-  height: 200px;
-  border-radius: 10px;
-}
+
 .buttons {
   display: flex;
   margin: 10px;
@@ -44,7 +30,7 @@
   width: 55%;
   border: none;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 10px;
   padding-right: 10px;
   vertical-align: middle;
   overflow: hidden;
@@ -83,6 +69,7 @@
   border: none;
   display: inline-block;
   padding: 8px 16px;
+  padding-left: 10px;
   vertical-align: middle;
   overflow: hidden;
   text-decoration: none;
@@ -94,6 +81,7 @@
 }
 .reserve-btn {
   margin: 5px;
+  border-radius: 5px;
 }
 .reserve-tit {
   display: flex;
@@ -102,7 +90,6 @@
 .user-div {
   display: flex;
   flex-direction: row;
-  padding-bottom: 50px;
 }
 
 .user-info-div {
@@ -114,13 +101,14 @@
 .user-div,
 .hall-name {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Segoe UI", Arial, sans-serif;
 }
 .user-pic-cont,
 .user-info-div {
-  width: 100px;
+  width: 200px;
   margin-right: 20px;
+  display: flex;
 }
 .reserve-btn:hover {
   color: #000 !important;

@@ -16,9 +16,8 @@ import HallCard from "./Cards/HallCard";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const userToken = location?.state?.data;
-  console.log(userToken)
+  console.log(userToken);
   // const { userToken } = location.state.data;
-  // console.log(userToken)
 
   const isAdmin = userToken?.role === "admin";
   const isPlanner = userToken?.role === "planner";
@@ -37,8 +36,8 @@ const HeaderDataProfile = (props) => {
   let { id } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState();
-//   const id = userToken.id;
-// console.log(id)
+  //   const id = userToken.id;
+  // console.log(id)
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
@@ -104,6 +103,10 @@ const HeaderDataProfile = (props) => {
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
+  function handleReservations() {
+    navigate(`/Bookings`, { state: { data: userToken } });
+  }
+
   function handleLink() {
     window.location.href = whatsappUrl;
   }
@@ -254,13 +257,12 @@ const HeaderDataProfile = (props) => {
           )}
           {isOwner && (
             <div className="planner-prof-btn-div">
-              <Link
-                // onClick={() => setShow(true)}
-                className="btn-flip reservation-btn"
-                data-back="Reservations"
-                data-front="Reservations"
-                to="/Reservations"
-              ></Link>
+              <button
+                onClick={handleReservations}
+                className="btn-flip reservation-btn add-hall-btn"
+                data-back="Bookings"
+                data-front="Bookings"
+              ></button>
               {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
             </div>
           )}

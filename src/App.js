@@ -17,13 +17,13 @@ import HeaderDataProfile from "./components/Secondary Pages/HeaderDataProfile";
 import HallForm from "./components/Secondary Pages/Hall/HallForm";
 import GreatePackages from "./components/Main Pages/GreatePackages";
 import AddPackage from "./components/Secondary Pages/Hall/AddPackage";
-import Reservations from "./components/Secondary Pages/Reservations";
+import Bookings from "./components/Secondary Pages/Bookings";
 import HallsRequests from "./components/Secondary Pages/Hall/HallsRequests";
-function App({userToken}) {
+function App({ userToken }) {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-      <NavbarWithSideBar userToken={userToken} />
+        <NavbarWithSideBar userToken={userToken} />
 
         {/*       <HallProfile/> */}
         <Routes>
@@ -47,7 +47,7 @@ function App({userToken}) {
           <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
           <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
-          <Route path="/Reservations" element={<Reservations />} />
+          <Route path="/Bookings" element={<Bookings />} />
 
           {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> 
           {/* <Route path="/plannerprofile" element={<WeddingPlannerProfile />} /> */}
