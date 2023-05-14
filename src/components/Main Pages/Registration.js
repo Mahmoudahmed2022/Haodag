@@ -21,6 +21,7 @@ function Registration() {
     religion: "",
     role: "",
     photo: "",
+    type:""
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -447,6 +448,22 @@ function Registration() {
             <option value="planner">Wedding Planner</option>
           </select>
         </div>
+        {/* <div className="form-group-AddHall animated">
+          <label htmlFor="role">Choose a Type Of Planner:</label>
+          <select
+            name="type"
+            id="type"
+            value={formData.type}
+            className="select-field-AddHall"
+            onChange={handleInputChange}
+          >
+            <option checked value="">
+              Choose a Role
+            </option>
+            <option value="orignal planner">orignalplanner</option>
+            <option value="provider planner">providerplanner</option>
+          </select>
+        </div> */}
         <button type="submit" className="btnAddHall">
           Sign Up
         </button>

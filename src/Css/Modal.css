@@ -1,3 +1,93 @@
+
+.headContact {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.formAddPlan {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  /* margin: 2rem; */
+  width: 60%;
+  padding: 30px;
+  border: 1px solid black;
+}
+.textarea1{
+  resize: none;
+  padding: 10px;
+ 
+ height: 70px;
+  
+  font-size: 18px;
+}
+.formAddPlan label {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.inputPlanData {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #ccc;
+  font-size: 1.2rem;
+}
+
+.chooseImages {
+  margin-top: 1rem;
+}
+
+.resetAndCancel {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cancel {
+  background-color: #e91e63;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel:hover {
+  background-color: #c2185b;
+}
+
+.submitForm {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitForm:hover {
+  background-color: #388e3c;
+}
+
+
+
+
+
+
+
+
+
+
 .exit {
   display: flex;
   justify-content: flex-end;
@@ -13,87 +103,7 @@
 .buttonExit:hover{
   color: red;
 }
-.headContact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.FormModal input,.FormModal textarea{
-  width: 97%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #efefef;
-  color: #555;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  width: 350px;
-}
-
-.modal h2 {
-  margin-top: 0;
-}
-
-.modal label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-
-textarea{
-    resize: none;
-}
-
-.resetAndCancel {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
-  .cancel {
-    width: 30%;
-    padding: 5px;
-    border: none;
-    background-color: #dd2727;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-
-  }
-  .submitForm {
-      width: 30%;
-      padding: 5px;
-      border: none;
-      background-color: #007bff;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-    }
-.submitForm:hover{
-    background-color:#0468d4;
-}
-.cancel:hover {
-  background-color: #ff0000;
-}
 .DivModalWithinINputLabel{
   width: 100%;
   display: flex;
@@ -105,8 +115,55 @@ textarea{
 
 
 /* Add Plan Part */
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+ margin: auto;
+}
 
-.modal1 {
+.modal-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 2rem;
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+
+/* .modal1 {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
@@ -145,7 +202,10 @@ textarea{
 
 .FOrmCont{
   width: 100%;
-}
+} */
+
+
+
 .DivbtnModal{
   display: flex;
   align-items: center;
@@ -158,9 +218,10 @@ textarea{
   font-weight: bold;
   border-radius: 5px;
   border: none;
-  width: 40%;
-  color: #121517;
+  color: #007bff;
   margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid #007bff;
 }
 .btnModal:hover{
   color: white;

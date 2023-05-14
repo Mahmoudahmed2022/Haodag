@@ -19,6 +19,8 @@ import GreatePackages from "./components/Main Pages/GreatePackages";
 import AddPackage from "./components/Secondary Pages/Hall/AddPackage";
 import Bookings from "./components/Secondary Pages/Bookings";
 import HallsRequests from "./components/Secondary Pages/Hall/HallsRequests";
+import ModalEditClientProfile from "./components/Secondary Pages/Modals/ModalEditClientProfile";
+import ModalAddplan from "./components/Secondary Pages/Modals/ModalAddplan";
 function App({ userToken }) {
   return (
     <div className="App">
@@ -48,7 +50,10 @@ function App({ userToken }) {
           <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
           <Route path="/Bookings" element={<Bookings />} />
+          <Route path="/editProfile/:id" element={<ModalEditClientProfile/>} />
+          <Route path="/addplan" element={<ModalAddplan/>} />
 
+          
           {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> 
           {/* <Route path="/plannerprofile" element={<WeddingPlannerProfile />} /> */}
         </Routes>

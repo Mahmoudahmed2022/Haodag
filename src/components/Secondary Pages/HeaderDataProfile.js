@@ -16,7 +16,7 @@ import HallCard from "./Cards/HallCard";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const userToken = location?.state?.data;
-  console.log(userToken);
+  // console.log(userToken);
   // const { userToken } = location.state.data;
 
   const isAdmin = userToken?.role === "admin";
@@ -99,9 +99,16 @@ const HeaderDataProfile = (props) => {
       `https://api.whatsapp.com/send/?phone=${whatsappNum}&text=${message}&type=phone_number&app_absent=0`
     );
   };
-  console.log(whatsappUrl, userToken);
+  // console.log(whatsappUrl, userToken);
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
+  }
+  
+  function goToAddPlan() {
+    navigate(`/addplan`, { state: { data: userToken } });
+  }
+  function goToEditProfile() {
+    navigate(`/editProfile/${userToken.id}`, { state: { data: userToken } });
   }
   function handleReservations() {
     navigate(`/Bookings`, { state: { data: userToken } });
@@ -115,8 +122,11 @@ const HeaderDataProfile = (props) => {
     fetchplan();
     fetchOwnerData();
     fetchClientData();
-    getownersHallsCard(id);
+
     urlWhatSap();
+    if (userToken?.role === "owner") {
+      getownersHallsCard(id);
+    }
   }, []);
   const loadMore = () => {
     setVisible(visible + 5);
@@ -195,77 +205,57 @@ const HeaderDataProfile = (props) => {
 
         <div className="btnsPlannerProf">
           <div className="planner-prof-btn-div">
-            <Link
-              className="btn-flip"
-              data-back="Contact"
-              data-front="Contact"
-              to="#"
-              onClick={handleLink}
-            ></Link>
-          </div>
-          <div className="planner-prof-btn-div">
-            <Link
-              onClick={() => setShowEdit(true)}
-              className="btn-flip"
+            <button
+              onClick={goToEditProfile}
+              className="btn-flip add-hall-btn"
               data-back="Edit"
               data-front="Edit"
-            ></Link>
-            <ModalEditClientProfile
-              onClose={() => setShowEdit(false)}
-              show={showEdit}
-              formData={userToken}
-            />
+            ></button>
           </div>
           {isPlanner && (
-            <div className="planner-prof-btn-div">
-              <Link
-                onClick={() => setShow(true)}
-                className="btn-flip"
-                data-back="AddPlan"
-                data-front="AddPlan"
-                to="#"
-              ></Link>
-              <ModalAddplan onClose={() => setShow(false)} show={show} />
-            </div>
-          )}
-          {/* {isPlanner && (
-            <div className="planner-prof-btn-div">
-              <Link
-                onClick={() => setShowDeletePlan(true)}
-                className="btn-flip"
-                data-back="DeletePlan"
-                data-front="DeletePlan"
-
-              ></Link>
-              <DeletePlan
-                onClose={() => setShowDeletePlan(false)}
-                show={showDeletePlan}
-              />
-            </div>
-          )} */}
-          {isOwner && (
-            <div className="planner-prof-btn-div">
+            <>
+              <div className="planner-prof-btn-div">
               <button
-                onClick={handleClick}
-                className="btn-flip add-hall-btn"
-                data-back="AddHall"
-                data-front="AddHall"
-              ></button>
-
-              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
-            </div>
+              onClick={goToAddPlan}
+              className="btn-flip add-hall-btn"
+              data-back="AddPlan"
+              data-front="AddPlan"
+            ></button>
+              </div>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={handleReservations}
+                  className="btn-flip reservation-btn add-hall-btn"
+                  data-back="Requests"
+                  data-front="Requests"
+                ></button>
+              </div>
+            </>
           )}
           {isOwner && (
-            <div className="planner-prof-btn-div">
-              <button
-                onClick={handleReservations}
-                className="btn-flip reservation-btn add-hall-btn"
-                data-back="Bookings"
-                data-front="Bookings"
-              ></button>
-              {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
-            </div>
+            <>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={handleClick}
+                  className="btn-flip add-hall-btn"
+                  data-back="AddHall"
+                  data-front="AddHall"
+                ></button>
+
+                {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
+              </div>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={handleReservations}
+                  className="btn-flip reservation-btn add-hall-btn"
+                  data-back="Bookings"
+                  data-front="Bookings"
+                ></button>
+                {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
+              </div>
+            </>
           )}
+
           {/* {isOwner && (
             <div className="planner-prof-btn-div">
               <Link

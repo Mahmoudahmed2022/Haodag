@@ -1,47 +1,34 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "../../../Css/Modal.css";
 
-const ModalEditClientProfile = (props) => {
-  const [formData, setFormData] = useState(props.formData);
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState(null);
-  const [hallImage, setHallImage] = useState();
+const ModalEditClientProfile = () => {
+  const [formData, setFormData] = useState({});
+  
   const params = useParams();
   let navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // do something with form data here, e.g. send it to a server
-    console.log({ name, email, phone, address, gender });
-    setName("");
-    setEmail("");
-    setAddress("");
-    setGender("");
-    setPhone("");
-    props.onClose();
-  };
-  const handleImageChange = (e) => {
-    const files = e.target.files;
-    const images = [];
+  const location = useLocation();
+  const userToken = location?.state?.data;
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
+  // const handleImageChange = (e) => {
+  //   const files = e.target.files;
+  //   const images = [];
 
-      reader.onload = (e) => {
-        images.push(e.target.result);
-        // Update state or perform any other operation with the image data
-      };
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     const reader = new FileReader();
 
-      reader.readAsDataURL(file);
-    }
-    setHallImage(images);
-    console.log(images);
-  };
+  //     reader.onload = (e) => {
+  //       images.push(e.target.result);
+  //       // Update state or perform any other operation with the image data
+  //     };
+
+  //     reader.readAsDataURL(file);
+  //   }
+  //   setHallImage(images);
+  //   console.log(images);
+  // };
 
   function getLoginData(event) {
     setFormData((prevFormData) => {
@@ -51,133 +38,137 @@ const ModalEditClientProfile = (props) => {
       };
     });
   }
-  function ResetLoginData(event) {
-    event.preventDefault();
-    setFormData((prevFormData) => {
-      return {
-        prevFormData: (event.target.value = ""),
-      };
-    });
-  }
+  // function ResetLoginData(event) {
+  //   event.preventDefault();
+  //   setFormData((prevFormData) => {
+  //     return {
+  //       prevFormData: (event.target.value = ""),
+  //     };
+  //   });
+  // }
 
   const reset = () => {
-    setName("");
-    setEmail("");
-    setAddress("");
-    setGender("");
-    setPhone("");
+    setFormData([])
   };
 
-  if (!props.show) {
-    return null;
-  }
   console.log(formData);
-
+  console.log(userToken);
   const onSubmitted = (e) => {
     e.preventDefault();
-    axios
-      .post(`http://localhost:9001/products`, {
-        formData,
+    fetch(`http://127.0.0.1:8000/${userToken.role}/auth/update${userToken.role.charAt(0).toUpperCase() + userToken.role.slice(1)}/${userToken.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`,
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        return response.json();
       })
-      .then((response) => {});
-    console.log(formData);
-    props.onClose();
-    // navigate("/products");
+      .then((data) => {
+        console.log(data.data.name);
+        userToken.name=data.data.name
+        userToken.phone=data.data.phone
+        userToken.password=data.data.password
+
+        navigate(`/${userToken.role}/${userToken.id}`, {state: { data: userToken }})
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      
   };
 
+  function togglePasswordVisibility1() {
+    var passwordField = document.getElementById("password");
+    console.log(passwordField, "Input");
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+    } else {
+      passwordField.type = "password";
+    }
+  }
   return (
     <>
-      <div className="modal-overlay">
-        <div className="modal1">
-          <div className="exit">
-            <button className="buttonExit" onClick={() => props.onClose()}>
-              X
-            </button>
+      <div className="modal-container">
+        <h1 className="modal-title">Edit Profile</h1>
+        <form onSubmit={onSubmitted} className="form-container">
+          <div className="form-group">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              onChange={getLoginData}
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              defaultValue={userToken?.name}
+            />
           </div>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              onChange={getLoginData}
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              defaultValue={userToken?.email}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Password
+            </label>
+            <span
+                className="toggle-password animated marginBottomLeft"
+                onClick={togglePasswordVisibility1}
+              >
+                show
+              </span>
+            <input
+              onChange={getLoginData}
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              // defaultValue={userToken?.password}
 
-          <h1 className="h1Modal">Edit Profile </h1>
-          <form onSubmit={onSubmitted} className="FOrmCont">
-            <div className="DivModalWithinINputLabel">
-              <label htmlFor="Name" className="form-label">
-                Name
-              </label>
-              <input
-                onChange={getLoginData}
-                type="text"
-                className="form-control"
-                id="Name"
-                name="Name"
-                defaultValue={props.formData.name}
-              />
-            </div>
-            <div className="DivModalWithinINputLabel">
-              <label htmlFor="Email" className="form-label">
-                Email
-              </label>
-              <input
-                onChange={getLoginData}
-                type="email"
-                className="form-control"
-                id="Email"
-                name="Email"
-                // placeholder="Product Price"
-                // defaultValue={product.email}
-              />
-            </div>
-            <div className="DivModalWithinINputLabel">
-              <label htmlFor="Phone" className="form-label">
-                Phone Number
-              </label>
-              <input
-                onChange={getLoginData}
-                type="number"
-                className="form-control"
-                id="Phone"
-                name="Phone"
-
-                // defaultValue={product.name}
-              />
-            </div>
-
-            <div className="DivModalWithinINputLabel">
-              <label htmlFor="Adderss" className="form-label">
-                Adderss
-              </label>
-              <input
-                onChange={getLoginData}
-                type="text"
-                className="form-control"
-                id="Adderss"
-                name="Address"
-
-                // defaultValue={product.name}
-              />
-            </div>
-            <div className="DivModalWithinINputLabel">
-              <label htmlFor="description" className="form-label">
-                description
-              </label>
-              <textarea
-                onChange={getLoginData}
-                type="text"
-                className="form-control"
-                id="description"
-                name="description"
-
-                // defaultValue={product.name}
-              />
-            </div>
-            <div className="DivbtnModal">
-              <button type="submit" className="btnModal">
-                Edit Profile
-              </button>
-              <button className="btnModal" onClick={ResetLoginData}>
-                Reset
-              </button>
-            </div>
-          </form>
-        </div>
+              placeholder="Enter New Password"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone" className="form-label">
+              Phone Number
+            </label>
+            <input
+              onChange={getLoginData}
+              type="text"
+              className="form-control"
+              id="phone"
+              name="phone"
+              defaultValue={userToken?.phone}
+            />
+          </div>
+          
+          <div className=" DivbtnModal">
+            <button type="submit" className="form-btn btnModal">
+              Edit Profile
+            </button>
+            {/* <button className="form-btn btnModal" onClick={ResetLoginData}>
+              Reset
+            </button> */}
+          </div>
+        </form>
       </div>
+
+      {/* </div>
+      </div> */}
     </>
   );
 };

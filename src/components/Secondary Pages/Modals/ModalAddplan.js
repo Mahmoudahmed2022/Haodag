@@ -5,14 +5,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 const ModalAddplan = (props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
   const [hallImage, setHallImage] = useState(null);
   // const [userToken, setUserToken] = useState(null);
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
-  const [verifyPassword, setVerifyPassword] = useState("");
-  const [photo, setPhoto] = useState(null);
+ 
   const location = useLocation();
   const userToken=location?.state?.data;
   const token=location?.state?.token;
@@ -23,6 +21,8 @@ const ModalAddplan = (props) => {
     description: "",
     photos: [],
     
+
+
   });
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -73,48 +73,36 @@ const ModalAddplan = (props) => {
     }));
   };
 console.log(userToken)
-console.log(token)
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formDataObj = new FormData();
-    formDataObj.append("name", formData.name);
-    formDataObj.append("price", formData.email);
-    formDataObj.append("description", formData.password);
-    formDataObj.append("photo", formData.photo);
-    fetch("http://127.0.0.1:8000/planner/addPlan", {
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const formDataObj = new FormData();
+  formDataObj.append("name", formData.name);
+  formDataObj.append("price", formData.email);
+  formDataObj.append("description", formData.password);
+  formDataObj.append("photo", formData.photos);
+  try {
+    const response = await fetch("http://127.0.0.1:8000/planner/addPlan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer${token}`,
-        "auth-token":`${token}`
+        "Authorization": `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`
       },
-      body: formDataObj,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        // setUserToken(data.data);
-        setStatus(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  if (!props.show) {
-    return null;
+      body: JSON.stringify(formDataObj),
+    });
+    const data = await response.json();
+    setStatus(data);
+  } catch (error) {
+    console.error(error);
   }
+};
+
+
+ 
   return (
     <>
-      <div className="modal-overlay">
-        <div className="modal1">
-          <div className="exit">
-            <button className="buttonExit" onClick={() => props.onClose()}>
-              X
-            </button>
-          </div>
+      
           <h2 className="headContact">Add Plan</h2>
 
           <form className="formAddPlan" onSubmit={handleSubmit}>
@@ -139,7 +127,7 @@ console.log(token)
 
             <label htmlFor="description">Description:</label>
             <textarea
-              className="inputPlanData"
+              className="inputPlanData textarea1"
               id="description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
@@ -166,8 +154,7 @@ console.log(token)
               </div>
             </div>
           </form>
-        </div>
-      </div>
+        
     </>
   );
 };
