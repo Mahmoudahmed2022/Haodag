@@ -16,7 +16,7 @@
 }
 .plan-description {
   width: 80%;
-  height: 400px;
+  height: auto;
   background-color: #efefef;
   padding: 34px;
   margin-left: 6%;

@@ -6,32 +6,19 @@ import { useParams } from "react-router-dom";
 import "../../../Css/PlanSlider.css";
 
 function PlanSlider(props) {
-  const plannId = useParams();
-  console.log(plannId);
-  const [products, setProducts] = useState([]);
-  const allData = async (title) => {
-    const api = "https://www.omdbapi.com/?i=tt3896198&apikey=e2381709";
-    await fetch(`${api}&s=${title}`)
-      .then((response) => response.json())
-      .then((response) => {
-        setProducts(response.Search);
-      })
-      .catch((err) => console.error(err));
-  };
-  useEffect(() => {
-    allData("Batman");
-  }, []);
+  const plan = props.parm;
+  console.log(plan);
   return (
     <>
-      <Carousel wrapAround={true} slidesToShow={3} autoplay={(true, 3000)}>
-        {products.map((image, index) => (
+      {/* <Carousel wrapAround={true} slidesToShow={3} autoplay={(true, 3000)}>
+        {plan.map((image, index) => (
           <img
             className="planslider-img "
-            src={image.Poster}
+            src={image}
             alt={`Slide ${index + 1}`}
           />
         ))}
-      </Carousel>
+        </Carousel>*/}
     </>
   );
 }

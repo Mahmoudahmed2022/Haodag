@@ -43,9 +43,31 @@ const HeaderDataProfile = (props) => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
   };
-  const fetchplan = async () => {
-    const result = await axios.get("https://fakestoreapi.com/products");
-    setplan(result.data);
+  const fetchplans = () => {
+    fetch(
+      `http://127.0.0.1:8000/planner/auth/getAllPlannerPlans/${userToken.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken.token}`,
+          "auth-token": `${userToken.token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Data received from server:", data);
+        setplan(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
   const fetchClientData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
@@ -64,7 +86,6 @@ const HeaderDataProfile = (props) => {
         Authorization: `Bearer ${userToken.token}`,
         "auth-token": `${userToken.token}`,
       },
-      
     })
       .then((response) => {
         if (!response.ok) {
@@ -81,15 +102,21 @@ const HeaderDataProfile = (props) => {
       });
   };
 
-  function deletePlan() {
-    fetch(`https://fakestoreapi.com/products/${plan.id}`, {
-      method: "DELETE",
+  function deleteCourse(plan_Id) {
+    fetch(`http://127.0.0.1:8000/planner/auth/deletePlan/${plan_Id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`,
+      },
     }).then((res) => {
       if (res.ok) {
+        alert("Plan deleted successfully");
         window.location.reload();
       } else alert("Error Happened Please Try Again Later");
     });
-  } 
+  }
   const urlWhatSap = () => {
     message = "Hello!";
     whatsappNum = userToken.phone;
@@ -100,10 +127,15 @@ const HeaderDataProfile = (props) => {
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
-  console.log(userToken)
+  console.log(userToken);
+  function handleDetailsClick(plan_Id) {
+    navigate(`/Plandetails/${plan_Id}`, { state: { data: userToken } });
+  }
+
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
+
   function goToEditProfile() {
     navigate(`/editProfile/${userToken.id}`, { state: { data: userToken } });
   }
@@ -116,7 +148,7 @@ const HeaderDataProfile = (props) => {
   }
   useEffect(() => {
     fetchPlannerData();
-    fetchplan();
+    fetchplans();
     fetchOwnerData();
     fetchClientData();
 
@@ -135,24 +167,31 @@ const HeaderDataProfile = (props) => {
           <div className="wrapper">
             {/* <div class="banner-image"> </div> */}
             <img
-              src={plan.image}
-              alt={plan.title}
+              src={plan.photos[0]}
+              alt={plan.name}
               className="banner-image"
               //  className="plan-image"
             />
             <div className="pad20">
-              <h1> {plan.title}</h1>
-              <p>{plan.description}</p>
+              <h1> {plan.name}</h1>
+              <p>{plan.price}$</p>
             </div>
             <div className="button-wrapper">
-              <Link
-                to={`/Plandetails/${plan.id}`}
+              <button
+                onClick={() => handleDetailsClick(plan.id)}
                 className="btnForPlan outline"
               >
                 DETAILS
-              </Link>
+              </button>
             </div>
-            <div>{isPlanner && <FaTrash onClick={deletePlan} />}</div>
+            <div>
+              {isPlanner && (
+                <FaTrash
+                  className="delete"
+                  onClick={() => deleteCourse(plan.id)}
+                />
+              )}
+            </div>
           </div>
         </div>{" "}
         {/* <div className="plan" key={plan.id}>
@@ -212,12 +251,12 @@ const HeaderDataProfile = (props) => {
           {isPlanner && (
             <>
               <div className="planner-prof-btn-div">
-              <button
-              onClick={goToAddPlan}
-              className="btn-flip add-hall-btn"
-              data-back="AddPlan"
-              data-front="AddPlan"
-            ></button>
+                <button
+                  onClick={goToAddPlan}
+                  className="btn-flip add-hall-btn"
+                  data-back="AddPlan"
+                  data-front="AddPlan"
+                ></button>
               </div>
               <div className="planner-prof-btn-div">
                 <button
@@ -290,7 +329,7 @@ const HeaderDataProfile = (props) => {
           <div className="home-allhalls-container">
             {ownersHallsCard.slice(0, visible).map((data, index) => (
               <HallCard key={index} userToken={userToken} hall={data} />
-            ))}{" "}
+            ))}
           </div>
           <div className="for-button">
             {visible < ownerData.length && (
