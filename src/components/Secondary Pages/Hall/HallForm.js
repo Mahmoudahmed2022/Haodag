@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-import { useLocation, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const HallForm = (props) => {
   const [responseObj, setResponseObj] = useState({});
   const location = useLocation();
   const userToken = location?.state?.data;
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -188,6 +189,7 @@ const HallForm = (props) => {
           console.log(error);
         });
     }
+    // navigate(`/${userToken.role}/${userToken.id}`)
   }
   // async function addHallWithPhotos(formData, photos) {
   //   const response = await fetch("http://127.0.0.1:8000/owner/auth/addHall", {

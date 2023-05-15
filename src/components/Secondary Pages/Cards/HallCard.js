@@ -7,7 +7,6 @@ import {
   MdLocationPin,
 } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Hall from "../../Hall";
 const HallCard = ({ hall, userToken, key }) => {
   const navigate = useNavigate();
   console.log(userToken);

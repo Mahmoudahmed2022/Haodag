@@ -15,73 +15,88 @@ const ModalAddplan = (props) => {
     name: "",
     price: "",
     description: "",
-    address:"",
-    city:"",
-    country:""
   });
+ 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleImageChange = (e) => {
     const files = e.target.files;
-    const images = [];
+    const newImagesArray = [];
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        images.push(e.target.result);
-        setHallImages(images);
+        newImagesArray.push(e.target.result);
+        setHallImages({ ...hallImages, photos: newImagesArray });
       };
 
       reader.readAsDataURL(file);
     }
   };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+ const handleInputChange = (e) => {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
   };
-
-  const handleSubmit = (event) => {
+console.log(formData)
+  const handleSubmit1 = (event) => {
     event.preventDefault();
-    const formDataObj = new FormData();
-    formDataObj.append("name", formData.name);
-    formDataObj.append("price", formData.price);
-    formDataObj.append("description", formData.description);
-    formDataObj.append("city", formData.city);
-    formDataObj.append("country", formData.country);
-    formDataObj.append("address", formData.address);
+    //  const formDataObj = new FormData();
+    // formDataObj.append("name", formData.name);
+    // formDataObj.append("price", formData.price);
+    // formDataObj.append("description", formData.description);
 
     for (let i = 0; i < hallImages.length; i++) {
-      formDataObj.append("photos", hallImages[i]);
-    }
-
+      formData.append("photos", hallImages.photos[i]);}
+    // }
     fetch("http://127.0.0.1:8000/planner/auth/addPlan", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${userToken.token}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${userToken.token}`,
         "auth-token": `${userToken.token}`,
       },
-      body: formDataObj,
+      body:JSON.stringify(formData) ,
     })
       .then((response) => {
         return response.json();
       })
+
       .then((data) => {
         console.log(data);
-        setStatus(data);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error.message);
+        // display the error message to the user using an alert or some other method
+      });
   };
+
+
+
 
   return (
     <>
       <h2 className="headContact">Add Plan</h2>
 
-      <form className="formAddPlan" onSubmit={handleSubmit}>
+      <form className="formAddPlan" onSubmit={handleSubmit1}>
         <label htmlFor="name">Plan Name:</label>
         <input
           className="inputPlanData"
@@ -112,12 +127,12 @@ const ModalAddplan = (props) => {
           name="description"
           required
         />
-        <label htmlFor="hallImage">Choose Your Plan Images:</label>
+        <label htmlFor="photos">Choose Your Plan Images:</label>
         <input
           className="chooseImages"
           type="file"
-          id="hallImage"
-          name="hallImage"
+          id="photos"
+          name="photos"
           onChange={handleImageChange}
           accept="image/*"
           multiple
@@ -133,7 +148,6 @@ const ModalAddplan = (props) => {
             </button>
           </div>
         </div>
-        
       </form>
     </>
   );
