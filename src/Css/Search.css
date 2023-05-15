@@ -185,7 +185,6 @@ body {
   }
 }
 
-
 /* Styles for the form and its container */
 .search-page-container {
   display: flex;
@@ -231,13 +230,15 @@ body {
 }
 
 /* Styles for inputs and selects */
+.name-input,
 .search-input-container input[type="number"],
 select {
-      /* height: 35px; */
-      width: 200px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+  /* height: 35px; */
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .search-input-container input[type="checkbox"] {
@@ -271,4 +272,3 @@ select {
 .search-icon {
   margin-right: 5px;
 }
-

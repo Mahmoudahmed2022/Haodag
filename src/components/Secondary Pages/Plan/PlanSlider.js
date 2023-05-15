@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom";
 import "../../../Css/PlanSlider.css";
 
 function PlanSlider(props) {
-  const plan = props.parm;
+  const plan = props.param;
   console.log(plan);
   return (
     <>
-      {/* <Carousel wrapAround={true} slidesToShow={3} autoplay={(true, 3000)}>
+      <Carousel wrapAround={true} slidesToShow={3} autoplay={(true, 3000)}>
         {plan.map((image, index) => (
           <img
             className="planslider-img "
@@ -18,7 +18,7 @@ function PlanSlider(props) {
             alt={`Slide ${index + 1}`}
           />
         ))}
-        </Carousel>*/}
+      </Carousel>
     </>
   );
 }

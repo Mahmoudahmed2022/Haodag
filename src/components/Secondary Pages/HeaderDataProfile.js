@@ -140,7 +140,9 @@ const HeaderDataProfile = (props) => {
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
-
+  function goDashboard() {
+    navigate(`/AdminDashboard`, { state: { data: userToken } });
+  }
   function goToEditProfile() {
     navigate(`/editProfile/${userToken.id}`, {
       state: { data: userToken },
@@ -255,6 +257,17 @@ const HeaderDataProfile = (props) => {
               data-front="Edit"
             ></button>
           </div>
+          {isAdmin && (
+            <div className="planner-prof-btn-div">
+              <button
+                onClick={goDashboard}
+                className="btn-flip add-hall-btn"
+                data-back="Dashboard"
+                data-front="Dashboard"
+                to="#"
+              ></button>
+            </div>
+          )}
           {isPlanner && (
             <>
               <div className="planner-prof-btn-div">
@@ -314,7 +327,7 @@ const HeaderDataProfile = (props) => {
           )} */}
         </div>
       </div>
-      {isAdmin && <Dashboard />}
+
       {isPlanner && (
         <>
           <h2 className="section-heading">Wedding Plans</h2>

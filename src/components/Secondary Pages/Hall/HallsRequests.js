@@ -25,13 +25,6 @@ function HallsRequests() {
               <div className="reserv-sml-cont" key={reservation.key}>
                 <h3>{reservation.key}</h3>
                 <div className="user-div">
-                  <div className="user-pic-cont">
-                    <img
-                      className="reserve-user-pic"
-                      src={user}
-                      alt="user pic"
-                    />
-                  </div>
                   <div className="user-info-div">
                     <h5>
                       {reservation.title.slice(0, 15)}
@@ -43,11 +36,6 @@ function HallsRequests() {
                   </div>
                 </div>
 
-                <img
-                  className="reserve-hall-pic"
-                  src={reservation.image}
-                  alt="hall pic"
-                />
                 <h5 className="hall-name">
                   {reservation.description.slice(0, 20)}
                   <br />
