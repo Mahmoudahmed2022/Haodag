@@ -128,8 +128,13 @@ const HeaderDataProfile = (props) => {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
   console.log(userToken);
-  function handleDetailsClick(plan_Id) {
-    navigate(`/Plandetails/${plan_Id}`, { state: { data: userToken } });
+  function handleDetailsClick(plan_Id, plan) {
+    navigate(`/Plandetails/${plan_Id}`, {
+      state: {
+        data: userToken,
+        plan: plan,
+      },
+    });
   }
 
   function goToAddPlan() {
@@ -137,7 +142,9 @@ const HeaderDataProfile = (props) => {
   }
 
   function goToEditProfile() {
-    navigate(`/editProfile/${userToken.id}`, { state: { data: userToken } });
+    navigate(`/editProfile/${userToken.id}`, {
+      state: { data: userToken },
+    });
   }
   function handleReservations() {
     navigate(`/Bookings`, { state: { data: userToken } });
@@ -178,7 +185,7 @@ const HeaderDataProfile = (props) => {
             </div>
             <div className="button-wrapper">
               <button
-                onClick={() => handleDetailsClick(plan.id)}
+                onClick={() => handleDetailsClick(plan.id, plan)}
                 className="btnForPlan outline"
               >
                 DETAILS
