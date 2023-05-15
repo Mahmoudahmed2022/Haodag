@@ -6,16 +6,19 @@ import {
   MdFastfood,
   MdLocationPin,
 } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Hall from "../../Hall";
-const HallCard = (props) => {
-  const owner = props.cardData;
-  const userToken = props.userToken;
- 
-  const [showDeleteCourseModal, setShowDeleteCourseModal] = useState(false);
+const HallCard = ({hall,userToken,key}) => {
+  
+  const navigate = useNavigate();
+  console.log(userToken)
+  console.log(hall)
 
+ const isOwner=userToken.role==="owner";
+  function handleClick() {
+    navigate(`/editHall/${hall.id}`, { state: { data: userToken,hall:hall } });
+  }
   const Id = useParams();
- const hall = props.hall
   // function deleteCourse() {
   //   fetch(`https://fakestoreapi.com/products/${cardData.id}`, {
   //     method: "DELETE",
@@ -26,7 +29,6 @@ const HallCard = (props) => {
   //   });
   // }
 
-  const cardshow = () => {};
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -73,10 +75,10 @@ const HallCard = (props) => {
             >
               Details
             </Link>
-            {
-              <Link className="lastButtonForDetails-button" to="/hallForm">
+            {isOwner&&
+              <button className="lastButtonForDetails-button" onClick={handleClick}>
                 Edit Hall
-              </Link>
+              </button>
             }
           </div>
         </div>;

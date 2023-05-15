@@ -36,8 +36,9 @@ const HeaderDataProfile = (props) => {
   let { id } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState();
-  //   const id = userToken.id;
-  // console.log(id)
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let message = "!";
+  let whatsappNum = "0";
   const fetchPlannerData = async () => {
     const result = await axios.get("https://fakestoreapi.com/products");
     setPlannerData(result.data);
@@ -56,13 +57,14 @@ const HeaderDataProfile = (props) => {
     });
   };
   const getownersHallsCard = (id) => {
-    fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${id}`, {
+    fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${userToken.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userToken.token}`,
         "auth-token": `${userToken.token}`,
       },
+      
     })
       .then((response) => {
         if (!response.ok) {
@@ -87,11 +89,7 @@ const HeaderDataProfile = (props) => {
         window.location.reload();
       } else alert("Error Happened Please Try Again Later");
     });
-  }
-
-  const [whatsappUrl, setWhatsappUrl] = useState("");
-  let message = "!";
-  let whatsappNum = "0";
+  } 
   const urlWhatSap = () => {
     message = "Hello!";
     whatsappNum = userToken.phone;
@@ -99,12 +97,10 @@ const HeaderDataProfile = (props) => {
       `https://api.whatsapp.com/send/?phone=${whatsappNum}&text=${message}&type=phone_number&app_absent=0`
     );
   };
-  // console.log(whatsappUrl, userToken);
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
   console.log(userToken)
-
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
@@ -112,7 +108,7 @@ const HeaderDataProfile = (props) => {
     navigate(`/editProfile/${userToken.id}`, { state: { data: userToken } });
   }
   function handleReservations() {
-    navigate(`/PlansRequests`, { state: { data: userToken } });
+    navigate(`/Bookings`, { state: { data: userToken } });
   }
 
   function handleLink() {
@@ -216,12 +212,12 @@ const HeaderDataProfile = (props) => {
           {isPlanner && (
             <>
               <div className="planner-prof-btn-div">
-                <button
-                  onClick={goToAddPlan}
-                  className="btn-flip add-hall-btn"
-                  data-back="AddPlan"
-                  data-front="AddPlan"
-                ></button>
+              <button
+              onClick={goToAddPlan}
+              className="btn-flip add-hall-btn"
+              data-back="AddPlan"
+              data-front="AddPlan"
+            ></button>
               </div>
               <div className="planner-prof-btn-div">
                 <button
