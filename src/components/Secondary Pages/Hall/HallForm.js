@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import axios from "axios";
 
 const HallForm = (props) => {
@@ -11,14 +16,14 @@ const HallForm = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
-    rooms: 0,
-    chairs: 0,
-    price: 0,
-    hours: 0,
-    tables: 0,
+    rooms: "",
+    chairs: "",
+    price: "",
+    hours: "",
+    tables: "",
     type: "",
-    capacity: 0,
-    available: 0,
+    capacity: "",
+    available: null,
     country: "",
     city: "",
     street: "",
@@ -27,230 +32,25 @@ const HallForm = (props) => {
     shows: [],
     services: [],
   });
-  function getRegisterData(event) {
-    setFormData((prevFormData) => {
+  function getRegisterData(e) {
+    setFormData((prev) => {
       return {
-        ...prevFormData,
-        [event.target.name]: event.target.value,
+        ...prev,
+        [e.target.name]: e.target.value,
       };
     });
   }
 
-  // function createFormData(formData) {
-  //   const data = new FormData();
-  //   data.append("name", formData.name);
-  //   data.append("address", formData.address);
-  //   data.append("rooms", formData.rooms);
-  //   data.append("chairs", formData.chairs);
-  //   data.append("price", formData.price);
-  //   data.append("hours", formData.hours);
-  //   data.append("tables", formData.tables);
-  //   data.append("type", formData.type);
-  //   data.append("capacity", formData.capacity);
-  //   data.append("available", formData.available);
-  //   data.append("country", formData.country);
-  //   data.append("city", formData.city);
-  //   data.append("street", formData.street);
-  //   data.append("photos", formData.photos);
-  //   data.append("videos", formData.videos);
-  //   data.append("shows", formData.shows);
-  //   data.append("services", formData.services);
-
-  //   return data;
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   if (formData) {
-  //     fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${userToken.token}`,
-  //         "auth-token": `${userToken.token}`,
-  //       },
-  //       // body: createFormData(formData),
-  //       body: JSON.stringify(formData),
-  //       // body: formDataObj,
-  //     })
-  //       .then((response) => {
-  //         return response.json();
-  //         // console.log(response)
-  //       })
-  //       .then((data) => {
-  //         setResponseObj(data);
-  //         console.log(responseObj)
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   if (formData) {
-  //     fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${userToken.token}`,
-  //         "auth-token": `${userToken.token}`,
-  //       },
-  //       body: JSON.stringify(formData),
-  //     })
-  //       .then((response) => {return response.json();})
-  //       .then((data) => {
-  //         console.log(data)
-  //         const hallId = data.data.id;
-  //         const photoPromises = formData.photoname.map((photo) =>
-  //           fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
-  //             method: "POST",
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //               Authorization: `Bearer ${userToken.token}`,
-  //               "auth-token": `${userToken.token}`,
-  //             },
-  //             body: JSON.stringify({ photoname: photo }),
-  //           }).then((response) =>  {return response.json();})
-  //         );
-  //         Promise.all(photoPromises).then((responses) => {
-  //           const photoNames = responses.map((response) => response.data.photos);
-  //           setFormData({ ...formData, photos: photoNames });
-  //           setResponseObj(data);
-  //           console.log(data)
-  //           const updatedResponseObj = { ...responseObj, photoname: data.photos };
-  //           setResponseObj(updatedResponseObj);
-  //           console.log(updatedResponseObj)
-
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
-
-  console.log(userToken);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (formData) {
-      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          const hallId = data.data.id; // extract the hall id from the response
-          setResponseObj(data);
-          console.log(responseObj);
-          // construct the URL for the second API call using the hall id
-
-          // create a new FormData object and append the photos to it
-          const photoData = new FormData();
-          formData.photos.forEach((photo) => {
-            photoData.append("photo", photo);
-            console.log(photoData)
-          });
-
-          // make the second API call to upload the photos
-          fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-              "auth-token": `${userToken.token}`,
-            },
-            body: photoData,
-          })
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-
-          
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    // navigate(`/${userToken.role}/${userToken.id}`)
-  }
-  // async function addHallWithPhotos(formData, photos) {
-  //   const response = await fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": `Bearer ${userToken.token}`,
-  //       "auth-token": `${userToken.token}`,
-  //     },
-  //     body: JSON.stringify(formData),
-  //   });
-
-  //   const result = await response.json();
-
-  //   if (response.ok) {
-  //     const hallId = result.hallId;
-
-  //     // Add photos to the hall
-  //     for (const photo of photos) {
-  //       await addPhotoToHall(hallId, photo);
-  //     }
-  //   } else {
-  //     throw new Error(result.message);
-  //   }
-  // }
-
-  // async function addPhotoToHall(hallId, photo) {
-  //   const response = await fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${userToken.token}`,
-  //       "auth-token": `${userToken.token}`,
-  //     },
-  //     body: JSON.stringify({ photo }),
-  //   });
-
-  //   const result = await response.json();
-
-  //   if (!response.ok) {
-  //     throw new Error(result.message);
-  //   }
-  // }
-
-  const handleImageChange = (e) => {
-    const files = e.target.files;
-    const newImagesArray = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        newImagesArray.push(e.target.result);
-        setFormData({ ...formData, photos: newImagesArray });
-      };
-
-      reader.readAsDataURL(file);
-    }
+  
+  console.log(formData);
+  const handleImageChange = (event) => {
+    const selectedImages = Array.from(event.target.files);
+    setFormData({
+      ...formData,
+      photos: selectedImages,
+    });
   };
-  const handleMediaChange = (event) => {
+ const handleMediaChange = (event) => {
     const files = event.target.files;
     const newVideosArray = [];
 
@@ -320,6 +120,127 @@ const HallForm = (props) => {
     }
   };
 
+  const handleSubmit1 = (event) => {
+    event.preventDefault();    
+    const formDataObj = new FormData();
+    formDataObj.append("name", formData.name);
+    formDataObj.append("address", formData.address);
+    formDataObj.append("chairs", formData.chairs);
+    formDataObj.append("price", formData.price);
+    formDataObj.append("hours", formData.hours);
+    formDataObj.append("rooms", formData.rooms);
+    formDataObj.append("tables", formData.tables);
+    formDataObj.append("type", formData.type);
+    formDataObj.append("capacity", formData.capacity);
+    formDataObj.append("available", formData.available);
+    formDataObj.append("country", formData.country);
+    formDataObj.append("street", formData.street);
+    formDataObj.append("city", formData.city);
+//     formDataObj.append("shows", formData.shows);
+    // formDataObj.append("services", formData.services);
+    for (let i = 0; i < formData.shows.length; i++) {
+
+      formDataObj.append(`shows[${i}]`, formData.shows[i]);
+    }
+    for (let i = 0; i < formData.services.length; i++) {
+
+      formDataObj.append(`services[${i}]`, formData.services[i]);
+    }
+    for (let i = 0; i < formData.photos.length; i++) {
+      formDataObj.append(`photos[${i}]`, formData.photos[i]);
+    }
+    console.log(formDataObj);
+    fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userToken.token}`,
+          "auth-token": `${userToken.token}`,
+        },
+        body:formDataObj
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);}
+          
+         
+ ) };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (formData) {
+      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken.token}`,
+          "auth-token": `${userToken.token}`,
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          const hallId = data.data.id; // extract the hall id from the response
+          setResponseObj(data);
+          console.log(responseObj);
+          // construct the URL for the second API call using the hall id
+
+          // create a new FormData object and append the photos to it
+          const photoData = new FormData();
+          for (let i = 0; i < formData.photos.length; i++) {
+            photoData.append(`photos[${i}]`, formData.photos[i]);
+          }
+          console.log(photoData)
+
+          // make the second API call to upload the photos
+          fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${userToken.token}`,
+              "auth-token": `${userToken.token}`,
+            },
+            body: JSON.stringify(photoData),
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // navigate(`/${userToken.role}/${userToken.id}`)
+  }
+  
+
+  // const handleImageChange = (e) => {
+  //   const files = e.target.files;
+  //   const newImagesArray = [];
+
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     const reader = new FileReader();
+
+  //     reader.onload = (e) => {
+  //       newImagesArray.push(e.target.result);
+  //       setFormData({ ...formData, photos: newImagesArray });
+  //     };
+
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+ 
   useEffect(() => {
     const formGroups = document.querySelectorAll(".form-group1");
     formGroups.forEach((group) => group.classList.add("visible"));
@@ -327,7 +248,7 @@ const HallForm = (props) => {
 
   return (
     <div className="hall-signup-page1">
-      <form className="signup-form1" onSubmit={handleSubmit}>
+      <form className="signup-form1" onSubmit={handleSubmit1}>
         <h2>Add Hall</h2>
         <div className="form-group1">
           <label htmlFor="name" className="labelDAtaForAddHall">
@@ -340,6 +261,7 @@ const HallForm = (props) => {
             name="name"
             onChange={getRegisterData}
             required
+            value={formData.name}
           />
         </div>
         <div className="form-group1">
@@ -353,6 +275,7 @@ const HallForm = (props) => {
             name="address"
             onChange={getRegisterData}
             required
+            value={formData.address}
           />
         </div>
         <div className="ContTwoDivInOneRow">
@@ -367,6 +290,7 @@ const HallForm = (props) => {
               name="country"
               onChange={getRegisterData}
               required
+              value={formData.country}
             />
           </div>
           <div className="form-group1 Width47">
@@ -380,6 +304,7 @@ const HallForm = (props) => {
               name="city"
               onChange={getRegisterData}
               required
+              value={formData.city}
             />
           </div>
         </div>
@@ -394,6 +319,7 @@ const HallForm = (props) => {
             name="street"
             onChange={getRegisterData}
             required
+            value={formData.street}
           />
         </div>
         <div className="ContTwoDivInOneRow">
@@ -408,6 +334,7 @@ const HallForm = (props) => {
               name="rooms"
               onChange={getRegisterData}
               required
+              value={formData.rooms}
             />
           </div>
           <div className="form-group1 Width47">
@@ -421,6 +348,7 @@ const HallForm = (props) => {
               name="chairs"
               onChange={getRegisterData}
               required
+              value={formData.chairs}
             />
           </div>
         </div>
@@ -435,6 +363,7 @@ const HallForm = (props) => {
             name="tables"
             onChange={getRegisterData}
             required
+            value={formData.tables}
           />
         </div>
         <div className="form-group1">
@@ -446,6 +375,7 @@ const HallForm = (props) => {
             className="inputDAtaForAddHall select-available-type"
             name="available"
             onChange={getRegisterData}
+            value={formData.available}
           >
             <option checked value="">
               -- Please Choose HallType --
@@ -464,6 +394,7 @@ const HallForm = (props) => {
               type="number"
               name="hours"
               onChange={getRegisterData}
+              value={formData.hours}
             />
           </div>
           <div className="form-group1 Width47">
@@ -475,6 +406,7 @@ const HallForm = (props) => {
               type="number"
               name="price"
               onChange={getRegisterData}
+              value={formData.price}
             />
           </div>
         </div>
@@ -486,6 +418,7 @@ const HallForm = (props) => {
               className="select-available-type"
               name="type"
               onChange={getRegisterData}
+              value={formData.type}
             >
               <option checked value="">
                 -- Please Choose HallType --
@@ -510,6 +443,7 @@ const HallForm = (props) => {
               name="capacity"
               onChange={getRegisterData}
               required
+              value={formData.capacity}
             />
           </div>
         </div>
@@ -519,8 +453,8 @@ const HallForm = (props) => {
           <input
             className="inputDAtaForAddHall"
             type="file"
-            accept="image/*"
             name="photos"
+            id="photos"
             multiple
             onChange={handleImageChange}
           />
