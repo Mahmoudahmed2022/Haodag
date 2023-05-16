@@ -23,6 +23,7 @@ import HallsRequests from "./components/Secondary Pages/Hall/HallsRequests";
 import ModalEditClientProfile from "./components/Secondary Pages/Modals/ModalEditClientProfile";
 import ModalAddplan from "./components/Secondary Pages/Modals/ModalAddplan";
 import EditHall from "./components/Secondary Pages/Hall/EditHall";
+import PlansBookings from "./components/Secondary Pages/PlansBookings";
 function App({ userToken }) {
   return (
     <div className="App">
@@ -44,6 +45,8 @@ function App({ userToken }) {
           <Route path="/registration" element={<Registration />} />
           <Route path="/search" element={<Search />} />
           <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
+          <Route path="/PlansBookings" element={<PlansBookings />} />
+
           {/* <Route
             path="/planner_Profile/:plannerId"
             element={<WeddingPlannerProfile />}

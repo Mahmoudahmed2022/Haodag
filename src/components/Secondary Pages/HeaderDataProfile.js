@@ -151,6 +151,15 @@ const HeaderDataProfile = (props) => {
   function handleReservations() {
     navigate(`/Bookings`, { state: { data: userToken } });
   }
+  function handlePlansRequsts() {
+    navigate(`/PlansRequests`, { state: { data: userToken } });
+  }
+  function handlePlansBookings() {
+    navigate(`/PlansBookings`, { state: { data: userToken } });
+  }
+  function handleHallsBookings() {
+    navigate(`/Bookings`, { state: { data: userToken } });
+  }
 
   function handleLink() {
     window.location.href = whatsappUrl;
@@ -268,6 +277,28 @@ const HeaderDataProfile = (props) => {
               ></button>
             </div>
           )}
+          {isClient && (
+            <>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={handlePlansBookings}
+                  className="btn-flip add-hall-btn"
+                  data-back="Plans Bookings"
+                  data-front="plans Bookings"
+                  to="#"
+                ></button>
+              </div>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={handleHallsBookings}
+                  className="btn-flip add-hall-btn"
+                  data-back="Halls Bookings"
+                  data-front="Halls Bookings"
+                  to="#"
+                ></button>
+              </div>
+            </>
+          )}
           {isPlanner && (
             <>
               <div className="planner-prof-btn-div">
@@ -280,7 +311,7 @@ const HeaderDataProfile = (props) => {
               </div>
               <div className="planner-prof-btn-div">
                 <button
-                  onClick={handleReservations}
+                  onClick={handlePlansRequsts}
                   className="btn-flip reservation-btn add-hall-btn"
                   data-back="Requests"
                   data-front="Requests"
@@ -358,13 +389,6 @@ const HeaderDataProfile = (props) => {
               </button>
             )}
           </div>
-        </div>
-      )}
-
-      {isClient && (
-        <div className="booking-history">
-          <h1 className="deals-tit">Last deals</h1>
-          <Cards />
         </div>
       )}
     </div>
