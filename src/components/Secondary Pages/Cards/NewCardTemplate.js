@@ -9,8 +9,8 @@ const NewCardTemplate = (props)=>{
     const cardData = props.cardData
     const userToken = props.userToken;
     const [showHallDetails,setShowHallDetails] = useState(false);
-    console.log('fromNewCardp',props.userToken)
-    const isOwner = props.userToken.role==='owner';
+    // console.log('fromNewCardp',props.userToken)
+    // const isOwner = props.userToken.role==='owner';
     function handleHallDetailsClick() {
       setShowHallDetails(true);
     }
@@ -24,7 +24,6 @@ const NewCardTemplate = (props)=>{
           }else alert('Error Happened Please Try Again Later')
         })
       }
-      console.log(cardData.photos[0]);
     return(
         <div className="CardContainer " >
             <div className="ContImgCard">
@@ -33,7 +32,7 @@ const NewCardTemplate = (props)=>{
             <div className="AllRightData">
                 <div className="ContH3AndTrash">
                 <h3>{cardData.name} </h3>
-                {isOwner&&(<FaTrash onClick={deleteHall}  />)}
+                {/* {isOwner&&(<FaTrash onClick={deleteHall}  />)} */}
                 </div>
                 
                 <p>{cardData.title}</p>
@@ -42,7 +41,7 @@ const NewCardTemplate = (props)=>{
                 <Link to={`/hallDetails/:${cardData.id}`} onClick={handleHallDetailsClick} >Details
                 {showHallDetails &&<HallProfile showHallDetails={showHallDetails} cardData={cardData}/>}
                 </Link>
-                {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>}
+                {/* {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>} */}
                 </div>
                 
                 

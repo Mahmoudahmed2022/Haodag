@@ -23,7 +23,7 @@ const HallForm = (props) => {
     tables: "",
     type: "",
     capacity: "",
-    available: null,
+    available: "",
     country: "",
     city: "",
     street: "",
@@ -150,7 +150,8 @@ const HallForm = (props) => {
       formDataObj.append(`photos[${i}]`, formData.photos[i]);
     }
     console.log(formDataObj);
-    fetch("http://127.0.0.1:8000/owner/auth/addHall", {
+    if(formDataObj){
+      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${userToken.token}`,
@@ -162,10 +163,10 @@ const HallForm = (props) => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);}
-          
-         
- ) };
+          console.log(data);})
+          navigate(`/${userToken.role}/${userToken.id}`,{ state: { data: userToken } });
+    }
+     };
 
   function handleSubmit(e) {
     e.preventDefault();

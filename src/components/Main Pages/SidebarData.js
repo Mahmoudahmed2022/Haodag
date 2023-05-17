@@ -48,12 +48,12 @@ export const SidebarData = [
   //   icon: <FaCog />,
   //   cName: "nav-text  ",
   // },
-  {
-    title: " Log Out",
-    path: "/ log-out",
-    icon: <AiOutlineLogout />,
-    cName: "nav-text  ",
-  },
+  // {
+  //   title: " Log Out",
+  //   path: "/ log-out",
+  //   icon: <AiOutlineLogout />,
+  //   cName: "nav-text  ",
+  // },
 ];
 // export const SidebarBottomData = [
 //     {

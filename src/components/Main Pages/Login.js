@@ -121,31 +121,7 @@ function Login() {
   // }, [userToken]);
   // Logout
 
-  // const [isLoggedOut, setIsLoggedOut] = useState(false);
-
-  // function handleLogout() {
-  //   fetch("http://127.0.0.1:8000/api/auth/logout", {
-  //     method: "POST",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         setIsLoggedOut(true);
-  //       } else {
-  //         throw new Error("Logout failed.");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   if (isLoggedOut) {
-  //     alert("You Logged out");
-  //     navigate("/login");
-  //   }
-  // }, [isLoggedOut]);
-  // <button onClick={handleLogout}>Logout</button>
+ 
 
   return (
     <div className="cont">

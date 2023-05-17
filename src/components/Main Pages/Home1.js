@@ -21,20 +21,8 @@ import NavbarWithSideBar from "./NavbarWithSideBar";
 function Home() {
   const location = useLocation();
   const userToken = location?.state?.data;
-
- 
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
-  const handleSubmit = (event) => {
-    console.log(email, name, message);
-    event.preventDefault();
-    axios
-      .post("https://fakestoreapi.com/products", { email, name, message })
-      .then((data) => {
-        console.log(data);
-      });
-  };
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
 
@@ -59,31 +47,6 @@ function Home() {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  // const renderCard = (cardData) => {
-  //   return (
-  //     <>
-  //       <div className="home-hall-container" key={cardData.id}>
-  //         <div className="home-hall-img-div">
-  //           <img
-  //             className="home-hall-img"
-  //             src={cardData.image}
-  //             alt={cardData.title}
-  //           ></img>
-  //           {cardData.title.slice(0, 20)}
-  //         </div>
-  //         <div className="home-hall-body">
-  //           <Link
-  //             to="/hallDetails"
-  //             className="home-details-btn s-d-hover"
-  //             href="#"
-  //           >
-  //             Details
-  //           </Link>
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
-  // };
 
   const renderCard2 = (cardData) => {
     return (
@@ -128,7 +91,7 @@ function Home() {
             >
               Details
             </Link>
-            {userToken.role==='owner' && (
+            {userToken.role === "owner" && (
               <Link className="lastButtonForDetails" to="/AddHall">
                 Edit Hall
               </Link>
@@ -140,7 +103,7 @@ function Home() {
   };
   return (
     <>
-    {/* <NavbarWithSideBar userToken={userToken} /> */}
+      {/* <NavbarWithSideBar userToken={userToken} /> */}
       <div className="home-landing">
         <div className="all-content">
           <div className="text-content1">
@@ -154,7 +117,8 @@ function Home() {
                 We want your comfort, so we have created our website to make it
                 easier for you to choose the right hall for your wedding
               </p>
-              <div className="buttons-log-reg">
+              {!userToken&& (
+                <div className="buttons-log-reg">
                 <Link className="glow-on-hover" to="/login">
                   Login
                 </Link>
@@ -162,6 +126,8 @@ function Home() {
                   Sign Up
                 </Link>
               </div>
+              )}
+              
             </div>
           </div>
 
@@ -181,7 +147,7 @@ function Home() {
 
       <div className="home-allhalls-container">
         {cardData.slice(0, visible).map((data, index) => (
-          <NewCardTemplate userToken={userToken}  key={index} cardData={data} />
+          <NewCardTemplate userToken={userToken} key={index} cardData={data} />
         ))}{" "}
       </div>
       <div className="for-button">

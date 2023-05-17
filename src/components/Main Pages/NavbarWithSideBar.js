@@ -13,6 +13,7 @@ import user from "../images/user.png";
 import "../../Css/App.css";
 import { useNavigate } from "react-router-dom";
 import { GoDashboard } from "react-icons/go";
+import { useEffect } from "react";
 
 function NavbarWithSideBar() {
   const [sidebar, setSidebar] = useState(false);
@@ -22,8 +23,35 @@ function NavbarWithSideBar() {
   const location = useLocation();
   const userToken = location?.state?.data;
 console.log(userToken)
-const IsAdmin = location.pathname.includes("Admin")
+const IsAdmin = userToken?.role==="admin"
+ const [isLoggedOut, setIsLoggedOut] = useState(false);
 
+  function handleLogout() {
+    fetch("http://127.0.0.1:8000/api/auth/logout", {
+      method: "POST",
+      headers:{
+        "auth-token":`${userToken.token}`
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsLoggedOut(true);
+        } else {
+          throw new Error("Logout failed.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    if (isLoggedOut) {
+      alert("You Logged out");
+      window.location.reload()
+      
+    }
+  }, [isLoggedOut]);
   return (
     <>
       <IconContext.Provider value={{}}>
@@ -90,6 +118,13 @@ const IsAdmin = location.pathname.includes("Admin")
                 </li>
               );
             })}
+            <li  className="nav-text" >
+              <button className="aAll" onClick={handleLogout}>
+              <AiIcons.AiOutlineLogout />
+                <span className="svgColor">Logout</span>
+              </button>
+            </li>
+            
             {/* {SidebarBottomData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>

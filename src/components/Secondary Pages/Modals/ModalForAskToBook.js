@@ -13,19 +13,21 @@ const ModalForAskToBook = (props) => {
   }
   return (
     <>
-      <div className="modal-overlay">
-        <div className="modal">
-          <div className="exit">
-            <button className="buttonExit" onClick={() => props.onClose()}>
+      <div className="modal-overlay2">
+        <div className="modal2">
+          <div className="exit2">
+            <button className="buttonExit2" onClick={() => props.onClose()}>
               X
             </button>
           </div>
 
           <h2 className="headContact">Ask To Book</h2>
 
-          <form className="FormModal">
+          <form className="FormModal2">
             <label htmlFor="name">Name:</label>
             <input
+                          className="InputModalHallDetails"
+
               type="text"
               id="name"
               value={name}
@@ -34,6 +36,8 @@ const ModalForAskToBook = (props) => {
             />
             <label htmlFor="email">Email:</label>
             <input
+                          className="InputModalHallDetails"
+
               type="email"
               id="email"
               value={email}
@@ -42,6 +46,8 @@ const ModalForAskToBook = (props) => {
             />
             <label htmlFor="phone">Phone:</label>
             <input
+                          className="InputModalHallDetails"
+
               type="tel"
               id="phone"
               value={phone}
@@ -49,6 +55,8 @@ const ModalForAskToBook = (props) => {
             />
             <label htmlFor="datetime">Select start date and time:</label>
             <input
+                          className="InputModalHallDetails"
+
               type="datetime-local"
               id="datetime"
               name="datetime"
@@ -57,6 +65,8 @@ const ModalForAskToBook = (props) => {
             />
             <label htmlFor="datetime">Select End date and time:</label>
             <input
+                          className="InputModalHallDetails"
+
               type="datetime-local"
               id="datetime"
               name="datetime"
@@ -66,17 +76,19 @@ const ModalForAskToBook = (props) => {
 
             <label htmlFor="message">Message:</label>
             <textarea
+                          className="textAreaModalHallDetails"
+
               id="message"
               value={message}
               onChange={(event) => setMessage(event.target.value)}
               required
             />
             <div>
-              <div className="resetAndCancel">
-                <button className="cancel" onClick={() => props.onClose()}>
+              <div className="resetAndCancel2">
+                <button className="cancel2" onClick={() => props.onClose()}>
                   Cancel
                 </button>
-                <button className="submitForm" type="submit">
+                <button className="submitForm2" type="submit">
                   Submit
                 </button>
               </div>

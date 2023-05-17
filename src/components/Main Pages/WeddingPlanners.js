@@ -2,20 +2,31 @@ import React from "react";
 import "../../Css/WeddingPlanners.css";
 import { useEffect, useState } from "react";
 import user2 from "../images/user2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 function WeddingPlanners() {
   const [planners, setPlanners] = useState([]);
-  const [visible, setVisible] = useState(5);
-  const allPlanners = () => {
-    axios.get("https://fakestoreapi.com/products").then((data) => {
-      setPlanners(data.data);
-    });
-  };
-  const loadMore = () => {
-    setVisible(visible + 5);
-  };
+  const [visible, setVisible] = useState(6);
+  const navigate = useNavigate();
 
+  const allPlanners = () => {
+    fetch("http://127.0.0.1:8000/api/auth/getAllPlanners")
+      .then((response) => response.json())
+      .then((data) => {
+        setPlanners(data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  function goToPlannerProfile() {
+    navigate(`/planner/${planners.id}`)
+    
+  }
+  const loadMore = () => {
+    setVisible(visible + 6);
+  };
+console.log(planners)
   useEffect(() => {
     allPlanners();
   }, []);
@@ -27,13 +38,13 @@ function WeddingPlanners() {
             <img src={user2} className="planner-img" alt={planner.title} />
           </div>
           <div className="planner-body">
-            <p className="planner-title">{planner.title.slice(0, 20)}</p>
-            <Link
+            <p className="planner-title">{planner.name}</p>
+            <button
               className="planner-details-btn s-d-hover"
-              to={`/test/:planner/${planner.id}`}
+              onClick={goToPlannerProfile}
             >
               Details
-            </Link>
+            </button>
           </div>
         </div>
       </>
