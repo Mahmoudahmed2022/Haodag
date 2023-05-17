@@ -16,9 +16,6 @@ import HallCard from "./Cards/HallCard";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const userToken = location?.state?.data;
-  // console.log(userToken);
-  // const { userToken } = location.state.data;
-
   const isAdmin = userToken?.role === "admin";
   const isPlanner = userToken?.role === "planner";
   const isOwner = userToken?.role === "owner";
@@ -140,6 +137,9 @@ const HeaderDataProfile = (props) => {
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
+  function goToAddPackage() {
+    navigate(`/addpackage`, { state: { data: userToken } });
+  }
   function goDashboard() {
     navigate(`/AdminDashboard`, { state: { data: userToken } });
   }
@@ -158,7 +158,7 @@ const HeaderDataProfile = (props) => {
     navigate(`/PlansBookings`, { state: { data: userToken } });
   }
   function handleHallsBookings() {
-    navigate(`/Bookings`, { state: { data: userToken } });
+    navigate(`/HallsBookings`, { state: { data: userToken } });
   }
 
   function handleLink() {
@@ -267,15 +267,26 @@ const HeaderDataProfile = (props) => {
             ></button>
           </div>
           {isAdmin && (
-            <div className="planner-prof-btn-div">
-              <button
-                onClick={goDashboard}
-                className="btn-flip add-hall-btn"
-                data-back="Dashboard"
-                data-front="Dashboard"
-                to="#"
-              ></button>
-            </div>
+            <>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={goDashboard}
+                  className="btn-flip add-hall-btn"
+                  data-back="Dashboard"
+                  data-front="Dashboard"
+                  to="#"
+                ></button>
+              </div>
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={goToAddPackage}
+                  className="btn-flip add-hall-btn"
+                  data-back="Add Package"
+                  data-front="Add Package"
+                  to="#"
+                ></button>
+              </div>
+            </>
           )}
           {isClient && (
             <>

@@ -99,7 +99,6 @@ const HallCard = ({ hall, userToken, key }) => {
           )}
         </div>
       </div>
-      ;
     </>
   );
 };

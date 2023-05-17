@@ -24,6 +24,8 @@ import ModalEditClientProfile from "./components/Secondary Pages/Modals/ModalEdi
 import ModalAddplan from "./components/Secondary Pages/Modals/ModalAddplan";
 import EditHall from "./components/Secondary Pages/Hall/EditHall";
 import PlansBookings from "./components/Secondary Pages/PlansBookings";
+import HallsBookings from "./components/Secondary Pages/HallsBookings";
+
 function App({ userToken }) {
   return (
     <div className="App">
@@ -46,6 +48,7 @@ function App({ userToken }) {
           <Route path="/search" element={<Search />} />
           <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
           <Route path="/PlansBookings" element={<PlansBookings />} />
+          <Route path="/HallsBookings" element={<HallsBookings />} />
 
           {/* <Route
             path="/planner_Profile/:plannerId"

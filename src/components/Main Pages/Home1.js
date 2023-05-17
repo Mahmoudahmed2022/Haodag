@@ -110,24 +110,23 @@ function Home() {
             <div className="text-content2">
               <h1 className="head-text">
                 All Because Two People Fell In Love.
-                <p>this statement from api i'm a {userToken?.role} </p>
-                {/* <img src={userToken.photo} alt=""/> */}
+                {/* <p>this statement from api i'm a {userToken?.role} </p>
+                 <img src={userToken.photo} alt=""/> */}
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it
                 easier for you to choose the right hall for your wedding
               </p>
-              {!userToken&& (
+              {!userToken && (
                 <div className="buttons-log-reg">
-                <Link className="glow-on-hover" to="/login">
-                  Login
-                </Link>
-                <Link className="glow-on-hover" to="/registration">
-                  Sign Up
-                </Link>
-              </div>
+                  <Link className="glow-on-hover" to="/login">
+                    Login
+                  </Link>
+                  <Link className="glow-on-hover" to="/registration">
+                    Sign Up
+                  </Link>
+                </div>
               )}
-              
             </div>
           </div>
 
