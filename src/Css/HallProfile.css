@@ -342,6 +342,7 @@
 .pWhatsap {
   margin: 0;
   margin-left: 4px;
+  cursor: pointer;
 }
 .linkWhats {
   display: flex;

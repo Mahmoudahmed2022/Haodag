@@ -30,7 +30,7 @@ function App({ userToken }) {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-        <NavbarWithSideBar userToken={userToken} />
+        {/* <NavbarWithSideBar userToken={userToken} /> */}
 
         {/*       <HallProfile/> */}
         <Routes>

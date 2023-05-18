@@ -38,7 +38,7 @@ const NewCardTemplate = (props)=>{
                 <p>{cardData.title}</p>
                 <p>Price: {cardData.price} </p>
                 <div>
-                <Link to={`/hallDetails/:${cardData.id}`} onClick={handleHallDetailsClick} >Details
+                <Link to={`/hallDetails/${cardData.id}`} onClick={handleHallDetailsClick} >Details
                 {showHallDetails &&<HallProfile showHallDetails={showHallDetails} cardData={cardData}/>}
                 </Link>
                 {/* {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>} */}

@@ -3,22 +3,20 @@ import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
-import Loader from "../images/loader.gif"
+import Loader from "../images/loader.gif";
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
   const navigate = useNavigate();
-  const [load,setLoad]=useState(false)
+  const [load, setLoad] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [id, setId] = useState(null);
-  const [token, setToken] = useState(null);
 
   const [userToken, setUserToken] = useState(null);
-  const [status, setStatus] = useState(null);
 
   const getLoginData = (e) => {
     setFormData((prev) => {
@@ -28,24 +26,9 @@ function Login() {
       };
     });
   };
-  // console.log(formData);
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
 
-  //   fetch("http://127.0.0.1:8000/api/auth/switchLogin", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => setUserToken(data));
-
-  //   }
   const handleSubmit = (event) => {
-    setLoad(true)
+    setLoad(true);
 
     event.preventDefault();
     fetch("http://127.0.0.1:8000/api/auth/switchLogin", {
@@ -62,13 +45,11 @@ function Login() {
           return response.json();
         } else alert("email or password doesnt exist");
       })
-
       .then((data) => {
-        setUserToken(data.data);
-        setId(data.data.id);
-        setToken(data.data.token);
-
-        setStatus(data);
+        if(data){
+          setLogin(true)
+          setUserToken(data.data);
+        }
       })
       .catch((error) => {
         console.error(error.message);
@@ -76,17 +57,9 @@ function Login() {
       });
   };
 
-  console.log(status);
-  console.log(userToken);
-  console.log(token);
-
-  console.log(id);
-
   useEffect(() => {
     if (userToken) {
-      // navigate(`/:${userToken.role}/${id}`, { state: { data: userToken,token:token } });
-      //  navigate(`/hallForm`, { state: { data: userToken,token:token } });
-      navigate(`/`, { state: { data: userToken } });
+      navigate(`/`, { state: { data: userToken,login:login } });
     }
     // if (status) {
     //   if (status.message) {
@@ -97,14 +70,23 @@ function Login() {
     //   }
     // }
   }, [userToken]);
-  if(load){
-    return(
-      <div style={{width:'100%',minHeight:'100vh',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'white'}}>
+  if (load) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "white",
+        }}
+      >
         <img src={Loader} />
       </div>
-    )
+    );
   }
-  
+
   // const handleSubmit1 = (event) => {
   //   event.preventDefault();
   //   axios
@@ -120,8 +102,6 @@ function Login() {
   //   }
   // }, [userToken]);
   // Logout
-
- 
 
   return (
     <div className="cont">

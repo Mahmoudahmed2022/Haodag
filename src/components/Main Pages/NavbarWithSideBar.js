@@ -23,35 +23,37 @@ function NavbarWithSideBar() {
   const location = useLocation();
   const userToken = location?.state?.data;
 console.log(userToken)
-const IsAdmin = userToken?.role==="admin"
  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const userToken1 = location?.state?.userData;
 
-  function handleLogout() {
-    fetch("http://127.0.0.1:8000/api/auth/logout", {
-      method: "POST",
-      headers:{
-        "auth-token":`${userToken.token}`
+console.log(userToken);
+const IsAdmin = userToken?.role==="admin";
+function handleLogout() {
+  fetch("http://127.0.0.1:8000/api/auth/logout", {
+    method: "POST",
+    headers:{
+      "auth-token":`${userToken.token}`
+    }
+  })
+    .then((response) => {
+      if (response.ok) {
+        setIsLoggedOut(true);
+      } else {
+        throw new Error("Logout failed.");
       }
     })
-      .then((response) => {
-        if (response.ok) {
-          setIsLoggedOut(true);
-        } else {
-          throw new Error("Logout failed.");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
-  useEffect(() => {
-    if (isLoggedOut) {
-      alert("You Logged out");
-      window.location.reload()
-      
-    }
-  }, [isLoggedOut]);
+useEffect(() => {
+  if (isLoggedOut) {
+    alert("You Logged out");
+    window.location.reload()
+    
+  }
+}, [isLoggedOut]);
   return (
     <>
       <IconContext.Provider value={{}}>
@@ -87,15 +89,26 @@ const IsAdmin = userToken?.role==="admin"
                 <img className="avatar" src={image2} alt="" />
               </Link>
             </div>
-            <div onClick={()=>nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken}})}  className="profile-photo">
+            {userToken ?(
+              <div onClick={()=>nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken}})}  className="profile-photo">
               <img src={user} alt="user pic" />
             </div>
+
+            ):(
+              <div></div>
+
+            )}
+            
+            {/* <button className="aAll" onClick={handleLogout}>
+              <AiIcons.AiOutlineLogout />
+                <span className="svgColor">Logout</span>
+              </button> */}
           </div>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle ">
-              <Link to="#" className="menu-bars svgColor hoverOnX">
+              <Link  className="menu-bars svgColor hoverOnX">
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
@@ -118,12 +131,12 @@ const IsAdmin = userToken?.role==="admin"
                 </li>
               );
             })}
-            <li  className="nav-text" >
+            {/* <li  className="nav-text" >
               <button className="aAll" onClick={handleLogout}>
               <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Logout</span>
               </button>
-            </li>
+            </li> */}
             
             {/* {SidebarBottomData.map((item, index) => {
               return (

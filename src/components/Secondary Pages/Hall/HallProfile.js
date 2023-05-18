@@ -13,7 +13,7 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import CommentSection from "../Cards/CommentSection";
 import InfoDescription from "../Hall/Component In Hall details/InfoDescription";
 import InfoForMap from "../Hall/Component In Hall details/InfoForMap";
@@ -26,7 +26,7 @@ import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar"
 import ModalForAskToBook from "../Modals/ModalForAskToBook";
 
 const HallProfile = ({ rating, isFavourite }) => {
-  
+  const nav = useNavigate();
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [show, setShow] = useState(false);
   const [showBook, setShowBook] = useState(false);
@@ -41,10 +41,11 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [products, setProducts] = useState([]);
   const [hall, sethall] = useState([]);
   const location = useLocation();
- 
+  const [ownerData, setOwnerData] = useState([]);
+
   let message = "!";
   const { hallId } = useParams();
-  console.log(hallId);
+  console.log(products);
   // const hallId = Id.hallId;
   const allData = async (hallId) => {
     // const api2 = "https://fakestoreapi.com/products";
@@ -55,6 +56,7 @@ const HallProfile = ({ rating, isFavourite }) => {
         console.log(response);
         setProducts(response);
         sethall(response.data);
+        setOwnerData(response.data.owner);
       })
       .catch((err) => console.error(err));
   };
@@ -152,6 +154,9 @@ const HallProfile = ({ rating, isFavourite }) => {
     setDisLike(!disLike);
     console.log("colorRemoved");
   };
+const goToProfile = ()=>{
+  nav(`/owner/${hall.owner.id}`,{state:{userData:ownerData}});
+}
 
   return (
     <>    
@@ -188,8 +193,11 @@ const HallProfile = ({ rating, isFavourite }) => {
           </div>
           <div className="dataModalContact">
             <div className="contactWUs" to="/modal">
-              <FaUserTie className="colorSvg1" />
-              <p className=" pWhatsap">Owner : Kariem</p>
+              
+              <p className=" pWhatsap" onClick={goToProfile}><FaUserTie className="colorSvg1" /> Owner : 
+              
+              {ownerData.name}
+              </p>
             </div>
             <div className="phonec">
               <FaPhoneAlt className="" />

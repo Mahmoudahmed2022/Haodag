@@ -9,7 +9,7 @@ import {
   MdFastfood,
   MdLocationPin,
 } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useHistory, useNavigate } from "react-router-dom";
 import "../../Css/App.css";
 import "../../Css//Home1.css";
 import image11 from "../images/12.jpeg";
@@ -17,14 +17,25 @@ import image10 from "../images/animation.png";
 // import HallCard from "../HallCard";
 import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 import NavbarWithSideBar from "./NavbarWithSideBar";
+import { useToken } from "antd/es/theme/internal";
 
 function Home() {
   const location = useLocation();
   const userToken = location?.state?.data;
+  const login = location?.state?.login;
+
+  // const [isLoggedOut, setIsLoggedOut] = useState(false);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
+  console.log("user", userToken);
+// console.log(login)
+
+
+const nav = useNavigate();
+
+
 
   const allCardData = () => {
     fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
@@ -36,18 +47,47 @@ function Home() {
         console.error(error);
       });
   };
-  console.log(cardData);
 
-  console.log("user", userToken);
   const loadMore = () => {
     setVisible(visible + 5);
   };
-
+  // function handleLogout() {
+  //   fetch("http://127.0.0.1:8000/api/auth/logout", {
+  //     method: "POST",
+  //     headers: {
+  //       "auth-token": `${userToken.token}`,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // setIsLoggedOut(true);
+  //         setUserToken(null); // set the userToken state to null
+  //         localStorage.removeItem("userToken"); // clear userToken from local storage
+  //         nav.replace("/", { useToken: "" });
+  //         return response.json();
+  //       } else {
+  //         throw new Error("Logout failed.");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
+  
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  
+  
+  // useEffect(() => {
+  //   if (isLoggedOut) {
+  //     alert("You Logged out");
+  //     window.location.reload();
+  //     setUserToken(null); // clear the userToken state when logged out
+  //   }
+  // }, [isLoggedOut]);
   const renderCard2 = (cardData) => {
     return (
       <>
@@ -103,7 +143,8 @@ function Home() {
   };
   return (
     <>
-      {/* <NavbarWithSideBar userToken={userToken} /> */}
+            <NavbarWithSideBar userToken={userToken} />
+
       <div className="home-landing">
         <div className="all-content">
           <div className="text-content1">
@@ -117,16 +158,24 @@ function Home() {
                 We want your comfort, so we have created our website to make it
                 easier for you to choose the right hall for your wedding
               </p>
-              {!userToken && (
+              {!userToken? (
                 <div className="buttons-log-reg">
-                  <Link className="glow-on-hover" to="/login">
-                    Login
-                  </Link>
-                  <Link className="glow-on-hover" to="/registration">
-                    Sign Up
-                  </Link>
-                </div>
+                <Link className="glow-on-hover" to="/login">
+                  Login
+                </Link>
+                <Link className="glow-on-hover" to="/registration">
+                  Sign Up
+                </Link>
+              </div>
+              ):(
+                <div className="buttons-log-reg">
+                <Link className="glow-on-hover" to="/login">
+                  Logout
+                </Link>
+                
+              </div>
               )}
+              
             </div>
           </div>
 
