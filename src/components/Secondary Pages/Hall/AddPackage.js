@@ -35,12 +35,12 @@ const AddPackage = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
     const formDataObj = new FormData();
-    formDataObj.append("hallName", formData.hallName);
-    formDataObj.append("hallId", formData.hallId);
-    formDataObj.append("packageDescription", formData.packageDescription);
-    formDataObj.append("startDate", formData.startDate);
-    formDataObj.append("endDate", formData.endDate);
-    formDataObj.append("packagePrice", formData.packagePrice);
+    formDataObj.append("hall_id", formData.hallId);
+    formDataObj.append("hall_name", formData.hallName);
+    formDataObj.append("package_description", formData.packageDescription);
+    formDataObj.append("start_date", formData.startDate);
+    formDataObj.append("end_date", formData.endDate);
+    formDataObj.append("price", formData.packagePrice);
     console.log(formDataObj);
     if (formDataObj) {
       fetch("http://127.0.0.1:8000/admin/auth/createOffer", {
@@ -72,7 +72,7 @@ const AddPackage = (props) => {
         <h2>Add Package</h2>
         <div className="form-group1">
           <label htmlFor="hallName" className="labelDAtaForAddHall">
-            Hall Name:
+            Hall Name- Id:
           </label>
 
           <select
@@ -87,8 +87,8 @@ const AddPackage = (props) => {
               -- Please Choose Hall --
             </option>
             {hallsName.map((hall) => (
-              <option checked value={hall.name}>
-                {hall.name}
+              <option value={hall.name}>
+                {hall.name} - {hall.id}
               </option>
             ))}
           </select>

@@ -21,7 +21,7 @@ function Registration() {
     religion: "",
     role: "",
     photo: "",
-    type:""
+    type: "",
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -383,6 +383,7 @@ function Registration() {
           <input
             type="file"
             name="photo"
+            className="input-field-AddHall"
             onChange={handlePhotoChange}
             // onChange={handlimg}
             // onChange={(e) => {
