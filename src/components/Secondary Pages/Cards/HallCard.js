@@ -7,7 +7,7 @@ import {
   MdLocationPin,
 } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const HallCard = ({ hall, userToken, key,userData }) => {
+const HallCard = ({ hall, userToken, key, userData }) => {
   const navigate = useNavigate();
   console.log(userToken);
   console.log(hall);
@@ -36,10 +36,11 @@ const HallCard = ({ hall, userToken, key,userData }) => {
       } else alert("Error Happened Please Try Again Later");
     });
   }
-function goToHallDetails(){
-  navigate(`/hallDetails/${hall.id}`,{state:{userToken:userToken,userData:userData}})
-
-}
+  function goToHallDetails() {
+    navigate(`/hallDetails/${hall.id}`, {
+      state: { userToken: userToken, userData: userData },
+    });
+  }
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -88,7 +89,6 @@ function goToHallDetails(){
           <button
             className="lastButtonForDetails-button"
             onClick={goToHallDetails}
-            
           >
             Details
           </button>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Planners = ({ userData, userToken,isLogin }) => {
+const Planners = ({ userData, userToken, isLogin }) => {
   const [plan, setplan] = useState([]);
   const [visible, setVisible] = useState(5);
 
@@ -31,8 +31,7 @@ const Planners = ({ userData, userToken,isLogin }) => {
     setVisible(visible + 5);
   };
   useEffect(() => {
-    if(userData.role==="planner")
-    fetchplans();
+    if (userData.role === "planner") fetchplans();
   }, []);
   function handleDetailsClick(plan_Id, plan) {
     navigate(`/Plandetails/${plan_Id}`, {
@@ -79,28 +78,25 @@ const Planners = ({ userData, userToken,isLogin }) => {
 
   return (
     <>
-     
-        <>
-          <h1 className="section-heading">Wedding Plans</h1>
-          <div className="profile-content">
-            {plan.length > 0 ? (
-              <>
-                {plan.slice(0, visible).map(renderCard)}
-                <div className="for-button">
-                  {visible < plan.length && (
-                    <button className="more" onClick={loadMore}>
-                      Load 5 More
-                    </button>
-                  )}
-                </div>
-              </>
-            ) : (
-              <></>
-
-              )}
-          </div>
-        </>
-      
+      <>
+        <h1 className="section-heading">Wedding Plans</h1>
+        <div className="profile-content">
+          {plan.length > 0 ? (
+            <>
+              {plan.slice(0, visible).map(renderCard)}
+              <div className="for-button">
+                {visible < plan.length && (
+                  <button className="more" onClick={loadMore}>
+                    Load 5 More
+                  </button>
+                )}
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+      </>
     </>
   );
 };

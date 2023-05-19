@@ -22,11 +22,10 @@ import InfoShow from "../Hall/Component In Hall details/InfoShow";
 import Modal from "../Modals/Modal";
 import ImageSlider from "./Component In Hall details/ImageSlider ";
 // import Slider from "../../Slider";
-import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar"
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
 import ModalForAskToBook from "../Modals/ModalForAskToBook";
-
 const HallProfile = ({ rating, isFavourite }) => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [show, setShow] = useState(false);
   const [showBook, setShowBook] = useState(false);
@@ -41,11 +40,11 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [products, setProducts] = useState([]);
   const [hall, sethall] = useState([]);
   const location = useLocation();
-  const userToken =location?.state?.userToken;
-  const userData =location?.state?.userData;
-  const isLogin =location?.state?.isLogin;
+  const userToken = location?.state?.userToken;
+  const userData = location?.state?.userData;
+  const isLogin = location?.state?.isLogin;
 
-console.log(userData)
+  console.log(userData);
   const [ownerData, setOwnerData] = useState([]);
 
   let message = "!";
@@ -65,12 +64,14 @@ console.log(userData)
       })
       .catch((err) => console.error(err));
   };
+  function goToaAskToBook() {
+    navigate(`/BookHall/${hallId}`, { state: { data: userToken } });
+  }
   console.log(products.name);
   useEffect(() => {
     allData(hallId);
     urlWhatSap();
     window.scrollTo({ top: 0, behavior: "smooth" });
-
   }, []);
 
   // fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
@@ -158,235 +159,236 @@ console.log(userData)
     setDisLikeStyle({ color: "white" });
     setDisLike(!disLike);
     console.log("colorRemoved");
-  };console.log(ownerData)
-const goToProfile = ()=>{
-  nav(`/owner/${hall.owner.id}`,{state:{userData:ownerData,isLogin:isLogin}});
-}
+  };
+  console.log(ownerData);
+  const goToProfile = () => {
+    navigate(`/owner/${hall.owner.id}`, {
+      state: { userData: ownerData, isLogin: isLogin },
+    });
+  };
 
   return (
-    <> 
-    <NavbarWithSideBar userData={userData} userToken={userToken} isLogin={isLogin}/>   
-    <div className="allHallProfile">
-      <h1 className="hallName">{hall.name}</h1>
-      {/* Slider */}
-      <div className="imageSlider">
-        <ImageSlider products={products} />
-        <div className="mapAndData">
-          <InfoForMap
-            className="singleInfoMap"
-            products={products}
-            img={image7}
-          />
+    <>
+      <NavbarWithSideBar
+        userData={userData}
+        userToken={userToken}
+        isLogin={isLogin}
+      />
+      <div className="allHallProfile">
+        <h1 className="hallName">{hall.name}</h1>
+        {/* Slider */}
+        <div className="imageSlider">
+          <ImageSlider products={products} />
+          <div className="mapAndData">
+            <InfoForMap
+              className="singleInfoMap"
+              products={products}
+              img={image7}
+            />
 
-          <div className="dataModalContact">
-            <Link className="contactWUs" onClick={() => setShow(true)}>
-              <AiOutlineMail className="colorSvg1" />
-              <p className=" pWhatsap">Contact (email)</p>
-            </Link>
-            <Modal onClose={() => setShow(false)} show={show} />
-
-            <div className="whatsap">
-              <a className="linkWhats" href={whatsappUrl} target="_blank">
-                <AiOutlineWhatsApp className="colorSvg" />
-                <p className="pWhatsap">Contact (Whatsap)</p>
-              </a>
-            </div>
-
-            <div className="locationsvg">
-              <GoLocation />
-              <p className="pLocation">Location</p>
-            </div>
-          </div>
-          <div className="dataModalContact">
-            <div className="contactWUs" to="/modal">
-              
-              <p className=" pWhatsap" onClick={goToProfile}><FaUserTie className="colorSvg1" /> Owner : 
-              
-              {ownerData.name}
-              </p>
-            </div>
-            <div className="phonec">
-              <FaPhoneAlt className="" />
-              <p className="pWhatsap">+165156</p>
-            </div>
-          </div>
-          <div className="dataModalContact">
-            <div className="contactWUs" to="/modal">
-              <Link className="askBooking" onClick={() => setShowBook(true)}>
-                <BiMailSend className="colorSvg1" />
-                Ask To Book
+            <div className="dataModalContact">
+              <Link className="contactWUs" onClick={() => setShow(true)}>
+                <AiOutlineMail className="colorSvg1" />
+                <p className=" pWhatsap">Contact (email)</p>
               </Link>
-              <ModalForAskToBook
-                onClose={() => setShowBook(false)}
-                show={showBook}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+              <Modal onClose={() => setShow(false)} show={show} />
 
-      {/* End Slider */}
-      {/* information */}
+              <div className="whatsap">
+                <a className="linkWhats" href={whatsappUrl} target="_blank">
+                  <AiOutlineWhatsApp className="colorSvg" />
+                  <p className="pWhatsap">Contact (Whatsap)</p>
+                </a>
+              </div>
 
-      {/* <div className="hallInfo">{infoElement}</div> */}
-      <div className="contDataa">
-        <div className="contDataInfo">
-          <div className="allContInfo">
-            <div className="topShape"></div>
-
-            <div className="card-content">
-              <h2 className="section__title">The Amplitude</h2>
-              <ul className="uiForInfo">
-                <li className="liElement">
-                  <p className="pForInfo">The price is per person</p>
-                  <p className="pForData">300-350 pound</p>
-                </li>
-                <li className="liElement">
-                  <p className="pForInfo">Hall capacity</p>
-                  <p className="pForData">250-100 people</p>
-                </li>
-                <li className="liElement">
-                  <p className="pForInfo">food court capacity</p>
-                  <p className="pForData">250-100 people </p>
-                </li>
-                <li className="liElement">
-                  <p className="pForInfo">How many rooms are in the Hall?</p>
-                  <p className="pForData">two Rooms</p>
-                </li>
-                <li className="liElement">
-                  <p className="pForInfo">Type</p>
-                  <p className="pForData">Open/Closed Air</p>
-                </li>
-                <li className="liElement">
-                  <p className="pForInfo">Available</p>
-                  <p className="pForData">3 : 12 PM</p>
-                </li>
-              </ul>
-            </div>
-            <div></div>
-          </div>
-          <InfoShow products={products} />
-          <InfoServices products={products} />
-          <InfoDescription products={products} />
-        </div>
-
-        <div className="contReview">
-          <div className="reviewF">
-            <div className="firstColRate">
-              <p>Put Rate</p>
-              <div className="rating-stars">
-                {[...Array(5)].map((star, i) => {
-                  const ratingValue = i + 1;
-
-                  return (
-                    <label key={i}>
-                      <FaStar
-                        className="star"
-                        color={
-                          ratingValue <= (hover || rating)
-                            ? "#ffc107"
-                            : "#e4e5e9"
-                        }
-                        // style={starStyle}
-                        // onClick={toggle1 ? handleClickStar : handleOutClickStar }
-                        // onClick={() => {toggle1 ? handleClickStar(ratingValue) : handleOutClickStar(ratingValue)  }}
-                        onMouseEnter={() => handleHover(ratingValue)}
-                        onMouseLeave={handleMouseLeave}
-                      />
-                    </label>
-                  );
-                })}
+              <div className="locationsvg">
+                <GoLocation />
+                <p className="pLocation">Location</p>
               </div>
             </div>
-            <div className="secondColLove">
-              <p>Add To Fav</p>
-              <div className="heartLove ">
-                <FaHeart
-                  className="heartLoveSvg "
-                  // color={1 <= (hoverHeart || false ) ? "red" : ""}
-                  style={heartStyle}
-                  onClick={toggle ? handleClick : handleClick2}
-                />
+            <div className="dataModalContact">
+              <div className="contactWUs" to="/modal">
+                <p className=" pWhatsap" onClick={goToProfile}>
+                  <FaUserTie className="colorSvg1" /> Owner :{ownerData.name}
+                </p>
+              </div>
+              <div className="phonec">
+                <FaPhoneAlt className="" />
+                <p className="pWhatsap">+165156</p>
               </div>
             </div>
-            <div className="thirdColLike">
-              <p>Did You Like This </p>
-              <div className="heartLove">
-                <FaThumbsDown
-                  className="LikeIcon "
-                  // color={(Like) ? "#243b55" : ""}
-                  style={disLikeStyle}
-                  onClick={disLike ? handleDislike : removeDislikeColor}
-                />
-                <FaThumbsUp
-                  className="LikeIcon"
-                  // color={ (disLike) ? "#243b55" : ""}
-                  style={LikeStyle}
-                  onClick={Like ? handleLike : removeColor}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="reviewS">
-            <div className="firstColRate">
-              <p>Rating Percentage</p>
-              <div className="manyStarsR">
-                <div>
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1">15</span>
-                </div>
-                <div>
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1">15</span>
-                </div>
-                <div>
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1">15</span>
-                </div>
-                <div>
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1">15</span>
-                </div>
-                <div>
-                  <FaStar className="likeDown " />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <FaStar className="likeDown" />
-                  <span className="likeDown1">15</span>
-                </div>
-              </div>
-            </div>
-            <div className="secondColLove">
-              <p>Number Of Visits</p>
-              <p>100</p>
-            </div>
-            <div className="thirdColLike">
-              <p>Number Of Likes </p>
-              <div className="PheartLove">
-                <div className="likeDown1">
-                  <FaThumbsDown className="heartLoveSvg" />
-                  <p>2</p>
-                </div>
-                <div className="likeDown1 ">
-                  <FaThumbsUp className="heartLoveSvg" />
-                  <p>2</p>
-                </div>
+            <div className="dataModalContact">
+              <div className="contactWUs" to="/modal">
+                <button className="askBooking" onClick={goToaAskToBook}>
+                  <BiMailSend className="colorSvg1" />
+                  Ask To Book
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* For Video */}
-      {/* <div className="allhalls-container2">
+        {/* End Slider */}
+        {/* information */}
+
+        {/* <div className="hallInfo">{infoElement}</div> */}
+        <div className="contDataa">
+          <div className="contDataInfo">
+            <div className="allContInfo">
+              <div className="topShape"></div>
+
+              <div className="card-content">
+                <h2 className="section__title">The Amplitude</h2>
+                <ul className="uiForInfo">
+                  <li className="liElement">
+                    <p className="pForInfo">The price is per person</p>
+                    <p className="pForData">300-350 pound</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Hall capacity</p>
+                    <p className="pForData">250-100 people</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">food court capacity</p>
+                    <p className="pForData">250-100 people </p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">How many rooms are in the Hall?</p>
+                    <p className="pForData">two Rooms</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Type</p>
+                    <p className="pForData">Open/Closed Air</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Available</p>
+                    <p className="pForData">3 : 12 PM</p>
+                  </li>
+                </ul>
+              </div>
+              <div></div>
+            </div>
+            <InfoShow products={products} />
+            <InfoServices products={products} />
+            <InfoDescription products={products} />
+          </div>
+
+          <div className="contReview">
+            <div className="reviewF">
+              <div className="firstColRate">
+                <p>Put Rate</p>
+                <div className="rating-stars">
+                  {[...Array(5)].map((star, i) => {
+                    const ratingValue = i + 1;
+
+                    return (
+                      <label key={i}>
+                        <FaStar
+                          className="star"
+                          color={
+                            ratingValue <= (hover || rating)
+                              ? "#ffc107"
+                              : "#e4e5e9"
+                          }
+                          // style={starStyle}
+                          // onClick={toggle1 ? handleClickStar : handleOutClickStar }
+                          // onClick={() => {toggle1 ? handleClickStar(ratingValue) : handleOutClickStar(ratingValue)  }}
+                          onMouseEnter={() => handleHover(ratingValue)}
+                          onMouseLeave={handleMouseLeave}
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="secondColLove">
+                <p>Add To Fav</p>
+                <div className="heartLove ">
+                  <FaHeart
+                    className="heartLoveSvg "
+                    // color={1 <= (hoverHeart || false ) ? "red" : ""}
+                    style={heartStyle}
+                    onClick={toggle ? handleClick : handleClick2}
+                  />
+                </div>
+              </div>
+              <div className="thirdColLike">
+                <p>Did You Like This </p>
+                <div className="heartLove">
+                  <FaThumbsDown
+                    className="LikeIcon "
+                    // color={(Like) ? "#243b55" : ""}
+                    style={disLikeStyle}
+                    onClick={disLike ? handleDislike : removeDislikeColor}
+                  />
+                  <FaThumbsUp
+                    className="LikeIcon"
+                    // color={ (disLike) ? "#243b55" : ""}
+                    style={LikeStyle}
+                    onClick={Like ? handleLike : removeColor}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="reviewS">
+              <div className="firstColRate">
+                <p>Rating Percentage</p>
+                <div className="manyStarsR">
+                  <div>
+                    <FaStar className="likeDown" />
+                    <span className="likeDown1">15</span>
+                  </div>
+                  <div>
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <span className="likeDown1">15</span>
+                  </div>
+                  <div>
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <span className="likeDown1">15</span>
+                  </div>
+                  <div>
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <span className="likeDown1">15</span>
+                  </div>
+                  <div>
+                    <FaStar className="likeDown " />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <FaStar className="likeDown" />
+                    <span className="likeDown1">15</span>
+                  </div>
+                </div>
+              </div>
+              <div className="secondColLove">
+                <p>Number Of Visits</p>
+                <p>100</p>
+              </div>
+              <div className="thirdColLike">
+                <p>Number Of Likes </p>
+                <div className="PheartLove">
+                  <div className="likeDown1">
+                    <FaThumbsDown className="heartLoveSvg" />
+                    <p>2</p>
+                  </div>
+                  <div className="likeDown1 ">
+                    <FaThumbsUp className="heartLoveSvg" />
+                    <p>2</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* For Video */}
+        {/* <div className="allhalls-container2">
         {products.slice(0, visible).map(renderCard)}
       </div>
       <div className="for-button2">
@@ -397,10 +399,9 @@ const goToProfile = ()=>{
         )}
       </div> */}
 
-      <CommentSection />
-    </div>
+        <CommentSection />
+      </div>
     </>
-
   );
 };
 
