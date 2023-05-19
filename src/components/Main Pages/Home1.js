@@ -22,13 +22,14 @@ import { useToken } from "antd/es/theme/internal";
 function Home() {
   const location = useLocation();
   const userToken = location?.state?.data;
-  const login = location?.state?.login;
+  const isLogin = location?.state?.isLogin;
 
   // const [isLoggedOut, setIsLoggedOut] = useState(false);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
+  const [isLoggedOut,setIsLoggedOut] = useState(false)
   console.log("user", userToken);
 // console.log(login)
 
@@ -51,41 +52,46 @@ const nav = useNavigate();
   const loadMore = () => {
     setVisible(visible + 5);
   };
-  // function handleLogout() {
-  //   fetch("http://127.0.0.1:8000/api/auth/logout", {
-  //     method: "POST",
-  //     headers: {
-  //       "auth-token": `${userToken.token}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // setIsLoggedOut(true);
-  //         setUserToken(null); // set the userToken state to null
-  //         localStorage.removeItem("userToken"); // clear userToken from local storage
-  //         nav.replace("/", { useToken: "" });
-  //         return response.json();
-  //       } else {
-  //         throw new Error("Logout failed.");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
+  function handleLogout() {
+    fetch("http://127.0.0.1:8000/api/auth/logout", {
+      method: "POST",
+      headers:{
+        "auth-token":`${userToken.token}`
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsLoggedOut(true);
+        } else {
+          throw new Error("Logout failed.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  
   
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-
+  useEffect(() => {
+    if (isLoggedOut) {
+      alert("You Logged out");
+      nav(`/`,{state:{userToken:userToken,login:isLogin}})
+      
+    }
+    
+  }, [isLoggedOut]);
   
+  console.log(isLogin)
   
   // useEffect(() => {
   //   if (isLoggedOut) {
   //     alert("You Logged out");
   //     window.location.reload();
-  //     setUserToken(null); // clear the userToken state when logged out
+  //     setuserToken(null); // clear the userToken state when logged out
   //   }
   // }, [isLoggedOut]);
   const renderCard2 = (cardData) => {
@@ -143,7 +149,7 @@ const nav = useNavigate();
   };
   return (
     <>
-            <NavbarWithSideBar userToken={userToken} />
+            <NavbarWithSideBar userToken={userToken} isLogin={isLogin} />
 
       <div className="home-landing">
         <div className="all-content">
@@ -169,9 +175,9 @@ const nav = useNavigate();
               </div>
               ):(
                 <div className="buttons-log-reg">
-                <Link className="glow-on-hover" to="/login">
+                <button onClick={handleLogout} className="glow-on-hover" >
                   Logout
-                </Link>
+                </button>
                 
               </div>
               )}
@@ -195,7 +201,7 @@ const nav = useNavigate();
 
       <div className="home-allhalls-container">
         {cardData.slice(0, visible).map((data, index) => (
-          <NewCardTemplate userToken={userToken} key={index} cardData={data} />
+          <NewCardTemplate userToken={userToken} key={index} cardData={data} isLogin={isLogin} />
         ))}{" "}
       </div>
       <div className="for-button">

@@ -12,13 +12,19 @@ import axios from "axios";
 import { useEffect } from "react";
 import Cards from "./Cards/Cards";
 import HallCard from "./Cards/HallCard";
+import Owners from "./Owners";
+import Planners from "./Planners";
+import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
+import userEvent from "@testing-library/user-event";
 
 const HeaderDataProfile = (props) => {
   const location = useLocation();
+    const isLogin = location?.state?.isLogin;
+
   const userToken = location?.state?.data;
   const userData = location?.state?.userData;
-  console.log(userData);
-  console.log(userToken);
+
+  console.log(isLogin);
   // const { userToken } = location.state.data;
 
   const isAdmin = userToken?.role === "admin";
@@ -31,113 +37,14 @@ const HeaderDataProfile = (props) => {
   const [hall, setHall] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
   const [visible, setVisible] = useState(5);
-  const [plan, setplan] = useState([]);
   let { id } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState();
-  const [whatsappUrl, setWhatsappUrl] = useState("");
-  let message = "!";
-  let whatsappNum = "0";
 
-  // const fetchplans = () => {
-  //   fetch(
-  //     `http://127.0.0.1:8000/planner/auth/getAllPlannerPlans/${userToken.id}`,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${userToken.token}`,
-  //         "auth-token": `${userToken.token}`,
-  //       },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       console.log("Data received from server:", data);
-  //       setplan(data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
-  // };
-  const fetchplans = () => {
-    fetch(`http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${userData.id}`, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Data received from server:", data);
-        setplan(data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  const getownersHallsCard = () => {
-    fetch(`http://127.0.0.1:8000/owner/auth/getAllOwnerHalls/${userData.id}`, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Data received from server:", data);
-        setownersHallsCard(data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  function deleteCourse(plan_Id) {
-    fetch(`http://127.0.0.1:8000/planner/auth/deletePlan/${plan_Id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        alert("Plan deleted successfully");
-        window.location.reload();
-      } else alert("Error Happened Please Try Again Later");
-    });
-  }
-  const urlWhatSap = () => {
-    message = "Hello!";
-    whatsappNum = userData.phone;
-    setWhatsappUrl(
-      `https://api.whatsapp.com/send/?phone=${whatsappNum}&text=${message}&type=phone_number&app_absent=0`
-    );
-  };
   function handleClick() {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
-  // console.log(userToken);
-  function handleDetailsClick(plan_Id, plan) {
-    navigate(`/Plandetails/${plan_Id}`, {
-      state: {
-        data: userToken,
-        plan: plan,
-      },
-    });
-  }
-
+ 
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
@@ -165,75 +72,32 @@ const HeaderDataProfile = (props) => {
     navigate(`/HallsBookings`, { state: { data: userToken } });
   }
 
-  function handleLink() {
-    window.location.href = whatsappUrl;
-  }
-  useEffect(() => {
-    // fetchPlannerData();
-    fetchplans();
+ 
+  console.log(isLogin)
+  useEffect(()=>{
 
-    urlWhatSap();
-    if (userToken?.role === "owner") {
-      getownersHallsCard();
-    }
-  }, []);
-  const loadMore = () => {
-    setVisible(visible + 5);
-  };
-  const renderCard = (plan) => {
-    return (
-      <>
-        <div className="planD" key={plan.id}>
-          <div className="wrapper">
-            {/* <div class="banner-image"> </div> */}
-            <img
-              src={plan.photos[0]}
-              alt={plan.name}
-              className="banner-image"
-              //  className="plan-image"
-            />
-            <div className="pad20">
-              <h1> {plan.name}</h1>
-              <p>{plan.price}$</p>
-            </div>
-            <div className="button-wrapper">
-              <button
-                onClick={() => handleDetailsClick(plan.id, plan)}
-                className="btnForPlan outline"
-              >
-                DETAILS
-              </button>
-            </div>
-            <div>
-              {isPlanner && (
-                <FaTrash
-                  className="delete"
-                  onClick={() => deleteCourse(plan.id)}
-                />
-              )}
-            </div>
-          </div>
-        </div>{" "}
-      </>
-    );
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+  },[])
 
   return (
+    <>
+    <NavbarWithSideBar userData={userData} isLogin={isLogin} userToken={userToken}/>
     <div className="contProfileAll">
       <div className="profile-header">
         <div className="cOntLeftData">
           <div className="divContImgType">
             <img
-              src={userData?.photo}
+              src={isLogin?(userToken?.photo):(userData?.photo)}
               alt="Profile"
               className="profile-image"
             />
-            <p className="nameUser">{userData?.role}</p>
+            <p className="nameUser">{isLogin?(userToken?.role):(userData?.role)}</p>
           </div>
           <div className="profile-details">
-            <h1 className="profile-name">{userData?.name}</h1>
-            <p className="profile-bio">{userData?.email}</p>
-            <p className="profile-bio">{userData?.phone}</p>
+            <h1 className="profile-name">{isLogin?(userToken?.name):(userData?.name)}</h1>
+            <p className="profile-bio">{isLogin?(userToken?.email):(userData?.email)}</p>
+            <p className="profile-bio">{isLogin?(userToken?.phone):(userData?.phone)}</p>
             <div className="social-icons">
               <a href="#">
                 <FaInstagram className="widthHieht" />
@@ -249,6 +113,9 @@ const HeaderDataProfile = (props) => {
         </div>
 
         <div className="btnsPlannerProf">
+         {userToken ? (
+          <>
+          {/* edit */}
           {userToken?.role && (
             <div className="planner-prof-btn-div">
               <button
@@ -259,7 +126,7 @@ const HeaderDataProfile = (props) => {
               ></button>
             </div>
           )}
-
+          {/* admindashboard */}
           {isAdmin && (
             <>
               <div className="planner-prof-btn-div">
@@ -282,6 +149,7 @@ const HeaderDataProfile = (props) => {
               </div>
             </>
           )}
+          {/* client booking */}
           {isClient && (
             <>
               <div className="planner-prof-btn-div">
@@ -304,6 +172,7 @@ const HeaderDataProfile = (props) => {
               </div>
             </>
           )}
+          {/* planner */}
           {isPlanner && (
             <>
               <div className="planner-prof-btn-div">
@@ -324,6 +193,7 @@ const HeaderDataProfile = (props) => {
               </div>
             </>
           )}
+          {/* owner */}
           {isOwner && (
             <>
               <div className="planner-prof-btn-div">
@@ -347,54 +217,34 @@ const HeaderDataProfile = (props) => {
               </div>
             </>
           )}
+
+          </>
+         ):
+         (
+          <></>
+         )}
+          
         </div>
       </div>
+{isLogin ?(
+  <>
+      <Owners userData={userToken} userToken={userToken} isLogin={isLogin}/>
+      <Planners userData={userToken} userToken={userToken} isLogin={isLogin}/>
+  </>
+      
+):(
+  <>
+  <     Owners userData={userData} userToken={userToken}/>
+      <Planners userData={userData} userToken={userToken}/>
+  </>
+  
+)}
+      
 
-      {(userData.role === "planner" || userToken.role === "planner") && (
-        <>
-          <h1 className="section-heading">Wedding Plans</h1>
-          <div className="profile-content">
-            {plan.length > 0 ? (
-              <>
-                {plan.slice(0, visible).map(renderCard)}
-                <div className="for-button">
-                  {visible < plan.length && (
-                    <button className="more" onClick={loadMore}>
-                      Load 5 More
-                    </button>
-                  )}
-                </div>
-              </>
-            ) : (
-              <h2>No data</h2>
-            )}
-          </div>
-        </>
-      )}
 
-      {userData.role === "owner" && (
-        <div className="halls">
-          <div className="home-allhalls-container">
-            {ownersHallsCard.length > 0 ? (
-              <>
-                {ownersHallsCard.slice(0, visible).map((data, index) => (
-                  <HallCard key={index} userToken={userData} hall={data} />
-                ))}
-                <div className="for-button">
-                  {visible < ownersHallsCard.length && (
-                    <button className="more" onClick={loadMore}>
-                      Load 5 More
-                    </button>
-                  )}
-                </div>
-              </>
-            ) : (
-              <h2>No Data</h2>
-            )}
-          </div>
-        </div>
-      )}
+      
     </div>
+    </>
   );
 };
 

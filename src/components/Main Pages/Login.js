@@ -4,12 +4,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
 import Loader from "../images/loader.gif";
+import NavbarWithSideBar from "./NavbarWithSideBar";
 function Login() {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
-  const [login, setLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -47,7 +48,7 @@ function Login() {
       })
       .then((data) => {
         if(data){
-          setLogin(true)
+          setIsLogin(true)
           setUserToken(data.data);
         }
       })
@@ -56,10 +57,10 @@ function Login() {
         // display the error message to the user using an alert or some other method
       });
   };
-
+console.log(isLogin)
   useEffect(() => {
     if (userToken) {
-      navigate(`/`, { state: { data: userToken,login:login } });
+      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
     }
     // if (status) {
     //   if (status.message) {
@@ -104,6 +105,8 @@ function Login() {
   // Logout
 
   return (
+    <>
+    <NavbarWithSideBar/>
     <div className="cont">
       <div className="login-box">
         <h2 className="login-title">Login</h2>
@@ -146,6 +149,8 @@ function Login() {
         </form>
       </div>
     </div>
+    </>
+    
   );
 }
 export default Login;

@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import "../../../Css/Plandetails.css";
 import PlanSlider from "../Plan/PlanSlider";
 import { useLocation, useParams } from "react-router-dom";
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
 function PlanDetails(props) {
   // const [plan, setPlan] = useState();
   const params = useParams();
   const plan_Id = params.plannerId;
   const location = useLocation();
   const userToken = location?.state?.data;
+  const userData = location?.state?.userData;
+
   const plan = location?.state?.plan;
   console.log(userToken, plan);
   // const fetchPlan = () => {
@@ -40,6 +43,7 @@ function PlanDetails(props) {
 
   return (
     <>
+    <NavbarWithSideBar userData={userData} userToken={userToken}/>
       <div className="Plan-big-cont">
         <div className="plantit">
           <h1 className="PlanName">{plan.name}</h1>

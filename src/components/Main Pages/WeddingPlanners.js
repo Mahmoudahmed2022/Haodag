@@ -2,12 +2,16 @@ import React from "react";
 import "../../Css/WeddingPlanners.css";
 import { useEffect, useState } from "react";
 import user2 from "../images/user2.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import NavbarWithSideBar from "./NavbarWithSideBar";
 function WeddingPlanners() {
   const [planners, setPlanners] = useState([]);
   const [owners, setOwners] = useState([]);
-
+  const location = useLocation();
+  const userToken =location?.state?.userToken;
+  const userData =location?.state?.userData;
+  const isLogin =location?.state?.isLogin;
   const [visible, setVisible] = useState(6);
   const navigate = useNavigate();
 
@@ -31,7 +35,7 @@ function WeddingPlanners() {
         console.error(error);
       });
   };
-  
+
   const loadMore = () => {
     setVisible(visible + 6);
   };
@@ -39,14 +43,17 @@ function WeddingPlanners() {
   console.log(owners);
 
   useEffect(() => {
+
     allPlanners();
     allOwners();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
   }, []);
   const renderCard = (user) => {
     function goToPlannerProfile() {
-      navigate(`/${user.role}/${user.id}`,{state:{userData:user}});
+      navigate(`/${user.role}/${user.id}`, { state: { userData: user } });
     }
-    
+
     return (
       <>
         <div className="planner-container" key={user.id}>
@@ -69,6 +76,8 @@ function WeddingPlanners() {
 
   return (
     <>
+      <NavbarWithSideBar isLogin={isLogin} userToken={userToken} userData={userData} />
+
       <div className="WeddingPlanners-container">
         <div>
           <h2>Wedding Planners</h2>

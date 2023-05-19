@@ -30,12 +30,12 @@ export const SidebarData = [
     icon: <FaHandsHelping />,
     cName: "nav-text",
   },
-  {
-    title: "Wedding Planners",
-    path: "/WeddingPlanners",
-    icon: <FaMale />,
-    cName: "nav-text",
-  },
+  // {
+  //   title: "Wedding Planners",
+  //   path: "/WeddingPlanners",
+  //   icon: <FaMale />,
+  //   cName: "nav-text",
+  // },
   {
     title: "Great Packages",
     path: "/greatepackages",

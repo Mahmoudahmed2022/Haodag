@@ -137,7 +137,7 @@
 // export default ModalAddplan;
 
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../../Css/Modal.css";
 
 const ModalAddPlan = ({ onClose }) => {
@@ -152,7 +152,7 @@ const ModalAddPlan = ({ onClose }) => {
   const location = useLocation();
   const userToken = location?.state?.data;
   const token = location?.state?.token;
-
+const navigate = useNavigate();
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     setFormData({
@@ -197,6 +197,7 @@ const ModalAddPlan = ({ onClose }) => {
         console.error(error.message);
         // Display the error message to the user using an alert or some other method
       });
+      navigate(`/planner/${userToken.id}`,{state:{userToken:userToken}})
   };
 
   return (

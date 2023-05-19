@@ -3,7 +3,8 @@ import "../../Css//Search.css";
 import "../../Css//App.css";
 import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import NavbarWithSideBar from "./NavbarWithSideBar";
 function Search() {
   const [halls, setAllHalls] = useState([]);
   const [visible, setVisible] = useState(5);
@@ -12,6 +13,10 @@ function Search() {
   const [capacity, setCapacity] = useState("");
   const [name, setName] = useState("");
   const [amenities, setAmenities] = useState([]);
+  const location = useLocation();
+  const userToken =location?.state?.userToken;
+  const userData =location?.state?.userData;
+  const isLogin =location?.state?.isLogin;
 
   const searchHalls = async (e) => {
     e.preventDefault();
@@ -66,6 +71,7 @@ function Search() {
   const renderCard = (hall) => {
     return (
       <>
+
         <div className="search-hall-container" key={hall.id}>
           <div className="search-img-div">
             <img
@@ -91,6 +97,8 @@ function Search() {
 
   return (
     <>
+              <NavbarWithSideBar userData={userData} userToken={userToken} isLogin={isLogin}/>
+
       <div className="search-page-container">
         <div className="landing-container">
           {/* <div className="user-pic">

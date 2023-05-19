@@ -41,6 +41,11 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [products, setProducts] = useState([]);
   const [hall, sethall] = useState([]);
   const location = useLocation();
+  const userToken =location?.state?.userToken;
+  const userData =location?.state?.userData;
+  const isLogin =location?.state?.isLogin;
+
+console.log(userData)
   const [ownerData, setOwnerData] = useState([]);
 
   let message = "!";
@@ -153,13 +158,14 @@ const HallProfile = ({ rating, isFavourite }) => {
     setDisLikeStyle({ color: "white" });
     setDisLike(!disLike);
     console.log("colorRemoved");
-  };
+  };console.log(ownerData)
 const goToProfile = ()=>{
-  nav(`/owner/${hall.owner.id}`,{state:{userData:ownerData}});
+  nav(`/owner/${hall.owner.id}`,{state:{userData:ownerData,isLogin:isLogin}});
 }
 
   return (
-    <>    
+    <> 
+    <NavbarWithSideBar userData={userData} userToken={userToken} isLogin={isLogin}/>   
     <div className="allHallProfile">
       <h1 className="hallName">{hall.name}</h1>
       {/* Slider */}

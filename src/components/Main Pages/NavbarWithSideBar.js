@@ -15,16 +15,17 @@ import { useNavigate } from "react-router-dom";
 import { GoDashboard } from "react-icons/go";
 import { useEffect } from "react";
 
-function NavbarWithSideBar() {
+function NavbarWithSideBar({isLogin,userToken}) {
   const [sidebar, setSidebar] = useState(false);
   const nav = useNavigate();
   const showSidebar = () => setSidebar(!sidebar);
 
-  const location = useLocation();
-  const userToken = location?.state?.data;
+  // const location = useLocation();
+  // const userToken = location?.state?.data;
+  // const userData = location?.state?.userData;
+
 console.log(userToken)
  const [isLoggedOut, setIsLoggedOut] = useState(false);
-  const userToken1 = location?.state?.userData;
 
 console.log(userToken);
 const IsAdmin = userToken?.role==="admin";
@@ -46,14 +47,29 @@ function handleLogout() {
       console.error(error);
     });
 }
+function goToHome(){
+  nav(`/`,{state:{userToken:userToken,islogin:isLogin}})
+}
+function goToSearchPage(){
+  nav(`/search`,{state:{userToken:userToken,islogin:isLogin}})
+}
+function goToOwnerPlannerPage(){
+  nav(`/WeddingPlanners`,{state:{userToken:userToken,islogin:isLogin}})
 
+}
+console.log(isLoggedOut)
 useEffect(() => {
   if (isLoggedOut) {
     alert("You Logged out");
-    window.location.reload()
+    nav(`/`,{state:{userToken:userToken,islogin:isLogin}})
     
   }
+  
 }, [isLoggedOut]);
+function goToProfile(){
+  nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken,isLogin:isLogin}})
+}
+console.log(isLogin)
   return (
     <>
       <IconContext.Provider value={{}}>
@@ -63,9 +79,9 @@ useEffect(() => {
               <FaArrowCircleLeft className="bigger" onClick={() => nav(-1)} />
               <FaArrowCircleRight className="bigger" onClick={() => nav(1)} />
             </div>
-            <Link className="menu-bars">
+            <div className="menu-bars">
               <FaAlignLeft className="svgColor" onClick={showSidebar} />
-            </Link>
+            </div>
           </div>
           {/* {!userData&&<div className="headerBtnsContainer">
             <button className="headerSignBtn">Login</button>
@@ -85,12 +101,12 @@ useEffect(() => {
               </div>
             </div>
             <div className="right">
-              <Link className="logo" >
+              <div className="logo"onClick={goToHome} >
                 <img className="avatar" src={image2} alt="" />
-              </Link>
+              </div>
             </div>
-            {userToken ?(
-              <div onClick={()=>nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken}})}  className="profile-photo">
+            {isLogin ?(
+              <div onClick={goToProfile}  className="profile-photo">
               <img src={user} alt="user pic" />
             </div>
 
@@ -108,9 +124,9 @@ useEffect(() => {
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle ">
-              <Link  className="menu-bars svgColor hoverOnX">
+              <div className="menu-bars svgColor hoverOnX">
                 <AiIcons.AiOutlineClose />
-              </Link>
+              </div>
             </li>
             {IsAdmin&&(
               <li key="Admin" className="nav-text" >
@@ -131,12 +147,28 @@ useEffect(() => {
                 </li>
               );
             })}
-            {/* <li  className="nav-text" >
-              <button className="aAll" onClick={handleLogout}>
+            <li  className="nav-text" >
+              <button className="aAll" onClick={goToOwnerPlannerPage}>
               <AiIcons.AiOutlineLogout />
-                <span className="svgColor">Logout</span>
+                <span className="svgColor">Owners & Planners</span>
               </button>
-            </li> */}
+            </li>
+            <li  className="nav-text" >
+              <button className="aAll" onClick={goToSearchPage}>
+              <AiIcons.AiOutlineLogout />
+                <span className="svgColor">Search For Halls</span>
+              </button>
+            </li>
+            {isLogin?(
+               <li  className="nav-text" >
+               <button className="aAll" onClick={handleLogout}>
+               <AiIcons.AiOutlineLogout />
+                 <span className="svgColor">Logout</span>
+               </button>
+             </li>
+            ):(<></>)}
+           
+            
             
             {/* {SidebarBottomData.map((item, index) => {
               return (

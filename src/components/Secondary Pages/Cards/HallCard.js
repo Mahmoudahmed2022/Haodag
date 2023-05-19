@@ -7,12 +7,12 @@ import {
   MdLocationPin,
 } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const HallCard = ({ hall, userToken, key }) => {
+const HallCard = ({ hall, userToken, key,userData }) => {
   const navigate = useNavigate();
   console.log(userToken);
   console.log(hall);
 
-  const isOwner = userToken.role === "owner";
+  const isOwner = userData.role === "owner";
   function handleClick() {
     navigate(`/editHall/${hall.id}`, {
       state: { data: userToken, hall: hall },
@@ -36,7 +36,10 @@ const HallCard = ({ hall, userToken, key }) => {
       } else alert("Error Happened Please Try Again Later");
     });
   }
+function goToHallDetails(){
+  navigate(`/hallDetails/${hall.id}`,{state:{userToken:userToken,userData:userData}})
 
+}
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -82,12 +85,13 @@ const HallCard = ({ hall, userToken, key }) => {
           </div>
         </div>
         <div className="lastButtonForDetails">
-          <Link
+          <button
             className="lastButtonForDetails-button"
-            to={`/hallDetails/${hall.id}`}
+            onClick={goToHallDetails}
+            
           >
             Details
-          </Link>
+          </button>
 
           {isOwner && (
             <button
