@@ -26,6 +26,7 @@ import EditHall from "./components/Secondary Pages/Hall/EditHall";
 import PlansBookings from "./components/Secondary Pages/PlansBookings";
 import HallsBookings from "./components/Secondary Pages/HallsBookings";
 import ModalForAskToBook from "./components/Secondary Pages/Modals/ModalForAskToBook";
+import AskToBookPlan from "./components/Secondary Pages/AskToBooKPlan";
 
 function App({ userToken }) {
   return (
@@ -63,6 +64,8 @@ function App({ userToken }) {
           <Route path="/editProfile/:id" element={<ModalEditClientProfile />} />
           <Route path="/addplan" element={<ModalAddplan />} />
           <Route path="/BookHall/:id" element={<ModalForAskToBook />} />
+          <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
+
           <Route path="/editHall/:id" element={<EditHall />} />
 
           {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> 

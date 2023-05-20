@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import "../../../Css/Modal.css";
+import "../../Css/Modal.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const ModalForAskToBook = (props) => {
+const AskToBookPlan = (props) => {
   const nav = useNavigate();
   const prop = useParams();
-  const hallId = prop.id;
+  const PlanId = prop.id;
   const location = useLocation();
   const userToken = location?.state?.data;
   const [formData, setFormData] = useState({
-    hall_id: hallId,
+    plan_id: PlanId,
     check_in_date: "",
     check_out_date: "",
   });
 
-  console.log(hallId, "ask to book", userToken);
+  console.log(PlanId, "ask to book", userToken);
   function getRegisterData(e) {
     setFormData((prev) => {
       return {
@@ -27,11 +27,11 @@ const ModalForAskToBook = (props) => {
     event.preventDefault();
 
     const formDataObj = new FormData();
-    formDataObj.append("hall_id", formData.hall_id);
+    formDataObj.append("plan_id", formData.plan_id);
     formDataObj.append("check_in_date", formData.check_in_date);
     formDataObj.append("check_out_date", formData.check_out_date);
 
-    fetch("http://127.0.0.1:8000/user/auth/bookRoom", {
+    fetch("http://127.0.0.1:8000/user/auth/bookPlan", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${userToken.token}`,
@@ -47,7 +47,7 @@ const ModalForAskToBook = (props) => {
       })
       .then((data) => {
         alert(data.message);
-        nav(`/HallsBookings`, { state: { data: userToken } });
+        nav(`/PlansBookings`, { state: { data: userToken } });
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -97,4 +97,4 @@ const ModalForAskToBook = (props) => {
   );
 };
 
-export default ModalForAskToBook;
+export default AskToBookPlan;

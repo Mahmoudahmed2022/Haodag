@@ -2,10 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../../Css/Plandetails.css";
 import PlanSlider from "../Plan/PlanSlider";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { BiMailSend } from "react-icons/bi";
 import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
+import AskToBookPlan from "../AskToBooKPlan";
 function PlanDetails(props) {
   // const [plan, setPlan] = useState();
+  const navigate = useNavigate();
+
   const params = useParams();
   const plan_Id = params.plannerId;
   const location = useLocation();
@@ -37,13 +41,16 @@ function PlanDetails(props) {
   //       console.error("Error fetching data:", error);
   //     });
   // };
+  function goToaAskToBook() {
+    navigate(`/BookPlan/${plan_Id}`, { state: { data: userToken } });
+  }
   useEffect(() => {
     // fetchPlan();
   }, []);
 
   return (
     <>
-    <NavbarWithSideBar userData={userData} userToken={userToken}/>
+      <NavbarWithSideBar userData={userData} userToken={userToken} />
       <div className="Plan-big-cont">
         <div className="plantit">
           <h1 className="PlanName">{plan.name}</h1>
@@ -64,6 +71,12 @@ function PlanDetails(props) {
             <h1>Price</h1>
             <ul>{plan.price} &nbsp;$ </ul>
           </div>
+        </div>
+        <div className="contactWUs" to="/modal">
+          <button className="askBooking" onClick={goToaAskToBook}>
+            <BiMailSend className="colorSvg1" />
+            Ask To Book
+          </button>
         </div>
       </div>
     </>
