@@ -72,12 +72,14 @@ function PlanDetails(props) {
             <ul>{plan.price} &nbsp;$ </ul>
           </div>
         </div>
-        <div className="contactWUs" to="/modal">
-          <button className="askBooking" onClick={goToaAskToBook}>
-            <BiMailSend className="colorSvg1" />
-            Ask To Book
-          </button>
-        </div>
+        {userToken.role === "user" ? (
+          <div className="contactWUs" to="/modal">
+            <button className="askBooking" onClick={goToaAskToBook}>
+              <BiMailSend className="colorSvg1" />
+              Ask To Book
+            </button>
+          </div>
+        ) : null}
       </div>
     </>
   );
