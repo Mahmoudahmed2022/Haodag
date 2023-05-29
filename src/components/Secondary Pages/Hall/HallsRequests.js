@@ -5,22 +5,14 @@ import axios from "axios";
 import "../../../Css/Reservation.css";
 import user from "../../images/user3.png";
 import { Link } from "react-router-dom";
-function HallsRequests() {
-  const [reservations, setReservations] = useState([]);
-  const allReservations = () => {
-    axios.get("https://fakestoreapi.com/products").then((data) => {
-      setReservations(data.data);
-    });
-  };
-  useEffect(() => {
-    allReservations();
-  }, []);
+function HallsRequests({HallsRequests}) {
+  
   return (
     <>
       <div>
         <h1 className="Requests-tit">Halls Confirmation Requests</h1>
         <div className="reserv-big-cont">
-          {reservations.map((reservation) => {
+          {HallsRequests.map((reservation) => {
             return (
               <div className="reserv-sml-cont" key={reservation.key}>
                 <h3>{reservation.key}</h3>
@@ -45,7 +37,7 @@ function HallsRequests() {
                   <button className="accept-btn reserve-btn">Confirm</button>
                   <button className="decline-btn reserve-btn">Reject</button>
                   <Link
-                    to={`/hallDetails/${reservations.id}`}
+                    to={`/hallDetails/${reservation.id}`}
                     className="view-btn reserve-btn"
                   >
                     View

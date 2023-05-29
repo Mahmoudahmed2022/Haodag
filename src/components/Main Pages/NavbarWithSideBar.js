@@ -75,10 +75,10 @@ console.log(isLogin)
       <IconContext.Provider value={{}}>
         <div className="navbar">
           <div className="left">
-            <div className="svgColor1">
+            {/* <div className="svgColor1">
               <FaArrowCircleLeft className="bigger" onClick={() => nav(-1)} />
               <FaArrowCircleRight className="bigger" onClick={() => nav(1)} />
-            </div>
+            </div> */}
             <div className="menu-bars">
               <FaAlignLeft className="svgColor" onClick={showSidebar} />
             </div>

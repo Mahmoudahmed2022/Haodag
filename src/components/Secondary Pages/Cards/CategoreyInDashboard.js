@@ -17,12 +17,12 @@ const CategoreyInDashboard = (props) => {
   return (
     <div className="divcategory">
       <div className="contUser">
-        <p>{type}</p>
+        {/* <p>{type}</p> */}
         <p>{clients.length}</p>
       </div>
       <div className="contsvgCard">
         {" "}
-        <GoOrganization />
+        {/* <GoOrganization /> */}
       </div>
     </div>
   );

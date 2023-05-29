@@ -1,19 +1,26 @@
 .parentDashboard {
   display: flex;
   flex-direction: column;
-  /* width: 67%; */
-  /* margin: auto; */
+  width: 100%;
+  /* margin: 0px auto; */
   align-items: center;
-  padding: 0px 50px;
+  /* padding: 0px 50px; */
   background-color: #282828;
   min-height: calc(100vh - 250px);
 }
+.contSidebarWithDash{
+  display: flex;
+  background-color: #282828;}
 .categories div {
   margin: 20px;
 }
 .adminHeader {
   text-align: center;
   color: white;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  padding: 15px 0px;
 }
 .categories {
   display: flex;
@@ -56,16 +63,15 @@
   width: 70%;
 }
 
-.divcategory {
-  align-items: center;
+ .divcategory {
+  /* align-items: center;
   height: 150px;
   border-radius: 10px;
   padding: 10px;
   display: flex;
-  /* gap: 60%; */
-  justify-content: space-around;
+  justify-content: space-around; */
   cursor: pointer;
-}
+} 
 .imagetableuser {
   width: 60px;
 }
@@ -112,6 +118,10 @@
   padding: 6px;
   border-radius: 5px;
   width: 25%;
+}
+.iconAndName{
+  display: flex;
+  column-gap: 10px;
 }
 /* .tdoperations{
         display: flex;

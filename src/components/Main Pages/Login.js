@@ -5,17 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
 import Loader from "../images/loader.gif";
 import NavbarWithSideBar from "./NavbarWithSideBar";
-function Login() {
+function Login({onLogin}) {
   // let body = document.getElementsByTagName("body");
   // body.setAttribute("class", "login-body");
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [role, setRole] = useState("");
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [adminData, setAdminData] = useState(null);
 
   const [userToken, setUserToken] = useState(null);
 
@@ -49,7 +51,15 @@ function Login() {
       .then((data) => {
         if(data){
           setIsLogin(true)
+          if(data.data.role==="admin")
+          {setAdminData(data.data)}
+          else
           setUserToken(data.data);
+        //   if (role==="admin") {
+        //     navigate(`/adminDashboard`, { state: { data: userToken,isLogin :isLogin } });
+        //   }
+        //   else{      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
+        // }
         }
       })
       .catch((error) => {
@@ -57,11 +67,15 @@ function Login() {
         // display the error message to the user using an alert or some other method
       });
   };
-console.log(isLogin)
+console.log(userToken)
+console.log(adminData)
+
   useEffect(() => {
-    if (userToken) {
-      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
+    if (adminData) {
+      navigate(`/adminDashboard`, { state: { data: adminData,isLogin :isLogin } });
     }
+    else if(userToken){      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
+  }
     // if (status) {
     //   if (status.message) {
     //     alert(status.message);
@@ -70,7 +84,7 @@ console.log(isLogin)
     //     navigate("/");
     //   }
     // }
-  }, [userToken]);
+  }, [userToken,adminData]);
   if (load) {
     return (
       <div
@@ -110,7 +124,7 @@ console.log(isLogin)
     <div className="cont">
       <div className="login-box">
         <h2 className="login-title">Login</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" >
           <div className="user-box">
             <FaUserAlt className="svg1" />
             <input
@@ -135,7 +149,8 @@ console.log(isLogin)
             <label className="e-p-label">Password</label>
           </div>
           <div className="divsubmitnewvisitor">
-            <button className="login-submit submit" to="/profile">
+            <button className="login-submit submit"onClick={handleSubmit}
+>
               <span className="s-span"></span>
               <span className="s-span"></span>
               <span className="s-span"></span>

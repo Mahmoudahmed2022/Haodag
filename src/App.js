@@ -27,14 +27,12 @@ import PlansBookings from "./components/Secondary Pages/PlansBookings";
 import HallsBookings from "./components/Secondary Pages/HallsBookings";
 import ModalForAskToBook from "./components/Secondary Pages/Modals/ModalForAskToBook";
 import AskToBookPlan from "./components/Secondary Pages/AskToBooKPlan";
-
+import SidebarforAdminDashboard from "./components/Main Pages/SidebarforAdminDashboard.js";
 function App({ userToken }) {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-        {/* <NavbarWithSideBar userToken={userToken} /> */}
-
-        {/*       <HallProfile/> */}
+       
         <Routes>
           <Route path="/AdminDashboard" element={<Dashboard />} />
           <Route path="/hallForm" element={<HallForm />} />
@@ -51,11 +49,6 @@ function App({ userToken }) {
           <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
           <Route path="/PlansBookings" element={<PlansBookings />} />
           <Route path="/HallsBookings" element={<HallsBookings />} />
-
-          {/* <Route
-            path="/planner_Profile/:plannerId"
-            element={<WeddingPlannerProfile />}
-          /> */}
           <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
           <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
@@ -68,8 +61,9 @@ function App({ userToken }) {
 
           <Route path="/editHall/:id" element={<EditHall />} />
 
-          {/* <Route path="/ownerprofile" element={<HallOwnerProfile />} /> 
-          {/* <Route path="/plannerprofile" element={<WeddingPlannerProfile />} /> */}
+        
+
+        
         </Routes>
 
         <Footer />

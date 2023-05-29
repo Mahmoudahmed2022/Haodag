@@ -232,27 +232,24 @@ const HeaderDataProfile = (props) => {
             )}
           </div>
         </div>
-        {isLogin ? (
-          <>
-            <Owners
-              userData={userToken}
-              userToken={userToken}
-              isLogin={isLogin}
-            />
-            <Planners
-              userData={userToken}
-              userToken={userToken}
-              isLogin={isLogin}
-            />
-          </>
-        ) : (
-          <>
-            <Owners userData={userData} userToken={userToken} />
-            <Planners userData={userData} userToken={userToken} />
-          </>
-        )}
       </div>
-    </>
+{isLogin ?(
+  <>
+      <Owners userData={userToken} userToken={userToken} isLogin={isLogin}/>
+      <Planners userData={userToken} userToken={userToken} isLogin={isLogin}/>
+  </>
+      
+):(
+  <>
+  <     Owners userData={userData} userToken={userToken}/>
+      <Planners userData={userData} userToken={userToken}/>
+  </>
+  
+)}
+      
+
+
+          </>
   );
 };
 
