@@ -166,21 +166,22 @@ console.log(userToken)
   }, []);
 const goToHome=()=>{
 nav("/",{state:{userToken:userToken}})
-}
+}    
+
   let content ;
   if (selectedComponent === "client") {
-    content = <FetchAllData person={client} />;
+    content = <FetchAllData user={client} getUser={getClients} userToken={userToken} />;
   } else if (selectedComponent === "hallOwner") {
-    content = <FetchAllData person={hallOwner} />;
+    content = <FetchAllData user={hallOwner} getUser={getHallOwner}  userToken={userToken} />;
   } else if (selectedComponent === "weddingPlanner") {
-    content = <FetchAllData person={weddingPlanner} />;
+    content = <FetchAllData user={weddingPlanner} getUser={getWeddingPlanner} userToken={userToken} />;
   } else if (selectedComponent === "hallsRequest") {
-    content = <HallsRequests hallsRequest={hallsRequest} />;
+    content = <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />;
   }else if (selectedComponent === "halls") {
-    content = <FetchAllData person={halls} />;
+    content = <FetchAllData user={halls} userToken={userToken} />;
   }
   else if (selectedComponent === "suppliers") {
-    content = <FetchAllData person={suppliers} />;
+    content = <FetchAllData user={suppliers} getUser={getSuppliers} userToken={userToken} />;
   }
   return (
     <div className="contSidebarWithDash">

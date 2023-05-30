@@ -86,9 +86,11 @@
 }
 .contDataDiv {
   border-top: 1px solid black;
-  margin: 50px;
 }
-
+.NameUsers{
+  text-align: center;
+  margin: 20px 0;
+}
 .id {
   width: 15%;
 }

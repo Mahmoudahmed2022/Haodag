@@ -5,21 +5,21 @@ import axios from "axios";
 import "../../../Css/Reservation.css";
 import user from "../../images/user3.png";
 import { Link } from "react-router-dom";
-function HallsRequests({HallsRequests}) {
-  
+function HallsRequests({hallsRequest}) {
+  console.log(hallsRequest)
   return (
     <>
       <div>
         <h1 className="Requests-tit">Halls Confirmation Requests</h1>
         <div className="reserv-big-cont">
-          {HallsRequests.map((reservation) => {
+          {hallsRequest.map((reservation) => {
             return (
               <div className="reserv-sml-cont" key={reservation.key}>
                 <h3>{reservation.key}</h3>
                 <div className="user-div">
                   <div className="user-info-div">
                     <h5>
-                      {reservation.title.slice(0, 15)}
+                      {reservation.title}
                       <br />
                       3010501212357
                       <br />
@@ -29,7 +29,7 @@ function HallsRequests({HallsRequests}) {
                 </div>
 
                 <h5 className="hall-name">
-                  {reservation.description.slice(0, 20)}
+                  {reservation.description}
                   <br />
                   {reservation.price} $
                 </h5>
