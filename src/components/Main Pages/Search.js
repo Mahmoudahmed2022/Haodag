@@ -9,47 +9,142 @@ function Search() {
   const [halls, setAllHalls] = useState([]);
   const [visible, setVisible] = useState(5);
   const [city, setCity] = useState("");
-  const [priceRange, setPriceRange] = useState("");
-  const [capacity, setCapacity] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [country, setCountry] = useState("");
+  const [street, setStreet] = useState("");
+  const [type, setType] = useState("");
   const [name, setName] = useState("");
-  const [amenities, setAmenities] = useState([]);
   const location = useLocation();
-  const userToken =location?.state?.userToken;
-  const userData =location?.state?.userData;
-  const isLogin =location?.state?.isLogin;
+  const userToken = location?.state?.userToken;
+  const userData = location?.state?.userData;
+  const isLogin = location?.state?.isLogin;
 
-  const searchHalls = async (e) => {
+  const searchHalls = (e) => {
     e.preventDefault();
-
-    let searchQuery = "https://fakestoreapi.com/products?";
-
-    if (city) {
-      searchQuery += `city=${city}&`;
-    }
     if (name) {
       fetch("http://127.0.0.1:8000/api/auth/getAllHallsByName", {
         method: "POST",
-        body: JSON.stringify(name),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
         .then((data) => {
           setAllHalls(data.data);
+          setName("");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else if (minPrice && maxPrice) {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHallsByPrice", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ minPrice, maxPrice }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
+        .then((data) => {
+          setAllHalls(data.data);
+          setMaxPrice("");
+          setMinPrice("");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else if (city) {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHallsByCity", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ city }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
+        .then((data) => {
+          setAllHalls(data.data);
+          setCity("");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else if (country) {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHallsByCountry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ country }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
+        .then((data) => {
+          setAllHalls(data.data);
+          setCountry("");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else if (street) {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHallsByStreet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ street }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
+        .then((data) => {
+          setAllHalls(data.data);
+          setStreet("");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else if (type) {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHallsByType", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ type }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else alert("hall does not exist");
+        })
+        .then((data) => {
+          setAllHalls(data.data);
+          setType("");
         })
         .catch((error) => {
           console.error(error);
         });
     }
-    if (priceRange) {
-      searchQuery += `price_range=${priceRange}&`;
-    }
-    if (capacity) {
-      searchQuery += `capacity=${capacity}&`;
-    }
-    if (amenities.length > 0) {
-      searchQuery += `amenities=${amenities.join(",")}&`;
-    }
   };
-
   const allHalls = () => {
     fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
       .then((response) => response.json())
@@ -64,14 +159,12 @@ function Search() {
   const loadMore = () => {
     setVisible(visible + 5);
   };
-  console.log(city, priceRange, capacity, amenities, name, halls);
   useEffect(() => {
     allHalls();
   }, []);
   const renderCard = (hall) => {
     return (
       <>
-
         <div className="search-hall-container" key={hall.id}>
           <div className="search-img-div">
             <img
@@ -97,7 +190,11 @@ function Search() {
 
   return (
     <>
-              <NavbarWithSideBar userData={userData} userToken={userToken} isLogin={isLogin}/>
+      <NavbarWithSideBar
+        userData={userData}
+        userToken={userToken}
+        isLogin={isLogin}
+      />
 
       <div className="search-page-container">
         <div className="landing-container">
@@ -127,6 +224,16 @@ function Search() {
                     />
                   </div>
                   <div className="search-input-container">
+                    <label htmlFor="country">Country:</label>
+                    <input
+                      className="name-input"
+                      type="text"
+                      id="country"
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                    />
+                  </div>
+                  <div className="search-input-container">
                     <label htmlFor="city">City:</label>
                     <select
                       id="city"
@@ -139,83 +246,43 @@ function Search() {
                       <option value="Alexandria">Alexandria</option>
                     </select>
                   </div>
-
                   <div className="search-input-container">
-                    <label htmlFor="price-range">Price Range:</label>
-                    <select
-                      id="price-range"
-                      value={priceRange}
-                      onChange={(e) => setPriceRange(e.target.value)}
-                    >
-                      <option value="">--Select a price range--</option>
-                      <option value="0-500">0-500 EGP</option>
-                      <option value="500-1000">500-1000 EGP</option>
-                      <option value="1000-2000">1000-2000 EGP</option>
-                      <option value="2000+">2000+ EGP</option>
-                    </select>
-                  </div>
-
-                  <div className="search-input-container">
-                    <label htmlFor="capacity">Capacity:</label>
+                    <label htmlFor="street">Street:</label>
                     <input
-                      type="number"
-                      id="capacity"
-                      value={capacity}
-                      onChange={(e) => setCapacity(e.target.value)}
+                      className="name-input"
+                      type="text"
+                      id="street"
+                      value={street}
+                      onChange={(e) => setStreet(e.target.value)}
                     />
                   </div>
-
                   <div className="search-input-container">
-                    <label htmlFor="amenities">Amenities:</label>
-                    <div className="amenity-checkboxes">
-                      <label>
-                        <input
-                          type="checkbox"
-                          value="catering"
-                          checked={amenities.includes("catering")}
-                          onChange={(e) =>
-                            setAmenities((prev) =>
-                              e.target.checked
-                                ? [...prev, e.target.value]
-                                : prev.filter((a) => a !== e.target.value)
-                            )
-                          }
-                        />
-                        Catering
-                      </label>
-
-                      <label>
-                        <input
-                          type="checkbox"
-                          value="music"
-                          checked={amenities.includes("music")}
-                          onChange={(e) =>
-                            setAmenities((prev) =>
-                              e.target.checked
-                                ? [...prev, e.target.value]
-                                : prev.filter((a) => a !== e.target.value)
-                            )
-                          }
-                        />
-                        Live Music
-                      </label>
-
-                      <label>
-                        <input
-                          type="checkbox"
-                          value="photography"
-                          checked={amenities.includes("photography")}
-                          onChange={(e) =>
-                            setAmenities((prev) =>
-                              e.target.checked
-                                ? [...prev, e.target.value]
-                                : prev.filter((a) => a !== e.target.value)
-                            )
-                          }
-                        />
-                        Photography
-                      </label>
-                    </div>
+                    <label htmlFor="type">Type:</label>
+                    <input
+                      className="name-input"
+                      type="text"
+                      id="type"
+                      value={type}
+                      onChange={(e) => setType(e.target.value)}
+                    />
+                  </div>
+                  <div className="search-input-container">
+                    <label htmlFor="capacity">Min Price:</label>
+                    <input
+                      type="number"
+                      id="minPrice"
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
+                    />
+                  </div>
+                  <div className="search-input-container">
+                    <label htmlFor="capacity">Max Price:</label>
+                    <input
+                      type="number"
+                      id="maxPrice"
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
+                    />
                   </div>
                 </div>
 

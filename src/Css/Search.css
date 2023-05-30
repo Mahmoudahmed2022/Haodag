@@ -205,7 +205,7 @@ body {
   justify-content: center;
   gap: 15px;
   align-items: center;
-  margin-bottom: 30px;
+  margin-top: 200px;
 }
 
 .search-input-container {
@@ -248,7 +248,7 @@ select {
 /* Styles for the search button */
 .search-btn-div {
   text-align: center;
-  /* margin-top: 20px; */
+  margin-top: 20px;
 }
 
 .search-btn {
