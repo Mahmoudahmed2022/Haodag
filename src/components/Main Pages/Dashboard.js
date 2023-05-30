@@ -147,9 +147,14 @@ console.log(userToken)
     allHallsRequest();
     getAllHalls();
     getSuppliers();
+
+    setSelectedComponent("halls");
+
+
+
   }, []);
 
-  let content;
+  let content ;
   if (selectedComponent === "client") {
     content = <FetchAllData person={client} />;
   } else if (selectedComponent === "hallOwner") {
@@ -161,7 +166,7 @@ console.log(userToken)
   }else if (selectedComponent === "halls") {
     content = <FetchAllData person={halls} />;
   }
-  else if (selectedComponent === "supplires") {
+  else if (selectedComponent === "suppliers") {
     content = <FetchAllData person={suppliers} />;
   }
   return (
@@ -182,6 +187,7 @@ console.log(userToken)
 
           <div className="alllinks">
           <button
+          style={{backgroundColor:selectedComponent==="halls"?"red":"transparent"}}
               className="link"
               onClick={() => setSelectedComponent("halls")}
             >
@@ -202,6 +208,7 @@ console.log(userToken)
             </button>
             <button
               className="link"
+              style={{backgroundColor:selectedComponent==="suppliers"?"red":"transparent"}}
               onClick={() => setSelectedComponent("suppliers")}
             >
               
@@ -222,6 +229,8 @@ console.log(userToken)
 
             <button
               className="link"
+              style={{backgroundColor:selectedComponent==="hallOwner"?"red":"transparent"}}
+
               onClick={() => setSelectedComponent("hallOwner")}
             >
               
@@ -242,6 +251,8 @@ console.log(userToken)
 
             <button
               className="link"
+              style={{backgroundColor:selectedComponent==="weddingPlanner"?"red":"transparent"}}
+
               onClick={() => setSelectedComponent("weddingPlanner")}
             >
               
@@ -262,6 +273,8 @@ console.log(userToken)
 
             <button
               className="link"
+              style={{backgroundColor:selectedComponent==="client"?"red":"transparent"}}
+
               onClick={() => setSelectedComponent("client")}
             >
               
@@ -280,6 +293,8 @@ console.log(userToken)
             </button>
 
             <button
+            style={{backgroundColor:selectedComponent==="hallsRequest"?"red":"transparent"}}
+            
               className="link"
               onClick={() => setSelectedComponent("hallsRequest")}
             >

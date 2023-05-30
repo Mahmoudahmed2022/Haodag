@@ -46,7 +46,7 @@ main{
     border: none;
 }
 .link:hover{
-    background:lightskyblue;
+    background:lightskyblue !important;
     color: #000;
     transition: all 0.5s;
 }
