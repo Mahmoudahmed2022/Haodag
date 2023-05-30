@@ -14,6 +14,10 @@
 .categories div {
   margin: 20px;
 }
+.widthIcon{
+  width: 30px;
+  height: 30px;
+}
 .adminHeader {
   text-align: center;
   color: white;

@@ -64,7 +64,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px 0px 8px 16px;
+  padding: 0px 20px;
   list-style: none;
   height: 60px;
 }
@@ -87,9 +87,10 @@
   align-items: center;
   padding: 0 16px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
-.nav-text a:hover {
+.nav-text a:hover ,.nav-text button:hover {
   background-color: #557fa8;;
 }
 .hoverOnX:hover {
@@ -104,7 +105,7 @@
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: start;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -115,6 +116,7 @@
 .avatar {
   /* vertical-align: middle; */
   width: 100px;
+  cursor: pointer;
 }
 
 .search-bar {
@@ -210,7 +212,13 @@
 .input1:focus{
   outline: none;
 }
-
+.transparentBorderN{
+  background-color: transparent;
+  border: none;
+}
+.transparentBorderN:hover{
+  background-color: #1a83ff !important;
+}
 .profile-photo {
   display: flex;
   float: right;

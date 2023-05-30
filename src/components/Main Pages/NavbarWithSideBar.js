@@ -14,15 +14,19 @@ import "../../Css/App.css";
 import { useNavigate } from "react-router-dom";
 import { GoDashboard } from "react-icons/go";
 import { useEffect } from "react";
+import { FaHome } from "react-icons/fa";
 
 function NavbarWithSideBar({isLogin,userToken}) {
   const [sidebar, setSidebar] = useState(false);
   const nav = useNavigate();
+  const location = useLocation();
   const showSidebar = () => setSidebar(!sidebar);
+const [path,setPath]=useState(null);
+// if(path==="home"|| path===""){setPath("home")}
+// else if(path==="search"){setPath("search")}
+// else if (path === "weddingPlanners") {setPath("search")}
+// else if (path === "greatPackages") {setPath("greatPackages")}
 
-  // const location = useLocation();
-  // const userToken = location?.state?.data;
-  // const userData = location?.state?.userData;
 
 console.log(userToken)
  const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -47,13 +51,22 @@ function handleLogout() {
       console.error(error);
     });
 }
+
+function goToPackages(){
+  // setPath("greatPackages")
+  nav(`/greatepackages`,{state:{userToken:userToken,islogin:isLogin}})
+}
 function goToHome(){
+  // setPath("home")
   nav(`/`,{state:{userToken:userToken,islogin:isLogin}})
 }
 function goToSearchPage(){
+  // setPath("search")
   nav(`/search`,{state:{userToken:userToken,islogin:isLogin}})
 }
 function goToOwnerPlannerPage(){
+    // setPath("WeddingPlanners")
+
   nav(`/WeddingPlanners`,{state:{userToken:userToken,islogin:isLogin}})
 
 }
@@ -127,6 +140,7 @@ console.log(isLogin)
               <div className="menu-bars svgColor hoverOnX">
                 <AiIcons.AiOutlineClose />
               </div>
+              <img src={image2} onClick={goToHome} className="avatar" alt="logo"></img>
             </li>
             {IsAdmin&&(
               <li key="Admin" className="nav-text" >
@@ -137,7 +151,7 @@ console.log(isLogin)
             </li>
             )}
             
-              {SidebarData.map((item, index) => {
+              {/* {SidebarData.map((item, index) => {
   return (
                 <li key={index} className={`${item.cName} `} >
                   <Link className="aAll  " to={item.path}>
@@ -146,22 +160,51 @@ console.log(isLogin)
                   </Link>
                 </li>
               );
-            })}
-            <li  className="nav-text" >
-              <button className="aAll" onClick={goToOwnerPlannerPage}>
+            })} */}
+             <li  className="nav-text" onClick={()=>{setPath("home")}} >
+              <button className="aAll transparentBorderN" onClick={()=>{setPath("home");goToHome()}}
+                            style={{backgroundColor:path==="home"?"red":"transparent"}}
+>
+<FaHome />
+                <span className="svgColor">Home</span>
+              </button>
+            </li>
+
+
+
+            <li  className="nav-text" onClick={()=>{setPath("greatepackages")}} >
+              <button className="aAll transparentBorderN" onClick={()=>{setPath("home");goToPackages()}}
+                            style={{backgroundColor:path==="greatepackages"?"red":"transparent"}}
+>
+              <AiIcons.AiOutlineLogout />
+                <span className="svgColor">Great Packages</span>
+              </button>
+            </li>
+
+
+
+            <li  className="nav-text" onClick={()=>{setPath("WeddingPlanners")}} >
+              <button className="aAll transparentBorderN" onClick={()=>{setPath("home");goToOwnerPlannerPage()}}
+                            style={{backgroundColor:path==="WeddingPlanners"?"red":"transparent"}}
+>
               <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Owners & Planners</span>
               </button>
             </li>
-            <li  className="nav-text" >
-              <button className="aAll" onClick={goToSearchPage}>
+            <li  className="nav-text"
+
+             >
+              <button className="aAll transparentBorderN" onClick={()=>{setPath("home");goToSearchPage()}}
+              style={{backgroundColor:path==="search"?"red":"transparent"}}
+              
+              >
               <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Search For Halls</span>
               </button>
             </li>
             {isLogin?(
                <li  className="nav-text" >
-               <button className="aAll" onClick={handleLogout}>
+               <button className="aAll transparentBorderN"  onClick={handleLogout}>
                <AiIcons.AiOutlineLogout />
                  <span className="svgColor">Logout</span>
                </button>

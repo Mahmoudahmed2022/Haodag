@@ -4,7 +4,18 @@ import CategoreyInDashboard from "../Secondary Pages/Cards/CategoreyInDashboard"
 import FetchAllData from "../Secondary Pages/FetchAllData";
 import HallsRequests from "../Secondary Pages/Hall/HallsRequests";
 import SidebarforAdminDashboard from "./SidebarforAdminDashboard";
+import * as AiIcons from "react-icons/ai";
+import owners from "../images/owners.png";
+
+import planners from "../images/planners.png";
+import supplier from "../images/suppliers.png";
+import clients from "../images/users.png";
+import hallRequests from "../images/hallRequests.png";
+import hallss from "../images/halls.png";
+
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from "../images/logo.png"
 import {
   FaTh,
   FaBars,
@@ -148,12 +159,14 @@ console.log(userToken)
     getAllHalls();
     getSuppliers();
 
-    setSelectedComponent("halls");
+    setSelectedComponent();
 
 
 
   }, []);
-
+const goToHome=()=>{
+nav("/",{state:{userToken:userToken}})
+}
   let content ;
   if (selectedComponent === "client") {
     content = <FetchAllData person={client} />;
@@ -174,11 +187,14 @@ console.log(userToken)
       <div className="container">
         <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
           <div className="top_section">
-            <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+            <img style={{ display: isOpen ? "block" : "none" }}
+            onClick={goToHome}
+             className="avatar" src={logo} alt="logo"></img>
+            {/* <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
               Logo
-            </h1>
+            </h1> */}
             <div
-              style={{ marginLeft: isOpen ? "50px" : "0px" }}
+              // style={{ marginLeft: isOpen ? "50px" : "0px" }}
               className="bars"
             >
               <FaBars onClick={toggle} />
@@ -195,7 +211,8 @@ console.log(userToken)
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={hallss} alt="halls"></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -215,7 +232,9 @@ console.log(userToken)
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={supplier} alt="suppliers" ></img>
+
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -237,7 +256,9 @@ console.log(userToken)
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={owners} alt="owners" ></img>
+
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -259,7 +280,9 @@ console.log(userToken)
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={planners} alt="planners" ></img>
+
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -280,7 +303,9 @@ console.log(userToken)
               
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={clients} alt="clients" ></img>
+
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -301,7 +326,9 @@ console.log(userToken)
               
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={hallRequests} alt="hallRequests" ></img>
+
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -316,7 +343,7 @@ console.log(userToken)
             <button className="link" onClick={handleLogout}>
               <div className="iconAndName">
                 <div className="icon">
-                  <FaTh />
+                <AiIcons.AiOutlineLogout />
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}

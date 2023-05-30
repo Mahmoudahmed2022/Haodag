@@ -61,6 +61,9 @@ function Login({onLogin}) {
         //   else{      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
         // }
         }
+        else{
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.error(error.message);

@@ -21,6 +21,7 @@ main{
     display: flex;
     align-items:center;
     padding:20px 15px;
+    justify-content: center;
 }
 .logo{
     font-size: 30px;
@@ -28,7 +29,6 @@ main{
 .bars{
     display: flex;
     font-size: 25px;
-    margin-left: 50px;
     cursor: pointer;
 }
 .link{
@@ -50,10 +50,10 @@ main{
     color: #000;
     transition: all 0.5s;
 }
-.active{
+/* .active{
     background: lightskyblue;
     color: #000;
-}
+} */
 .icon, .link_text{
     font-size: 18px;
 }

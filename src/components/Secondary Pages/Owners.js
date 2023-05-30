@@ -31,7 +31,7 @@ const Owners = ({ userData, userToken, isLogin }) => {
   };
 
   useEffect(() => {
-    if (userData.role === "owner") getownersHallsCard();
+    if (userData?.role === "owner") getownersHallsCard();
   }, []);
   return (
     <>

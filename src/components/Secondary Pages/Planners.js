@@ -31,7 +31,7 @@ const Planners = ({ userData, userToken, isLogin }) => {
     setVisible(visible + 5);
   };
   useEffect(() => {
-    if (userData.role === "planner") fetchplans();
+    if (userData?.role === "planner") fetchplans();
   }, []);
   function handleDetailsClick(plan_Id, plan) {
     navigate(`/Plandetails/${plan_Id}`, {
