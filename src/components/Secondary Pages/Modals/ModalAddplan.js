@@ -139,7 +139,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../../Css/Modal.css";
-
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar.js";
 const ModalAddPlan = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -197,11 +197,13 @@ const navigate = useNavigate();
         console.error(error.message);
         // Display the error message to the user using an alert or some other method
       });
-      navigate(`/planner/${userToken.id}`,{state:{userToken:userToken}})
+      navigate(`/${userToken.role}/${userToken.id}`,{ state: { data: userToken } });
+      window.location.reload();
   };
 
   return (
     <>
+    <NavbarWithSideBar userToken={userToken}/>
       <h2 className="headContact">Add Plan</h2>
 
       <form

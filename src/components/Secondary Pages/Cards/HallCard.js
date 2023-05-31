@@ -7,6 +7,7 @@ import {
   MdLocationPin,
 } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 const HallCard = ({ hall, userToken, key, userData }) => {
   const navigate = useNavigate();
   console.log(userToken);
@@ -20,9 +21,14 @@ const HallCard = ({ hall, userToken, key, userData }) => {
   }
   const Id = useParams();
   console.log(hall, userToken);
-
-  function deleteCourse(hall_Id) {
-    fetch(`http://127.0.0.1:8000/owner/auth/deleteHall/${hall_Id}`, {
+  
+  function deleteCourse(hall) {
+    Swal.fire({
+      title: `Are You Sure To Delete Hall ${hall.name} `,
+      showCancelButton: true,
+    }).then((data) => {
+      if (data.isConfirmed) {
+        fetch(`http://127.0.0.1:8000/owner/auth/deleteHall/${hall.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +41,9 @@ const HallCard = ({ hall, userToken, key, userData }) => {
         window.location.reload();
       } else alert("Error Happened Please Try Again Later");
     });
-  }
+      }
+    
+  })}
   function goToHallDetails() {
     navigate(`/hallDetails/${hall.id}`, {
       state: { userToken: userToken, userData: userData },
@@ -69,7 +77,7 @@ const HallCard = ({ hall, userToken, key, userData }) => {
 
               <FaTrash
                 className="delete"
-                onClick={() => deleteCourse(hall.id)}
+                onClick={() => deleteCourse(hall)}
               />
             </div>
 

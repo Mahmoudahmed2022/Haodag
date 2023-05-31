@@ -51,7 +51,7 @@ function WeddingPlanners() {
   }, []);
   const renderCard = (user) => {
     function goToPlannerProfile() {
-      navigate(`/${user.role}/${user.id}`, { state: { userData: user } });
+      navigate(`/${user.role}/${user.id}`, { state: {data:user, userData: user } });
     }
 
     return (

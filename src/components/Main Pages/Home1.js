@@ -85,7 +85,6 @@ const nav = useNavigate();
     
   }, [isLoggedOut]);
   
-  console.log(isLogin)
   
   // useEffect(() => {
   //   if (isLoggedOut) {

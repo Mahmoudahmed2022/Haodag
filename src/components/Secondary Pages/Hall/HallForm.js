@@ -165,6 +165,7 @@ const HallForm = (props) => {
         .then((data) => {
           console.log(data);})
           navigate(`/${userToken.role}/${userToken.id}`,{ state: { data: userToken } });
+          window.location.reload();
     }
      };
 

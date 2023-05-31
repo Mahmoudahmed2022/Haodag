@@ -58,7 +58,7 @@ function goToPackages(){
 }
 function goToHome(){
   // setPath("home")
-  nav(`/`,{state:{userToken:userToken,islogin:isLogin}})
+  nav(`/`,{state:{data:userToken,islogin:isLogin}})
 }
 function goToSearchPage(){
   // setPath("search")
@@ -70,7 +70,6 @@ function goToOwnerPlannerPage(){
   nav(`/WeddingPlanners`,{state:{userToken:userToken,islogin:isLogin}})
 
 }
-console.log(isLoggedOut)
 useEffect(() => {
   if (isLoggedOut) {
     alert("You Logged out");
@@ -82,7 +81,6 @@ useEffect(() => {
 function goToProfile(){
   nav(`/${userToken.role}/${userToken.id}`,{state:{data:userToken,isLogin:isLogin}})
 }
-console.log(isLogin)
   return (
     <>
       <IconContext.Provider value={{}}>
@@ -118,7 +116,7 @@ console.log(isLogin)
                 <img className="avatar" src={image2} alt="" />
               </div>
             </div>
-            {isLogin ?(
+            {userToken ?(
               <div onClick={goToProfile}  className="profile-photo">
               <img src={user} alt="user pic" />
             </div>

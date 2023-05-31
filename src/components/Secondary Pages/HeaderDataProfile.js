@@ -24,13 +24,12 @@ const HeaderDataProfile = (props) => {
   const userToken = location?.state?.data;
   const userData = location?.state?.userData;
 
-  console.log(isLogin);
   // const { userToken } = location.state.data;
 
-  const isAdmin = userToken?.role === "admin";
-  const isPlanner = userToken?.role === "planner";
-  const isOwner = userToken?.role === "owner";
-  const isClient = userToken?.role === "user";
+  const isAdmin = (userToken?.role||userToken?.role) === "admin";
+  const isPlanner = (userToken?.role||userToken?.role) === "planner";
+  const isOwner = (userToken?.role||userToken?.role) === "owner";
+  const isClient = (userToken?.role||userToken?.role) === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
   const [ownersHallsCard, setownersHallsCard] = useState([]);
@@ -71,8 +70,7 @@ const HeaderDataProfile = (props) => {
   function handleHallsBookings() {
     navigate(`/HallsBookings`, { state: { data: userToken } });
   }
-
-  console.log(isLogin);
+console.log(userToken)
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
   }, []);
@@ -89,23 +87,23 @@ const HeaderDataProfile = (props) => {
           <div className="cOntLeftData">
             <div className="divContImgType">
               <img
-                src={isLogin ? userToken?.photo : userData?.photo}
+                src={(userToken||userData) ? userToken?.photo : userData?.photo}
                 alt="Profile"
                 className="profile-image"
               />
               <p className="nameUser">
-                {isLogin ? userToken?.role : userData?.role}
+                {(userToken||userData) ? userToken?.role : userData?.role}
               </p>
             </div>
             <div className="profile-details">
               <h1 className="profile-name">
-                {isLogin ? userToken?.name : userData?.name}
+                {(userToken||userData) ? userToken?.name : userData?.name}
               </h1>
               <p className="profile-bio">
-                {isLogin ? userToken?.email : userData?.email}
+                {(userToken||userData) ? userToken?.email : userData?.email}
               </p>
               <p className="profile-bio">
-                {isLogin ? userToken?.phone : userData?.phone}
+                {(userToken||userData) ? userToken?.phone : userData?.phone}
               </p>
               <div className="social-icons">
                 <a href="#">
@@ -233,19 +231,18 @@ const HeaderDataProfile = (props) => {
           </div>
         </div>
       </div>
-{isLogin ?(
-  <>
+      {(userToken?.role==="owner"||userData?.role==="owner")?(
+
       <Owners userData={userToken} userToken={userToken} isLogin={isLogin}/>
-      <Planners userData={userToken} userToken={userToken} isLogin={isLogin}/>
-  </>
+
+      ):(
+        <Planners userData={userToken} userToken={userToken} isLogin={isLogin}/>
+
+      )}
       
-):(
-  <>
-  <     Owners userData={userData} userToken={userToken}/>
-      <Planners userData={userData} userToken={userToken}/>
-  </>
+      {/* <Owners userData={userData} userToken={userToken}/>
+      <Planners userData={userData} userToken={userToken}/> */}
   
-)}
       
 
 

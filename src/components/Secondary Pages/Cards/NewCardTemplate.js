@@ -10,19 +10,18 @@ const NewCardTemplate = ({ cardData, userToken, isLogin }) => {
   const [showHallDetails, setShowHallDetails] = useState(false);
   // console.log('fromNewCardp',props.userToken)
   // const isOwner = props.userToken.role==='owner';
-  function handleHallDetailsClick() {
-    setShowHallDetails(true);
-  }
-  console.log(isLogin);
-  function deleteHall() {
-    fetch(`https://fakestoreapi.com/products/${cardData.id}`, {
-      method: "DELETE",
-    }).then((res) => {
-      if (res.ok) {
-        window.location.reload();
-      } else alert("Error Happened Please Try Again Later");
-    });
-  }
+  // function handleHallDetailsClick() {
+  //   setShowHallDetails(true);
+  // }
+  // function deleteHall() {
+  //   fetch(`https://fakestoreapi.com/products/${cardData.id}`, {
+  //     method: "DELETE",
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       window.location.reload();
+  //     } else alert("Error Happened Please Try Again Later");
+  //   });
+  // }
   function goTohallDetails() {
     nav(`/hallDetails/${cardData.id}`, {
       state: { cardData: cardData, isLogin: isLogin, userToken: userToken },
