@@ -8,12 +8,12 @@ const AddPackage = (props) => {
   const userToken = location?.state?.data;
   console.log(userToken);
   const [formData, setFormData] = useState({
-    hallName: "",
-    hallId: "",
-    packageDescription: "",
-    startDate: "",
-    endDate: "",
-    packagePrice: "",
+    hall_name: "",
+    hallid: "",
+    package_description: "",
+    start_date: "",
+    end_date: "",
+    price: "",
   });
   const [hallsName, sethallsName] = useState([]);
   const allHalls = () => {
@@ -35,12 +35,12 @@ const AddPackage = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
     const formDataObj = new FormData();
-    formDataObj.append("hall_id", formData.hallId);
-    formDataObj.append("hall_name", formData.hallName);
-    formDataObj.append("package_description", formData.packageDescription);
-    formDataObj.append("start_date", formData.startDate);
-    formDataObj.append("end_date", formData.endDate);
-    formDataObj.append("price", formData.packagePrice);
+    formDataObj.append("hall_id", formData.hallid);
+    formDataObj.append("hall_name", formData.hall_name);
+    formDataObj.append("package_description", formData.package_description);
+    formDataObj.append("start_date", formData.start_date);
+    formDataObj.append("end_date", formData.end_date);
+    formDataObj.append("price", formData.price);
     console.log(formDataObj);
     if (formDataObj) {
       fetch("http://127.0.0.1:8000/admin/auth/createOffer", {
@@ -68,7 +68,7 @@ const AddPackage = (props) => {
 
   return (
     <div className="hall-signup-page1">
-      <form className="signup-form1" onSubmit={handleSubmit}>
+      <form className="signup-form1" >
         <h2>Add Package</h2>
         <div className="form-group1">
           <label htmlFor="hallName" className="labelDAtaForAddHall">
@@ -78,10 +78,10 @@ const AddPackage = (props) => {
           <select
             className="inputDAtaForAddHall select-package"
             type="text"
-            name="hallName"
+            name="hall_name"
             onChange={getRegisterData}
             required
-            value={formData.hallName}
+            value={formData.hall_name}
           >
             <option checked value="">
               -- Please Choose Hall --
@@ -100,10 +100,10 @@ const AddPackage = (props) => {
 
           <input
             className="textAreaDAtaForAddHall"
-            name="hallId"
+            name="hallid"
             onChange={getRegisterData}
             required
-            value={formData.hallId}
+            value={formData.hallid}
           />
         </div>
         <div className="form-group1">
@@ -113,10 +113,10 @@ const AddPackage = (props) => {
 
           <textarea
             className="textAreaDAtaForAddHall"
-            name="packageDescription"
+            name="package_description"
             onChange={getRegisterData}
             required
-            value={formData.packageDescription}
+            value={formData.package_description}
           />
         </div>
         <div className="form-group1 ">
@@ -127,11 +127,11 @@ const AddPackage = (props) => {
 
             <input
               className="textAreaDAtaForAddHall"
-              name="startDate"
+              name="start_date"
               type="date"
               onChange={getRegisterData}
               required
-              value={formData.startDate}
+              value={formData.start_date}
             />
           </div>
           <div className="form-group1">
@@ -141,11 +141,11 @@ const AddPackage = (props) => {
 
             <input
               className="textAreaDAtaForAddHall"
-              name="endDate"
+              name="end_date"
               type="date"
               onChange={getRegisterData}
               required
-              value={formData.endDate}
+              value={formData.end_date}
             />
           </div>
         </div>
@@ -157,10 +157,10 @@ const AddPackage = (props) => {
           <input
             className="inputDAtaForAddHall price-package "
             type="number"
-            name="packagePrice"
+            name="price"
             onChange={getRegisterData}
             required
-            value={formData.packagePrice}
+            value={formData.price}
           />
         </div>
 

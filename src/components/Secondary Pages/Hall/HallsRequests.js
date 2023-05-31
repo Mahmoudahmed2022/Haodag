@@ -5,8 +5,34 @@ import axios from "axios";
 import "../../../Css/Reservation.css";
 import user from "../../images/user3.png";
 import { Link } from "react-router-dom";
-function HallsRequests({hallsRequest}) {
+function HallsRequests({hallsRequest,userToken}) {
   console.log(hallsRequest)
+  console.log(userToken)
+
+  const ConfirmHall =(hall)=>{
+    fetch(`http://127.0.0.1:8000/admin/auth/confirmHallRequest/${hall.id}`, {
+      method: "POST",
+      headers: {
+        "auth-token": `${userToken.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {console.log(data)})
+
+  
+  }
+  const CancelHall =(hall)=>{
+    fetch(`http://127.0.0.1:8000/admin/auth/rejectHallRequest/${hall.id}`, {
+      method: "POST",
+      headers: {
+        "auth-token": `${userToken.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {console.log(data)})
+
+  
+  }
   return (
     <>
       <div>
@@ -34,8 +60,18 @@ function HallsRequests({hallsRequest}) {
                   {reservation.price} $
                 </h5>
                 <div className="buttons">
-                  <button className="accept-btn reserve-btn">Confirm</button>
-                  <button className="decline-btn reserve-btn">Reject</button>
+                <button
+                    className="accept-btn reserve-btn"
+                    onClick={() => ConfirmHall(reservation)}
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="decline-btn reserve-btn"
+                    onClick={() => CancelHall(reservation)}
+                  >
+                    Reject
+                  </button>
                   <Link
                     to={`/hallDetails/${reservation.id}`}
                     className="view-btn reserve-btn"

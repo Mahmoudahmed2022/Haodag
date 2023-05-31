@@ -148,7 +148,7 @@ const FetchAllData = ({user,userToken,getUser}) => {
                    <div className="contNameImg">
                      <img
                        className="imagetableuser"
-                       src={product.image}
+                       src={product.photos[0]}
                        alt="image"
                      />
                      <p>{product.category}</p>

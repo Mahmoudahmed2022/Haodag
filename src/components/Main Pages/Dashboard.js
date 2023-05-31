@@ -13,9 +13,8 @@ import clients from "../images/users.png";
 import hallRequests from "../images/hallRequests.png";
 import hallss from "../images/halls.png";
 
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../images/logo.png"
+import logo from "../images/logo.png";
 import {
   FaTh,
   FaBars,
@@ -32,8 +31,12 @@ const Dashboard = () => {
   const [client, setClient] = useState([]);
   const [weddingPlanner, setWeddingPlanner] = useState([]);
   const [hallOwner, setHallOwner] = useState([]);
-  const [halls, setHalls] = useState([]);
+  const [confirmedHalls, setConfirmedHalls] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
+  const [offers, setOffers] = useState([]);
+
+  const [canceledHalls, setCanceledHalls] = useState([]);
+  const [allHalls, setAllHalls] = useState([]);
 
   const [hallsRequest, sethallsRequest] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -41,15 +44,27 @@ const Dashboard = () => {
   const nav = useNavigate();
   const location = useLocation();
   const userToken = location?.state?.data;
-console.log(userToken)
-
+  console.log(userToken);
+  
+  // const getOffers = () => {
+  //   if (offers.length === 0) {
+  //     // check if hall owner data has already been fetched
+  //     fetch("http://127.0.0.1:8000/admin/api/auth/Offers", {
+  //       headers: {
+  //         "auth-token": `${userToken.token}`,
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => setOffers(data.data));
+  //   }
+  // };
   const getClients = () => {
     if (client.length === 0) {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllUsers", {
         headers: {
-          "auth-token": `${userToken.token}`
-        }
+          "auth-token": `${userToken.token}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => setClient(data.data));
@@ -60,52 +75,72 @@ console.log(userToken)
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllSuppliers", {
         headers: {
-          "auth-token": `${userToken.token}`
-        }
+          "auth-token": `${userToken.token}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => setSuppliers(data.data));
     }
   };
+
   const getHallOwner = () => {
     if (hallOwner.length === 0) {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllOwners", {
         headers: {
-          "auth-token": `${userToken.token}`
-        }
+          "auth-token": `${userToken.token}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => setHallOwner(data.data));
     }
   };
+  
   const getAllHalls = () => {
-    if (hallOwner.length === 0) {
+    if (allHalls.length === 0) {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getAllHalls", {
         headers: {
-          "auth-token": `${userToken.token}`
-        }
+          "auth-token": `${userToken.token}`,
+        },
       })
         .then((res) => res.json())
-        .then((data) => setHalls(data.data));
+        .then((data) => setAllHalls(data.data));
     }
   };
-  console.log("suppliers",suppliers)
-  console.log("halls",halls)
-  console.log("owners",hallOwner)
-  console.log("planners",weddingPlanner)
-  console.log("clients",client)
-  console.log("hallrequset",hallsRequest)
 
+  const getConfirmedAllHalls = () => {
+    if (confirmedHalls.length === 0) {
+      // check if hall owner data has already been fetched
+      fetch("http://localhost:8000/admin/auth/getConfirmedHalls", {
+        headers: {
+          "auth-token": `${userToken.token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setConfirmedHalls(data.data));
+    }
+  };
 
+  const getCanceledAllHalls = () => {
+    if (canceledHalls.length === 0) {
+      // check if hall owner data has already been fetched
+      fetch("http://localhost:8000/admin/auth/getCanceledHalls", {
+        headers: {
+          "auth-token": `${userToken.token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setCanceledHalls(data.data));
+    }
+  };
   const getWeddingPlanner = () => {
     if (weddingPlanner.length === 0) {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getAllPlanners", {
         headers: {
-          "auth-token": `${userToken.token}`
-        }
+          "auth-token": `${userToken.token}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => setWeddingPlanner(data.data));
@@ -117,14 +152,27 @@ console.log(userToken)
       fetch("http://localhost:8000/admin/auth/getUnConfirmedHalls", {
         headers: {
           "auth-token": `${userToken.token}`,
-          "Authorization":`Bearer ${userToken.token}`
-        }
+          Authorization: `Bearer ${userToken.token}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => sethallsRequest(data.data));
     }
   };
- 
+  console.log("suppliers", suppliers);
+  console.log("AllHalls", allHalls);
+  console.log("confirmedHalls", confirmedHalls);
+  console.log("canceledHalls", canceledHalls);
+  console.log("owners", hallOwner);
+  console.log("planners", weddingPlanner);
+  console.log("clients", client);
+  console.log("hallrequset", hallsRequest);
+  console.log("offers", offers);
+
+const addPackage=()=>{
+  nav("/addpackage", { state: { data: userToken } });
+
+}
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
   function handleLogout() {
@@ -152,45 +200,78 @@ console.log(userToken)
     }
   }, [isLoggedOut]);
   useEffect(() => {
+    // getOffers();
     getClients();
     getWeddingPlanner();
     getHallOwner();
     allHallsRequest();
-    getAllHalls();
+    getConfirmedAllHalls();
     getSuppliers();
-
+    getCanceledAllHalls();
+    getAllHalls();
     setSelectedComponent();
-
-
-
   }, []);
-const goToHome=()=>{
-nav("/",{state:{userToken:userToken}})
-}    
+  const goToHome = () => {
+    nav("/", { state: { userToken: userToken } });
+  };
 
-  let content ;
+  let content;
   if (selectedComponent === "client") {
-    content = <FetchAllData user={client} getUser={getClients} userToken={userToken} />;
+    content = (
+      <FetchAllData user={client} getUser={getClients} userToken={userToken} />
+    );
   } else if (selectedComponent === "hallOwner") {
-    content = <FetchAllData user={hallOwner} getUser={getHallOwner}  userToken={userToken} />;
+    content = (
+      <FetchAllData
+        user={hallOwner}
+        getUser={getHallOwner}
+        userToken={userToken}
+      />
+    );
   } else if (selectedComponent === "weddingPlanner") {
-    content = <FetchAllData user={weddingPlanner} getUser={getWeddingPlanner} userToken={userToken} />;
+    content = (
+      <FetchAllData
+        user={weddingPlanner}
+        getUser={getWeddingPlanner}
+        userToken={userToken}
+      />
+    );
   } else if (selectedComponent === "hallsRequest") {
-    content = <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />;
-  }else if (selectedComponent === "halls") {
-    content = <FetchAllData user={halls} userToken={userToken} />;
+    content = (
+      <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />
+    );
   }
-  else if (selectedComponent === "suppliers") {
-    content = <FetchAllData user={suppliers} getUser={getSuppliers} userToken={userToken} />;
+  else if (selectedComponent === "allHalls") {
+    content = <FetchAllData user={allHalls} userToken={userToken} />;
+  }
+   else if (selectedComponent === "confirmedHalls") {
+    content = <FetchAllData user={confirmedHalls} userToken={userToken} />;
+  } else if (selectedComponent === "canceledhalls") {
+    content = <FetchAllData user={canceledHalls} userToken={userToken} />;
+  } else if (selectedComponent === "offers") {
+    content = <FetchAllData user={offers} userToken={userToken} />;
+  }
+   else if (selectedComponent === "suppliers") {
+    content = (
+      <FetchAllData
+        user={suppliers}
+        getUser={getSuppliers}
+        userToken={userToken}
+      />
+    );
   }
   return (
     <div className="contSidebarWithDash">
       <div className="container">
         <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
           <div className="top_section">
-            <img style={{ display: isOpen ? "block" : "none" }}
-            onClick={goToHome}
-             className="avatar" src={logo} alt="logo"></img>
+            <img
+              style={{ display: isOpen ? "block" : "none" }}
+              onClick={goToHome}
+              className="avatar"
+              src={logo}
+              alt="logo"
+            ></img>
             {/* <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
               Logo
             </h1> */}
@@ -203,12 +284,15 @@ nav("/",{state:{userToken:userToken}})
           </div>
 
           <div className="alllinks">
+
           <button
-          style={{backgroundColor:selectedComponent==="halls"?"red":"transparent"}}
+              style={{
+                backgroundColor:
+                  selectedComponent === "allHalls" ? "red" : "transparent",
+              }}
               className="link"
-              onClick={() => setSelectedComponent("halls")}
+              onClick={() => setSelectedComponent("allHalls")}
             >
-              
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
@@ -219,23 +303,97 @@ nav("/",{state:{userToken:userToken}})
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Halls <p>{halls.length}</p>
+                  All Halls <p>{allHalls.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
             </button>
-            <button
+            {/* <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "offers" ? "red" : "transparent",
+              }}
               className="link"
-              style={{backgroundColor:selectedComponent==="suppliers"?"red":"transparent"}}
-              onClick={() => setSelectedComponent("suppliers")}
+              onClick={() => setSelectedComponent("offers")}
             >
-              
+              <div className="iconAndName">
+                <div className="icon">
+                  <img className="widthIcon" src={hallss} alt="halls"></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  All Offers <p>{offers.length}</p>
+                </div>
+              </div>
+            </button> */}
+
+            <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "confirmedHalls" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("confirmedHalls")}
+            >
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={supplier} alt="suppliers" ></img>
+                  <img className="widthIcon" src={hallss} alt="halls"></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  Confirmed Halls <p>{confirmedHalls.length}</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
 
+            <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "canceledhalls" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("canceledhalls")}
+            >
+              {/* <NavLink to="/allhalls" className="link" > */}
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={hallss} alt="halls"></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  Canceled Halls <p>{canceledHalls.length}</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
+
+            <button
+              className="link"
+              style={{
+                backgroundColor:
+                  selectedComponent === "suppliers" ? "red" : "transparent",
+              }}
+              onClick={() => setSelectedComponent("suppliers")}
+            >
+              {/* <NavLink to="/allhalls" className="link" > */}
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <img
+                    className="widthIcon"
+                    src={supplier}
+                    alt="suppliers"
+                  ></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -249,17 +407,17 @@ nav("/",{state:{userToken:userToken}})
 
             <button
               className="link"
-              style={{backgroundColor:selectedComponent==="hallOwner"?"red":"transparent"}}
-
+              style={{
+                backgroundColor:
+                  selectedComponent === "hallOwner" ? "red" : "transparent",
+              }}
               onClick={() => setSelectedComponent("hallOwner")}
             >
-              
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={owners} alt="owners" ></img>
-
+                  <img className="widthIcon" src={owners} alt="owners"></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -273,17 +431,23 @@ nav("/",{state:{userToken:userToken}})
 
             <button
               className="link"
-              style={{backgroundColor:selectedComponent==="weddingPlanner"?"red":"transparent"}}
-
+              style={{
+                backgroundColor:
+                  selectedComponent === "weddingPlanner"
+                    ? "red"
+                    : "transparent",
+              }}
               onClick={() => setSelectedComponent("weddingPlanner")}
             >
-              
               {/* <NavLink to="/allhalls" className="link" > */}
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={planners} alt="planners" ></img>
-
+                  <img
+                    className="widthIcon"
+                    src={planners}
+                    alt="planners"
+                  ></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -297,16 +461,16 @@ nav("/",{state:{userToken:userToken}})
 
             <button
               className="link"
-              style={{backgroundColor:selectedComponent==="client"?"red":"transparent"}}
-
+              style={{
+                backgroundColor:
+                  selectedComponent === "client" ? "red" : "transparent",
+              }}
               onClick={() => setSelectedComponent("client")}
             >
-              
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={clients} alt="clients" ></img>
-
+                  <img className="widthIcon" src={clients} alt="clients"></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -319,17 +483,21 @@ nav("/",{state:{userToken:userToken}})
             </button>
 
             <button
-            style={{backgroundColor:selectedComponent==="hallsRequest"?"red":"transparent"}}
-            
+              style={{
+                backgroundColor:
+                  selectedComponent === "hallsRequest" ? "red" : "transparent",
+              }}
               className="link"
               onClick={() => setSelectedComponent("hallsRequest")}
             >
-              
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={hallRequests} alt="hallRequests" ></img>
-
+                  <img
+                    className="widthIcon"
+                    src={hallRequests}
+                    alt="hallRequests"
+                  ></img>
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -344,7 +512,7 @@ nav("/",{state:{userToken:userToken}})
             <button className="link" onClick={handleLogout}>
               <div className="iconAndName">
                 <div className="icon">
-                <AiIcons.AiOutlineLogout />
+                  <AiIcons.AiOutlineLogout />
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -387,6 +555,7 @@ nav("/",{state:{userToken:userToken}})
           />
         </button> */}
         </div>
+        <button onClick={addPackage}>add package</button>
         <div className="usersmap">{content}</div>
       </div>
     </div>
