@@ -17,6 +17,9 @@ const FetchAllData = ({user,userToken,getUser}) => {
     } else if (user.role === "user") {
       content = "Clients";
     }
+    else if (user.role === "admin") {
+      content = "Admins";
+    }
   });
 
 
@@ -148,7 +151,7 @@ const FetchAllData = ({user,userToken,getUser}) => {
                    <div className="contNameImg">
                      <img
                        className="imagetableuser"
-                       src={product.photos[0]}
+                       src={product.photos}
                        alt="image"
                      />
                      <p>{product.category}</p>

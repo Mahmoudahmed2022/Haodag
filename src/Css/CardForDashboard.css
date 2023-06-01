@@ -20,14 +20,21 @@
 .LeftInner{
     color: white;
 }
+.RightInner img{
+    width: 30px;
+    height: 30px;
+}
 .ContForLink a, .ContForLink button{
         /* align-items: center; */
         cursor: pointer;
         color: white;
         text-align: center;
         width: 100%;
-        background-color: antiquewhite;
+        /* background-color: antiquewhite; */
         padding: 5px;
+}
+.ContForLink button:hover ,.ContForLink a:hover{
+    background-color: rgba(255, 255, 255, 0.123) !important;
 }
 .ContForLink button{
     border: none;

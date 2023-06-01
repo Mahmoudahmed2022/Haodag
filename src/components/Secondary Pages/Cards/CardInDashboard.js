@@ -13,7 +13,7 @@ function CardInDashboard({number,name,addPackage,backColor}) {
     let content;
     
     if (name === "Halls") {
-      content = <img src={hallss} alt="halls"></img>;
+      content = <img  src={hallss} alt="halls"></img>;
     } else if (name === "Plans") {
       content = <img src={hallss} alt="plans"></img>;
     } else if (name === "Hall Owners") {
@@ -25,8 +25,12 @@ function CardInDashboard({number,name,addPackage,backColor}) {
     } else if (name === "Clients") {
       content = <img src={clients} alt="clients"></img>;
     } else if (name === "add package") {
-      content = <img src={clients} alt="add package"></img>;
+      content = <img src={hallss} alt="add package"></img>;
     }
+    else if (name === "add admin") {
+        content = <img src={planners} alt="add admin"></img>;
+      }
+     
 
  
   return (
@@ -43,8 +47,8 @@ function CardInDashboard({number,name,addPackage,backColor}) {
             </div>
             <div className="ContForLink">
               {" "}
-              {name==="add package"?(
-                              <button style={{ backgroundColor: "rgb(255 255 255 / 18%)"}} onClick={addPackage}>Add Package</button>
+              {(name==="add package"||name==="add admin")?(
+                              <button style={{ backgroundColor: "rgb(255 255 255 / 18%)"}} onClick={addPackage}>{name}</button>
 
               ):(
                               <a  style={{ backgroundColor: "rgb(255 255 255 / 18%)"}}>More info</a>

@@ -95,7 +95,7 @@ const FetchHallsPlans = ({user,userToken,getUser}) => {
                    <div className="contNameImg">
                      <img
                        className="imagetableuser"
-                       src={product.photos[0]}
+                       src={product.photos}
                        alt="image"
                      />
                      <p>{product.category}</p>
