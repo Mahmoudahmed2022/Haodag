@@ -14,6 +14,14 @@
 .categories div {
   margin: 20px;
 }
+.ContCardsDashboard{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
 .widthIcon{
   width: 30px;
   height: 30px;

@@ -6,7 +6,7 @@ import HallsRequests from "../Secondary Pages/Hall/HallsRequests";
 import SidebarforAdminDashboard from "./SidebarforAdminDashboard";
 import * as AiIcons from "react-icons/ai";
 import owners from "../images/owners.png";
-
+import "../../Css/CardForDashboard.css";
 import planners from "../images/planners.png";
 import supplier from "../images/suppliers.png";
 import clients from "../images/users.png";
@@ -26,6 +26,8 @@ import {
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Owners from "../Secondary Pages/Owners";
+import FetchHallsPlans from "../Secondary Pages/FetchHallsPlans";
+import CardInDashboard from "../Secondary Pages/Cards/CardInDashboard";
 const Dashboard = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [client, setClient] = useState([]);
@@ -34,6 +36,7 @@ const Dashboard = () => {
   const [confirmedHalls, setConfirmedHalls] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [offers, setOffers] = useState([]);
+  const [allPlans, setAllPlans] = useState([]);
 
   const [canceledHalls, setCanceledHalls] = useState([]);
   const [allHalls, setAllHalls] = useState([]);
@@ -82,7 +85,6 @@ const Dashboard = () => {
         .then((data) => setSuppliers(data.data));
     }
   };
-
   const getHallOwner = () => {
     if (hallOwner.length === 0) {
       // check if hall owner data has already been fetched
@@ -95,7 +97,18 @@ const Dashboard = () => {
         .then((data) => setHallOwner(data.data));
     }
   };
-
+  const getAllPlans = () => {
+    if (allPlans.length === 0) {
+      // check if hall owner data has already been fetched
+      fetch("http://localhost:8000/planner/auth/getAllPlans", {
+        headers: {
+          "auth-token": `${userToken.token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setAllPlans(data.data));
+    }
+  };
   const getAllHalls = () => {
     if (allHalls.length === 0) {
       // check if hall owner data has already been fetched
@@ -108,7 +121,6 @@ const Dashboard = () => {
         .then((data) => setAllHalls(data.data));
     }
   };
-
   const getConfirmedAllHalls = () => {
     if (confirmedHalls.length === 0) {
       // check if hall owner data has already been fetched
@@ -121,7 +133,6 @@ const Dashboard = () => {
         .then((data) => setConfirmedHalls(data.data));
     }
   };
-
   const getCanceledAllHalls = () => {
     if (canceledHalls.length === 0) {
       // check if hall owner data has already been fetched
@@ -159,15 +170,6 @@ const Dashboard = () => {
         .then((data) => sethallsRequest(data.data));
     }
   };
-  console.log("suppliers", suppliers);
-  console.log("AllHalls", allHalls);
-  console.log("confirmedHalls", confirmedHalls);
-  console.log("canceledHalls", canceledHalls);
-  console.log("owners", hallOwner);
-  console.log("planners", weddingPlanner);
-  console.log("clients", client);
-  console.log("hallrequset", hallsRequest);
-  console.log("offers", offers);
 
   const addPackage = () => {
     nav("/addpackage", { state: { data: userToken } });
@@ -195,24 +197,7 @@ const Dashboard = () => {
         console.error(error);
       });
   }
-  useEffect(() => {
-    if (isLoggedOut) {
-      alert("You Logged out");
-      nav(`/`, { state: { userToken: userToken } });
-    }
-  }, [isLoggedOut]);
-  useEffect(() => {
-    // getOffers();
-    getClients();
-    getWeddingPlanner();
-    getHallOwner();
-    allHallsRequest();
-    getConfirmedAllHalls();
-    getSuppliers();
-    getCanceledAllHalls();
-    getAllHalls();
-    setSelectedComponent();
-  }, []);
+
   const goToHome = () => {
     nav("/", { state: { userToken: userToken } });
   };
@@ -243,11 +228,13 @@ const Dashboard = () => {
       <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />
     );
   } else if (selectedComponent === "allHalls") {
-    content = <FetchAllData user={allHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={allHalls} userToken={userToken} />;
+  } else if (selectedComponent === "allPlans") {
+    content = <FetchHallsPlans user={allPlans} userToken={userToken} />;
   } else if (selectedComponent === "confirmedHalls") {
-    content = <FetchAllData user={confirmedHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={confirmedHalls} userToken={userToken} />;
   } else if (selectedComponent === "canceledhalls") {
-    content = <FetchAllData user={canceledHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={canceledHalls} userToken={userToken} />;
   } else if (selectedComponent === "offers") {
     content = <FetchAllData user={offers} userToken={userToken} />;
   } else if (selectedComponent === "suppliers") {
@@ -259,10 +246,39 @@ const Dashboard = () => {
       />
     );
   }
+  useEffect(() => {
+    if (isLoggedOut) {
+      alert("You Logged out");
+      nav(`/`, { state: { userToken: userToken } });
+    }
+  }, [isLoggedOut]);
+  useEffect(() => {
+    // getOffers();
+    getClients();
+    getWeddingPlanner();
+    getHallOwner();
+    allHallsRequest();
+    getConfirmedAllHalls();
+    getSuppliers();
+    getCanceledAllHalls();
+    getAllHalls();
+    setSelectedComponent();
+    getAllPlans();
+  }, []);
+  console.log("suppliers", suppliers);
+  console.log("AllHalls", allHalls);
+  console.log("AllPlans", allPlans);
+  console.log("confirmedHalls", confirmedHalls);
+  console.log("canceledHalls", canceledHalls);
+  console.log("owners", hallOwner);
+  console.log("planners", weddingPlanner);
+  console.log("clients", client);
+  console.log("hallrequset", hallsRequest);
+  console.log("offers", offers);
   return (
     <div className="contSidebarWithDash">
       <div className="container">
-        <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
+        <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
           <div className="top_section">
             <img
               style={{ display: isOpen ? "block" : "none" }}
@@ -286,6 +302,32 @@ const Dashboard = () => {
             <button
               style={{
                 backgroundColor:
+                  selectedComponent === "hallsRequest" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("hallsRequest")}
+            >
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <img
+                    className="widthIcon"
+                    src={hallRequests}
+                    alt="hallRequests"
+                  ></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  Hall Requests <p>{hallsRequest.length}</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
+            <button
+              style={{
+                backgroundColor:
                   selectedComponent === "allHalls" ? "red" : "transparent",
               }}
               className="link"
@@ -302,6 +344,30 @@ const Dashboard = () => {
                   className="link_text"
                 >
                   All Halls <p>{allHalls.length}</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
+
+            <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "allPlans" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("allPlans")}
+            >
+              {/* <NavLink to="/allhalls" className="link" > */}
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <img className="widthIcon" src={hallss} alt="plans"></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  All Plans <p>{allPlans.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -333,6 +399,7 @@ const Dashboard = () => {
                   selectedComponent === "confirmedHalls"
                     ? "red"
                     : "transparent",
+                  
               }}
               className="link"
               onClick={() => setSelectedComponent("confirmedHalls")}
@@ -482,33 +549,6 @@ const Dashboard = () => {
               {/* </NavLink> */}
             </button>
 
-            <button
-              style={{
-                backgroundColor:
-                  selectedComponent === "hallsRequest" ? "red" : "transparent",
-              }}
-              className="link"
-              onClick={() => setSelectedComponent("hallsRequest")}
-            >
-              <div className="iconAndName">
-                <div className="icon">
-                  {/* <FaTh /> */}
-                  <img
-                    className="widthIcon"
-                    src={hallRequests}
-                    alt="hallRequests"
-                  ></img>
-                </div>
-                <div
-                  style={{ display: isOpen ? "block" : "none" }}
-                  className="link_text"
-                >
-                  Hall Requests <p>{hallsRequest.length}</p>
-                </div>
-              </div>
-              {/* </NavLink> */}
-            </button>
-
             <button className="link" onClick={handleLogout}>
               <div className="iconAndName">
                 <div className="icon">
@@ -530,30 +570,21 @@ const Dashboard = () => {
       {/* <SidebarforAdminDashboard/> */}
       <div className="parentDashboard">
         <h1 className="adminHeader"> Admin Dashboard</h1>
-        <div className="categories">
-          {/* <Link to="/allhalls" onClick={() => setSelectedComponent("weddingPlanner")}>
-          <GetAllHalls weddingPlanner={weddingPlanner}/>
-         
-        </Link> */}
+        <div className="categories"></div>
 
-          {/* <button onClick={() => setSelectedComponent("weddingPlanner")}>
-          <CategoreyInDashboard
-            className="carduser"
-            weddingPlanner={weddingPlanner}
-          />
-        </button>
-        <button onClick={() => setSelectedComponent("hallOwner")}>
-          <CategoreyInDashboard className="carduser" hallOwner={hallOwner} />
-        </button>
-        <button onClick={() => setSelectedComponent("client")}>
-          <CategoreyInDashboard className="carduser" client={client} />
-        </button>
-        <button onClick={() => setSelectedComponent("hallsRequest")}>
-          <CategoreyInDashboard
-            className="carduser"
-            hallsRequest={hallsRequest}
-          />
-        </button> */}
+        <div className="ContCardsDashboard">
+        <CardInDashboard number={client.length} name="Clients"backColor="#0f0f0f"/>
+          <CardInDashboard number={weddingPlanner.length} name="Planners"backColor="#0f0f0f"/>
+          <CardInDashboard number={hallOwner.length} name="Hall Owners"backColor="#0f0f0f"/>
+          <CardInDashboard number={suppliers.length} name="Suppliers"backColor="#0f0f0f"/>
+          <CardInDashboard number={allHalls.length} name="Halls" backColor="#c38213"/>
+          <CardInDashboard number={allPlans.length} name="Plans"backColor="#c38213"/>
+          <CardInDashboard number={suppliers.length} name="add package"backColor="#c38213" addPackage={addPackage}/>
+
+         
+
+
+
         </div>
         <button onClick={addPackage}>add package</button>
         <button onClick={addAdmin}>add admin</button>

@@ -1,0 +1,34 @@
+.ContCardInfo{
+    flex-direction: column;
+    display: flex;
+    width: 320px;
+    height: 170px;
+    background-color: aliceblue;
+}
+.InnerInfo{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    height: 70%; 
+}
+.ContForLink{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+.LeftInner{
+    color: white;
+}
+.ContForLink a, .ContForLink button{
+        /* align-items: center; */
+        cursor: pointer;
+        color: white;
+        text-align: center;
+        width: 100%;
+        background-color: antiquewhite;
+        padding: 5px;
+}
+.ContForLink button{
+    border: none;
+}
