@@ -28,11 +28,13 @@ import HallsBookings from "./components/Secondary Pages/HallsBookings";
 import ModalForAskToBook from "./components/Secondary Pages/Modals/ModalForAskToBook";
 import AskToBookPlan from "./components/Secondary Pages/AskToBooKPlan";
 import SidebarforAdminDashboard from "./components/Main Pages/SidebarforAdminDashboard.js";
+import Favourites from "./components/Secondary Pages/Cards/Favourites";
+import AddAdmin from "./components/Secondary Pages/AddAdmin";
+
 function App({ userToken }) {
   return (
     <div className="App">
       <div className="ParentDivForAll">
-       
         <Routes>
           <Route path="/AdminDashboard" element={<Dashboard />} />
           <Route path="/hallForm" element={<HallForm />} />
@@ -53,6 +55,9 @@ function App({ userToken }) {
           <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
           <Route path="/Bookings" element={<Bookings />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/addadmin" element={<AddAdmin />} />
+
           <Route path="/PlansRequests" element={<PlansRequests />} />
           <Route path="/editProfile/:id" element={<ModalEditClientProfile />} />
           <Route path="/addplan" element={<ModalAddplan />} />
@@ -60,10 +65,6 @@ function App({ userToken }) {
           <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
 
           <Route path="/editHall/:id" element={<EditHall />} />
-
-        
-
-        
         </Routes>
 
         <Footer />

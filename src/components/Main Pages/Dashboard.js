@@ -45,7 +45,7 @@ const Dashboard = () => {
   const location = useLocation();
   const userToken = location?.state?.data;
   console.log(userToken);
-  
+
   // const getOffers = () => {
   //   if (offers.length === 0) {
   //     // check if hall owner data has already been fetched
@@ -95,7 +95,7 @@ const Dashboard = () => {
         .then((data) => setHallOwner(data.data));
     }
   };
-  
+
   const getAllHalls = () => {
     if (allHalls.length === 0) {
       // check if hall owner data has already been fetched
@@ -169,10 +169,12 @@ const Dashboard = () => {
   console.log("hallrequset", hallsRequest);
   console.log("offers", offers);
 
-const addPackage=()=>{
-  nav("/addpackage", { state: { data: userToken } });
-
-}
+  const addPackage = () => {
+    nav("/addpackage", { state: { data: userToken } });
+  };
+  const addAdmin = () => {
+    nav("/addadmin", { state: { data: userToken } });
+  };
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
   function handleLogout() {
@@ -240,18 +242,15 @@ const addPackage=()=>{
     content = (
       <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />
     );
-  }
-  else if (selectedComponent === "allHalls") {
+  } else if (selectedComponent === "allHalls") {
     content = <FetchAllData user={allHalls} userToken={userToken} />;
-  }
-   else if (selectedComponent === "confirmedHalls") {
+  } else if (selectedComponent === "confirmedHalls") {
     content = <FetchAllData user={confirmedHalls} userToken={userToken} />;
   } else if (selectedComponent === "canceledhalls") {
     content = <FetchAllData user={canceledHalls} userToken={userToken} />;
   } else if (selectedComponent === "offers") {
     content = <FetchAllData user={offers} userToken={userToken} />;
-  }
-   else if (selectedComponent === "suppliers") {
+  } else if (selectedComponent === "suppliers") {
     content = (
       <FetchAllData
         user={suppliers}
@@ -284,8 +283,7 @@ const addPackage=()=>{
           </div>
 
           <div className="alllinks">
-
-          <button
+            <button
               style={{
                 backgroundColor:
                   selectedComponent === "allHalls" ? "red" : "transparent",
@@ -332,7 +330,9 @@ const addPackage=()=>{
             <button
               style={{
                 backgroundColor:
-                  selectedComponent === "confirmedHalls" ? "red" : "transparent",
+                  selectedComponent === "confirmedHalls"
+                    ? "red"
+                    : "transparent",
               }}
               className="link"
               onClick={() => setSelectedComponent("confirmedHalls")}
@@ -556,6 +556,7 @@ const addPackage=()=>{
         </button> */}
         </div>
         <button onClick={addPackage}>add package</button>
+        <button onClick={addAdmin}>add admin</button>
         <div className="usersmap">{content}</div>
       </div>
     </div>

@@ -26,10 +26,10 @@ const HeaderDataProfile = (props) => {
 
   // const { userToken } = location.state.data;
 
-  const isAdmin = (userToken?.role||userToken?.role) === "admin";
-  const isPlanner = (userToken?.role||userToken?.role) === "planner";
-  const isOwner = (userToken?.role||userToken?.role) === "owner";
-  const isClient = (userToken?.role||userToken?.role) === "user";
+  const isAdmin = (userToken?.role || userToken?.role) === "admin";
+  const isPlanner = (userToken?.role || userToken?.role) === "planner";
+  const isOwner = (userToken?.role || userToken?.role) === "owner";
+  const isClient = (userToken?.role || userToken?.role) === "user";
   const [show, setShow] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
   const [ownersHallsCard, setownersHallsCard] = useState([]);
@@ -44,6 +44,9 @@ const HeaderDataProfile = (props) => {
     navigate(`/hallForm`, { state: { data: userToken } });
   }
 
+  function goTofavourites() {
+    navigate(`/favourites`, { state: { data: userToken } });
+  }
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: userToken } });
   }
@@ -70,7 +73,7 @@ const HeaderDataProfile = (props) => {
   function handleHallsBookings() {
     navigate(`/HallsBookings`, { state: { data: userToken } });
   }
-console.log(userToken)
+  console.log(userToken);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
   }, []);
@@ -87,23 +90,23 @@ console.log(userToken)
           <div className="cOntLeftData">
             <div className="divContImgType">
               <img
-                src={(userToken||userData) ? userToken?.photo : userData?.photo}
+                src={userToken || userData ? userToken?.photo : userData?.photo}
                 alt="Profile"
                 className="profile-image"
               />
               <p className="nameUser">
-                {(userToken||userData) ? userToken?.role : userData?.role}
+                {userToken || userData ? userToken?.role : userData?.role}
               </p>
             </div>
             <div className="profile-details">
               <h1 className="profile-name">
-                {(userToken||userData) ? userToken?.name : userData?.name}
+                {userToken || userData ? userToken?.name : userData?.name}
               </h1>
               <p className="profile-bio">
-                {(userToken||userData) ? userToken?.email : userData?.email}
+                {userToken || userData ? userToken?.email : userData?.email}
               </p>
               <p className="profile-bio">
-                {(userToken||userData) ? userToken?.phone : userData?.phone}
+                {userToken || userData ? userToken?.phone : userData?.phone}
               </p>
               <div className="social-icons">
                 <a href="#">
@@ -177,6 +180,15 @@ console.log(userToken)
                         to="#"
                       ></button>
                     </div>
+                    <div className="planner-prof-btn-div">
+                      <button
+                        onClick={goTofavourites}
+                        className="btn-flip add-hall-btn"
+                        data-back="Favourites"
+                        data-front="Favourites"
+                        to="#"
+                      ></button>
+                    </div>
                   </>
                 )}
                 {/* planner */}
@@ -231,22 +243,19 @@ console.log(userToken)
           </div>
         </div>
       </div>
-      {(userToken?.role==="owner"||userData?.role==="owner")?(
-
-      <Owners userData={userToken} userToken={userToken} isLogin={isLogin}/>
-
-      ):(
-        <Planners userData={userToken} userToken={userToken} isLogin={isLogin}/>
-
+      {userToken?.role === "owner" || userData?.role === "owner" ? (
+        <Owners userData={userToken} userToken={userToken} isLogin={isLogin} />
+      ) : (
+        <Planners
+          userData={userToken}
+          userToken={userToken}
+          isLogin={isLogin}
+        />
       )}
-      
+
       {/* <Owners userData={userData} userToken={userToken}/>
       <Planners userData={userData} userToken={userToken}/> */}
-  
-      
-
-
-          </>
+    </>
   );
 };
 

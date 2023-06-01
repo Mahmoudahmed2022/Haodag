@@ -64,6 +64,21 @@ const HallProfile = ({ rating, isFavourite }) => {
       })
       .catch((err) => console.error(err));
   };
+  function AddToFavourites() {
+    fetch(`http://127.0.0.1:8000/user/auth/addFavourite/${hallId}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        alert(`Hall ${data.message}`);
+      });
+  }
   function goToaAskToBook() {
     navigate(`/BookHall/${hallId}`, { state: { data: userToken } });
   }
@@ -307,7 +322,10 @@ const HallProfile = ({ rating, isFavourite }) => {
                     className="heartLoveSvg "
                     // color={1 <= (hoverHeart || false ) ? "red" : ""}
                     style={heartStyle}
-                    onClick={toggle ? handleClick : handleClick2}
+                    onClick={() => {
+                      toggle ? handleClick() : handleClick2();
+                      AddToFavourites();
+                    }}
                   />
                 </div>
               </div>
