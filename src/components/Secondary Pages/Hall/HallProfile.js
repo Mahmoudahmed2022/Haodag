@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../../Css/HallProfile.css";
 import image7 from "../../images/map.jpg";
-
+import Swal from "sweetalert2";
 import { AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
 import { BiMailSend } from "react-icons/bi";
 import {
@@ -51,6 +51,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   const { hallId } = useParams();
   console.log(products);
   // const hallId = Id.hallId;
+
   const allData = async (hallId) => {
     // const api2 = "https://fakestoreapi.com/products";
     const api = `http://127.0.0.1:8000/api/auth/getHall/${hallId}`;
@@ -64,6 +65,7 @@ const HallProfile = ({ rating, isFavourite }) => {
       })
       .catch((err) => console.error(err));
   };
+
   function AddToFavourites() {
     fetch(`http://127.0.0.1:8000/user/auth/addFavourite/${hallId}`, {
       method: "POST",
@@ -76,7 +78,10 @@ const HallProfile = ({ rating, isFavourite }) => {
         return response.json();
       })
       .then((data) => {
-        alert(`Hall ${data.message}`);
+        Swal.fire({
+          title: `Hall ${data.message}`,
+          showCancelButton: false,
+        });
       });
   }
   function goToaAskToBook() {
@@ -416,8 +421,14 @@ const HallProfile = ({ rating, isFavourite }) => {
           </button>
         )}
       </div> */}
-
-        <CommentSection />
+        {userToken && (
+          <CommentSection
+            userToken={userToken}
+            hallId={hallId}
+            userData={userData}
+            isLogin={isLogin}
+          />
+        )}
       </div>
     </>
   );

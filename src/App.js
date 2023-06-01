@@ -30,6 +30,7 @@ import AskToBookPlan from "./components/Secondary Pages/AskToBooKPlan";
 import SidebarforAdminDashboard from "./components/Main Pages/SidebarforAdminDashboard.js";
 import Favourites from "./components/Secondary Pages/Cards/Favourites";
 import AddAdmin from "./components/Secondary Pages/AddAdmin";
+import EditPackage from "./components/Secondary Pages/Hall/EditPackage";
 
 function App({ userToken }) {
   return (
@@ -63,7 +64,7 @@ function App({ userToken }) {
           <Route path="/addplan" element={<ModalAddplan />} />
           <Route path="/BookHall/:id" element={<ModalForAskToBook />} />
           <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
-
+          <Route path="/EditPackage/:id" element={<EditPackage />} />
           <Route path="/editHall/:id" element={<EditHall />} />
         </Routes>
 

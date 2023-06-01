@@ -1,12 +1,14 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../../Css/NewCardTemplate.css";
 import HallProfile from "../Hall/HallProfile";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 const PackageCard = (props) => {
+  const navigate = useNavigate();
   const cardData = props.cardData;
-  // const userToken = props.userToken;
+  const userToken = props.userToken;
   const [showHallDetails, setShowHallDetails] = useState(false);
   const [hall, setHall] = useState();
 
@@ -20,21 +22,43 @@ const PackageCard = (props) => {
         console.error(error);
       });
   };
+  function handleClick() {
+    navigate(`/EditPackage/${hall.id}`, {
+      state: { data: userToken, hall: hall },
+    });
+  }
   // console.log('fromNewCardp',props.userToken)
   // const isOwner = props.userToken.role==='owner';
   function handleHallDetailsClick() {
     setShowHallDetails(true);
   }
 
-  // function deleteHall() {
-  //   fetch(`https://fakestoreapi.com/products/${cardData.id}`, {
-  //     method: "DELETE",
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       window.location.reload();
-  //     } else alert("Error Happened Please Try Again Later");
-  //   });
-  // }
+  function deletePackage() {
+    fetch(`http://127.0.0.1:8000/admin/auth/destroyOffer/${hall.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken.token}`,
+        "auth-token": `${userToken.token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        Swal.fire({
+          title: "Package has been deleted",
+          showCancelButton: false,
+        });
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
   console.log(cardData, hall);
 
   useEffect(() => {
@@ -54,7 +78,7 @@ const PackageCard = (props) => {
 
         <p>{cardData.package_description}</p>
         <p>Price: {cardData.price} </p>
-        <div>
+        <div className="package-btn">
           <Link
             to={`/hallDetails/${cardData.hall_id}`}
             onClick={handleHallDetailsClick}
@@ -67,7 +91,16 @@ const PackageCard = (props) => {
               />
             )}
           </Link>
-          {/* {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>} */}
+          {userToken && (
+            <button className="Details-button" onClick={handleClick}>
+              Edit Package
+            </button>
+          )}
+          {userToken && (
+            <button className="Details-button" onClick={deletePackage}>
+              Delete Package
+            </button>
+          )}
         </div>
       </div>
     </div>
