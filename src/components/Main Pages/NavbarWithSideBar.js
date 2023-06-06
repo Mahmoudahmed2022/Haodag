@@ -105,6 +105,10 @@ function NavbarWithSideBar() {
   function goToProfile() {
     nav(`/${personData.role}/${personData.id}`);
   }
+  function goToTranslation() {
+    nav(`/translation`);
+  }
+  
   return (
     <>
       <IconContext.Provider value={{}}>
@@ -287,6 +291,22 @@ function NavbarWithSideBar() {
                 <span className="svgColor">Search For Halls</span>
               </button>
             </li>
+            <li className="nav-text">
+              <button
+                className="aAll transparentBorderN"
+                onClick={() => {
+                  setPath("translation");
+                  goToTranslation();
+                }}
+                style={{
+                  backgroundColor: path === "search" ? "red" : "transparent",
+                }}
+              >
+                <AiIcons.AiOutlineLogout />
+                <span className="svgColor">translation</span>
+              </button>
+            </li>
+            
             {personData.isLogin ? (
               <li className="nav-text">
                 <button

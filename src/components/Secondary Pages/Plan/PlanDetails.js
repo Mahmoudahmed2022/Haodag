@@ -24,7 +24,7 @@ function PlanDetails() {
 
   return (
     <>
-      <NavbarWithSideBar userData={userData} />
+      <NavbarWithSideBar />
       <div className="Plan-big-cont">
         <div className="plantit">
           <h1 className="PlanName">{plan?.name}</h1>

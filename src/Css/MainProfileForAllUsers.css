@@ -5,6 +5,10 @@
 .delete {
   cursor: pointer;
 }
+.section-heading{
+  text-align: center;
+  color: var(--main-color);
+}
 /* Client  */
 .cover-cont {
   /* width: 100%;
@@ -418,7 +422,7 @@
   display: flex;
   align-items: center;
   margin: 2rem 0;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 80%;
 }
 .cOntLeftData {

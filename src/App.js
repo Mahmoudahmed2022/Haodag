@@ -32,6 +32,8 @@ import Favourites from "./components/Secondary Pages/Cards/Favourites";
 import AddAdmin from "./components/Secondary Pages/AddAdmin";
 import EditPackage from "./components/Secondary Pages/Hall/EditPackage";
 import { MyProvider } from "./components/Main Pages/Redux";
+import Home from "./components/Main Pages/Home1";
+import HomeForTranslate from "./components/Secondary Pages/Translation/HomeForTranslate";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path="/modal" element={<Modal />} />
           <Route path="/hallDetails/:hallId" element={<HallProfile />} />
           <Route path="/" element={<Home1 />} />
+          <Route path="/translation" element={<HomeForTranslate />} />
+
           <Route path="/hall/:hallId" element={<Hall />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
