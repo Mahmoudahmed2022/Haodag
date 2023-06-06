@@ -143,3 +143,13 @@
     transform: scale(1);
   }
 }
+@media only screen and (max-width: 400px) {
+  .container-footer {
+    width: 110%;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .container-footer {
+    width: 115%;
+  }
+}

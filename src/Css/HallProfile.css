@@ -1,4 +1,3 @@
-
 /* .allHallProfile {
   animation-name: fadeIn;
   animation-duration: 1s;
@@ -19,7 +18,7 @@
 .whatsap:hover .colorSvg {
   transform: scale(1.2);
 }
-.gap{
+.gap {
   display: flex;
   gap: 10px;
 }
@@ -68,7 +67,7 @@
   opacity: 0.5;
 }
 
-.askBooking{
+.askBooking {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +78,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.askBooking:hover{
+.askBooking:hover {
   background-color: #546d79;
 }
 .singleInfo {
@@ -115,7 +114,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.topShape{
+.topShape {
   border-radius: 20px 20px 0px 0px;
   width: 94%;
   height: 30px;
@@ -168,7 +167,7 @@
   position: relative;
   bottom: 50%;
 }
-.butns>button{
+.butns > button {
   width: 80px;
   font-size: 18px;
   border: navajowhite;
@@ -177,34 +176,33 @@
   padding: 5px;
   border-radius: 5px;
 }
-.butns{
+.butns {
   display: flex;
   /* align-items: center; */
   justify-content: space-between;
   /* gap: 20px; */
   /* margin: 10px; */
 }
-.dott button{
+.dott button {
   border: none;
   border-radius: 20px;
   width: 40px;
   height: 40px;
 }
-.btnnextback{
+.btnnextback {
   border: none !important;
   background-color: transparent !important;
   text-decoration: underline !important;
   color: #243b55 !important;
-
 }
-.btnnextback:hover{
+.btnnextback:hover {
   color: #607d8b !important;
 }
 
-.carousel__dot--selected{
+.carousel__dot--selected {
   background-color: #607d8b !important;
 }
-.groupDots{
+.groupDots {
   display: flex;
   align-items: center;
   gap: 2px;
@@ -278,9 +276,6 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .hallName {
-    color: red;
-  }
   .media {
     width: 400px;
     height: 400px;
@@ -295,11 +290,11 @@
   border-radius: 5px;
 }
 .card-content {
-    /* width: 80%; */
-    background-color: #efefef;
-    padding: 30px;
-    margin-left: 6%;
-    margin-bottom: 50px;
+  /* width: 80%; */
+  background-color: #efefef;
+  padding: 30px;
+  margin-left: 6%;
+  margin-bottom: 50px;
 }
 
 .section-title {
@@ -434,7 +429,7 @@
 .starsR .starsRSvg {
   margin: 3px;
 }
-.star{
+.star {
   cursor: pointer;
 }
 .starsRSvg:hover {
@@ -558,7 +553,7 @@
   cursor: pointer;
   color: #243b55;
 }
-.submitComment:hover{
+.submitComment:hover {
   color: rgb(178, 176, 176);
   background-color: #243b55;
 }
@@ -577,12 +572,63 @@
   justify-content: center;
   align-items: center;
 }
-.marginRight{    margin-right: 5px;}
+.marginRight {
+  margin-right: 5px;
+}
 
-.pWrap{
+.pWrap {
   word-wrap: break-word;
   padding: 20px;
   margin: 0;
 }
-.width90{width: 90%;}
-
+.width90 {
+  width: 90%;
+}
+@media only screen and (max-width: 375px) {
+  .imageSlider {
+    width: auto;
+  }
+  .mapAndData,
+  .mapImg {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .imageSlider {
+    width: auto;
+  }
+  .mapAndData,
+  .mapImg {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .imageSlider {
+    width: auto;
+  }
+  .mapAndData,
+  .mapImg {
+    width: 100%;
+  }
+  .img-slid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 769px) {
+  .imageSlider {
+    width: auto;
+  }
+  .mapAndData,
+  .mapImg {
+    width: 100%;
+  }
+  .img-slid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

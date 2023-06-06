@@ -631,3 +631,41 @@
   justify-content: center;
   gap: 20px;
 }
+@media only screen and (max-width: 375px) {
+  .cOntLeftData {
+    justify-content: center;
+  }
+  .btnsPlannerProf {
+    width: auto;
+  }
+  .profile-header {
+    flex-direction: column;
+  }
+  .profile-details {
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 376px), (max-width: 775px) {
+  .cOntLeftData {
+    justify-content: center;
+  }
+  .btnsPlannerProf {
+    width: auto;
+  }
+  .profile-header {
+    flex-direction: column;
+  }
+  .profile-details {
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 776px) {
+  .btnsPlannerProf {
+    width: auto;
+  }
+  .profile-header {
+    flex-direction: row;
+  }
+}

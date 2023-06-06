@@ -22,3 +22,8 @@
   justify-content: center;
   color: #243b55;
 }
+@media only screen and (max-width: 576px) {
+  .big-privacy-text-container {
+    height: auto;
+  }
+}

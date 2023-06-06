@@ -198,7 +198,10 @@ const HallProfile = ({ rating, isFavourite }) => {
         <h1 className="hallName">{hall.name}</h1>
         {/* Slider */}
         <div className="imageSlider">
-          <ImageSlider products={products} />
+          <div className="img-slid">
+            {" "}
+            <ImageSlider products={products} />
+          </div>
           <div className="mapAndData">
             <InfoForMap
               className="singleInfoMap"

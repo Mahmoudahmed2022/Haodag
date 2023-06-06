@@ -9,7 +9,7 @@ const GreatePackages = () => {
   const userToken = location?.state?.data;
   const userData = location?.state?.userData;
   const isLogin = location?.state?.isLogin;
-console.log(userToken)
+  console.log(userToken);
   const allCardData = () => {
     fetch("http://127.0.0.1:8000/api/auth/Offers")
       .then((response) => response.json())
@@ -27,17 +27,19 @@ console.log(userToken)
 
   return (
     <>
-    <NavbarWithSideBar userData={userData}
+      <NavbarWithSideBar
+        userData={userData}
         userToken={userToken}
-        isLogin={isLogin}/>
-    <div className="containerPackages">
-      <div className="ContDataaa">
-        <h1>We Recommend For You a Greate Packages </h1>
-        {cardData.map((data, index) => (
-          <PackageCard key={index} cardData={data} />
-        ))}{" "}
+        isLogin={isLogin}
+      />
+      <div className="containerPackages">
+        <div className="ContDataaa">
+          <h1>We Recommend For You a Greate Packages </h1>
+          {cardData.map((data, index) => (
+            <PackageCard key={index} cardData={data} />
+          ))}{" "}
+        </div>
       </div>
-    </div>
     </>
   );
 };

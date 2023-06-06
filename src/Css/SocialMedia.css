@@ -7,6 +7,22 @@
   height: 300px;
   margin-left: 15px;
 }
+.color-facebook-social {
+  background-color: #3b5998;
+}
+.color-linkden-social {
+  background-color: #0077b5;
+}
+.color-google-social {
+  background-color: #db4437;
+}
+.color-whatsapp-social {
+  background-color: #25d366;
+}
+.color-twitter-social {
+  background-color: #00acee;
+}
+
 .header-SocialMedia-text {
   display: flex;
   align-items: flex-start;

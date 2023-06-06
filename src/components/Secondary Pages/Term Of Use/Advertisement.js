@@ -31,7 +31,7 @@ function Advertisement() {
             <div className="adv-log">
               <a
                 href={whatsappUrl}
-                className="aLink-Advertisement color-whatsapp"
+                className="aLink-Advertisement color-whatsapp-social"
               >
                 <FaWhatsapp className="icon-Advertisement" />
               </a>
@@ -43,11 +43,11 @@ function Advertisement() {
           <div className="sml-Advertisement-cont">
             <p className="adv-txt">or email: </p>
             <div className="adv-log">
-              <Link to="/" className="aLink-Advertisement color-google">
+              <Link to="/" className="aLink-Advertisement color-google-social">
                 <FaGooglePlus className="icon-Advertisement" />
               </Link>
               <a
-                className="a-tag"
+                className="a-tag "
                 href="mailto:oramahmoud6@gmail.com?subject=Contact for Advertisement&body=Hello"
                 target="_blank"
               >

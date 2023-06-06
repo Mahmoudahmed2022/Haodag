@@ -31,23 +31,16 @@ function SocialMedia() {
           {" "}
           <div className="top-SocialMedia">
             <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia color-facebook">
+              <Link to="/" className="aLink-SocialMedia color-facebook-social">
                 <FaFacebook className="icon-SocialMedia " />
               </Link>
               <a className="a-tag" href="#">
                 Haodag
               </a>
             </div>
+
             <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia git">
-                <FaGithub className="icon-SocialMedia" />
-              </Link>
-              <a className="a-tag" href="#">
-                Haodag
-              </a>
-            </div>
-            <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia color-linkden">
+              <Link to="/" className="aLink-SocialMedia color-linkden-social">
                 <FaLinkedin className="icon-SocialMedia" />
               </Link>
               <a className="a-tag" href="#">
@@ -55,7 +48,7 @@ function SocialMedia() {
               </a>
             </div>
             <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia color-google">
+              <Link to="/" className="aLink-SocialMedia color-google-social">
                 <FaGooglePlus className="icon-SocialMedia" />
               </Link>
               <a
@@ -67,7 +60,7 @@ function SocialMedia() {
               </a>
             </div>
             <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia color-whatsapp">
+              <Link to="/" className="aLink-SocialMedia color-whatsapp-social">
                 <FaWhatsapp className="icon-SocialMedia" />
               </Link>
 
@@ -76,7 +69,7 @@ function SocialMedia() {
               </a>
             </div>
             <div className="sml-social-cont">
-              <Link to="/" className="aLink-SocialMedia color-twitter">
+              <Link to="/" className="aLink-SocialMedia color-twitter-social">
                 <FaTwitterSquare className="icon-SocialMedia" />
               </Link>
               <a className="a-tag" href="#">

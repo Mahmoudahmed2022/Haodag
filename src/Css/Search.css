@@ -146,44 +146,8 @@ body {
 }
 
 /*mobile*/
-@media (max-width: 767px) {
-  .city-input,
-  .price-input {
-    width: 130px;
-  }
-}
+
 /*small-screens*/
-@media (min-width: 768px) {
-  .landing-container {
-    width: 100%;
-    height: 350px;
-  }
-  .city-input,
-  .price-input {
-    width: 230px;
-  }
-}
-/*medium-screens*/
-@media (min-width: 992px) {
-  .landing-container {
-    width: 100%;
-    height: 550px;
-  }
-  .city-input,
-  .price-input {
-    width: 300px;
-  }
-}
-@media (min-width: 1200px) {
-  .landing-container {
-    width: 100%;
-    height: 550px;
-  }
-  .city-input,
-  .price-input {
-    width: 300px;
-  }
-}
 
 /* Styles for the form and its container */
 .search-page-container {
@@ -271,4 +235,36 @@ select {
 
 .search-icon {
   margin-right: 5px;
+}
+@media only screen and (max-width: 776px) {
+  .landing-container {
+    width: 100%;
+  }
+  .name-input,
+  .search-input-container input[type="number"],
+  select {
+    width: 110px;
+  }
+}
+
+/*medium-screens*/
+@media (min-width: 992px) {
+  .landing-container {
+    width: 100%;
+    height: 550px;
+  }
+  .city-input,
+  .price-input {
+    width: 300px;
+  }
+}
+@media (min-width: 1200px) {
+  .landing-container {
+    width: 100%;
+    height: 550px;
+  }
+  .city-input,
+  .price-input {
+    width: 300px;
+  }
 }
