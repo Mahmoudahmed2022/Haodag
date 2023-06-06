@@ -32,6 +32,8 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [show, setShow] = useState(false);
   const [hover, setHover] = useState(null);
   const [Like, setLike] = useState(false);
+  const [isFavourited, setIsFavourited] = useState(false);
+
   const [disLike, setDisLike] = useState(false);
   const [heartStyle, setHeartStyle] = useState({ color: "white" });
   const [toggle, setToggle] = useState(true);
@@ -60,6 +62,21 @@ const HallProfile = ({ rating, isFavourite }) => {
       })
       .catch((err) => console.error(err));
   };
+  function IsFavourite() {
+    fetch(`http://127.0.0.1:8000/user/auth/isFavourite/${hallId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setIsFavourited(data.is_favourite);
+      });
+  }
 
   function AddToFavourites() {
     fetch(`http://127.0.0.1:8000/user/auth/addFavourite/${hallId}`, {
@@ -76,15 +93,45 @@ const HallProfile = ({ rating, isFavourite }) => {
         Swal.fire({
           title: `Hall ${data.message}`,
           showCancelButton: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
         });
       });
   }
+  function AddLike() {
+    fetch(`http://127.0.0.1:8000/user/auth/halls/${hallId}/addLike`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        Swal.fire({
+          title: data.message,
+          showCancelButton: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+      });
+  }
+
   function goToaAskToBook() {
     navigate(`/BookHall/${hallId}`);
   }
+  console.log(isFavourited, hall);
+
   useEffect(() => {
     allData(hallId);
     urlWhatSap();
+    IsFavourite();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -137,7 +184,6 @@ const HallProfile = ({ rating, isFavourite }) => {
     setDisLike(!disLike);
     console.log("colorRemoved");
   };
-  console.log(ownerData);
   const goToProfile = () => {
     navigate(`/owner/${hall.owner.id}`, {
       state: { userData: ownerData },
@@ -282,7 +328,7 @@ const HallProfile = ({ rating, isFavourite }) => {
                   <FaHeart
                     className="heartLoveSvg "
                     // color={1 <= (hoverHeart || false ) ? "red" : ""}
-                    style={heartStyle}
+                    style={isFavourited ? { color: "red" } : heartStyle}
                     onClick={() => {
                       toggle ? handleClick() : handleClick2();
                       AddToFavourites();
@@ -293,17 +339,14 @@ const HallProfile = ({ rating, isFavourite }) => {
               <div className="thirdColLike">
                 <p>Did You Like This </p>
                 <div className="heartLove">
-                  <FaThumbsDown
-                    className="LikeIcon "
-                    // color={(Like) ? "#243b55" : ""}
-                    style={disLikeStyle}
-                    onClick={disLike ? handleDislike : removeDislikeColor}
-                  />
                   <FaThumbsUp
                     className="LikeIcon"
                     // color={ (disLike) ? "#243b55" : ""}
                     style={LikeStyle}
-                    onClick={Like ? handleLike : removeColor}
+                    onClick={() => {
+                      Like ? handleLike() : removeColor();
+                      AddLike();
+                    }}
                   />
                 </div>
               </div>
@@ -345,20 +388,13 @@ const HallProfile = ({ rating, isFavourite }) => {
                   </div>
                 </div>
               </div>
-              <div className="secondColLove">
-                <p>Number Of Visits</p>
-                <p>100</p>
-              </div>
+
               <div className="thirdColLike">
                 <p>Number Of Likes </p>
                 <div className="PheartLove">
-                  <div className="likeDown1">
-                    <FaThumbsDown className="heartLoveSvg" />
-                    <p>2</p>
-                  </div>
                   <div className="likeDown1 ">
                     <FaThumbsUp className="heartLoveSvg" />
-                    <p>2</p>
+                    <p>{hall.likes_count}</p>
                   </div>
                 </div>
               </div>

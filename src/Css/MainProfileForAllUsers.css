@@ -5,7 +5,11 @@
 .delete {
   cursor: pointer;
 }
-.section-heading{
+.fav-head {
+  display: flex;
+  justify-content: center;
+}
+.section-heading {
   text-align: center;
   color: var(--main-color);
 }

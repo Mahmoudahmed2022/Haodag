@@ -11,11 +11,11 @@ import Planners from "./Planners";
 import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
+import Users from "./Users";
 
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const [plan, setplan] = useState([]);
-
 
   const personData = useContext(MyContext);
   const userData = location?.state?.userData;
@@ -24,16 +24,13 @@ const HeaderDataProfile = (props) => {
   const isPlanner = (personData?.role || personData?.role) === "planner";
   const isOwner = (personData?.role || personData?.role) === "owner";
   const isClient = (personData?.role || personData?.role) === "user";
-  
+
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate(`/hallForm`, );
+    navigate(`/hallForm`);
   }
 
-  function goTofavourites() {
-    navigate(`/favourites`);
-  }
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: personData } });
   }
@@ -64,9 +61,12 @@ const HeaderDataProfile = (props) => {
     fetchplans();
   }, []);
   const fetchplans = () => {
-    fetch(`http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${personData.id}`, {
-      method: "GET",
-    })
+    fetch(
+      `http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${personData.id}`,
+      {
+        method: "GET",
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -181,15 +181,6 @@ const HeaderDataProfile = (props) => {
                         to="#"
                       ></button>
                     </div>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={goTofavourites}
-                        className="btn-flip add-hall-btn"
-                        data-back="Favourites"
-                        data-front="Favourites"
-                        to="#"
-                      ></button>
-                    </div>
                   </>
                 )}
                 {/* planner */}
@@ -252,12 +243,19 @@ const HeaderDataProfile = (props) => {
         />
       ) : (
         <Planners
-        Plan={plan}
+          Plan={plan}
           userData={personData}
           personData={personData}
           isLogin={personData.isLogin}
         />
       )}
+      {personData?.role === "user" || userData?.role === "user" ? (
+        <Users
+          userData={personData}
+          userToken={personData}
+          isLogin={personData.isLogin}
+        />
+      ) : null}
 
       {/* <Owners userData={userData} personData={personData}/>
       <Planners userData={userData} personData={personData}/> */}

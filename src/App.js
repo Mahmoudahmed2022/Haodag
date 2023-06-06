@@ -28,7 +28,6 @@ import HallsBookings from "./components/Secondary Pages/HallsBookings";
 import ModalForAskToBook from "./components/Secondary Pages/Modals/ModalForAskToBook";
 import AskToBookPlan from "./components/Secondary Pages/AskToBooKPlan";
 import SidebarforAdminDashboard from "./components/Main Pages/SidebarforAdminDashboard.js";
-import Favourites from "./components/Secondary Pages/Cards/Favourites";
 import AddAdmin from "./components/Secondary Pages/AddAdmin";
 import EditPackage from "./components/Secondary Pages/Hall/EditPackage";
 import { MyProvider } from "./components/Main Pages/Redux";
@@ -62,7 +61,6 @@ function App() {
           <Route path="/:param/:id" element={<HeaderDataProfile />} />
           <Route path="/termsofuse" element={<TermsOfUse />} />
           <Route path="/Bookings" element={<Bookings />} />
-          <Route path="/favourites" element={<Favourites />} />
           <Route path="/addadmin" element={<AddAdmin />} />
 
           <Route path="/PlansRequests" element={<PlansRequests />} />
