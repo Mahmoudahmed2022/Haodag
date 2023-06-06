@@ -92,26 +92,25 @@
   display: flex;
   justify-content: space-evenly;
 }
+.advertisment:hover{
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
 .advertisment {
-     /* margin-top: 50px; */
      height: 30px;
      text-align: center;
      width: 200px;
      height: 40px;
      border: none;
-     /* font-size: 14px; */
      display: flex;
      outline: none;
+     background-color: transparent;
      color: var(--main-color);
      padding: 5px;
-     /* background: var(--main-color); */
      cursor: pointer;
      justify-content: center;
      align-items: center;
      text-decoration: none;
-     /* position: relative; */
-     z-index: 25;
-     border-radius: 10px;
      border: 1px solid var(--main-color);
 }
 

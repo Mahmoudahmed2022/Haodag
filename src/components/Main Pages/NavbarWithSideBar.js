@@ -221,7 +221,7 @@ function NavbarWithSideBar() {
                   goToHome();
                 }}
                 style={{
-                  backgroundColor: path === "home" ? "red" : "transparent",
+                  backgroundColor: path === "home" ? "#ef9011" : "transparent",
                 }}
               >
                 <FaHome />

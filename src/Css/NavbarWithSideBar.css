@@ -22,15 +22,18 @@
   justify-content: space-around;
 }
 .svgColor {
-  color: #ef9011;
+  color: var(--main-color);
+}
+.svgColor:hover{
+  color: var(--white-color);
 }
 .bigger:hover {
-  color: #1a83ff;
+  color: var(--white-color);
 }
 
 .svgColor1 {
   width: 50px;
-  color: #ef9011;
+  color: var(--main-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,18 +87,18 @@
 .nav-text .aAll {
   text-decoration: none;
   font-size: 16px;
-  width: 95%;
+  width: 100%;
   height: 100%;
   display: flex;
-  color: #ef9011;
+  color: var(--main-color);
   align-items: center;
   padding: 0 16px;
-  border-radius: 4px;
   cursor: pointer;
 }
 
-.nav-text a:hover ,.nav-text button:hover {
-  background-color: #557fa8;;
+.nav-text a:hover ,.nav-text .svgColor:hover,.nav-text button:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
 }
 .hoverOnX:hover {
   color: red;
@@ -118,7 +121,6 @@
 }
 
 .avatar {
-  /* vertical-align: middle; */
   width: 120px;
   height: 150px;
   cursor: pointer;
@@ -160,8 +162,7 @@
   /* gray/dark 4 */
 
   /* Inside auto layout */
-  color: #ef9011;
-
+  color: var(--main-color);
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -186,8 +187,7 @@
 
   /* primary */
 
-  background: #ef9011;
-  border-radius: 4px;
+  background: var(--main-color);
 
   /* Inside auto layout */
 
@@ -200,7 +200,7 @@
   width: 125px;
   height: 21px;
   margin-top: 0px;
-  border: #f5f4f6;
+  border: var(--white-color);
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 500;
@@ -209,7 +209,7 @@
   background: #f5f4f6;
   box-shadow: none;
   padding-left: 10px;
-  color: #e3920f;
+  color: var(--main-color);
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -222,7 +222,7 @@
   border: none;
 }
 .transparentBorderN:hover{
-  background-color: #1a83ff !important;
+  background-color: var(--main-color) !important;
 }
 .profile-photo {
   display: flex;
