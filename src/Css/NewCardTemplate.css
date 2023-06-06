@@ -1,7 +1,7 @@
 .CardContainer {
   width: 600px;
   height: 300px;
-  background-color: beige;
+  background-color: white;
   display: flex;
   gap: 10px;
   border: 1px solid beige;
@@ -10,6 +10,9 @@
 .package-btn {
   display: flex;
   justify-content: space-evenly;
+}
+.boldColor{
+  font-weight: bold;
 }
 .Details-button {
   box-sizing: border-box;
@@ -27,7 +30,7 @@
   box-shadow: 6px 6px 15px #a8acb1;
 }
 .ContImgCard {
-  width: 40%;
+  width: 50%;
   height: 100%;
 }
 .ContImgCard img {

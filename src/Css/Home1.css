@@ -1,7 +1,10 @@
 
 .home-landing {
+  background-image: url(../components/images/imageLandings.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
-  height: 580px;
+  height: 760px;
   /* background-image: linear-gradient( to right, rgba(255, 0, 0, 0), rgb(90 95 129) ); */
 }@keyframes slideIn {
   0% {
@@ -63,7 +66,8 @@
 
 .head-text {
   color: var(--main-color);
-}
+  width: 50%;
+  text-align: center;}
 
 .p-info {
   font-size: 18px;
@@ -224,7 +228,9 @@
 }
 .lastButtonForDetails-button:hover{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  background-color: #1f314b;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
 
 }
 
@@ -232,9 +238,11 @@
   width: 100px;
   border: none;
   color: white;
-  background-color: #263e61;
+  background-color: transparent;
   padding: 7px;
-  border-radius: 11px;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  /* border-radius: 11px; */
   text-align: center;
   text-decoration: none;
   font-size: 18px;

@@ -16,12 +16,14 @@ const NewCardTemplate = ({ cardData}) => {
       </div>
       <div className="AllRightData">
         <div className="ContH3AndTrash">
-          <h3>{cardData.name} </h3>
+          <p>Name:<span className="boldColor">{cardData.name}</span> </p>
           {/* {isOwner&&(<FaTrash onClick={deleteHall}  />)} */}
         </div>
+        
+        <p>Capacity: <span className="boldColor">{cardData.capacity}</span></p>
 
-        <p>{cardData.title}</p>
-        <p>Price: {cardData.price} </p>
+        <p>Type: <span className="boldColor">{cardData.type}</span></p>
+        <p>Price: <span className="boldColor">{cardData.price}</span> </p>
         <div>
           <button
             className="lastButtonForDetails-button"

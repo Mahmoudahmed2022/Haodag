@@ -40,6 +40,7 @@ function Home() {
         console.error(error);
       });
   };
+  console.log(cardData);
 
   const loadMore = () => {
     setVisible(visible + 5);
@@ -135,32 +136,30 @@ function Home() {
 
       <div className="home-landing">
         <div className="all-content">
-          <div className="text-content1">
+        <h1 className="head-text">
+              Discover exquisite wedding halls that will make your special day unforgettable.
+              </h1>
+          {/* <div className="text-content1">
             <div className="text-content2">
               <h1 className="head-text">
-                All Because Two People Fell In Love.
+              Discover exquisite wedding halls that will make your special day unforgettable.
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it
-                easier for you to choose the right hall for your wedding
+                easier for you to choose the right hall for your wedding.
+                Enjoy a seamless and stress-free wedding planning experience with our dedicated team,
+                Experience personalized service and attention to detail for your wedding 
               </p>
-              {/* {content} */}
-              {/* <div><img src={shape}></img>
-</div> */}
+          
               
             </div>
           </div>
 
           <div className="left-side">
-            {/* <div className="for-advertisment">
-              {" "}
-              <Link className="advertisment" to="/">
-                To Put Your Advertisement
-              </Link>
-            </div> */}
+          
 
             <img className="left-photo" src={couples} alt="left photo"></img>
-          </div>
+          </div> */}
         </div>
       </div>
 
