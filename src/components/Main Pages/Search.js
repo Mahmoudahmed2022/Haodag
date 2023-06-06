@@ -7,8 +7,9 @@ import { Link, useLocation } from "react-router-dom";
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { useContext } from "react";
 import { MyContext } from "./Redux";
+import Swal from "sweetalert2";
 function Search() {
-    const personData = useContext(MyContext);
+  const personData = useContext(MyContext);
 
   const [halls, setAllHalls] = useState([]);
   const [visible, setVisible] = useState(5);
@@ -19,7 +20,6 @@ function Search() {
   const [street, setStreet] = useState("");
   const [type, setType] = useState("");
   const [name, setName] = useState("");
- 
 
   const searchHalls = (e) => {
     e.preventDefault();
@@ -34,10 +34,23 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setName("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setName("");
         })
         .catch((error) => {
@@ -54,10 +67,24 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setMaxPrice("");
+            setMinPrice("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setMaxPrice("");
           setMinPrice("");
         })
@@ -75,10 +102,23 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setCity("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setCity("");
         })
         .catch((error) => {
@@ -95,10 +135,23 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setCountry("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setCountry("");
         })
         .catch((error) => {
@@ -115,10 +168,23 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setStreet("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setStreet("");
         })
         .catch((error) => {
@@ -135,10 +201,23 @@ function Search() {
         .then((response) => {
           if (response.status === 200) {
             return response.json();
-          } else alert("hall does not exist");
+          } else {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+            setType("");
+          }
         })
         .then((data) => {
-          setAllHalls(data.data);
+          if (data.data == null) {
+            Swal.fire({
+              title: `No Matched Halls`,
+              showCancelButton: false,
+            });
+          } else {
+            setAllHalls(data.data);
+          }
           setType("");
         })
         .catch((error) => {
@@ -191,7 +270,7 @@ function Search() {
 
   return (
     <>
-      <NavbarWithSideBar/>
+      <NavbarWithSideBar />
 
       <div className="search-page-container">
         <div className="landing-container">
