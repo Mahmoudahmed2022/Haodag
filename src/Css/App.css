@@ -1,7 +1,16 @@
 :root {
-  --main-color: #314569;
-}
+  /* --main-color: #314569; */
+  --main-color: #ef9011;
+  --black-color:black;
+  --white-color:white;
 
+
+
+}
+body {
+  font-family: cursive;
+  background-color: #ecf4ec;
+}
 
 .ParentDivForAll{
   min-height: calc(100vh -  250px);

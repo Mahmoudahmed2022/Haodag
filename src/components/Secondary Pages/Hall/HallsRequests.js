@@ -5,19 +5,22 @@ import axios from "axios";
 import "../../../Css/Reservation.css";
 import user from "../../images/user3.png";
 import { Link } from "react-router-dom";
-function HallsRequests({hallsRequest,userToken}) {
+import { useContext } from "react";
+import { MyContext } from "../../Main Pages/Redux";
+function HallsRequests({hallsRequest}) {
+  const personData = useContext(MyContext);
   console.log(hallsRequest)
-  console.log(userToken)
+  console.log(personData)
 
   const ConfirmHall =(hall)=>{
     fetch(`http://127.0.0.1:8000/admin/auth/confirmHallRequest/${hall.id}`, {
       method: "POST",
       headers: {
-        "auth-token": `${userToken.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data)})
+      .then((data) => {console.log(data);alert(data.message);window.location.reload()})
 
   
   }
@@ -25,11 +28,11 @@ function HallsRequests({hallsRequest,userToken}) {
     fetch(`http://127.0.0.1:8000/admin/auth/rejectHallRequest/${hall.id}`, {
       method: "POST",
       headers: {
-        "auth-token": `${userToken.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data)})
+      .then((data) => {console.log(data);alert(data.message);window.location.reload()})
 
   
   }

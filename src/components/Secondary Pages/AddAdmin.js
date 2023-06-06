@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../Css/Registration.css";
+import { MyContext } from "../Main Pages/Redux";
+import { useContext } from "react";
 
 function AddAdmin() {
-  const location = useLocation();
-  const userToken = location?.state?.data;
+  const personData= useContext(MyContext);
+  console.log(personData);
+ 
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
 
@@ -31,7 +34,7 @@ function AddAdmin() {
     }));
   };
   function goDashboard() {
-    navigate(`/AdminDashboard`, { state: { data: userToken } });
+    navigate(`/AdminDashboard`);
   }
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,8 +48,8 @@ function AddAdmin() {
       fetch("http://127.0.0.1:8000/admin/auth/addAdmin", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
         body: formDataObj,
       })
@@ -57,7 +60,7 @@ function AddAdmin() {
           console.log(data);
           setStatus(data);
           alert(data.message);
-          navigate(`/AdminDashboard`, { state: { data: userToken } });
+          navigate(`/AdminDashboard`);
         })
         .catch((error) => {
           console.error(error);

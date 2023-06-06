@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../Main Pages/Redux";
 
-const Planners = ({ userData, userToken, isLogin }) => {
+const Planners = ({ userData, isLogin }) => {
   const [plan, setplan] = useState([]);
   const [visible, setVisible] = useState(5);
-
+  const personData = useContext(MyContext);
   const navigate = useNavigate();
 
   const fetchplans = () => {
@@ -35,7 +36,7 @@ const Planners = ({ userData, userToken, isLogin }) => {
   }, []);
   function handleDetailsClick(plan_Id, plan) {
     navigate(`/Plandetails/${plan_Id}`, {
-      state: { data: userToken, plan: plan, userData: userData },
+      state: {  plan: plan, userData: userData },
     });
   }
   const renderCard = (plan) => {
@@ -43,12 +44,10 @@ const Planners = ({ userData, userToken, isLogin }) => {
       <>
         <div className="planD" key={plan.id}>
           <div className="wrapper">
-            {/* <div class="banner-image"> </div> */}
             <img
               src={plan.photos[0]}
               alt={plan.name}
               className="banner-image"
-              //  className="plan-image"
             />
             <div className="pad20">
               <h1> {plan.name}</h1>
@@ -62,14 +61,6 @@ const Planners = ({ userData, userToken, isLogin }) => {
                 DETAILS
               </button>
             </div>
-            {/* <div>
-              {isPlanner && (
-                <FaTrash
-                  className="delete"
-                  onClick={() => deleteCourse(plan.id)}
-                />
-              )}
-            </div> */}
           </div>
         </div>{" "}
       </>
@@ -79,7 +70,9 @@ const Planners = ({ userData, userToken, isLogin }) => {
   return (
     <>
       <>
-        <h1 className="section-heading">Wedding Plans</h1>
+        {personData.role === "planner" && (
+          <h1 className="section-heading">Wedding Plans</h1>
+        )}
         <div className="profile-content">
           {plan.length > 0 ? (
             <>

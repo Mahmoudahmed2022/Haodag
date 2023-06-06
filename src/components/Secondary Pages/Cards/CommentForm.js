@@ -1,15 +1,14 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { MyContext } from "../../Main Pages/Redux";
 
 function CommentForm(props) {
   const [comment, setComment] = useState("");
-  const userToken = props.userToken;
-  const userData = props.userData;
-  const isLogin = props.isLogin;
+ const personData=useContext(MyContext)
   const hallId = props.hallId;
-  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,8 +17,8 @@ function CommentForm(props) {
     fetch(`http://127.0.0.1:8000/user/auth/halls/${hallId}/addComment`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
       body: formDataObj,
     })
@@ -45,7 +44,7 @@ function CommentForm(props) {
           <input
             className="FirstInput"
             type="text"
-            defaultValue={userToken.name}
+            defaultValue={personData.name}
             readOnly
           />
         </div>

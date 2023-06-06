@@ -3,10 +3,11 @@ import "../../../Css/HallForm.css";
 import "../../../Css/AddPackage.css";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-const AddPackage = (props) => {
-  const location = useLocation();
-  const userToken = location?.state?.data;
-  console.log(userToken);
+import { useContext } from "react";
+import { MyContext } from "../../Main Pages/Redux";
+const AddPackage = () => {
+  const personData= useContext(MyContext);
+  console.log(personData);
   const [formData, setFormData] = useState({
     hall_name: "",
     hallid: "",
@@ -46,8 +47,8 @@ const AddPackage = (props) => {
       fetch("http://127.0.0.1:8000/admin/auth/createOffer", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
         body: formDataObj,
       })
@@ -56,6 +57,8 @@ const AddPackage = (props) => {
         })
         .then((data) => {
           console.log(data);
+          alert(data.message)
+          window.location.reload();
         });
     }
   }

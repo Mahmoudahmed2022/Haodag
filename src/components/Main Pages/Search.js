@@ -5,7 +5,11 @@ import { IoMdSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NavbarWithSideBar from "./NavbarWithSideBar";
+import { useContext } from "react";
+import { MyContext } from "./Redux";
 function Search() {
+    const personData = useContext(MyContext);
+
   const [halls, setAllHalls] = useState([]);
   const [visible, setVisible] = useState(5);
   const [city, setCity] = useState("");
@@ -15,10 +19,7 @@ function Search() {
   const [street, setStreet] = useState("");
   const [type, setType] = useState("");
   const [name, setName] = useState("");
-  const location = useLocation();
-  const userToken = location?.state?.userToken;
-  const userData = location?.state?.userData;
-  const isLogin = location?.state?.isLogin;
+ 
 
   const searchHalls = (e) => {
     e.preventDefault();
@@ -190,11 +191,7 @@ function Search() {
 
   return (
     <>
-      <NavbarWithSideBar
-        userData={userData}
-        userToken={userToken}
-        isLogin={isLogin}
-      />
+      <NavbarWithSideBar/>
 
       <div className="search-page-container">
         <div className="landing-container">

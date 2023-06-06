@@ -1,12 +1,14 @@
+import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { MyContext } from "../../Main Pages/Redux";
 
 function EditPackage() {
+  const personData = useContext(MyContext);
   let { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const userToken = location.state.data;
   const sPackage = location.state.sPackage;
   console.log(sPackage);
   const [formData, setFormData] = useState({
@@ -15,7 +17,7 @@ function EditPackage() {
     price: "",
   });
   console.log("ID", id);
-  console.log(userToken);
+  console.log(personData);
   function handleSubmit(e) {
     e.preventDefault();
     const formDataObj = new FormData();
@@ -27,8 +29,8 @@ function EditPackage() {
       fetch(`http://127.0.0.1:8000/admin/auth/updateOffer/${id}`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
         body: formDataObj,
       })
@@ -40,7 +42,7 @@ function EditPackage() {
             title: data.message,
             showCancelButton: false,
           });
-          navigate(`/adminDashboard`, { state: { data: userToken } });
+          navigate(`/adminDashboard`, );
         });
     }
   }

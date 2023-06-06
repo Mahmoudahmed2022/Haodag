@@ -49,7 +49,7 @@ function Footer() {
           <p className="copyRight">
             ِAll Rights Reserved To The Team of{" "}
             <Link to="/" className="avatar1">
-              HAODAG
+              HAWDAG
               {/* <img className="avatar1" src={image2} alt="" /> */}
             </Link>
           </p>

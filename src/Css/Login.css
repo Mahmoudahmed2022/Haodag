@@ -77,7 +77,7 @@ body {
 .svg1 {
   position: relative;
   top: -1px;
-  color: #263e61;
+  color: var(--main-color);
 }
 .login-box .login-form .login-submit {
   position: relative;

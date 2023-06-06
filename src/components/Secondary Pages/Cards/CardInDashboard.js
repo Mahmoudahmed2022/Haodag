@@ -47,11 +47,8 @@ function CardInDashboard({number,name,addPackage,backColor}) {
             </div>
             <div className="ContForLink">
               {" "}
-              {(name==="add package"||name==="add admin")?(
+              {(name==="add package"||name==="add admin")&&(
                               <button style={{ backgroundColor: "rgb(255 255 255 / 18%)"}} onClick={addPackage}>{name}</button>
-
-              ):(
-                              <a  style={{ backgroundColor: "rgb(255 255 255 / 18%)"}}>More info</a>
 
               )}
             </div>

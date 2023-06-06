@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useHistory, useLocation, useNavigate, useParams } from "react-router-dom";
+import { MyContext } from "../../Main Pages/Redux";
 
 function EditHall() {
+  const personData = useContext(MyContext);
   let {id} = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const userToken = location.state.data;
 const hall = location.state.hall;
 console.log(hall)
   const [formData, setFormData] = useState({
@@ -28,7 +30,7 @@ console.log(hall)
     services: [],
   });
   console.log("ID",id);
-console.log(userToken)
+console.log(personData)
 
   // Fetch hall data if in edit mode
 
@@ -40,8 +42,8 @@ console.log(userToken)
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        "Authorization": `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
       body: JSON.stringify(formData),
     })
@@ -59,13 +61,13 @@ console.log(userToken)
         hall.type=data.type
         hall.capacity=data.capacity
         hall.available=data.available
-        hall.country=data.v
+        hall.country=data.country
         hall.city=data.city
         hall.street=data.street
         hall.shows=data.shows
         hall.services=data.services
         console.log(data);
-        navigate(`/:${userToken.role}/:${userToken.id}`,{state: { data: userToken }});
+        navigate(`/:${personData.role}/:${personData.id}`);
       })
       .catch((error) => {
         console.log(error);

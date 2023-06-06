@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import "../../Css/WeddingPlanners.css";
 import "../../Css/Reservation.css";
+import { useContext } from "react";
+import { MyContext } from "../Main Pages/Redux";
 function PlansRequests() {
-  const location = useLocation();
-  const userToken = location?.state?.data;
+  const personData = useContext(MyContext);
   const [reservations, setReservations] = useState([]);
   const [confirmMessge, setConfirmMessge] = useState(
     "Booking confirmed successfully"
@@ -19,8 +19,8 @@ function PlansRequests() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => {
@@ -44,8 +44,8 @@ function PlansRequests() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
       }
     )
@@ -72,8 +72,8 @@ function PlansRequests() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
       }
     )

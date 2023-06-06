@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { FaParking, FaTrash } from "react-icons/fa";
 import {
   MdDirectionsCarFilled,
@@ -8,19 +9,21 @@ import {
 } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-const HallCard = ({ hall, userToken, key, userData }) => {
+import { MyContext } from "../../Main Pages/Redux";
+const HallCard = ({ hall, key, userData }) => {
+  const personData =useContext(MyContext)
   const navigate = useNavigate();
-  console.log(userToken);
+  console.log(personData);
   console.log(hall);
 
   const isOwner = userData.role === "owner";
   function handleClick() {
     navigate(`/editHall/${hall.id}`, {
-      state: { data: userToken, hall: hall },
+      state: { hall: hall },
     });
   }
   const Id = useParams();
-  console.log(hall, userToken);
+  console.log(hall, personData);
   
   function deleteCourse(hall) {
     Swal.fire({
@@ -32,8 +35,8 @@ const HallCard = ({ hall, userToken, key, userData }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     }).then((res) => {
       if (res.ok) {
@@ -46,7 +49,7 @@ const HallCard = ({ hall, userToken, key, userData }) => {
   })}
   function goToHallDetails() {
     navigate(`/hallDetails/${hall.id}`, {
-      state: { userToken: userToken, userData: userData },
+      state: { userData: userData },
     });
   }
   useEffect(() => {

@@ -2,10 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import HallCard from "./Cards/HallCard";
+import { MyContext } from "../Main Pages/Redux";
+import { useContext } from "react";
 
-const Owners = ({ userData, userToken, isLogin }) => {
+const Owners = ({ userData, isLogin }) => {
   const [visible, setVisible] = useState(5);
   const [ownersHallsCard, setownersHallsCard] = useState([]);
+  const personData=useContext(MyContext);
 
   const loadMore = () => {
     setVisible(visible + 5);
@@ -35,15 +38,16 @@ const Owners = ({ userData, userToken, isLogin }) => {
   }, []);
   return (
     <>
-      
+              {personData.role==="owner"&& <h1 className="section-heading">Owner's Halls</h1>}
+
             <div className="halls">
+
               <div className="home-allhalls-container">
                 {ownersHallsCard.length > 0 ? (
                   <>
                     {ownersHallsCard.slice(0, visible).map((data, index) => (
                       <HallCard
                         key={index}
-                        userToken={userToken}
                         userData={userData}
                         hall={data}
                       />

@@ -31,9 +31,11 @@ import SidebarforAdminDashboard from "./components/Main Pages/SidebarforAdminDas
 import Favourites from "./components/Secondary Pages/Cards/Favourites";
 import AddAdmin from "./components/Secondary Pages/AddAdmin";
 import EditPackage from "./components/Secondary Pages/Hall/EditPackage";
+import { MyProvider } from "./components/Main Pages/Redux";
 
-function App({ userToken }) {
+function App() {
   return (
+    <MyProvider>
     <div className="App">
       <div className="ParentDivForAll">
         <Routes>
@@ -71,6 +73,7 @@ function App({ userToken }) {
         <Footer />
       </div>
     </div>
+    </MyProvider>
   );
 }
 

@@ -4,9 +4,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../Css/AdminDashboard.css";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { MyContext } from "../Main Pages/Redux";
 
-const FetchHallsPlans = ({ user, userToken, getUser }) => {
+const 
+FetchHallsPlans = ({ user, getUser }) => {
   let content;
+  const personData = useContext(MyContext);
+
   user.map((user) => {
     if (user?.owner?.role === "owner") {
       content = "Halls";
@@ -15,41 +20,38 @@ const FetchHallsPlans = ({ user, userToken, getUser }) => {
     }
   });
 
-  const deletePerson = (user) => {
-    // event.preventDefault();
-    // user.map((person)=>{
-    if (user?.planner) {
+  const deleteHallOrPlan = (user) => {
+    if (content==="Plans") {
       Swal.fire({
-        title: `Are You Sure To Delete Plan ${user.name} `,
+        title: `Are You Sure To Delete Plan (${user.name}) `,
         showCancelButton: true,
       }).then((data) => {
         if (data.isConfirmed) {
           fetch(`http://127.0.0.1:8000/admin/auth/deletePlan/${user.id}`, {
             method: "POST",
             headers: {
-              "auth-token": `${userToken.token}`,
-              Authorization: `Bearer${userToken.token}`,
+              "auth-token": `${personData.token}`,
+              Authorization: `Bearer${personData.token}`,
             },
           })
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
               window.location.reload();
-              // getUser();
             });
         }
       });
-    } else if (user?.owner) {
+    } else if (content==="Halls") {
       Swal.fire({
-        title: `Are You Sure To Delete Owner ${user.name} `,
+        title: `Are You Sure To Delete Hall (${user.name}) `,
         showCancelButton: true,
       }).then((data) => {
         if (data.isConfirmed) {
           fetch(`http://127.0.0.1:8000/admin/auth/deleteHall/${user.id}`, {
             method: "POST",
             headers: {
-              "auth-token": `${userToken.token}`,
-              Authorization: `Bearer${userToken.token}`,
+              "auth-token": `${personData.token}`,
+              Authorization: `Bearer${personData.token}`,
             },
           })
             .then((res) => res.json())
@@ -96,30 +98,35 @@ const FetchHallsPlans = ({ user, userToken, getUser }) => {
                     </td>
                     <td className="tdoperations">
                       <div className="ss">
-                        <Link
+                        {content==="Halls" ?(
+                           <Link
+                           className="btnoperations blue"
+                           to={`/hallDetails/${product.id}`}
+                         >
+                           View
+                         </Link>
+                        ):(
+                          <Link
                           className="btnoperations blue"
-                          to={`/${product.role}/${product.id}`}
+                          to={`/Plandetails/${product.id}`}
                         >
                           View
                         </Link>
-                        {/* <Link
-                   className="btnoperations green"
-                   // to={`/products/editProduct/${product.id}`}
-                 >
-                   Edit
-                 </Link> */}
+                        )}
+                       
+                        
                         <button
                           className="btnoperations red"
-                          onClick={() => deletePerson(product)}
+                          onClick={() => deleteHallOrPlan(product)}
                         >
                           Delete
                         </button>
-                        <button
+                        {/* <button
                           className="btnoperations green"
-                          onClick={() => deletePerson(product)}
+                          onClick={() => deleteHallOrPlan(product)}
                         >
                           Edit
-                        </button>
+                        </button> */}
                       </div>
                     </td>
                   </tr>

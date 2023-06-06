@@ -11,8 +11,8 @@ import planners from "../images/planners.png";
 import supplier from "../images/suppliers.png";
 import clients from "../images/users.png";
 import packagePhoto from "../images/package.png";
-
-
+import { useContext } from "react";
+import { MyContext } from "./Redux";
 import hallRequests from "../images/hallRequests.png";
 import hallss from "../images/halls.png";
 
@@ -31,7 +31,11 @@ import { NavLink } from "react-router-dom";
 import Owners from "../Secondary Pages/Owners";
 import FetchHallsPlans from "../Secondary Pages/FetchHallsPlans";
 import CardInDashboard from "../Secondary Pages/Cards/CardInDashboard";
+import CardPackagesInDashboard from "../Secondary Pages/CardPackagesInDashboard";
+import Swal from "sweetalert2";
 const Dashboard = () => {
+  const personData= useContext(MyContext);
+  console.log(personData);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [client, setClient] = useState([]);
   const [admins, setAdmins] = useState([]);
@@ -41,38 +45,21 @@ const Dashboard = () => {
   const [suppliers, setSuppliers] = useState([]);
   const [offers, setOffers] = useState([]);
   const [allPlans, setAllPlans] = useState([]);
-
   const [canceledHalls, setCanceledHalls] = useState([]);
   const [allHalls, setAllHalls] = useState([]);
   const [allPackages, setAllPackages] = useState([]);
-
   const [hallsRequest, sethallsRequest] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const nav = useNavigate();
-  const location = useLocation();
-  const userToken = location?.state?.data;
-  console.log(userToken);
-
-  // const getOffers = () => {
-  //   if (offers?.length === 0) {
-  //     // check if hall owner data has already been fetched
-  //     fetch("http://127.0.0.1:8000/admin/api/auth/Offers", {
-  //       headers: {
-  //         "auth-token": `${userToken.token}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => setOffers(data.data));
-  //   }
-  // };
+  
   
   const getAdmins = () => {
     if (admins?.length === 0) {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllAdmins", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -85,7 +72,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllUsers", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -97,7 +84,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllSuppliers", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -109,7 +96,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://127.0.0.1:8000/admin/auth/getAllOwners", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -121,7 +108,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/api/auth/Offers", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -133,7 +120,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/planner/auth/getAllPlans", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -145,7 +132,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getAllHalls", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -157,7 +144,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getConfirmedHalls", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -169,7 +156,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getCanceledHalls", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -181,7 +168,7 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getAllPlanners", {
         headers: {
-          "auth-token": `${userToken.token}`,
+          "auth-token": `${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -193,8 +180,8 @@ const Dashboard = () => {
       // check if hall owner data has already been fetched
       fetch("http://localhost:8000/admin/auth/getUnConfirmedHalls", {
         headers: {
-          "auth-token": `${userToken.token}`,
-          Authorization: `Bearer ${userToken.token}`,
+          "auth-token": `${personData.token}`,
+          Authorization: `Bearer ${personData.token}`,
         },
       })
         .then((res) => res.json())
@@ -203,47 +190,81 @@ const Dashboard = () => {
   };
 
   const addPackage = () => {
-    nav("/addpackage", { state: { data: userToken } });
+    nav("/addpackage");
   };
   const addAdmin = () => {
-    nav("/addadmin", { state: { data: userToken } });
+    nav("/addadmin");
   };
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  function handleLogout() {
-    fetch("http://127.0.0.1:8000/api/auth/logout", {
-      method: "POST",
-      headers: {
-        "auth-token": `${userToken.token}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          setIsLoggedOut(true);
-        } else {
-          throw new Error("Logout failed.");
+  function handleLogout(e) {
+e.preventDefault();
+    Swal.fire({
+      title: `Will You  Logout  `,
+      icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Logout",
+    cancelButtonText: "Cancel",
+    }).then((data) => {if (data.isConfirmed) {
+      fetch("http://127.0.0.1:8000/api/auth/logout", {
+        method: "POST",
+        headers:{
+          "auth-token":`${personData.token}`
         }
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+        .then((response) => {
+          if (response.ok) {
+            
+            personData.setIsLogin(false);
+            personData.setName("");
+            personData.setEmail("");
+            personData.setRole("");
+            personData.setToken("");
+            personData.setCountry("");
+            personData.setGender("");
+            personData.setPhone("");
+            personData.setPhoto("");
+            personData.setReligion("");
+            personData.setId("");
+            // if (!personData.isLogin) {
+            //   alert("You Logged out");
+            //   nav(`/`)
+              
+            // }
+            if (personData.isLogin) {
+              alert("You Logged out");
+              nav(`/`);
+              // window.location.reload();
+            }
+            console.log(response)
+          } else {
+            throw new Error("Logout failed.");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }}
+   
+  )}
 
   const goToHome = () => {
-    nav("/", { state: { userToken: userToken } });
+    nav("/");
   };
 
   let content;
   if (selectedComponent === "client") {
     content = (
-      <FetchAllData user={client} getUser={getClients} userToken={userToken} />
+      <FetchAllData user={client} getUser={getClients} personData={personData} />
     );
   }else if (selectedComponent === "admin") {
     content = (
       <FetchAllData
         user={admins}
         getUser={getAdmins}
-        userToken={userToken}
+        personData={personData}
       />
     );
   }
@@ -252,7 +273,7 @@ const Dashboard = () => {
       <FetchAllData
         user={hallOwner}
         getUser={getHallOwner}
-        userToken={userToken}
+        personData={personData}
       />
     );
   } else if (selectedComponent === "weddingPlanner") {
@@ -260,40 +281,40 @@ const Dashboard = () => {
       <FetchAllData
         user={weddingPlanner}
         getUser={getWeddingPlanner}
-        userToken={userToken}
+        personData={personData}
       />
     );
   } else if (selectedComponent === "hallsRequest") {
     content = (
-      <HallsRequests hallsRequest={hallsRequest} userToken={userToken} />
+      <HallsRequests hallsRequest={hallsRequest} personData={personData} />
     );
   } else if (selectedComponent === "packages") {
-    content = <FetchHallsPlans user={allPackages} userToken={userToken} />;
+    content = <CardPackagesInDashboard user={allPackages} personData={personData} />;
   } else if (selectedComponent === "allHalls") {
-    content = <FetchHallsPlans user={allHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={allHalls} personData={personData} />;
   } else if (selectedComponent === "allPlans") {
-    content = <FetchHallsPlans user={allPlans} userToken={userToken} />;
+    content = <FetchHallsPlans user={allPlans} personData={personData} />;
   } else if (selectedComponent === "confirmedHalls") {
-    content = <FetchHallsPlans user={confirmedHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={confirmedHalls} personData={personData} />;
   } else if (selectedComponent === "canceledhalls") {
-    content = <FetchHallsPlans user={canceledHalls} userToken={userToken} />;
+    content = <FetchHallsPlans user={canceledHalls} personData={personData} />;
   } else if (selectedComponent === "offers") {
-    content = <FetchAllData user={offers} userToken={userToken} />;
+    content = <FetchAllData user={offers} personData={personData} />;
   } else if (selectedComponent === "suppliers") {
     content = (
       <FetchAllData
         user={suppliers}
         getUser={getSuppliers}
-        userToken={userToken}
+        personData={personData}
       />
     );
   }
-  useEffect(() => {
-    if (isLoggedOut) {
-      alert("You Logged out");
-      nav(`/`, { state: { userToken: userToken } });
-    }
-  }, [isLoggedOut]);
+  // useEffect(() => {
+  //   if (!personData.isLogin) {
+  //     alert("You Logged out");
+  //     nav(`/`);
+  //   }
+  // }, [personData.isLogin]);
   useEffect(() => {
     // getOffers();
     getAdmins();
@@ -319,11 +340,11 @@ const Dashboard = () => {
   console.log("planners", weddingPlanner);
   console.log("clients", client);
   console.log("hallrequset", hallsRequest);
-  console.log("offers", offers);
+  console.log("allPackages", allPackages);
   return (
     <div className="contSidebarWithDash">
       <div className="container">
-        <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
+        <div style={{ width: isOpen ? "250px" : "80px" }} className="sidebar">
           <div className="top_section">
             <img
               style={{ display: isOpen ? "block" : "none" }}

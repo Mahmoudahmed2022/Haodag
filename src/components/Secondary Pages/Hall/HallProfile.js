@@ -24,11 +24,12 @@ import ImageSlider from "./Component In Hall details/ImageSlider ";
 // import Slider from "../../Slider";
 import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
 import ModalForAskToBook from "../Modals/ModalForAskToBook";
+import { useContext } from "react";
+import { MyContext } from "../../Main Pages/Redux";
 const HallProfile = ({ rating, isFavourite }) => {
   const navigate = useNavigate();
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [show, setShow] = useState(false);
-  const [showBook, setShowBook] = useState(false);
   const [hover, setHover] = useState(null);
   const [Like, setLike] = useState(false);
   const [disLike, setDisLike] = useState(false);
@@ -39,21 +40,15 @@ const HallProfile = ({ rating, isFavourite }) => {
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
   const [hall, sethall] = useState([]);
-  const location = useLocation();
-  const userToken = location?.state?.userToken;
-  const userData = location?.state?.userData;
-  const isLogin = location?.state?.isLogin;
 
-  console.log(userData);
+  const personData = useContext(MyContext);
   const [ownerData, setOwnerData] = useState([]);
 
   let message = "!";
   const { hallId } = useParams();
   console.log(products);
-  // const hallId = Id.hallId;
 
   const allData = async (hallId) => {
-    // const api2 = "https://fakestoreapi.com/products";
     const api = `http://127.0.0.1:8000/api/auth/getHall/${hallId}`;
     await fetch(api)
       .then((response) => response.json())
@@ -70,8 +65,8 @@ const HallProfile = ({ rating, isFavourite }) => {
     fetch(`http://127.0.0.1:8000/user/auth/addFavourite/${hallId}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => {
@@ -85,44 +80,15 @@ const HallProfile = ({ rating, isFavourite }) => {
       });
   }
   function goToaAskToBook() {
-    navigate(`/BookHall/${hallId}`, { state: { data: userToken } });
+    navigate(`/BookHall/${hallId}`);
   }
-  console.log(products.name);
   useEffect(() => {
     allData(hallId);
     urlWhatSap();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  // fetch('http://127.0.0.1:8000/api/auth/getAllHalls')
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log(data);
-  // })
-  // .catch(error => {
-  //   console.error(error);
-  // });
-  const renderCard = (cardData) => {
-    return (
-      <>
-        <div className="" key={cardData.imdbID}>
-          <div className="img-div">
-            <img
-              className="hall-img"
-              src={cardData.Poster}
-              alt={cardData.Title}
-            ></img>
-          </div>
-        </div>
-      </>
-    );
-  };
-
-  const [visible, setVisible] = useState(5);
-
-  const loadMore = () => {
-    setVisible(visible + 5);
-  }; //201555578007
+  //201555578007
   const urlWhatSap = () => {
     phoneNumber = "201026249568"; // replace with the phone number you want to chat with
     message = "Hello!"; // replace with the message you want to send
@@ -139,16 +105,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   const handleMouseLeave = () => {
     setHover(null);
   };
-  // function handleClickStar(i) {
 
-  //   setStarStyle({ color: "gold" });
-  //   setToggle1(!toggle1);
-  // }
-  // function handleOutClickStar() {
-
-  //   setStarStyle({ color: "white" });
-  //   setToggle1(!toggle1);
-  // }
   function handleClick() {
     setHeartStyle({ color: "red" });
     setToggle(!toggle);
@@ -183,17 +140,13 @@ const HallProfile = ({ rating, isFavourite }) => {
   console.log(ownerData);
   const goToProfile = () => {
     navigate(`/owner/${hall.owner.id}`, {
-      state: { userData: ownerData, isLogin: isLogin },
+      state: { userData: ownerData },
     });
   };
 
   return (
     <>
-      <NavbarWithSideBar
-        userData={userData}
-        userToken={userToken}
-        isLogin={isLogin}
-      />
+      <NavbarWithSideBar />
       <div className="allHallProfile">
         <h1 className="hallName">{hall.name}</h1>
         {/* Slider */}
@@ -413,24 +366,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           </div>
         </div>
 
-        {/* For Video */}
-        {/* <div className="allhalls-container2">
-        {products.slice(0, visible).map(renderCard)}
-      </div>
-      <div className="for-button2">
-        {visible < products.length && (
-          <button className="more1" onClick={loadMore}>
-            Load 5 More
-          </button>
-        )}
-      </div> */}
-        {userToken && (
-          <CommentSection
-            userToken={userToken}
-            hallId={hallId}
-            userData={userData}
-            isLogin={isLogin}
-          />
+        {personData && (
+          <CommentSection personData={personData} hallId={hallId} />
         )}
       </div>
     </>
@@ -438,40 +375,3 @@ const HallProfile = ({ rating, isFavourite }) => {
 };
 
 export default HallProfile;
-
-{
-  /* <motion.div ref={carouselRef} className="carousel">
-        <motion.div
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}
-          whileTap={{ cursor: "grabbing" }}
-          className="inner-carousel"
-        >
-          {count()}
-        </motion.div>
-      </motion.div> */
-}
-
-// const infoElement = products.map((item) => {
-
-//   const replaced = item.Title;
-//   const replacedItem = replaced.split(' ').join('')
-//   return (
-//     <Info1ForHallCapacity
-//       key={item.imdbID}
-//       className="singleInfo"
-//       title={item.Title}
-//       year={item.Year}
-//       img={image} //item.image from api
-//       showButton={true} //item.is
-//       pathD={replacedItem}
-//     />
-//   );
-// });
-
-// const replaceSpace = products.map((item) => {
-
-//     const replaced = item.Title;
-//     console.log(replaced.split(' ').join(''))
-
-// });

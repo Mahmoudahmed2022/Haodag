@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../../../Css/HallForm.css";
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
-import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
+import { MyContext } from "../../Main Pages/Redux";
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
 
-const HallForm = (props) => {
+const HallForm = () => {
+  const personData = useContext(MyContext);
   const [responseObj, setResponseObj] = useState({});
-  const location = useLocation();
-  const userToken = location?.state?.data;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -41,7 +36,6 @@ const HallForm = (props) => {
     });
   }
 
-  
   console.log(formData);
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
@@ -50,7 +44,7 @@ const HallForm = (props) => {
       photos: selectedImages,
     });
   };
- const handleMediaChange = (event) => {
+  const handleMediaChange = (event) => {
     const files = event.target.files;
     const newVideosArray = [];
 
@@ -121,7 +115,7 @@ const HallForm = (props) => {
   };
 
   const handleSubmit1 = (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     const formDataObj = new FormData();
     formDataObj.append("name", formData.name);
     formDataObj.append("address", formData.address);
@@ -136,119 +130,44 @@ const HallForm = (props) => {
     formDataObj.append("country", formData.country);
     formDataObj.append("street", formData.street);
     formDataObj.append("city", formData.city);
-//     formDataObj.append("shows", formData.shows);
-    // formDataObj.append("services", formData.services);
     for (let i = 0; i < formData.shows.length; i++) {
-
       formDataObj.append(`shows[${i}]`, formData.shows[i]);
     }
     for (let i = 0; i < formData.services.length; i++) {
-
       formDataObj.append(`services[${i}]`, formData.services[i]);
     }
     for (let i = 0; i < formData.photos.length; i++) {
       formDataObj.append(`photos[${i}]`, formData.photos[i]);
     }
     console.log(formDataObj);
-    if(formDataObj){
+    if (formDataObj) {
       fetch("http://127.0.0.1:8000/owner/auth/addHall", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
         },
-        body:formDataObj
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);})
-          navigate(`/${userToken.role}/${userToken.id}`,{ state: { data: userToken } });
-          // window.location.reload();
-    }
-     };
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (formData) {
-      fetch("http://127.0.0.1:8000/owner/auth/addHall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken.token}`,
-          "auth-token": `${userToken.token}`,
-        },
-        body: JSON.stringify(formData),
+        body: formDataObj,
       })
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           console.log(data);
-          const hallId = data.data.id; // extract the hall id from the response
-          setResponseObj(data);
-          console.log(responseObj);
-          // construct the URL for the second API call using the hall id
-
-          // create a new FormData object and append the photos to it
-          const photoData = new FormData();
-          for (let i = 0; i < formData.photos.length; i++) {
-            photoData.append(`photos[${i}]`, formData.photos[i]);
-          }
-          console.log(photoData)
-
-          // make the second API call to upload the photos
-          fetch(`http://127.0.0.1:8000/owner/auth/addPhotoToMyhall/${hallId}`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${userToken.token}`,
-              "auth-token": `${userToken.token}`,
-            },
-            body: JSON.stringify(photoData),
-          })
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
         });
+      navigate(`/${personData.role}/${personData.id}`);
+      // window.location.reload();
     }
-    // navigate(`/${userToken.role}/${userToken.id}`)
-  }
-  
+  };
 
-  // const handleImageChange = (e) => {
-  //   const files = e.target.files;
-  //   const newImagesArray = [];
-
-  //   for (let i = 0; i < files.length; i++) {
-  //     const file = files[i];
-  //     const reader = new FileReader();
-
-  //     reader.onload = (e) => {
-  //       newImagesArray.push(e.target.result);
-  //       setFormData({ ...formData, photos: newImagesArray });
-  //     };
-
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
- 
   useEffect(() => {
     const formGroups = document.querySelectorAll(".form-group1");
     formGroups.forEach((group) => group.classList.add("visible"));
   }, []);
 
   return (
+    <>
+    <NavbarWithSideBar/>
     <div className="hall-signup-page1">
       <form className="signup-form1" onSubmit={handleSubmit1}>
         <h2>Add Hall</h2>
@@ -504,9 +423,7 @@ const HallForm = (props) => {
                   type="checkbox"
                   name="shows"
                   value="Dance performances"
-                  checked={formData.shows.includes(
-                    "FirDance performanceseworks"
-                  )}
+                  checked={formData.shows.includes("Dance performances")}
                   onChange={ShowshandleCheckboxChange}
                 />
                 Dance performances
@@ -728,6 +645,7 @@ const HallForm = (props) => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 export default HallForm;

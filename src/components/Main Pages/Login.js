@@ -5,9 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Login.css";
 import Loader from "../images/loader.gif";
 import NavbarWithSideBar from "./NavbarWithSideBar";
-function Login({onLogin}) {
-  // let body = document.getElementsByTagName("body");
-  // body.setAttribute("class", "login-body");
+import { useContext } from "react";
+import { MyContext } from "./Redux";
+function Login({ onLogin }) {
+  const personData = useContext(MyContext);
+
+  console.log(personData);
+
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -18,7 +22,6 @@ function Login({onLogin}) {
     password: "",
   });
   const [adminData, setAdminData] = useState(null);
-
   const [userToken, setUserToken] = useState(null);
 
   const getLoginData = (e) => {
@@ -49,45 +52,42 @@ function Login({onLogin}) {
         } else alert("email or password doesnt exist");
       })
       .then((data) => {
-        if(data){
-          setIsLogin(true)
-          if(data.data.role==="admin")
-          {setAdminData(data.data)}
-          else
-          setUserToken(data.data);
-        //   if (role==="admin") {
-        //     navigate(`/adminDashboard`, { state: { data: userToken,isLogin :isLogin } });
-        //   }
-        //   else{      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
-        // }
-        }
-        else{
+        if (data) {
+          personData.setIsLogin(true);
+          // personData.setIsLogout(false);
+          personData.setName(data.data.name);
+          personData.setEmail(data.data.email);
+          personData.setRole(data.data.role);
+          personData.setToken(data.data.token);
+          personData.setCountry(data.data.country);
+          personData.setGender(data.data.gender);
+          personData.setPhone(data.data.phone);
+          personData.setPhoto(data.data.photo);
+          personData.setReligion(data.data.religion);
+          personData.setId(data.data.id);
+          // if (personData.role === "admin") {
+          //   navigate(`/adminDashboard`);
+          // }
+        } else {
           window.location.reload();
         }
       })
       .catch((error) => {
         console.error(error.message);
-        // display the error message to the user using an alert or some other method
       });
   };
-console.log(userToken)
-console.log(adminData)
 
   useEffect(() => {
-    if (adminData) {
-      navigate(`/adminDashboard`, { state: { data: adminData,isLogin :isLogin } });
+    if (personData.role === "planner") {
+      navigate(`/`);
+    } else if (personData.role === "owner") {
+      navigate(`/`);
+    } else if (personData.role === "user") {
+      navigate(`/`);
+    } else if (personData.role === "admin") {
+      navigate(`/adminDashboard`);
     }
-    else if(userToken){      navigate(`/`, { state: { data: userToken,isLogin :isLogin } });
-  }
-    // if (status) {
-    //   if (status.message) {
-    //     alert(status.message);
-    //   } else if (status.msg) {
-    //     alert(status.msg);
-    //     navigate("/");
-    //   }
-    // }
-  }, [userToken,adminData]);
+  }, [personData]);
   if (load) {
     return (
       <div
@@ -105,70 +105,52 @@ console.log(adminData)
     );
   }
 
-  // const handleSubmit1 = (event) => {
-  //   event.preventDefault();
-  //   axios
-  //     .post("localhost:8000/api/auth/logout", formData)
-  //     .then((data) => {
-  //       setLoginData(data);
-  //       console.log(loginData)
-  //     });
-  // };
-  // useEffect(() => {
-  //   if (userToken) {
-  //     navigate("/", { state: { data: userToken } });
-  //   }
-  // }, [userToken]);
-  // Logout
-
   return (
     <>
-    <NavbarWithSideBar/>
-    <div className="cont">
-      <div className="login-box">
-        <h2 className="login-title">Login</h2>
-        <form className="login-form" >
-          <div className="user-box">
-            <FaUserAlt className="svg1" />
-            <input
-              type="email"
-              name="email"
-              className="email-input e-p-input"
-              required
-              onChange={getLoginData}
-            />
+      <NavbarWithSideBar />
+      <div className="cont">
+        <div className="login-box">
+          <h2 className="login-title">Login</h2>
+          <form className="login-form">
+            <div className="user-box">
+              <FaUserAlt className="svg1" />
+              <input
+                type="email"
+                name="email"
+                className="email-input e-p-input"
+                required
+                onChange={getLoginData}
+              />
 
-            <label className="e-p-label">Email</label>
-          </div>
-          <div className="user-box">
-            <FaLock className="svg1" />
-            <input
-              type="password"
-              name="password"
-              required
-              className="password-input e-p-input"
-              onChange={getLoginData}
-            />
-            <label className="e-p-label">Password</label>
-          </div>
-          <div className="divsubmitnewvisitor">
-            <button className="login-submit submit"onClick={handleSubmit}
->
-              <span className="s-span"></span>
-              <span className="s-span"></span>
-              <span className="s-span"></span>
-              <span className="s-span"></span>
-              Submit
-            </button>
-            <Link to="/registration" className="register">
-              new visitor
-            </Link>
-          </div>
-        </form>
+              <label className="e-p-label">Email</label>
+            </div>
+            <div className="user-box">
+              <FaLock className="svg1" />
+              <input
+                type="password"
+                name="password"
+                required
+                className="password-input e-p-input"
+                onChange={getLoginData}
+              />
+              <label className="e-p-label">Password</label>
+            </div>
+            <div className="divsubmitnewvisitor">
+              <button className="login-submit submit" onClick={handleSubmit}>
+                <span className="s-span"></span>
+                <span className="s-span"></span>
+                <span className="s-span"></span>
+                <span className="s-span"></span>
+                Submit
+              </button>
+              <Link to="/registration" className="register">
+                new visitor
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </>
-    
   );
 }
 export default Login;

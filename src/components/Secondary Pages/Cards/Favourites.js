@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { MyContext } from "../../Main Pages/Redux";
 
 function Favourites() {
-  const location = useLocation();
-  const userToken = location?.state?.data;
-  const userData = location?.state?.userData;
-  const isLogin = location?.state?.isLogin;
+  const personData=useContext(MyContext);
+
   const [favourites, setFavourites] = useState({});
-  const [halls, setHalls] = useState({});
   function getFavorites() {
     fetch("http://127.0.0.1:8000/user/auth/getFavourite", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => response.json())
@@ -31,7 +30,7 @@ function Favourites() {
   //     })
   //     .catch((err) => console.error(err));
   // });
-  console.log(favourites, halls);
+  console.log(favourites);
   useEffect(() => {
     getFavorites();
   }, []);

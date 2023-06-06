@@ -1,42 +1,34 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaParking, FaUserAlt } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
-import {
-  MdDirectionsCarFilled,
-  MdEmojiFoodBeverage,
-  MdFastfood,
-  MdLocationPin,
-} from "react-icons/md";
-import { Link, useLocation,useHistory, useNavigate } from "react-router-dom";
+import owners from "../images/owners1.png";
+import planners from "../images/planners.png";
+import suppliers from "../images/suppliers2.png";
+import clients from "../images/clients1.png";
+import shape1 from "../images/shape.png";
+
+
+import { Link, useNavigate } from "react-router-dom";
 import "../../Css/App.css";
 import "../../Css//Home1.css";
 import image11 from "../images/12.jpeg";
-import image10 from "../images/animation.png";
-// import HallCard from "../HallCard";
+import couples from "../images/couples.png"
 import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 import NavbarWithSideBar from "./NavbarWithSideBar";
-import { useToken } from "antd/es/theme/internal";
-
+import { useContext } from "react";
+import { MyContext } from "./Redux";
+import Swal from "sweetalert2";
+import CardMotionHome from "../Secondary Pages/Cards/CardMotionHome";
 function Home() {
-  const location = useLocation();
-  const userToken = location?.state?.data;
-  const isLogin = location?.state?.isLogin;
-
-  // const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const personData = useContext(MyContext);
+  console.log(personData);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
-  const [isLoggedOut,setIsLoggedOut] = useState(false)
-  console.log("user", userToken);
-// console.log(login)
 
-
-const nav = useNavigate();
-
-
+  const nav = useNavigate();
 
   const allCardData = () => {
     fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
@@ -52,103 +44,94 @@ const nav = useNavigate();
   const loadMore = () => {
     setVisible(visible + 5);
   };
+
   function handleLogout() {
-    fetch("http://127.0.0.1:8000/api/auth/logout", {
-      method: "POST",
-      headers:{
-        "auth-token":`${userToken.token}`
+    Swal.fire({
+      title: `Will You  Logout  `,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Logout",
+      cancelButtonText: "Cancel",
+    }).then((data) => {
+      if (data.isConfirmed) {
+        fetch("http://127.0.0.1:8000/api/auth/logout", {
+          method: "POST",
+          headers: {
+            "auth-token": `${personData.token}`,
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              personData.setIsLogin(false);
+              personData.setName("");
+              personData.setEmail("");
+              personData.setRole("");
+              personData.setToken("");
+              personData.setCountry("");
+              personData.setGender("");
+              personData.setPhone("");
+              personData.setPhoto("");
+              personData.setReligion("");
+              personData.setId("");
+              // if (!personData.isLogin) {
+              //   alert("You Logged out");
+              //   nav(`/`)
+
+              // }
+              console.log(response);
+            } else {
+              throw new Error("Logout failed.");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
-    })
-      .then((response) => {
-        if (response.ok) {
-          setIsLoggedOut(true);
-        } else {
-          throw new Error("Logout failed.");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    });
   }
-  
-  
+
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  useEffect(() => {
-    if (isLoggedOut) {
-      alert("You Logged out");
-      nav(`/`,{state:{userToken:userToken,login:isLogin}})
-      
-    }
-    
-  }, [isLoggedOut]);
-  
-  
   // useEffect(() => {
-  //   if (isLoggedOut) {
+  //   if (!personData.isLogin) {
   //     alert("You Logged out");
-  //     window.location.reload();
-  //     setuserToken(null); // clear the userToken state when logged out
-  //   }
-  // }, [isLoggedOut]);
-  const renderCard2 = (cardData) => {
-    return (
-      <>
-        <div className="containerHalls" key={cardData.id}>
-          <div className="RigthAndLeft">
-            <div className="imageForHall">
-              <img
-                className="imginside"
-                src={cardData.image}
-                alt={cardData.title}
-              ></img>
-            </div>
-            <div className="rightContentInfo">
-              <div>
-                <h2>Hall Name</h2>
-                <div className="iconsForDiscription">
-                  <MdFastfood />
-                  <MdEmojiFoodBeverage />
-                  <MdDirectionsCarFilled />
-                  <FaParking />
-                </div>
-              </div>
+  //     nav(`/`)
 
-              <div className="priceAndLocation">
-                <div className="priceHall">
-                  <p>{cardData.price}$</p>
-                </div>
-                <div>
-                  <p>
-                    {" "}
-                    <MdLocationPin /> {cardData.title}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="lastButtonForDetails">
-            <Link
-              className="lastButtonForDetails-button"
-              to={`/hallDetails/${cardData.id}`}
-            >
-              Details
-            </Link>
-            {userToken.role === "owner" && (
-              <Link className="lastButtonForDetails" to="/AddHall">
-                Edit Hall
-              </Link>
-            )}
-          </div>
-        </div>
-      </>
-    );
-  };
+  //   }
+
+  // }, [personData.isLogin]);
+  //  useEffect(() => {
+  //   setLogin()
+
+  // }, [personData.isLogin]);
+  // let content ;
+  // const setLogin = ()=>{
+  //   if(personData.isLogin)
+  //   {content =  <div className="buttons-log-reg">
+  //   <button onClick={handleLogout} className="glow-on-hover">
+  //     Logout
+  //   </button>
+  // </div> }
+  // else if (!personData.isLogin){
+  //   content = <div className="buttons-log-reg">
+  //   <Link className="glow-on-hover" to="/login">
+  //     Login
+  //   </Link>
+  //   <Link className="glow-on-hover" to="/registration">
+  //     Sign Up
+  //   </Link>
+  // </div>
+  // }
+
+  // }
+
   return (
     <>
-            <NavbarWithSideBar userToken={userToken} isLogin={isLogin} />
+      <NavbarWithSideBar />
 
       <div className="home-landing">
         <div className="all-content">
@@ -156,51 +139,61 @@ const nav = useNavigate();
             <div className="text-content2">
               <h1 className="head-text">
                 All Because Two People Fell In Love.
-                {/* <p>this statement from api i'm a {userToken?.role} </p>
-                 <img src={userToken.photo} alt=""/> */}
               </h1>
               <p className="p-info">
                 We want your comfort, so we have created our website to make it
                 easier for you to choose the right hall for your wedding
               </p>
-              {!userToken? (
-                <div className="buttons-log-reg">
-                <Link className="glow-on-hover" to="/login">
-                  Login
-                </Link>
-                <Link className="glow-on-hover" to="/registration">
-                  Sign Up
-                </Link>
-              </div>
-              ):(
-                <div className="buttons-log-reg">
-                <button onClick={handleLogout} className="glow-on-hover" >
-                  Logout
-                </button>
-                
-              </div>
-              )}
+              {/* {content} */}
+              {/* <div><img src={shape}></img>
+</div> */}
               
             </div>
           </div>
 
           <div className="left-side">
-            <div className="for-advertisment">
+            {/* <div className="for-advertisment">
               {" "}
               <Link className="advertisment" to="/">
                 To Put Your Advertisement
               </Link>
-            </div>
+            </div> */}
 
-            <img className="left-photo" src={image10} alt="left photo"></img>
+            <img className="left-photo" src={couples} alt="left photo"></img>
           </div>
         </div>
       </div>
-      <h1 className="headForHalls">Our Recommendation For You</h1>
 
-      <div className="home-allhalls-container">
+      <h1 className="CardSSecondMod">How to Plan a Wedding</h1>
+      <div className="ContCardsMotion">
+        <CardMotionHome
+          image={planners}
+          content="My role is to plan and organize whole wedding "
+          name="I'm Planner"
+        />
+        <CardMotionHome
+          image={suppliers}
+          content="My role is to provide you with everything you need away from the management of the hall"
+          name="I'm Owner"
+        />
+        <CardMotionHome
+          image={owners}
+          content="i have a hall you can communicate with me to reserve it"
+          name="I'm Supplier"
+        />
+
+        <CardMotionHome
+          image={clients}
+          content="We are the clients who have booked the halls and contracted with the party planners and suppliers"
+          name="We Are Clients"
+        />
+      </div>
+
+      <h1 className="headForHalls animate">Our Recommendation For You</h1>
+
+      <div className="home-allhalls-container animate">
         {cardData.slice(0, visible).map((data, index) => (
-          <NewCardTemplate userToken={userToken} key={index} cardData={data} isLogin={isLogin} />
+          <NewCardTemplate key={index} cardData={data} />
         ))}{" "}
       </div>
       <div className="for-button">
@@ -255,18 +248,7 @@ const nav = useNavigate();
                   />
                   <label className="e-p-label">Name</label>
                 </div>
-                {/* <div className="user-box1">
-    <HiOutlineMail className="svg1" />
-    <input
-      type="email"
-      name=""
-      required=""
-      className="password-input1 e-p-input1"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-    <label className="e-p-label">Email</label>
-  </div> */}
+
                 <div className="user-box1">
                   <label className="textArea">Write Your Message</label>
                   <input

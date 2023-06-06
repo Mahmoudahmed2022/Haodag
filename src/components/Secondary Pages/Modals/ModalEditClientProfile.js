@@ -1,35 +1,13 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../../Css/Modal.css";
+import { useContext } from "react";
+import { MyContext } from "../../Main Pages/Redux";
 
 const ModalEditClientProfile = () => {
   const [formData, setFormData] = useState({});
-  
-  const params = useParams();
   let navigate = useNavigate();
-  const location = useLocation();
-  const userToken = location?.state?.data;
-
-  // const handleImageChange = (e) => {
-  //   const files = e.target.files;
-  //   const images = [];
-
-  //   for (let i = 0; i < files.length; i++) {
-  //     const file = files[i];
-  //     const reader = new FileReader();
-
-  //     reader.onload = (e) => {
-  //       images.push(e.target.result);
-  //       // Update state or perform any other operation with the image data
-  //     };
-
-  //     reader.readAsDataURL(file);
-  //   }
-  //   setHallImage(images);
-  //   console.log(images);
-  // };
-
+  const personData = useContext(MyContext);
   function getLoginData(event) {
     setFormData((prevFormData) => {
       return {
@@ -38,47 +16,39 @@ const ModalEditClientProfile = () => {
       };
     });
   }
-  // function ResetLoginData(event) {
-  //   event.preventDefault();
-  //   setFormData((prevFormData) => {
-  //     return {
-  //       prevFormData: (event.target.value = ""),
-  //     };
-  //   });
-  // }
-
-  const reset = () => {
-    setFormData([])
-  };
 
   console.log(formData);
-  console.log(userToken);
+  console.log(personData);
   const onSubmitted = (e) => {
     e.preventDefault();
-    fetch(`http://127.0.0.1:8000/${userToken.role}/auth/update${userToken.role.charAt(0).toUpperCase() + userToken.role.slice(1)}/${userToken.id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `http://127.0.0.1:8000/${personData.role}/auth/update${
+        personData.role.charAt(0).toUpperCase() + personData.role.slice(1)
+      }/${personData.id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${personData.token}`,
+          "auth-token": `${personData.token}`,
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         console.log(data.data.name);
-        userToken.name=data.data.name
-        userToken.phone=data.data.phone
-        userToken.password=data.data.password
+        personData.name = data.data.name;
+        personData.phone = data.data.phone;
+        personData.password = data.data.password;
 
-        navigate(`/${userToken.role}/${userToken.id}`, {state: { data: userToken }})
+        navigate(`/${personData.role}/${personData.id}`);
       })
       .catch((error) => {
         console.error(error);
       });
-      
   };
 
   function togglePasswordVisibility1() {
@@ -105,7 +75,7 @@ const ModalEditClientProfile = () => {
               className="form-control"
               id="name"
               name="name"
-              defaultValue={userToken?.name}
+              defaultValue={personData?.name}
             />
           </div>
           <div className="form-group">
@@ -118,7 +88,7 @@ const ModalEditClientProfile = () => {
               className="form-control"
               id="email"
               name="email"
-              defaultValue={userToken?.email}
+              defaultValue={personData?.email}
             />
           </div>
           <div className="form-group">
@@ -126,19 +96,17 @@ const ModalEditClientProfile = () => {
               Password
             </label>
             <span
-                className="toggle-password animated marginBottomLeft"
-                onClick={togglePasswordVisibility1}
-              >
-                show
-              </span>
+              className="toggle-password animated marginBottomLeft"
+              onClick={togglePasswordVisibility1}
+            >
+              show
+            </span>
             <input
               onChange={getLoginData}
               type="password"
               className="form-control"
               id="password"
               name="password"
-              // defaultValue={userToken?.password}
-
               placeholder="Enter New Password"
             />
           </div>
@@ -152,23 +120,17 @@ const ModalEditClientProfile = () => {
               className="form-control"
               id="phone"
               name="phone"
-              defaultValue={userToken?.phone}
+              defaultValue={personData?.phone}
             />
           </div>
-          
+
           <div className=" DivbtnModal">
             <button type="submit" className="form-btn btnModal">
               Edit Profile
             </button>
-            {/* <button className="form-btn btnModal" onClick={ResetLoginData}>
-              Reset
-            </button> */}
           </div>
         </form>
       </div>
-
-      {/* </div>
-      </div> */}
     </>
   );
 };

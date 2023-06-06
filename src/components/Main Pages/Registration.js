@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../Css/Registration.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "./Redux";
 function Registration() {
-  const [userToken, setUserToken] = useState(null);
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
-
+  const personData = useContext(MyContext);
   const [verifyPassword, setVerifyPassword] = useState("");
   const [photo, setPhoto] = useState(null);
   const [formData, setFormData] = useState({
@@ -60,7 +60,18 @@ function Registration() {
         })
         .then((data) => {
           console.log(data);
-          setUserToken(data.data);
+          personData.setIsLogin(true);
+          personData.setName(data.data.name);
+          personData.setEmail(data.data.email);
+          personData.setRole(data.data.role);
+          personData.setToken(data.data.token);
+          personData.setCountry(data.data.country);
+          personData.setGender(data.data.gender);
+          personData.setPhone(data.data.phone);
+          personData.setPhoto(data.data.photo);
+          personData.setReligion(data.data.religion);
+          personData.setId(data.data.id);
+
           setStatus(data);
         })
         .catch((error) => {
@@ -70,144 +81,25 @@ function Registration() {
       alert("Password and Confirm Password Does not Match");
     }
   };
-  console.log("userToken", userToken);
+  console.log("personData", personData);
   console.log("status", status);
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-  // const handlePhotoChange = (event) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     photo: event.target.files[0],
-  //   }));
-  // };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const formDataObj = new FormData();
-  //   formDataObj.append("name", formData.name);
-  //   formDataObj.append("email", formData.email);
-  //   formDataObj.append("password", formData.password);
-  //   formDataObj.append("country", formData.country);
-  //   formDataObj.append("phone", formData.phone);
-  //   formDataObj.append("gender", formData.gender);
-  //   formDataObj.append("religion", formData.religion);
-  //   formDataObj.append("role", formData.role);
-  //   formDataObj.append("photo", formData.photo);
-
-  //   fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
-  //     method: "POST",
-  //     body: formDataObj,
-  //   })
-  //     .then((response) =>{response.json();console.log(response)} )
-  //     .then((data) => {
-  //       console.log(data)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
-
-  // // localhost:8000/api/auth/switchRegister
-  // const handleSubmit1 = (event) => {
-  //   event.preventDefault();
-  //   console.log(formData);
-  //   axios
-  //     .post("http://127.0.0.1:8000/api/auth/switchRegister", formData)
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
-  // console.log(formData);
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // function sendRegisterData(e) {
-  //   e.preventDefault();
-  //   if (formData.password === verifyPassword) {
-  //     fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     })
-  //       .then((response) => {
-
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-
-  //         setUserToken(data.data);
-  //         setStatus(data);
-  //       });
-  //   } else {
-  //     alert("Password and Confirm Password Does not Match");
-  //   }
-  // }
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // console.log(formData);
-  // console.log(userToken);
 
   useEffect(() => {
-    if (userToken) {
-      // navigate("/hallform", { state: { data: userToken } });
-      navigate(`/:${userToken.role}/${userToken.id}`, {
-        state: { data: userToken },
-      });
-    }
-    if (status) {
-      if (status.message) {
-        alert(status.message);
-      } else if (status.msg) {
-        alert(status.msg);
+    // if (personData) {
+    //   // navigate("/hallform", { state: { data: personData } });
+    //   navigate(`/:${personData.role}/${personData.id}`);
+    // }
+   
+      if (status?.message==="User successfully registered") {
+        alert(status?.message);
+        navigate("/");
+
+      } else if (status?.msg) {
+        alert(status?.msg);
         navigate("/login");
       }
-    }
-  }, [userToken, status]);
-
-  // useEffect(() => {
-  //   if (userToken) {
-  //     navigate("/", { state: { data: userToken } });
-  //   }
-  //   if (status.message) {
-  //     alert(status.message);
-  //   } else if (status.msg) {
-  //     alert(status.msg);
-  //   }
-  // }, [userToken, status.message, status.msg]);
-  // useEffect(() => {
-  //   if (userToken) {
-  //     navigate("/", { state: { data: userToken } });
-  //   }
-  // }, [userToken]);
-
-  // console.log(verifyPassword + "vreify");
-  // console.log(userToken);
-
-  // const handlimg = (event) => {
-  //   const file = event.target.files[0];
-  //   setPhoto(file);
-  // };
-  // console.log(photo);
-  // console.log(formData);
-  // console.log(userToken);
+    
+  }, [personData, status]);
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
@@ -364,71 +256,11 @@ function Registration() {
           </div>
         </div>
         <div className="form-group-AddHall animated">
-          {/* <input type="file" name="photo" onChange={(e)=>{setPhoto(e.target.files[0])}} /> */}
-          {/* <input
-            type="file"
-            name="photo"
-            // onChange={uploadFile}
-            onChange={(e) => {
-              setFormData((prev) => {
-                return {
-                  ...prev,
-                  photo: e.target.files[0],
-                };
-              });
-            }}
-          /> */}
-
           <input
             type="file"
             name="photo"
             className="input-field-AddHall"
             onChange={handlePhotoChange}
-            // onChange={handlimg}
-            // onChange={(e) => {
-            //   const file = e.target.files[0];
-            //   const path = URL.createObjectURL(file);
-
-            //   setPhoto((prev) => {
-            //     return {
-            //       ...prev,
-            //       photo: path,
-            //     };
-            //   });
-            //   formData.append('photo1',photo)
-            // }}
-            // onChange={(e) => {
-            //   const file = e.target.files[0];
-            //   const path = URL.createObjectURL(file);
-
-            //   setPhoto((prev) => {
-            //     return {
-            //       ...prev,
-            //       photo: path,
-            //     };
-            //   });
-
-            //   setFormData((prev) => {
-            //     const formData = new FormData();
-            //     formData.append('photo1', file);
-            //     return { ...prev, formData };
-            //   });
-            // }}
-            // onChange={(e) => {
-            //   const file = e.target.files[0];
-            //   const path = URL.createObjectURL(file);
-
-            //   setPhoto((prev) => {
-            //     return {
-            //       ...prev,
-            //       photo: path,
-            //     };
-            //   });
-
-            //   setFormData((prev) => {
-            //     return { ...prev, photo: path };
-            //   });
-            // }}
           />
         </div>
         <div className="form-group-AddHall animated">
@@ -448,22 +280,7 @@ function Registration() {
             <option value="planner">Wedding Planner</option>
           </select>
         </div>
-        {/* <div className="form-group-AddHall animated">
-          <label htmlFor="role">Choose a Type Of Planner:</label>
-          <select
-            name="type"
-            id="type"
-            value={formData.type}
-            className="select-field-AddHall"
-            onChange={handleInputChange}
-          >
-            <option checked value="">
-              Choose a Role
-            </option>
-            <option value="orignal planner">orignalplanner</option>
-            <option value="provider planner">providerplanner</option>
-          </select>
-        </div> */}
+
         <button type="submit" className="btnAddHall">
           Sign Up
         </button>
@@ -476,92 +293,3 @@ function Registration() {
 }
 
 export default Registration;
-
-// const handleChange = (event) => {
-//   const { name, value } = event.target;
-//   setFormData((prevState) => ({
-//     ...prevState,
-//     [name]: value,
-//   }));
-// };
-
-// const handlePhotoChange = (event) => {
-//   setFormData((prevState) => ({
-//     ...prevState,
-//     photo: event.target.files[0],
-//   }));
-// };
-
-// const handleSubmit = (event) => {
-//   event.preventDefault();
-//   const formDataObj = new FormData();
-//   formDataObj.append("name", formData.name);
-//   formDataObj.append("email", formData.email);
-//   formDataObj.append("password", formData.password);
-//   formDataObj.append("country", formData.country);
-//   formDataObj.append("phone", formData.phone);
-//   formDataObj.append("gender", formData.gender);
-//   formDataObj.append("religion", formData.religion);
-//   formDataObj.append("role", formData.role);
-//   formDataObj.append("photo", formData.photo);
-
-//   fetch("http://127.0.0.1:8000/api/auth/switchRegister", {
-//     method: "POST",
-//     body: formDataObj,
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
-
-// return (
-//   <form onSubmit={handleSubmit}>
-//     <label>
-//       Name:
-//       <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Email:
-//       <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Password:
-//       <input type="password" name="password" value={formData.password} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Country:
-//       <input type="text" name="country" value={formData.country} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Phone:
-//       <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Gender:
-//       <select name="gender" value={formData.gender} onChange={handleInputChange}>
-//         <option value="">Select Gender</option>
-//         <option value="male">Male</option>
-//         <option value="female">Female</option>
-//       </select>
-//     </label>
-//     <label>
-//       Religion:
-//       <input type="text" name="religion" value={formData.religion} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Role:
-//       <input type="text" name="role" value={formData.role} onChange={handleInputChange} />
-//     </label>
-//     <label>
-//       Photo:
-//       <input type="file" name="photo" onChange={handlePhotoChange} />
-//     </label>
-//     <button type="submit">Create User</button>
-//   </form>
-// );
-// }
-// export default Registration;

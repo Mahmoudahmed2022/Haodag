@@ -103,6 +103,9 @@
 .id {
   width: 15%;
 }
+.tableUsersData tbody tr:nth-of-type(odd){
+  background-color: #4f4f4f;
+}
 
 .truserData th,
 .truserData td {

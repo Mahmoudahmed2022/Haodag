@@ -5,13 +5,15 @@ import user2 from "../images/user2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavbarWithSideBar from "./NavbarWithSideBar";
+import { useContext } from "react";
+import { MyContext } from "./Redux";
 function WeddingPlanners() {
+   const personData = useContext(MyContext);
+ 
   const [planners, setPlanners] = useState([]);
   const [owners, setOwners] = useState([]);
   const location = useLocation();
-  const userToken =location?.state?.userToken;
-  const userData =location?.state?.userData;
-  const isLogin =location?.state?.isLogin;
+ 
   const [visible, setVisible] = useState(6);
   const navigate = useNavigate();
 
@@ -76,7 +78,7 @@ function WeddingPlanners() {
 
   return (
     <>
-      <NavbarWithSideBar isLogin={isLogin} userToken={userToken} userData={userData} />
+      <NavbarWithSideBar />
 
       <div className="WeddingPlanners-container">
         <div>

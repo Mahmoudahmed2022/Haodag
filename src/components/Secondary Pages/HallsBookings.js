@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../../Css/WeddingPlanners.css";
 import "../../Css/Reservation.css";
+import { useContext } from "react";
+import { MyContext } from "../Main Pages/Redux";
 function HallsBookings() {
-  const location = useLocation();
-  const userToken = location?.state?.data;
+  const personData = useContext(MyContext);
   const [bookings, setBookings] = useState([]);
   const getBookings = () => {
     fetch("http://127.0.0.1:8000/user/auth/getUserAllBookings", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => {

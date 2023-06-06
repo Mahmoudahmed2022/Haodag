@@ -5,10 +5,12 @@ import "../../../Css/NewCardTemplate.css";
 import HallProfile from "../Hall/HallProfile";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { MyContext } from "../../Main Pages/Redux";
 const PackageCard = (props) => {
+  const personData = useContext(MyContext);
   const navigate = useNavigate();
   const cardData = props.cardData;
-  const userToken = props.userToken;
   const [showHallDetails, setShowHallDetails] = useState(false);
   const [hall, setHall] = useState();
 
@@ -24,11 +26,10 @@ const PackageCard = (props) => {
   };
   function handleClick() {
     navigate(`/EditPackage/${hall.id}`, {
-      state: { data: userToken, hall: hall },
+      state: { hall: hall },
     });
   }
-  // console.log('fromNewCardp',props.userToken)
-  // const isOwner = props.userToken.role==='owner';
+
   function handleHallDetailsClick() {
     setShowHallDetails(true);
   }
@@ -38,8 +39,8 @@ const PackageCard = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
     })
       .then((response) => {
@@ -91,12 +92,12 @@ const PackageCard = (props) => {
               />
             )}
           </Link>
-          {userToken && (
+          {personData && (
             <button className="Details-button" onClick={handleClick}>
               Edit Package
             </button>
           )}
-          {userToken && (
+          {personData && (
             <button className="Details-button" onClick={deletePackage}>
               Delete Package
             </button>

@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../../Css/Modal.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { MyContext } from "../../Main Pages/Redux";
 
 const ModalForAskToBook = (props) => {
+  const personData=useContext(MyContext);
   const nav = useNavigate();
   const prop = useParams();
   const hallId = prop.id;
-  const location = useLocation();
-  const userToken = location?.state?.data;
   const [formData, setFormData] = useState({
     hall_id: hallId,
     check_in_date: "",
     check_out_date: "",
   });
 
-  console.log(hallId, "ask to book", userToken);
+  console.log(hallId, "ask to book", personData);
   function getRegisterData(e) {
     setFormData((prev) => {
       return {
@@ -34,8 +34,8 @@ const ModalForAskToBook = (props) => {
     fetch("http://127.0.0.1:8000/user/auth/bookRoom", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${personData.token}`,
+        "auth-token": `${personData.token}`,
       },
       body: formDataObj,
     })
@@ -47,13 +47,13 @@ const ModalForAskToBook = (props) => {
       })
       .then((data) => {
         alert(data.message);
-        nav(`/HallsBookings`, { state: { data: userToken } });
+        nav(`/HallsBookings`);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   };
-  console.log(formData, userToken.token);
+  console.log(formData, personData.token);
   return (
     <>
       <div className="modal2">

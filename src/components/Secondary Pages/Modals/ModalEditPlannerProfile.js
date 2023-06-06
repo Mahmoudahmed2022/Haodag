@@ -25,24 +25,7 @@ const ModalEditPlannerProfile = (props) => {
     setPhone("");
     props.onClose();
   };
-  const handleImageChange = (e) => {
-    const files = e.target.files;
-    const images = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        images.push(e.target.result);
-        // Update state or perform any other operation with the image data
-      };
-
-      reader.readAsDataURL(file);
-    }
-    setHallImage(images);
-    console.log(images);
-  };
+  
 
   function getLoginData(event) {
     setFormData((prevFormData) => {
@@ -52,14 +35,6 @@ const ModalEditPlannerProfile = (props) => {
       };
     });
   }
-
-  const reset = () => {
-    setName("");
-    setEmail("");
-    setAddress("");
-    setGender("");
-    setPhone("");
-  };
 
   if (!props.show) {
     return null;

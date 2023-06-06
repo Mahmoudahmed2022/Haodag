@@ -5,7 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 function CommentSection(props) {
   const [comments, setComments] = useState([]);
   const hallId = props.hallId;
-  const userToken = props.userToken;
+  const personData = props.personData;
   const userData = props.userData;
   const isLogin = props.isLogin;
 
@@ -23,7 +23,7 @@ function CommentSection(props) {
       })
       .catch((err) => console.error(err));
   };
-  console.log(userToken, hallId, comments);
+  console.log(personData, hallId, comments);
 
   useEffect(() => {
     getComments();
@@ -32,12 +32,11 @@ function CommentSection(props) {
   return (
     <div className="AllCommentSection">
       <div className="containerCommentSection">
-        {userToken?.role == "user" && (
+        {personData?.role == "user" && (
           <CommentForm
-            userToken={userToken}
+            personData={personData}
             hallId={hallId}
-            userData={userData}
-            isLogin={isLogin}
+           
           />
         )}
         {comments?.map((comment, index) => (
