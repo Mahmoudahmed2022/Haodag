@@ -12,7 +12,7 @@ import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
 import Users from "./Users";
-
+import Services from "./Services";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const [plan, setplan] = useState([]);
@@ -24,6 +24,7 @@ const HeaderDataProfile = (props) => {
   const isPlanner = (personData?.role || personData?.role) === "planner";
   const isOwner = (personData?.role || personData?.role) === "owner";
   const isClient = (personData?.role || personData?.role) === "user";
+  const isSupplier = (personData?.role || personData?.role) === "supplier";
 
   const navigate = useNavigate();
 
@@ -33,6 +34,9 @@ const HeaderDataProfile = (props) => {
 
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: personData } });
+  }
+  function goToAddService() {
+    navigate(`/addservice`, { state: { data: personData } });
   }
   function goToAddPackage() {
     navigate(`/addpackage`);
@@ -60,6 +64,7 @@ const HeaderDataProfile = (props) => {
     window.scrollTo({ behavior: "smooth" });
     fetchplans();
   }, []);
+
   const fetchplans = () => {
     fetch(
       `http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${personData.id}`,
@@ -137,24 +142,14 @@ const HeaderDataProfile = (props) => {
                     ></button>
                   </div>
                 )}
-                {/* admindashboard */}
-                {isAdmin && (
+                {isSupplier && (
                   <>
                     <div className="planner-prof-btn-div">
                       <button
-                        onClick={goDashboard}
+                        onClick={goToAddService}
                         className="btn-flip add-hall-btn"
-                        data-back="Dashboard"
-                        data-front="Dashboard"
-                        to="#"
-                      ></button>
-                    </div>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={goToAddPackage}
-                        className="btn-flip add-hall-btn"
-                        data-back="Add Package"
-                        data-front="Add Package"
+                        data-back="Add Service"
+                        data-front="Add Service"
                         to="#"
                       ></button>
                     </div>
@@ -251,6 +246,13 @@ const HeaderDataProfile = (props) => {
       )}
       {personData?.role === "user" || userData?.role === "user" ? (
         <Users
+          userData={personData}
+          userToken={personData}
+          isLogin={personData.isLogin}
+        />
+      ) : null}
+      {personData?.role === "supplier" || userData?.role === "supplier" ? (
+        <Services
           userData={personData}
           userToken={personData}
           isLogin={personData.isLogin}

@@ -33,48 +33,52 @@ import EditPackage from "./components/Secondary Pages/Hall/EditPackage";
 import { MyProvider } from "./components/Main Pages/Redux";
 import Home from "./components/Main Pages/Home1";
 import HomeForTranslate from "./components/Secondary Pages/Translation/HomeForTranslate";
+import AddService from "./components/Secondary Pages/AddService";
 
 function App() {
   return (
     <MyProvider>
-    <div className="App">
-      <div className="ParentDivForAll">
-        <Routes>
-          <Route path="/AdminDashboard" element={<Dashboard />} />
-          <Route path="/hallForm" element={<HallForm />} />
-          <Route path="/hallsrequests" element={<HallsRequests />} />
-          <Route path="/greatepackages" element={<GreatePackages />} />
-          <Route path="/addpackage" element={<AddPackage />} />
-          <Route path="/modal" element={<Modal />} />
-          <Route path="/hallDetails/:hallId" element={<HallProfile />} />
-          <Route path="/" element={<Home1 />} />
-          <Route path="/translation" element={<HomeForTranslate />} />
+      <div className="App">
+        <div className="ParentDivForAll">
+          <Routes>
+            <Route path="/AdminDashboard" element={<Dashboard />} />
+            <Route path="/hallForm" element={<HallForm />} />
+            <Route path="/hallsrequests" element={<HallsRequests />} />
+            <Route path="/greatepackages" element={<GreatePackages />} />
+            <Route path="/addpackage" element={<AddPackage />} />
+            <Route path="/modal" element={<Modal />} />
+            <Route path="/hallDetails/:hallId" element={<HallProfile />} />
+            <Route path="/" element={<Home1 />} />
+            <Route path="/translation" element={<HomeForTranslate />} />
+            <Route path="/addservice" element={<AddService />} />
+            <Route path="/hall/:hallId" element={<Hall />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
+            <Route path="/PlansBookings" element={<PlansBookings />} />
+            <Route path="/HallsBookings" element={<HallsBookings />} />
+            <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
+            <Route path="/:param/:id" element={<HeaderDataProfile />} />
+            <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/Bookings" element={<Bookings />} />
+            <Route path="/addadmin" element={<AddAdmin />} />
 
-          <Route path="/hall/:hallId" element={<Hall />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
-          <Route path="/PlansBookings" element={<PlansBookings />} />
-          <Route path="/HallsBookings" element={<HallsBookings />} />
-          <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
-          <Route path="/:param/:id" element={<HeaderDataProfile />} />
-          <Route path="/termsofuse" element={<TermsOfUse />} />
-          <Route path="/Bookings" element={<Bookings />} />
-          <Route path="/addadmin" element={<AddAdmin />} />
+            <Route path="/PlansRequests" element={<PlansRequests />} />
+            <Route
+              path="/editProfile/:id"
+              element={<ModalEditClientProfile />}
+            />
+            <Route path="/addplan" element={<ModalAddplan />} />
+            <Route path="/BookHall/:id" element={<ModalForAskToBook />} />
+            <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
+            <Route path="/EditPackage/:id" element={<EditPackage />} />
+            <Route path="/editHall/:id" element={<EditHall />} />
+          </Routes>
 
-          <Route path="/PlansRequests" element={<PlansRequests />} />
-          <Route path="/editProfile/:id" element={<ModalEditClientProfile />} />
-          <Route path="/addplan" element={<ModalAddplan />} />
-          <Route path="/BookHall/:id" element={<ModalForAskToBook />} />
-          <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
-          <Route path="/EditPackage/:id" element={<EditPackage />} />
-          <Route path="/editHall/:id" element={<EditHall />} />
-        </Routes>
-
-        <Footer />
+          <Footer />
+        </div>
       </div>
-    </div>
     </MyProvider>
   );
 }

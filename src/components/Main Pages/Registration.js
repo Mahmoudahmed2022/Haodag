@@ -89,16 +89,14 @@ function Registration() {
     //   // navigate("/hallform", { state: { data: personData } });
     //   navigate(`/:${personData.role}/${personData.id}`);
     // }
-   
-      if (status?.message==="User successfully registered") {
-        alert(status?.message);
-        navigate("/");
 
-      } else if (status?.msg) {
-        alert(status?.msg);
-        navigate("/login");
-      }
-    
+    if (status?.message === "User successfully registered") {
+      alert(status?.message);
+      navigate("/");
+    } else if (status?.msg) {
+      alert(status?.msg);
+      navigate("/login");
+    }
   }, [personData, status]);
 
   function togglePasswordVisibility() {
@@ -277,7 +275,8 @@ function Registration() {
             </option>
             <option value="user">Client</option>
             <option value="hallowner">Hall Owner</option>
-            <option value="planner">Wedding Planner</option>
+            <option value="planner">Wedding Planner</option>{" "}
+            <option value="supplier">Supplier</option>
           </select>
         </div>
 
