@@ -29,13 +29,13 @@ const Services = ({ userData, isLogin }) => {
       })
       .then((data) => {
         console.log("Data received from server:", data);
-        setSupplierServiceCard(data.halls);
+        setSupplierServiceCard(data.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   };
-
+  console.log(supplierServiceCard);
   useEffect(() => {
     getSupplierServiceCard();
   }, []);

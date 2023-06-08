@@ -4,23 +4,20 @@
   flex-direction: column;
   padding: 3rem;
   width: 90%;
-  max-width: 300px;
+  max-width: 200px;
+  height: 350px;
   background-color: #1b2028;
   border-radius: 16px;
   position: relative;
   border: 3px solid transparent;
   background-clip: padding-box;
   text-align: center;
-  color: #f1f3f3;
-  background-image: linear-gradient(
-    135deg,
-    rgba(117, 46, 124, 0.35),
-    rgba(115, 74, 88, 0.1) 15%,
-    #1b2028 20%,
-    #1b2028 100%
-  );
+  color: var(--main-color);
+  background-color: var(--black-color);
 }
-
+.profile:hover {
+  box-shadow: 10px 10px 15px var(--main-color);
+}
 .profile:after {
   content: "";
   display: block;
@@ -63,7 +60,7 @@
 }
 
 .profile-user-handle {
-  color: #7d8396;
+  color: var(--main-color);
 }
 
 .profile-actions {
@@ -92,15 +89,20 @@
 
 .btn--primary {
   border-radius: 99em;
-  background-color: #3772ff;
-  background-image: linear-gradient(135deg, #5587ff, #3772ff);
-  color: #fff;
+  background-color: var(--main-color);
   padding: 0 1.375em;
+  color: var(--black-color);
+  padding: 0 1.375em;
+  width: 80px;
 }
 
 .btn--primary:hover,
 .btn--primary:focus {
   background-size: 150%;
+  background-color: var(--black-color);
+  color: var(--main-color);
+  border: solid;
+  border-color: var(--main-color);
 }
 
 .btn--icon {

@@ -35,6 +35,7 @@ import Home from "./components/Main Pages/Home1";
 import HomeForTranslate from "./components/Secondary Pages/Translation/HomeForTranslate";
 import AddService from "./components/Secondary Pages/AddService";
 import ProfileForAll from "./components/Secondary Pages/ProfileForAll";
+import UpdateService from "./components/Secondary Pages/UpdateService";
 
 function App() {
   return (
@@ -63,7 +64,7 @@ function App() {
             <Route path="/:param/:id" element={<HeaderDataProfile />} />
             <Route path="/user/:name/:id" element={<ProfileForAll />} />
 
-          <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/termsofuse" element={<TermsOfUse />} />
             <Route path="/Bookings" element={<Bookings />} />
             <Route path="/addadmin" element={<AddAdmin />} />
 
@@ -77,6 +78,7 @@ function App() {
             <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
             <Route path="/EditPackage/:id" element={<EditPackage />} />
             <Route path="/editHall/:id" element={<EditHall />} />
+            <Route path="/updateService/:id" element={<UpdateService />} />
           </Routes>
 
           <Footer />
