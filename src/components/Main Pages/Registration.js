@@ -4,6 +4,9 @@ import "../../Css/Registration.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "./Redux";
+import eye from "../images/eye.png";
+import NavbarWithSideBar from "./NavbarWithSideBar.js";
+import { FaEye } from "react-icons/fa";
 function Registration() {
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
@@ -36,7 +39,9 @@ function Registration() {
       photo: event.target.files[0],
     }));
   };
-
+const goToHome=()=>{
+  navigate(`/`);
+}
   const handleSubmit = (event) => {
     event.preventDefault();
     const formDataObj = new FormData();
@@ -71,7 +76,7 @@ function Registration() {
           personData.setPhoto(data.data.photo);
           personData.setReligion(data.data.religion);
           personData.setId(data.data.id);
-
+          navigate(`/`)
           setStatus(data);
         })
         .catch((error) => {
@@ -118,6 +123,8 @@ function Registration() {
     }
   }
   return (
+    <>
+    <NavbarWithSideBar/>
     <div className="containerAddHall">
       <h2 className="h2AddHall">Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -156,7 +163,8 @@ function Registration() {
                 className="toggle-password animated marginBottomLeft"
                 onClick={togglePasswordVisibility1}
               >
-                Hide/Appear
+                 <FaEye/>
+               
               </span>
             </div>
             <input
@@ -177,7 +185,8 @@ function Registration() {
                 className="toggle-password animated marginBottomLeft"
                 onClick={togglePasswordVisibility}
               >
-                Hide/Appear
+                <FaEye/>
+               {/* <img src={eye}></img> */}
               </span>
             </div>
             <input
@@ -253,7 +262,7 @@ function Registration() {
             </label>
           </div>
         </div>
-        <div className="form-group-AddHall animated">
+        <div className="form-group-AddHall animated colorC">
           <input
             type="file"
             name="photo"
@@ -283,11 +292,12 @@ function Registration() {
         <button type="submit" className="btnAddHall">
           Sign Up
         </button>
-        <Link to="/" className="cancelBtnReg">
+        <button onClick={goToHome} className="cancelBtnReg">
           Cancel
-        </Link>
+        </button>
       </form>
     </div>
+    </>
   );
 }
 

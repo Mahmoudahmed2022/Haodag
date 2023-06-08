@@ -44,7 +44,7 @@ const ModalEditClientProfile = () => {
         personData.phone = data.data.phone;
         personData.password = data.data.password;
 
-        navigate(`/${personData.role}/${personData.id}`);
+        navigate(`/user/${personData.role}/${personData.id}`);
       })
       .catch((error) => {
         console.error(error);

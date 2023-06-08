@@ -55,13 +55,15 @@ const navigate = useNavigate();
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        if(data.message==="done")
+        alert("plan added succesfully")
       })
       .catch((error) => {
         console.error(error.message);
         // Display the error message to the user using an alert or some other method
       });
-      navigate(`/${personData.role}/${personData.id}`);
-      window.location.reload();
+      // navigate(`/user/${personData.role}/${personData.id}`);
+      // window.location.reload();
   };
 
   return (

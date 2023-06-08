@@ -63,11 +63,10 @@ function NavbarWithSideBar() {
               personData.setPhoto("");
               personData.setReligion("");
               personData.setId("");
-              // if (!personData.isLogin) {
-              //   alert("You Logged out");
-              //   nav(`/`)
+                alert("You Logged out");
+                nav(`/`)
 
-              // }
+              
               console.log(response);
             } else {
               throw new Error("Logout failed.");
@@ -96,14 +95,16 @@ function NavbarWithSideBar() {
 
     nav(`/WeddingPlanners`);
   }
-  useEffect(() => {
-    if (personData.isLogout) {
-      alert("You Logged out");
-      nav(`/`);
-    }
-  }, [personData.isLogout]);
+  // useEffect(() => {
+  //   if (personData.isLogin) {
+  //     alert("You Logged out");
+  //     nav(`/`);
+  //   }
+  // }, [personData.isLogin]);
   function goToProfile() {
-    nav(`/${personData.role}/${personData.id}`);
+    "/user/:name/:id"
+    nav(`/user/${personData.role}/${personData.id}`,{state:{userData:personData}});
+    // nav(`/${personData.role}/${personData.id}`,{state:{userData:personData}});
   }
   function goToTranslation() {
     nav(`/translation`);
@@ -132,7 +133,7 @@ function NavbarWithSideBar() {
             <button className="headerSignBtn">Signup</button>
           </div>} */}
           <div className="right2">
-          {personData.isLogin ? (
+          {(personData.isLogin||(personData.isLogin==="true")) ? (
                 <div className="buttons-log-reg">
                   <button onClick={handleLogout} className="glow-on-hover">
                     Logout

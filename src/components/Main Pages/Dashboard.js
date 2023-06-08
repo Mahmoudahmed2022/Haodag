@@ -257,23 +257,25 @@ e.preventDefault();
   let content;
   if (selectedComponent === "client") {
     content = (
-      <FetchAllData user={client} getUser={getClients} personData={personData} />
+      <FetchAllData user={client} getUser={getClients}  />
     );
-  }else if (selectedComponent === "admin") {
+  } else if (selectedComponent === "admin") {
     content = (
       <FetchAllData
         user={admins}
         getUser={getAdmins}
-        personData={personData}
+        
       />
     );
-  }
-    else if (selectedComponent === "hallOwner") {
+  } else if (selectedComponent === "hallOwner") {
     content = (
       <FetchAllData
         user={hallOwner}
         getUser={getHallOwner}
-        personData={personData}
+        deleteRecord={(id)=>deleteOwner(id)}
+
+        
+        
       />
     );
   } else if (selectedComponent === "weddingPlanner") {
@@ -281,40 +283,64 @@ e.preventDefault();
       <FetchAllData
         user={weddingPlanner}
         getUser={getWeddingPlanner}
-        personData={personData}
+        deleteRecord={(id)=>deletePlanners(id)}
+        
       />
     );
-  } else if (selectedComponent === "hallsRequest") {
-    content = (
-      <HallsRequests hallsRequest={hallsRequest} personData={personData} />
-    );
-  } else if (selectedComponent === "packages") {
-    content = <CardPackagesInDashboard user={allPackages} personData={personData} />;
-  } else if (selectedComponent === "allHalls") {
-    content = <FetchHallsPlans user={allHalls} personData={personData} />;
-  } else if (selectedComponent === "allPlans") {
-    content = <FetchHallsPlans user={allPlans} personData={personData} />;
-  } else if (selectedComponent === "confirmedHalls") {
-    content = <FetchHallsPlans user={confirmedHalls} personData={personData} />;
-  } else if (selectedComponent === "canceledhalls") {
-    content = <FetchHallsPlans user={canceledHalls} personData={personData} />;
-  } else if (selectedComponent === "offers") {
-    content = <FetchAllData user={offers} personData={personData} />;
   } else if (selectedComponent === "suppliers") {
     content = (
       <FetchAllData
         user={suppliers}
         getUser={getSuppliers}
-        personData={personData}
+        deleteRecord={(id)=>deleteSupplier(id)}
+
       />
     );
+  }else if (selectedComponent === "packages") {
+    content = <CardPackagesInDashboard user={allPackages} deletePackage={(id)=>deletePackage(id)}  />;
+  } else if (selectedComponent === "hallsRequest") {
+    content = (
+      <HallsRequests hallsRequest={hallsRequest} deleteHallRequest={(id)=>deleteHallRequest(id)}  />
+    );
+  }  else if (selectedComponent === "allHalls") {
+    content = <FetchHallsPlans user={allHalls}  />;
+  } else if (selectedComponent === "allPlans") {
+    content = <FetchHallsPlans user={allPlans}  />;
+  } else if (selectedComponent === "confirmedHalls") {
+    content = <FetchHallsPlans user={confirmedHalls}  />;
+  } else if (selectedComponent === "canceledhalls") {
+    content = <FetchHallsPlans user={canceledHalls}  />;
+  } else if (selectedComponent === "offers") {
+    content = <FetchAllData  user={offers}  />;
+  } 
+  
+  const deleteHallRequest = (id)=>{
+    sethallsRequest(hallsRequest.filter((res)=>res.id!==id))
   }
-  // useEffect(() => {
-  //   if (!personData.isLogin) {
-  //     alert("You Logged out");
-  //     nav(`/`);
-  //   }
-  // }, [personData.isLogin]);
+  const deletePackage = (id)=>{
+    setAllPackages(allPackages.filter((res)=>res.id!==id))
+  }
+  const deleteSupplier = (id)=>{
+    setSuppliers(suppliers.filter((res)=>res.id!==id))
+  }
+  const deletePlanners = (id)=>{
+    setWeddingPlanner(weddingPlanner.filter((res)=>res.id!==id))
+  }
+  const deleteOwner = (id)=>{
+    setHallOwner(hallOwner.filter((res)=>res.id!==id))
+  }
+  const deleteClients = (id)=>{
+    setWeddingPlanner(weddingPlanner.filter((res)=>res.id!==id))
+  }
+
+  useEffect(() => {
+    if(personData.isLogin==="false")
+    {personData.setIsLogin(false)}
+    if(personData.isLogin==="true"||personData.token)
+    {personData.setIsLogin(true)}
+
+   
+  }, [personData.isLogin]);
   useEffect(() => {
     // getOffers();
     getAdmins();

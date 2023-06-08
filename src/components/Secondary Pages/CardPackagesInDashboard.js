@@ -5,7 +5,7 @@ import "../../Css/AdminDashboard.css";
 import Swal from "sweetalert2";
 import { MyContext } from "../Main Pages/Redux";
 
-const CardPackagesInDashboard = ({ user, getUser }) => {
+const CardPackagesInDashboard = ({ user, deletePackage }) => {
   const nav = useNavigate();
   const personData = useContext(MyContext);
 
@@ -29,10 +29,11 @@ const CardPackagesInDashboard = ({ user, getUser }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              
+              deletePackage(pack.id);
               alert(data.message);
-              window.location.reload();
-              // getUser();
+              console.log(data);
+
             });
         }
       });

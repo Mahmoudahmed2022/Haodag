@@ -1,14 +1,16 @@
 import React from "react";
 
 // import image from "../components/images/omar.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Css/AdminDashboard.css";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
 
-const FetchAllData = ({ user, getUser }) => {
+const FetchAllData = ({ user, getUser,deleteRecord, }) => {
+  const navigate = useNavigate();
   let content;
+  console.log(user);
   const personData = useContext(MyContext);
   user.map((user) => {
     if (user.role === "planner") {
@@ -41,8 +43,8 @@ const FetchAllData = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
-              // getUser();
+              // window.location.reload();
+              deleteRecord(user.id);;
             });
         }
       });
@@ -61,8 +63,8 @@ const FetchAllData = ({ user, getUser }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              alert(data.message);
-              window.location.reload();
+              // window.location.reload();
+              deleteRecord(user.id);
 
               // getUser();
             });
@@ -84,8 +86,8 @@ const FetchAllData = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
-
+              // window.location.reload();
+            deleteRecord(user.id);
               // getUser();
             });
         }
@@ -106,9 +108,8 @@ const FetchAllData = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
-
-              // getUser();
+              // window.location.reload();
+              deleteRecord(user.id);
             });
         }
       });
@@ -128,16 +129,17 @@ const FetchAllData = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
-
-              // getUser();
+             // window.location.reload();
+             deleteRecord(user.id);
             });
         }
       });
     }
     // })
   };
-
+  function goToProfile(user) {
+    navigate(`/${user.role}/${user.id}`, { state: { userData: user } });
+  }
   return (
     <>
       <h1 className="NameUsers">{content}</h1>
@@ -170,12 +172,12 @@ const FetchAllData = ({ user, getUser }) => {
                     </td>
                     <td className="tdoperations">
                       <div className="ss">
-                        <Link
+                        <button
                           className="btnoperations blue"
-                          to={`/${product.role}/${product.id}`}
+                          onClick={()=>goToProfile(product)}
                         >
                           View
-                        </Link>
+                        </button>
 
                         <button
                           className="btnoperations red"

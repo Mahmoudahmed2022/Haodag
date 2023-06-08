@@ -70,7 +70,7 @@ function AddService() {
             showCancelButton: false,
           }).then((result) => {
             if (result.isConfirmed) {
-              navigate(`/${personData.role}/${personData.id}`);
+              navigate(`/user/${personData.role}/${personData.id}`);
             }
           });
         });

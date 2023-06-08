@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
@@ -14,9 +13,6 @@ export const MyProvider = ({ children }) => {
   const [religion, setReligion] = useState("");
   const [role, setRole] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-
-
-
   // Load data from sessionStorage on component mount
   useEffect(() => {
     const storedId = sessionStorage.getItem("id");
@@ -91,7 +87,7 @@ export const MyProvider = ({ children }) => {
     sessionStorage.setItem("isLogin", isLogin);
 
 
-  }, [, id, token, role, gender, photo, religion, phone, country, name, email,isLogin]);
+  }, [ id, token, role, gender, photo, religion, phone, country, name, email,isLogin]);
 
   const contextValue = {
     id,
@@ -120,6 +116,11 @@ export const MyProvider = ({ children }) => {
   };
 
   return (
+    <>
     <MyContext.Provider value={contextValue}>{children}</MyContext.Provider>
+    </>
   );
 };
+
+
+;

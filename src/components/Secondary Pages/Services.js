@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ServiceCard from "./Cards/ServiceCard";
 
-const Services = ({ userData, userToken, isLogin }) => {
+const Services = ({ userData, isLogin }) => {
   const [visible, setVisible] = useState(5);
   const [supplierServiceCard, setSupplierServiceCard] = useState([]);
 
@@ -12,12 +12,12 @@ const Services = ({ userData, userToken, isLogin }) => {
   };
   const getSupplierServiceCard = () => {
     fetch(
-      `http://127.0.0.1:8000/supplier/auth/getAllSupplierServices/${userToken.id}`,
+      `http://127.0.0.1:8000/supplier/auth/getAllSupplierServices/${userData.id}`,
       {
         method: "GET",
         headers: {
-          "auth-token": `${userToken.token}`,
-          Authorization: `Bearer ${userToken.token}`,
+          "auth-token": `${userData.token}`,
+          Authorization: `Bearer ${userData.token}`,
         },
       }
     )
@@ -48,7 +48,7 @@ const Services = ({ userData, userToken, isLogin }) => {
             <>
               {supplierServiceCard?.slice(0, visible).map((data, index) => (
                 <ServiceCard
-                  userToken={userToken}
+                  userData={userData}
                   key={index}
                   cardData={data}
                   isLogin={isLogin}

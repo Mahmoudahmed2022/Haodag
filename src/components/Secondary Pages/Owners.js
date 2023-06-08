@@ -38,7 +38,7 @@ const Owners = ({ userData, isLogin }) => {
   }, []);
   return (
     <>
-              {personData.role==="owner"&& <h1 className="section-heading">Owner's Halls</h1>}
+              {(personData.role==="owner")||(userData.role==="owner")&& <h1 className="section-heading">Owner's Halls</h1>}
 
             <div className="halls">
 

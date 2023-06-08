@@ -22,14 +22,11 @@ import Swal from "sweetalert2";
 import CardMotionHome from "../Secondary Pages/Cards/CardMotionHome";
 function Home() {
   const personData = useContext(MyContext);
-  console.log(personData);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [cardData, setCardData] = useState([]);
   const [visible, setVisible] = useState(5);
-
   const nav = useNavigate();
-
   const allCardData = () => {
     fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
       .then((response) => response.json())
@@ -40,96 +37,25 @@ function Home() {
         console.error(error);
       });
   };
-  console.log(cardData);
 
   const loadMore = () => {
     setVisible(visible + 5);
   };
 
-  function handleLogout() {
-    Swal.fire({
-      title: `Will You  Logout  `,
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Logout",
-      cancelButtonText: "Cancel",
-    }).then((data) => {
-      if (data.isConfirmed) {
-        fetch("http://127.0.0.1:8000/api/auth/logout", {
-          method: "POST",
-          headers: {
-            "auth-token": `${personData.token}`,
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              personData.setIsLogin(false);
-              personData.setName("");
-              personData.setEmail("");
-              personData.setRole("");
-              personData.setToken("");
-              personData.setCountry("");
-              personData.setGender("");
-              personData.setPhone("");
-              personData.setPhoto("");
-              personData.setReligion("");
-              personData.setId("");
-              // if (!personData.isLogin) {
-              //   alert("You Logged out");
-              //   nav(`/`)
+  useEffect(() => {
+    if(personData.isLogin==="false")
+    {personData.setIsLogin(false)}
+    if(personData.isLogin==="true"||personData.token)
+    {personData.setIsLogin(true)}
 
-              // }
-              console.log(response);
-            } else {
-              throw new Error("Logout failed.");
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
-    });
-  }
+   
+  }, [personData.isLogin]);
 
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  // useEffect(() => {
-  //   if (!personData.isLogin) {
-  //     alert("You Logged out");
-  //     nav(`/`)
-
-  //   }
-
-  // }, [personData.isLogin]);
-  //  useEffect(() => {
-  //   setLogin()
-
-  // }, [personData.isLogin]);
-  // let content ;
-  // const setLogin = ()=>{
-  //   if(personData.isLogin)
-  //   {content =  <div className="buttons-log-reg">
-  //   <button onClick={handleLogout} className="glow-on-hover">
-  //     Logout
-  //   </button>
-  // </div> }
-  // else if (!personData.isLogin){
-  //   content = <div className="buttons-log-reg">
-  //   <Link className="glow-on-hover" to="/login">
-  //     Login
-  //   </Link>
-  //   <Link className="glow-on-hover" to="/registration">
-  //     Sign Up
-  //   </Link>
-  // </div>
-  // }
-
-  // }
-
+ 
   return (
     <>
       <NavbarWithSideBar />

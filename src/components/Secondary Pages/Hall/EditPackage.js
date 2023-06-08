@@ -9,8 +9,8 @@ function EditPackage() {
   let { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const sPackage = location.state.sPackage;
-  console.log(sPackage);
+  const hall = location.state.hall;
+  console.log(hall);
   const [formData, setFormData] = useState({
     start_date: "",
     end_date: "",
@@ -74,7 +74,7 @@ function EditPackage() {
               name="hall_name"
               onChange={getRegisterData}
               required
-              defaultValue={sPackage.name}
+              defaultValue={hall.hall_name}
               readOnly
             />
           </div>
@@ -89,8 +89,8 @@ function EditPackage() {
               name="package_description"
               onChange={getRegisterData}
               required
-              defaultValue={sPackage.package_description}
-              readOnly
+              defaultValue={hall.package_description}
+              
             />
           </div>
           <div className="form-group1 ">
@@ -105,7 +105,7 @@ function EditPackage() {
                 type="date"
                 onChange={getRegisterData}
                 required
-                defaultValue={formData.start_date}
+                defaultValue={hall.start_date}
               />
             </div>
             <div className="form-group1">
@@ -119,7 +119,7 @@ function EditPackage() {
                 type="date"
                 onChange={getRegisterData}
                 required
-                valdefaultValueue={formData.end_date}
+                defaultValue={hall.end_date}
               />
             </div>
           </div>
@@ -134,7 +134,7 @@ function EditPackage() {
               name="price"
               onChange={getRegisterData}
               required
-              defaultValue={formData.price}
+              defaultValue={hall.price}
             />
           </div>
 

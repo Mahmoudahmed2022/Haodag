@@ -48,7 +48,7 @@ const HallProfile = ({ rating, isFavourite }) => {
 
   let message = "!";
   const { hallId } = useParams();
-  console.log(products);
+  console.log(hallId);
 
   const allData = async (hallId) => {
     const api = `http://127.0.0.1:8000/api/auth/getHall/${hallId}`;
@@ -117,6 +117,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           showCancelButton: false,
         }).then((result) => {
           if (result.isConfirmed) {
+            setLike(true)
+            console.log(result)
             window.location.reload();
           }
         });
@@ -343,9 +345,8 @@ const HallProfile = ({ rating, isFavourite }) => {
                     className="LikeIcon"
                     // color={ (disLike) ? "#243b55" : ""}
                     style={LikeStyle}
-                    onClick={() => {
-                      Like ? handleLike() : removeColor();
-                      AddLike();
+                    onClick={() => {AddLike();
+
                     }}
                   />
                 </div>

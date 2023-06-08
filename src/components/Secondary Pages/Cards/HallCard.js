@@ -16,7 +16,7 @@ const HallCard = ({ hall, key, userData }) => {
   console.log(personData);
   console.log(hall);
 
-  const isOwner = userData.role === "owner";
+  const isOwner = userData.role === "owner" &&personData.id===userData.id;
   function handleClick() {
     navigate(`/editHall/${hall.id}`, {
       state: { hall: hall },

@@ -86,6 +86,8 @@ function Login({ onLogin }) {
       navigate(`/`);
     } else if (personData.role === "admin") {
       navigate(`/adminDashboard`);
+    }else if (personData.role === "supplier") {
+      navigate(`/`);
     }
   }, [personData]);
   if (load) {

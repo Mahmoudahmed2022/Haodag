@@ -155,8 +155,9 @@ const HallForm = () => {
         .then((data) => {
           console.log(data);
         });
-      navigate(`/${personData.role}/${personData.id}`);
-      // window.location.reload();
+      navigate(`/user/${personData.role}/${personData.id}`);
+
+      window.location.reload();
     }
   };
 

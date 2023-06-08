@@ -37,12 +37,12 @@ function WeddingPlanners() {
         console.error(error);
       });
   };
-
+console.log("planners",planners);
+console.log("owners",owners)
   const loadMore = () => {
     setVisible(visible + 6);
   };
-  console.log(planners);
-  console.log(owners);
+
 
   useEffect(() => {
 
@@ -53,7 +53,7 @@ function WeddingPlanners() {
   }, []);
   const renderCard = (user) => {
     function goToPlannerProfile() {
-      navigate(`/${user.role}/${user.id}`, { state: {data:user, userData: user } });
+      navigate(`/${user.role}/${user.id}`, { state: { userData: user } });
     }
 
     return (

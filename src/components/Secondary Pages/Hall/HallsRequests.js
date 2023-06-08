@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
 import "../../../Css/WeddingPlanners.css";
-// import user2 from "./images/user2.png";
-import axios from "axios";
-import "../../../Css/Reservation.css";
-import user from "../../images/user3.png";
+
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../../Main Pages/Redux";
-function HallsRequests({hallsRequest}) {
+function HallsRequests({hallsRequest,deleteHallRequest}) {
   const personData = useContext(MyContext);
   console.log(hallsRequest)
   console.log(personData)
@@ -20,7 +16,7 @@ function HallsRequests({hallsRequest}) {
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data);alert(data.message);window.location.reload()})
+      .then((data) => {console.log(data);alert(data.message);deleteHallRequest(hall.id)})
 
   
   }
@@ -32,7 +28,9 @@ function HallsRequests({hallsRequest}) {
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data);alert(data.message);window.location.reload()})
+      .then((data) => {console.log(data);
+        alert(data.message);
+        deleteHallRequest(hall.id)})
 
   
   }

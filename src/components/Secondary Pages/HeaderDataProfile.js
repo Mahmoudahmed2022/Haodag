@@ -16,7 +16,6 @@ import Services from "./Services";
 const HeaderDataProfile = (props) => {
   const location = useLocation();
   const [plan, setplan] = useState([]);
-
   const personData = useContext(MyContext);
   const userData = location?.state?.userData;
 
@@ -86,6 +85,8 @@ const HeaderDataProfile = (props) => {
         console.error("Error fetching data:", error);
       });
   };
+
+
   return (
     <>
       <NavbarWithSideBar />
@@ -95,24 +96,26 @@ const HeaderDataProfile = (props) => {
             <div className="divContImgType">
               <img
                 src={
-                  personData || userData ? personData?.photo : userData?.photo
+                  // {userData && (userData?.photo)}
+                  userData?.photo
+                  // personData || userData ? personData?.photo : userData?.photo
                 }
                 alt="Profile"
                 className="profile-image"
               />
               <p className="nameUser">
-                {personData || userData ? personData?.role : userData?.role}
+                 {userData?.role}
               </p>
             </div>
             <div className="profile-details">
               <h1 className="profile-name">
-                {personData || userData ? personData?.name : userData?.name}
+               {userData?.name}
               </h1>
               <p className="profile-bio">
-                {personData || userData ? personData?.email : userData?.email}
+                {userData?.email}
               </p>
               <p className="profile-bio">
-                {personData || userData ? personData?.phone : userData?.phone}
+                {userData?.phone}
               </p>
               <div className="social-icons">
                 <a href="#">
@@ -128,136 +131,33 @@ const HeaderDataProfile = (props) => {
             </div>
           </div>
 
-          <div className="btnsPlannerProf">
-            {personData ? (
-              <>
-                {/* edit */}
-                {personData?.role && (
-                  <div className="planner-prof-btn-div">
-                    <button
-                      onClick={goToEditProfile}
-                      className="btn-flip add-hall-btn"
-                      data-back="Edit"
-                      data-front="Edit"
-                    ></button>
-                  </div>
-                )}
-                {isSupplier && (
-                  <>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={goToAddService}
-                        className="btn-flip add-hall-btn"
-                        data-back="Add Service"
-                        data-front="Add Service"
-                        to="#"
-                      ></button>
-                    </div>
-                  </>
-                )}
-                {/* client booking */}
-                {isClient && (
-                  <>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={handlePlansBookings}
-                        className="btn-flip add-hall-btn"
-                        data-back="Plans Bookings"
-                        data-front="plans Bookings"
-                        to="#"
-                      ></button>
-                    </div>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={handleHallsBookings}
-                        className="btn-flip add-hall-btn"
-                        data-back="Halls Bookings"
-                        data-front="Halls Bookings"
-                        to="#"
-                      ></button>
-                    </div>
-                  </>
-                )}
-                {/* planner */}
-                {isPlanner && (
-                  <>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={goToAddPlan}
-                        className="btn-flip add-hall-btn"
-                        data-back="AddPlan"
-                        data-front="AddPlan"
-                      ></button>
-                    </div>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={handlePlansRequsts}
-                        className="btn-flip reservation-btn add-hall-btn"
-                        data-back="Requests"
-                        data-front="Requests"
-                      ></button>
-                    </div>
-                  </>
-                )}
-                {/* owner */}
-                {isOwner && (
-                  <>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={handleClick}
-                        className="btn-flip add-hall-btn"
-                        data-back="AddHall"
-                        data-front="AddHall"
-                      ></button>
-
-                      {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
-                    </div>
-                    <div className="planner-prof-btn-div">
-                      <button
-                        onClick={handleReservations}
-                        className="btn-flip reservation-btn add-hall-btn"
-                        data-back="Bookings"
-                        data-front="Bookings"
-                      ></button>
-                      {/* <HallForm2 onClose={() => setShow(false)} show={show} /> */}
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
+        
+        
         </div>
       </div>
-      {personData?.role === "owner" || userData?.role === "owner" ? (
+      {userData?.role === "owner"&& (
         <Owners
-          userData={personData}
-          personData={personData}
-          isLogin={personData.isLogin}
+          userData={userData}
         />
-      ) : (
+      )  }
+      {userData?.role ==="planner" &&(
         <Planners
           Plan={plan}
-          userData={personData}
-          personData={personData}
-          isLogin={personData.isLogin}
+          userData={userData}
         />
       )}
-      {personData?.role === "user" || userData?.role === "user" ? (
+      {userData?.role === "user" && (
         <Users
-          userData={personData}
-          userToken={personData}
-          isLogin={personData.isLogin}
+          userData={userData}
         />
-      ) : null}
-      {personData?.role === "supplier" || userData?.role === "supplier" ? (
+      ) }
+      {userData?.role === "supplier"&& (
         <Services
-          userData={personData}
-          userToken={personData}
-          isLogin={personData.isLogin}
+        userData={userData}
         />
-      ) : null}
+      )}
+      
+      
 
       {/* <Owners userData={userData} personData={personData}/>
       <Planners userData={userData} personData={personData}/> */}

@@ -34,6 +34,7 @@ import { MyProvider } from "./components/Main Pages/Redux";
 import Home from "./components/Main Pages/Home1";
 import HomeForTranslate from "./components/Secondary Pages/Translation/HomeForTranslate";
 import AddService from "./components/Secondary Pages/AddService";
+import ProfileForAll from "./components/Secondary Pages/ProfileForAll";
 
 function App() {
   return (
@@ -60,7 +61,9 @@ function App() {
             <Route path="/HallsBookings" element={<HallsBookings />} />
             <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
             <Route path="/:param/:id" element={<HeaderDataProfile />} />
-            <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/user/:name/:id" element={<ProfileForAll />} />
+
+          <Route path="/termsofuse" element={<TermsOfUse />} />
             <Route path="/Bookings" element={<Bookings />} />
             <Route path="/addadmin" element={<AddAdmin />} />
 
