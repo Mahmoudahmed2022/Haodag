@@ -142,10 +142,10 @@
 .Planners-container {
   max-width: 1200px;
   width: 100%;
-  margin-top: 3rem;
 }
 
 .allPlanners-container {
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
@@ -187,7 +187,7 @@
 
 .planner-details-btn {
   display: block;
-  background-color: #3F51B5;
+  background-color: var(--main-color);
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -201,7 +201,7 @@
 }
 
 .planner-details-btn:hover {
-  background-color: #2a2f9b;
+  background-color: #e08106;
   color: #fff;
 }
 
@@ -213,9 +213,9 @@
 }
 
 .more {
-  background-color: #3F51B5;
-  color: #fff;
-  border: none;
+  background-color: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
   border-radius: 5px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -223,8 +223,17 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-
+.WeddingPlanners-container .divWeddingPlanners{
+  margin: 50px 0 0;
+  width: 100%;
+}
+.WeddingPlanners{
+  text-align: center;
+  font-size: 28px;
+  color: var(--main-color);
+}
 .more:hover {
-  background-color: #2a2f9b;
-  color: #8f5823;
+  background-color: var(--main-color);
+  color: var(--white-color);
+
 }

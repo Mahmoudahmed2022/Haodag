@@ -81,8 +81,8 @@ console.log("owners",owners)
       <NavbarWithSideBar />
 
       <div className="WeddingPlanners-container">
-        <div>
-          <h2>Wedding Planners</h2>
+        <div className="divWeddingPlanners"> 
+          <h2 className="WeddingPlanners">Wedding Planners</h2>
         </div>
         <div className="Planners-container">
           <div className="allPlanners-container">
@@ -95,8 +95,8 @@ console.log("owners",owners)
               </button>
             )}
           </div>
-          <div>
-            <h2>Hall Owners</h2>
+          <div className="divWeddingPlanners">
+            <h2 className="WeddingPlanners">Hall Owners</h2>
           </div>
           <div className="allPlanners-container">
             {owners.slice(0, visible).map(renderCard)}
