@@ -17,22 +17,25 @@ const ProfileForAll = (props) => {
   const location = useLocation();
   const [plan, setplan] = useState([]);
   const personData = useContext(MyContext);
-  const isAdmin = (personData?.role ) === "admin";
-  const isPlanner = (personData?.role ) === "planner";
-  const isOwner = (personData?.role ) === "owner";
-  const isClient = (personData?.role ) === "user";
-  const isSupplier = (personData?.role ) === "supplier";
+  const isAdmin = personData?.role === "admin";
+  const isPlanner = personData?.role === "planner";
+  const isOwner = personData?.role === "owner";
+  const isClient = personData?.role === "user";
+  const isSupplier = personData?.role === "supplier";
 
   const navigate = useNavigate();
 
   function handleClick() {
     navigate(`/hallForm`);
   }
-function goToAddService() {
+  function goToAddService() {
     navigate(`/addservice`, { state: { data: personData } });
   }
   function goToAddPlan() {
     navigate(`/addplan`, { state: { data: personData } });
+  }
+  function goToServiceRequests() {
+    navigate(`/ServicesRequests`);
   }
   function goToAddPackage() {
     navigate(`/addpackage`);
@@ -82,7 +85,6 @@ function goToAddService() {
   //     });
   // };
 
-
   return (
     <>
       <NavbarWithSideBar />
@@ -91,26 +93,16 @@ function goToAddService() {
           <div className="cOntLeftData">
             <div className="divContImgType">
               <img
-                src={
-                  personData?.photo
-                }
+                src={personData?.photo}
                 alt="Profile"
                 className="profile-image"
               />
-              <p className="nameUser">
-                 {personData?.role}
-              </p>
+              <p className="nameUser">{personData?.role}</p>
             </div>
             <div className="profile-details">
-              <h1 className="profile-name">
-               {personData?.name}
-              </h1>
-              <p className="profile-bio">
-                {personData?.email}
-              </p>
-              <p className="profile-bio">
-                {personData?.phone}
-              </p>
+              <h1 className="profile-name">{personData?.name}</h1>
+              <p className="profile-bio">{personData?.email}</p>
+              <p className="profile-bio">{personData?.phone}</p>
               <div className="social-icons">
                 <a href="#">
                   <FaInstagram className="widthHieht" />
@@ -240,6 +232,15 @@ function goToAddService() {
                         data-front="Add Service"
                         to="#"
                       ></button>
+                    </div>{" "}
+                    <div className="planner-prof-btn-div">
+                      <button
+                        onClick={goToServiceRequests}
+                        className="btn-flip add-hall-btn"
+                        data-back="Requests"
+                        data-front="Requests"
+                        to="#"
+                      ></button>
                     </div>
                   </>
                 )}
@@ -251,32 +252,21 @@ function goToAddService() {
         </div>
       </div>
 
-      {personData?.role === "owner"&& (
-        <Owners
-          userData={personData}
-          isLogin={personData.isLogin}
-        />
-      )  }
-      {personData?.role ==="planner" &&(
+      {personData?.role === "owner" && (
+        <Owners userData={personData} isLogin={personData.isLogin} />
+      )}
+      {personData?.role === "planner" && (
         <Planners
           Plan={plan}
           userData={personData}
           isLogin={personData.isLogin}
         />
       )}
-        
-      
+
       {personData?.role === "user" && (
-        <Users
-          userData={personData}
-          isLogin={personData.isLogin}
-        />
+        <Users userData={personData} isLogin={personData.isLogin} />
       )}
-      {personData?.role === "supplier"&& (
-        <Services
-        userData={personData}
-        />
-      )}
+      {personData?.role === "supplier" && <Services userData={personData} />}
 
       {/* <Owners userData={userData} personData={personData}/>
       <Planners userData={userData} personData={personData}/> */}

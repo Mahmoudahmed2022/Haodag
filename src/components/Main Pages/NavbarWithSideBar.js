@@ -63,10 +63,9 @@ function NavbarWithSideBar() {
               personData.setPhoto("");
               personData.setReligion("");
               personData.setId("");
-                alert("You Logged out");
-                nav(`/`)
+              alert("You Logged out");
+              nav(`/`);
 
-              
               console.log(response);
             } else {
               throw new Error("Logout failed.");
@@ -102,22 +101,24 @@ function NavbarWithSideBar() {
   //   }
   // }, [personData.isLogin]);
   function goToProfile() {
-    "/user/:name/:id"
-    nav(`/user/${personData.role}/${personData.id}`,{state:{userData:personData}});
+    "/user/:name/:id";
+    nav(`/user/${personData.role}/${personData.id}`, {
+      state: { userData: personData },
+    });
     // nav(`/${personData.role}/${personData.id}`,{state:{userData:personData}});
   }
   function goToTranslation() {
     nav(`/translation`);
   }
-  
+
   return (
     <>
       <IconContext.Provider value={{}}>
         <div className="navbar">
           <div className="left">
-          <Link className="advertisment" to="/">
-                To Put Your Advertisement
-              </Link>
+            <Link className="advertisment" to="/">
+              To Put Your Advertisement
+            </Link>
             {/* <div className="svgColor1">
               <FaArrowCircleLeft className="bigger" onClick={() => nav(-1)} />
               <FaArrowCircleRight className="bigger" onClick={() => nav(1)} />
@@ -125,30 +126,29 @@ function NavbarWithSideBar() {
             <div className="menu-bars">
               <FaAlignLeft className="svgColor" onClick={showSidebar} />
             </div>
-           
           </div>
-         
+
           {/* {!userData&&<div className="headerBtnsContainer">
             <button className="headerSignBtn">Login</button>
             <button className="headerSignBtn">Signup</button>
           </div>} */}
           <div className="right2">
-          {(personData.isLogin||(personData.isLogin==="true")) ? (
-                <div className="buttons-log-reg">
-                  <button onClick={handleLogout} className="glow-on-hover">
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <div className="buttons-log-reg">
-                  <Link className="glow-on-hover" to="/login">
-                    Login
-                  </Link>
-                  <Link className="glow-on-hover" to="/registration">
-                    Sign Up
-                  </Link>
-                </div>
-              )}
+            {personData.isLogin || personData.isLogin === "true" ? (
+              <div className="buttons-log-reg">
+                <button onClick={handleLogout} className="glow-on-hover">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="buttons-log-reg">
+                <Link className="glow-on-hover" to="/login">
+                  Login
+                </Link>
+                <Link className="glow-on-hover" to="/registration">
+                  Sign Up
+                </Link>
+              </div>
+            )}
             {/* <div className="search-bar">
               <div className="search-bar-content">
                 <Link className="search-stick">
@@ -167,12 +167,11 @@ function NavbarWithSideBar() {
               </div>
             </div>
             {!personData.isLogin ? (
-                  <div></div>
-
+              <div></div>
             ) : (
               <div onClick={goToProfile} className="profile-photo">
-              <img src={user} alt="user pic" />
-            </div>
+                <img src={user} alt="user pic" />
+              </div>
             )}
 
             {/* <button className="aAll" onClick={handleLogout}>
@@ -274,7 +273,7 @@ function NavbarWithSideBar() {
                 }}
               >
                 <AiIcons.AiOutlineLogout />
-                <span className="svgColor">Owners & Planners</span>
+                <span className="svgColor">Owners & Planners & Suppliers</span>
               </button>
             </li>
             <li className="nav-text">
@@ -307,7 +306,7 @@ function NavbarWithSideBar() {
                 <span className="svgColor">translation</span>
               </button>
             </li>
-            
+
             {personData.isLogin ? (
               <li className="nav-text">
                 <button

@@ -4,9 +4,8 @@
   flex-direction: column;
   padding: 3rem;
   width: 90%;
-  max-width: 200px;
-  height: 350px;
-  background-color: #1b2028;
+  width: 200px;
+  height: 400px;
   border-radius: 16px;
   position: relative;
   border: 3px solid transparent;
@@ -14,6 +13,9 @@
   text-align: center;
   color: var(--main-color);
   background-color: var(--black-color);
+}
+.trash {
+  padding-top: 10px;
 }
 .profile:hover {
   box-shadow: 10px 10px 15px var(--main-color);
@@ -49,6 +51,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 200px;
+
   transform: translate(-50%, -50%);
   width: 100%;
 }

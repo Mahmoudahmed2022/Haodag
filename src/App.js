@@ -36,6 +36,8 @@ import HomeForTranslate from "./components/Secondary Pages/Translation/HomeForTr
 import AddService from "./components/Secondary Pages/AddService";
 import ProfileForAll from "./components/Secondary Pages/ProfileForAll";
 import UpdateService from "./components/Secondary Pages/UpdateService";
+import AskToBookService from "./components/Secondary Pages/AskToBookService";
+import ServicesRequests from "./components/Secondary Pages/ServicesRequests";
 
 function App() {
   return (
@@ -67,6 +69,7 @@ function App() {
             <Route path="/termsofuse" element={<TermsOfUse />} />
             <Route path="/Bookings" element={<Bookings />} />
             <Route path="/addadmin" element={<AddAdmin />} />
+            <Route path="/ServicesRequests" element={<ServicesRequests />} />
 
             <Route path="/PlansRequests" element={<PlansRequests />} />
             <Route
@@ -76,6 +79,7 @@ function App() {
             <Route path="/addplan" element={<ModalAddplan />} />
             <Route path="/BookHall/:id" element={<ModalForAskToBook />} />
             <Route path="/BookPlan/:id" element={<AskToBookPlan />} />
+            <Route path="/BookService/:id" element={<AskToBookService />} />
             <Route path="/EditPackage/:id" element={<EditPackage />} />
             <Route path="/editHall/:id" element={<EditHall />} />
             <Route path="/updateService/:id" element={<UpdateService />} />
