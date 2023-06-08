@@ -303,17 +303,25 @@ e.preventDefault();
       <HallsRequests hallsRequest={hallsRequest} deleteHallRequest={(id)=>deleteHallRequest(id)}  />
     );
   }  else if (selectedComponent === "allHalls") {
-    content = <FetchHallsPlans user={allHalls}  />;
+    content = <FetchHallsPlans user={allHalls} reGetHalls={(id)=>reGetHalls(id)}  />;
   } else if (selectedComponent === "allPlans") {
-    content = <FetchHallsPlans user={allPlans}  />;
+    content = <FetchHallsPlans user={allPlans}   />;
   } else if (selectedComponent === "confirmedHalls") {
-    content = <FetchHallsPlans user={confirmedHalls}  />;
+    content = <FetchHallsPlans user={confirmedHalls} reGetHalls={(id)=>reGetConfirmedHalls(id)}  />;
   } else if (selectedComponent === "canceledhalls") {
-    content = <FetchHallsPlans user={canceledHalls}  />;
+    content = <FetchHallsPlans user={canceledHalls} reGetHalls={(id)=>reGetCanceledHalls(id)}  />;
   } else if (selectedComponent === "offers") {
     content = <FetchAllData  user={offers}  />;
   } 
-  
+  const reGetConfirmedHalls = (id)=>{
+    setConfirmedHalls(confirmedHalls.filter((res)=>res.id!==id))
+  }
+  const reGetCanceledHalls = (id)=>{
+    setCanceledHalls(canceledHalls.filter((res)=>res.id!==id))
+  }
+  const reGetHalls = (id)=>{
+    setAllHalls(allHalls.filter((res)=>res.id!==id))
+  }
   const deleteHallRequest = (id)=>{
     sethallsRequest(hallsRequest.filter((res)=>res.id!==id))
   }

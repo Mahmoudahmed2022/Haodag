@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
 
 const 
-FetchHallsPlans = ({ user, getUser }) => {
+FetchHallsPlans = ({ user, reGetHalls }) => {
   let content;
   const personData = useContext(MyContext);
 
@@ -37,7 +37,7 @@ FetchHallsPlans = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
+              reGetHalls(user.id);
             });
         }
       });
@@ -57,9 +57,7 @@ FetchHallsPlans = ({ user, getUser }) => {
             .then((res) => res.json())
             .then((data) => {
               alert(data.message);
-              window.location.reload();
-
-              // getUser();
+              reGetHalls(user.id);
             });
         }
       });

@@ -67,7 +67,7 @@ console.log(personData)
         hall.shows=data.shows
         hall.services=data.services
         console.log(data);
-        navigate(`/:${personData.role}/:${personData.id}`);
+        navigate(`/user/:${personData.role}/:${personData.id}`);
       })
       .catch((error) => {
         console.log(error);

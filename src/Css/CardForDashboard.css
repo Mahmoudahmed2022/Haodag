@@ -3,7 +3,7 @@
     display: flex;
     width: 320px;
     height: 170px;
-    background-color: aliceblue;
+    background-color: var(--black-color);
 }
 .InnerInfo{
     display: flex;

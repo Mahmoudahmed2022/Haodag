@@ -164,7 +164,7 @@ const FetchAllData = ({ user, getUser,deleteRecord, }) => {
                       <div className="contNameImg">
                         <img
                           className="imagetableuser"
-                          src={product.photos}
+                          src={product.photo}
                           alt="image"
                         />
                         <p>{product.category}</p>

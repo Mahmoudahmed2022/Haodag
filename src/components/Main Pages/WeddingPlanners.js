@@ -12,6 +12,8 @@ function WeddingPlanners() {
  
   const [planners, setPlanners] = useState([]);
   const [owners, setOwners] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
+
   const location = useLocation();
  
   const [visible, setVisible] = useState(6);
@@ -37,15 +39,27 @@ function WeddingPlanners() {
         console.error(error);
       });
   };
+  const allSuppliers = () => {
+    fetch("http://127.0.0.1:8000/api/auth/getAllSuppliers")
+      .then((response) => response.json())
+      .then((data) => {
+        setSuppliers(data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 console.log("planners",planners);
 console.log("owners",owners)
+console.log("suppliers",suppliers)
+
   const loadMore = () => {
     setVisible(visible + 6);
   };
 
 
   useEffect(() => {
-
+    allSuppliers()
     allPlanners();
     allOwners();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -60,7 +74,7 @@ console.log("owners",owners)
       <>
         <div className="planner-container" key={user.id}>
           <div className="img-planner-div">
-            <img src={user2} className="planner-img" alt={user.title} />
+            <img src={user.photo} className="planner-img" alt={user.title} />
           </div>
           <div className="planner-body">
             <p className="planner-title">{user.name}</p>
@@ -100,6 +114,20 @@ console.log("owners",owners)
           </div>
           <div className="allPlanners-container">
             {owners.slice(0, visible).map(renderCard)}
+          </div>
+          <div className="for-button">
+            {visible < owners.length && (
+              <button className="more" onClick={loadMore}>
+                Load 5 More
+              </button>
+            )}
+          </div>
+
+          <div className="divWeddingPlanners">
+            <h2 className="WeddingPlanners"> Suppliers</h2>
+          </div>
+          <div className="allPlanners-container">
+            {suppliers.slice(0, visible).map(renderCard)}
           </div>
           <div className="for-button">
             {visible < owners.length && (
