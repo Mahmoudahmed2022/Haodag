@@ -58,29 +58,29 @@ function goToAddService() {
   console.log(personData);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
-    fetchplans();
+    // fetchplans();
   }, []);
-  const fetchplans = () => {
-    fetch(
-      `http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${personData.id}`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Data received from server:", data);
-        setplan(data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
+  // const fetchplans = () => {
+  //   fetch(
+  //     `http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${personData.id}`,
+  //     {
+  //       method: "GET",
+  //     }
+  //   )
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log("Data received from server:", data);
+  //       setplan(data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // };
 
 
   return (
