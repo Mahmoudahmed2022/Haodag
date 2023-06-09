@@ -87,6 +87,7 @@
 }
 .imagetableuser {
   width: 60px;
+  height: 60px;
 }
 .contNameImg {
   display: flex;
@@ -130,6 +131,7 @@
   border-top: 1px solid white;
 }
 .btnoperations {
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
   color: white;

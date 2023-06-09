@@ -6,8 +6,8 @@ import "../../Css/AdminDashboard.css";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
-
-const FetchAllData = ({ user, getUser,deleteRecord, }) => {
+import photo from "../images/user.png"
+const FetchAllData = ({ user,deleteRecord, }) => {
   const navigate = useNavigate();
   let content;
   console.log(user);
@@ -164,7 +164,7 @@ const FetchAllData = ({ user, getUser,deleteRecord, }) => {
                       <div className="contNameImg">
                         <img
                           className="imagetableuser"
-                          src={product.photo}
+                          src={product.photo?product.photo:photo}
                           alt="image"
                         />
                         <p>{product.category}</p>

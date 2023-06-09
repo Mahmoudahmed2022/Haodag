@@ -15,20 +15,26 @@ function EditPackage() {
     start_date: "",
     end_date: "",
     price: "",
+    package_description:"",
   });
   console.log("ID", id);
   console.log(personData);
+
+
+  
   function handleSubmit(e) {
     e.preventDefault();
     const formDataObj = new FormData();
     formDataObj.append("start_date", formData.start_date);
     formDataObj.append("end_date", formData.end_date);
     formDataObj.append("price", formData.price);
+    formDataObj.append("package_description", formData.package_description);
     console.log(formDataObj);
     if (formDataObj) {
       fetch(`http://127.0.0.1:8000/admin/auth/updateOffer/${id}`, {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${personData.token}`,
           "auth-token": `${personData.token}`,
         },
@@ -73,7 +79,6 @@ function EditPackage() {
               type="text"
               name="hall_name"
               onChange={getRegisterData}
-              required
               defaultValue={hall.hall_name}
               readOnly
             />
@@ -88,7 +93,6 @@ function EditPackage() {
               className="textAreaDAtaForAddHall"
               name="package_description"
               onChange={getRegisterData}
-              required
               defaultValue={hall.package_description}
               
             />
@@ -104,7 +108,6 @@ function EditPackage() {
                 name="start_date"
                 type="date"
                 onChange={getRegisterData}
-                required
                 defaultValue={hall.start_date}
               />
             </div>
@@ -118,7 +121,6 @@ function EditPackage() {
                 name="end_date"
                 type="date"
                 onChange={getRegisterData}
-                required
                 defaultValue={hall.end_date}
               />
             </div>
@@ -133,7 +135,6 @@ function EditPackage() {
               type="number"
               name="price"
               onChange={getRegisterData}
-              required
               defaultValue={hall.price}
             />
           </div>

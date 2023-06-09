@@ -9,6 +9,7 @@ const NewCardTemplate = ({ cardData}) => {
       state: { cardData: cardData},
     });
   }
+  console.log(cardData)
   return (
     <div className="CardContainer animate">
       <div className="ContImgCard">
@@ -24,6 +25,8 @@ const NewCardTemplate = ({ cardData}) => {
 
         <p>Type: <span className="boldColor">{cardData.type}</span></p>
         <p>Price: <span className="boldColor">{cardData.price}</span> </p>
+        <p>Likes: <span className="boldColor">{cardData.likes_count}</span> </p>
+
         <div>
           <button
             className="lastButtonForDetails-button"

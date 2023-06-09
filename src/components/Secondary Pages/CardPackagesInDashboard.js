@@ -61,25 +61,25 @@ const CardPackagesInDashboard = ({ user, deletePackage }) => {
                   </div>
                 </div>
 
-                <h5 className="hall-name">
+                <h3 className="hall-name">
                   {pack.price} $
-                </h5>
+                </h3>
                 <div className="buttons">
                 <button
-                    className="accept-btn reserve-btn"
+                    className="view-btn"
                     onClick={() => goTohallDetails(pack)}
                   >
                     View
                   </button>
                 <button
-                    className="accept-btn reserve-btn"
+                    className="accept-btn"
                     onClick={() => handleClick(pack)}
                   >
                     Edit
                   </button>
                  
                   <button
-                    className="decline-btn reserve-btn"
+                    className="decline-btn"
                     onClick={() => deletePackages(pack)}
                   >
                     Delete

@@ -4,18 +4,20 @@
   flex-wrap: wrap;
   min-height: 360px;
   justify-content: center;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
 }
 .reserv-sml-cont {
   border-radius: 10px;
-  background: #616161;
+  background: var(--black-color);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 300px;
-  margin: auto;
-  margin-bottom: 50px;
   transition: all 0.2s ease-in-out;
+  padding: 10px;
 }
 .reserv-sml-cont:hover {
   transform: translateY(-5px);
@@ -25,6 +27,7 @@
 .buttons {
   display: flex;
   margin: 10px;
+  gap: 5px;
 }
 .accept-btn {
   color: #fff !important;
@@ -98,18 +101,23 @@
   display: flex;
   flex-direction: column;
 }
+.user-info-div h5{
+  text-align: center;
+  margin: 10px;
+  font-size: 24px;
+  color: var(--white-color);
+}
 .user-pic-cont,
 .user-info-div,
 .user-div,
 .hall-name {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Segoe UI", Arial, sans-serif;
 }
 .user-pic-cont,
 .user-info-div {
   width: 200px;
-  margin-right: 20px;
   display: flex;
 }
 .reserve-btn:hover {

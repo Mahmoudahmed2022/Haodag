@@ -1,14 +1,14 @@
 import React from "react";
 
 // import image from "../components/images/omar.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Css/AdminDashboard.css";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
 
-const 
-FetchHallsPlans = ({ user, reGetHalls }) => {
+const FetchHallsPlans = ({ user, reGetHalls }) => {
+  const nav = useNavigate();
   let content;
   const personData = useContext(MyContext);
 
@@ -63,7 +63,12 @@ FetchHallsPlans = ({ user, reGetHalls }) => {
       });
     }
   };
-
+const goToHallDetails=(product)=>{
+  nav(`/hallDetails/${product.id}`)
+}
+const goToPlanDetails=(product)=>{
+  nav(`/Plandetails/${product.id}`)
+}
   return (
     <>
       <h1 className="NameUsers">{content}</h1>
@@ -97,19 +102,19 @@ FetchHallsPlans = ({ user, reGetHalls }) => {
                     <td className="tdoperations">
                       <div className="ss">
                         {content==="Halls" ?(
-                           <Link
+                           <button
                            className="btnoperations blue"
-                           to={`/hallDetails/${product.id}`}
+                           onClick={()=>goToHallDetails(product)}
                          >
                            View
-                         </Link>
+                         </button>
                         ):(
-                          <Link
+                          <button
                           className="btnoperations blue"
-                          to={`/Plandetails/${product.id}`}
+                          onClick={()=>goToPlanDetails(product)}
                         >
                           View
-                        </Link>
+                        </button>
                         )}
                        
                         
