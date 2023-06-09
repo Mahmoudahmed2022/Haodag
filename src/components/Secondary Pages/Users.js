@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Favorite from "./Favorite";
 
-const Users = ({ userData, userToken, isLogin }) => {
+const Users = ({ userData, isLogin }) => {
   const [visible, setVisible] = useState(5);
   const [ownersHallsCard, setownersHallsCard] = useState([]);
 
@@ -15,8 +15,8 @@ const Users = ({ userData, userToken, isLogin }) => {
     fetch(`http://127.0.0.1:8000/user/auth/getUserFavsHalls`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${userToken.token}`,
-        "auth-token": `${userToken.token}`,
+        Authorization: `Bearer ${userData.token}`,
+        "auth-token": `${userData.token}`,
       },
     })
       .then((response) => {
@@ -46,7 +46,7 @@ const Users = ({ userData, userToken, isLogin }) => {
             <>
               {ownersHallsCard?.slice(0, visible).map((data, index) => (
                 <Favorite
-                  userToken={userToken}
+                  userData={userData}
                   key={index}
                   cardData={data}
                   isLogin={isLogin}

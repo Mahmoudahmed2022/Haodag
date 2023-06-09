@@ -58,7 +58,7 @@ const AddPackage = () => {
         .then((data) => {
           console.log(data);
           alert(data.message)
-          window.location.reload();
+          // window.location.reload();
         });
     }
   }

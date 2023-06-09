@@ -29,8 +29,9 @@ const GreatePackages = () => {
     <>
     <NavbarWithSideBar/>
     <div className="containerPackages">
+    <h1 className="h1Great">We Recommend For You a Greate Packages </h1>
+
       <div className="ContDataaa">
-        <h1>We Recommend For You a Greate Packages </h1>
         {cardData.map((data, index) => (
           <PackageCard key={index} cardData={data} />
         ))}{" "}

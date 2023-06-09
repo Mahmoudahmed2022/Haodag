@@ -45,7 +45,7 @@
 }
 
 .link-footrer:hover {
-  color: rgb(34, 34, 93);
+  color: var(--main-color);
 }
 
 .icon-footer {
@@ -97,7 +97,7 @@
 }
 
 .avatar1:hover {
-  color: gold;
+  color: var(--main-color);
 }
 
 /* Animation Styles */

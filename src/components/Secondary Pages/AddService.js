@@ -71,6 +71,7 @@ function AddService() {
           }).then((result) => {
             if (result.isConfirmed) {
               navigate(`/user/${personData.role}/${personData.id}`);
+            
             }
           });
         });

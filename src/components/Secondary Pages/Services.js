@@ -15,6 +15,7 @@ const Services = ({ userData, isLogin }) => {
       `http://127.0.0.1:8000/api/auth/getAllSupplierServices/${userData.id}`,
       {
         method: "GET",
+      
       }
     )
       .then((response) => {
@@ -179,6 +180,8 @@ const Services = ({ userData, isLogin }) => {
   return (
     <>
       <div className="halls">
+      <h1 className="fav-head">Services</h1>
+
         <div className="catogries">
           <button class="button-arounder" onClick={getSupplierServiceCard}>
             All Services
@@ -205,8 +208,6 @@ const Services = ({ userData, isLogin }) => {
             Jallery
           </button>
         </div>
-        <br />
-        <h1 className="fav-head">Services</h1>
         <div className="home-allhalls-container">
           {supplierServiceCard?.length > 0 ? (
             <>

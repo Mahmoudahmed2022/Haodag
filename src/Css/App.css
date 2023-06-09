@@ -1,17 +1,32 @@
 :root {
   /* --main-color: #314569; */
   --main-color: #e69428;
-  --black-color:#1c1c1c;
+  --black-color:#2e2e2e;
   --white-color:white;
 
 
 
 }
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.2em;
+  height: 0.3em;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #f0c48a;
+  border-radius: 0.25em;
+}
 body {
   font-family: cursive;
   background-color: #ecf4ec;
 }
-
+button{
+  cursor: pointer;
+}
 .ParentDivForAll{
   min-height: calc(100vh -  250px);
   height: 100%;

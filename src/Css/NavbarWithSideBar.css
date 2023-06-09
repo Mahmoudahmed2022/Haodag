@@ -25,12 +25,11 @@
   color: var(--main-color);
 }
 .svgColor:hover{
-  color: var(--white-color);
+  color: rgb(251, 179, 46);
 }
 .bigger:hover {
   color: var(--white-color);
 }
-
 .svgColor1 {
   width: 50px;
   color: var(--main-color);
@@ -44,11 +43,13 @@
 }
 .menu-bars {
   display: flex;
-
   font-size: 2rem;
   background: none;
 }
-
+.menu-bars svg{
+  cursor: pointer;
+  color: var(--main-color);
+}
 .nav-menu {
   background-color: var(--black-color);
   width: 250px;

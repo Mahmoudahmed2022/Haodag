@@ -312,7 +312,9 @@ e.preventDefault();
     content = <FetchHallsPlans user={canceledHalls} reGetHalls={(id)=>reGetCanceledHalls(id)}  />;
   } else if (selectedComponent === "offers") {
     content = <FetchAllData  user={offers}  />;
-  } 
+  } else if (selectedComponent === "home") {
+    nav(`/`);
+  }
   const reGetConfirmedHalls = (id)=>{
     setConfirmedHalls(confirmedHalls.filter((res)=>res.id!==id))
   }
@@ -396,6 +398,34 @@ e.preventDefault();
           </div>
 
           <div className="alllinks">
+          <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "home" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("home")}
+            >
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <img
+                    className="widthIcon"
+                    src={hallRequests}
+                    alt="home"
+                  ></img>
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                   <p>Home</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
+
+            
             <button
               style={{
                 backgroundColor:

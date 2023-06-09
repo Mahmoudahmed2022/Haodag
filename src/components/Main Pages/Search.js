@@ -8,6 +8,7 @@ import NavbarWithSideBar from "./NavbarWithSideBar";
 import { useContext } from "react";
 import { MyContext } from "./Redux";
 import Swal from "sweetalert2";
+import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 function Search() {
   const personData = useContext(MyContext);
 
@@ -245,7 +246,8 @@ function Search() {
   const renderCard = (hall) => {
     return (
       <>
-        <div className="search-hall-container" key={hall.id}>
+      <NewCardTemplate key={hall.id} cardData={hall} />
+        {/* <div className="search-hall-container" key={hall.id}>
           <div className="search-img-div">
             <img
               className="search-hall-img"
@@ -257,13 +259,13 @@ function Search() {
           <div className="search-hall-body">
             <Link
               to={`/hallDetails/${hall.id}`}
-              className="search-details-btn s-d-hover"
+              className="buttonMain details"
               href="#"
             >
               Details
             </Link>
           </div>
-        </div>
+        </div> */}
       </>
     );
   };

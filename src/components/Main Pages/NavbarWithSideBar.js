@@ -291,7 +291,7 @@ function NavbarWithSideBar() {
                 <span className="svgColor">Search For Halls</span>
               </button>
             </li>
-            <li className="nav-text">
+            {/* <li className="nav-text">
               <button
                 className="aAll transparentBorderN"
                 onClick={() => {
@@ -305,7 +305,7 @@ function NavbarWithSideBar() {
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">translation</span>
               </button>
-            </li>
+            </li> */}
 
             {personData.isLogin ? (
               <li className="nav-text">

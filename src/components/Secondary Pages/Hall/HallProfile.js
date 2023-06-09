@@ -33,7 +33,6 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [hover, setHover] = useState(null);
   const [Like, setLike] = useState(false);
   const [isFavourited, setIsFavourited] = useState(false);
-
   const [disLike, setDisLike] = useState(false);
   const [heartStyle, setHeartStyle] = useState({ color: "white" });
   const [toggle, setToggle] = useState(true);
@@ -232,7 +231,7 @@ const HallProfile = ({ rating, isFavourite }) => {
             <div className="dataModalContact">
               <div className="contactWUs" to="/modal">
                 <p className=" pWhatsap" onClick={goToProfile}>
-                  <FaUserTie className="colorSvg1" /> Owner :{ownerData.name}
+                  <FaUserTie className="colorSvg1" /> Owner :{ownerData?.name}
                 </p>
               </div>
               <div className="phonec">

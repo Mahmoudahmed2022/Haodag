@@ -94,12 +94,8 @@ body {
   align-items: center;
   border-radius: 5px;
 }
-.s-d-hover:hover {
-  background-color: #4158d0;
-}
-.s-d-hover:active {
-  background-color: #4158d0;
-}
+
+
 .search-details-btn {
   width: 60%;
   height: 30px;
@@ -114,8 +110,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin-top: 80px;
-  justify-content: space-evenly;
+  justify-content: center;
   width: inherit;
+  gap: 30px;
 }
 .search-hall-container {
   border: 0.5px solid #afb2b8;
@@ -227,10 +224,6 @@ select {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-}
-
-.s-d-hover:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .search-icon {
