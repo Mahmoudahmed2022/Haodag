@@ -4,6 +4,8 @@ import "../../Css/WeddingPlanners.css";
 import "../../Css/Reservation.css";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
+import photoHall from "../images/image.jpg"
+import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 function HallsBookings() {
   const personData = useContext(MyContext);
   const [bookings, setBookings] = useState([]);
@@ -36,6 +38,7 @@ function HallsBookings() {
   }, []);
   return (
     <>
+    <NavbarWithSideBar/>
       <div>
         <h1 className="reserve-tit">Halls Booking Requests</h1>
         <div className="reserv-big-cont">
@@ -43,40 +46,34 @@ function HallsBookings() {
             bookings.map((Booking, index) => {
               return (
                 <div className="reserv-sml-cont" key={Booking.id}>
+                  <img className="WH" src={photoHall} alt="no photo"></img>
                   <h3>Booking {index + 1}</h3>
                   <div className="user-div">
-                    <div className="user-info-div">
-                      <h4>
-                        {Booking.user_name}
-                        <br />
-                        {Booking.check_in_date}
-                        <br />
-                        {Booking.check_out_date}
-                      </h4>
-                    </div>
+                      <h3>User: {Booking.user_name}</h3>
+                      <h3 >
+                      Hall Name: {Booking.hall_name} 
+                    </h3>
+                      <h3>from {Booking.check_in_date} to {Booking.check_out_date}
+                      </h3>
+                      <h3>Price: {Booking.price} $</h3>
+
                   </div>
-                  <div className="user-info-div">
-                    <h5 className="hall-name">
-                      {Booking.hall_name}
-                      <br />
-                      {Booking.price} $
-                    </h5>
-                  </div>
+                    
                   <div className="buttons">
                     {Booking.status === "confirmed" ? (
-                      <button className="accept-btn reserve-btn pln-btn">
+                      <button className="view-btn  pln-btn">
                         Confirmed
                       </button>
                     ) : null}
 
                     {Booking.status === "cancelled" ? (
-                      <button className="decline-btn reserve-btn pln-btn">
+                      <button className="decline-btn  pln-btn">
                         Cancelled
                       </button>
                     ) : null}
 
                     {Booking.status === "unconfirmed" ? (
-                      <button className="view-btn reserve-btn pln-btn">
+                      <button className="view-btn  pln-btn">
                         Unconfirmed
                       </button>
                     ) : null}

@@ -8,6 +8,13 @@
   justify-content: center;
   margin: 30px 0;
 }
+.user-div{
+  width: 80%;
+  padding: 5px;
+}
+.user-div h3{
+  width: 100%;
+}
 .reserv-sml-cont {
   border-radius: 10px;
   background: var(--black-color);
@@ -17,8 +24,13 @@
   align-items: center;
   width: 300px;
   transition: all 0.2s ease-in-out;
-  padding: 10px;
+  }
+.user-info-div h4{
+  text-align: center;
 }
+.reserv-sml-cont>h3{
+  margin: 10px;
+  color: var(--main-color);}
 .reserv-sml-cont:hover {
   transform: translateY(-5px);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
@@ -94,7 +106,8 @@
 }
 .user-div {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-info-div {

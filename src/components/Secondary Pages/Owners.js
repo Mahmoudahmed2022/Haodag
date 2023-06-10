@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import HallCard from "./Cards/HallCard";
 import { MyContext } from "../Main Pages/Redux";
 import { useContext } from "react";
+import NewCardTemplate from "./Cards/NewCardTemplate";
 
 const Owners = ({ userData, isLogin }) => {
   const [visible, setVisible] = useState(5);
@@ -41,15 +42,17 @@ const Owners = ({ userData, isLogin }) => {
               {(personData.role==="owner")||(userData.role==="owner")&& <h1 className="section-heading">Owner's Halls</h1>}
 
             <div className="halls">
+              <h1>Halls</h1>
 
               <div className="home-allhalls-container">
+
                 {ownersHallsCard.length > 0 ? (
                   <>
                     {ownersHallsCard.slice(0, visible).map((data, index) => (
-                      <HallCard
+                      <NewCardTemplate
                         key={index}
                         userData={userData}
-                        hall={data}
+                        cardData={data}
                       />
                     ))}
                     <div className="for-button">

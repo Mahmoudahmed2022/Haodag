@@ -22,6 +22,7 @@ const HallForm = () => {
     country: "",
     city: "",
     street: "",
+    description:"",
     photos: [],
     videos: [],
     shows: [],
@@ -130,6 +131,8 @@ const HallForm = () => {
     formDataObj.append("country", formData.country);
     formDataObj.append("street", formData.street);
     formDataObj.append("city", formData.city);
+    formDataObj.append("description", formData.description);
+
     for (let i = 0; i < formData.shows.length; i++) {
       formDataObj.append(`shows[${i}]`, formData.shows[i]);
     }
@@ -154,10 +157,11 @@ const HallForm = () => {
         })
         .then((data) => {
           console.log(data);
+          alert(data.message);
+
         });
       navigate(`/user/${personData.role}/${personData.id}`);
-
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
@@ -368,6 +372,20 @@ const HallForm = () => {
               value={formData.capacity}
             />
           </div>
+        </div>
+        <div className="form-group1">
+          <label htmlFor="street" className="labelDAtaForAddHall">
+            Hall Description:
+          </label>
+
+          <input
+            className="inputDAtaForAddHall"
+            type="text"
+            name="description"
+            onChange={getRegisterData}
+            required
+            value={formData.description}
+          />
         </div>
         <div className="form-group1">
           <label className="labelDAtaForAddHall">Choose Images</label>

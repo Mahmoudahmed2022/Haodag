@@ -36,6 +36,7 @@ function HallsRequests({hallsRequest,deleteHallRequest}) {
   }
   return (
     <>
+    
       <div>
         <h1 className="Requests-tit">Halls Confirmation Requests</h1>
         <div className="reserv-big-cont">
@@ -45,6 +46,7 @@ function HallsRequests({hallsRequest,deleteHallRequest}) {
                 <h3>{reservation.key}</h3>
                 <div className="user-div">
                   <div className="user-info-div">
+                    <h4>{reservation.name}</h4>
                     <h5>
                       {reservation.title}
                       <br />

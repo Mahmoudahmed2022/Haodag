@@ -74,6 +74,8 @@ label {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* Modal Cancel Button */
@@ -128,7 +130,9 @@ label {
   /* margin: 2rem; */
   width: 60%;
   padding: 30px;
-  border: 1px solid black;
+  border: 1px solid var(--main-color);
+  background-color: white;
+  border-radius: 10px;
 }
 .textarea1 {
   resize: none;
@@ -160,38 +164,10 @@ label {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  gap: 8px;
 }
 
-.cancel {
-  background-color: #e91e63;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.cancel:hover {
-  background-color: #c2185b;
-}
-
-.submitForm {
-  background-color: #4caf50;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submitForm:hover {
-  background-color: #388e3c;
-}
 
 .exit {
   display: flex;

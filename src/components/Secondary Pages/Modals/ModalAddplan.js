@@ -119,10 +119,10 @@ const navigate = useNavigate();
 
         <div>
           <div className="resetAndCancel">
-            <button className="cancel" onClick={onClose}>
+            <button className="delete buttonMain" onClick={onClose}>
               Cancel
             </button>
-            <button className="submitForm" type="submit">
+            <button className="details buttonMain" type="submit">
               Add Plan
             </button>
           </div>

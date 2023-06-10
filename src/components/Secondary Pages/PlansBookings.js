@@ -4,6 +4,7 @@ import "../../Css/WeddingPlanners.css";
 import "../../Css/Reservation.css";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
+import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 function PlansBookings() {
   const personData = useContext(MyContext);
   const [bookings, setBookings] = useState([]);
@@ -36,6 +37,7 @@ function PlansBookings() {
   }, []);
   return (
     <>
+    <NavbarWithSideBar/>
       <div>
         <h1 className="reserve-tit">Plans Booking Requests</h1>
         <div className="reserv-big-cont">
@@ -64,19 +66,19 @@ function PlansBookings() {
                   </div>
                   <div className="buttons">
                     {Booking.status === "confirmed" ? (
-                      <button className="accept-btn reserve-btn pln-btn">
+                      <button className="accept-btn  pln-btn">
                         Confirmed
                       </button>
                     ) : null}
 
                     {Booking.status === "cancelled" ? (
-                      <button className="decline-btn reserve-btn pln-btn">
+                      <button className="decline-btn  pln-btn">
                         Cancelled
                       </button>
                     ) : null}
 
                     {Booking.status === "unconfirmed" ? (
-                      <button className="view-btn reserve-btn pln-btn">
+                      <button className="view-btn  pln-btn">
                         Unconfirmed
                       </button>
                     ) : null}

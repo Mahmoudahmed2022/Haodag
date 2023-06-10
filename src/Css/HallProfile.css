@@ -73,13 +73,23 @@
   align-items: center;
   padding: 10px;
   border: none;
-  background-color: #607d8b;
+  color: var(--white-color);
+  background-color: var(--main-color);
   font-size: 16px;
-  border-radius: 10px;
   cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+
 }
+/* .askBooking svg{
+  color: var(--white-color);
+} */
+
 .askBooking:hover {
-  background-color: #546d79;
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+
 }
 .singleInfo {
 }
@@ -188,6 +198,7 @@
   border-radius: 20px;
   width: 40px;
   height: 40px;
+  background-color: white;
 }
 .btnnextback {
   border: none !important;
@@ -200,7 +211,7 @@
 }
 
 .carousel__dot--selected {
-  background-color: #607d8b !important;
+  background-color: var(--main-color) !important;
 }
 .groupDots {
   display: flex;
@@ -209,12 +220,12 @@
   justify-content: center;
 }
 .button-buttonPrice {
-  border: 2px solid #314569;
+  border: 2px solid var(--main-color);
   font-size: 20px;
   border-radius: 25px;
   width: 80px;
   height: 40px;
-  color: #314569;
+  color: var(--main-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -223,7 +234,7 @@
   justify-content: center;
 }
 .button-buttonPrice:hover {
-  background-color: #314569;
+  background-color: var(--main-color);
   color: white;
 }
 
@@ -241,20 +252,7 @@
   align-items: center;
   margin-bottom: 15px;
 }
-.more1 {
-  width: 150px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  background-color: #d2d2d2;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  /* color: white; */
-  font-family: cursive;
-}
+
 .hall-container {
   width: 400px;
   margin-bottom: 50px;
@@ -271,8 +269,8 @@
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 40px;
-  color: #243b55;
+  /* margin-bottom: 40px; */
+  color: var(--black-color);
 }
 
 @media only screen and (max-width: 992px) {
@@ -351,6 +349,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 .dataModalContact a {
@@ -363,30 +362,15 @@
 .colorSvg {
   color: green;
 }
-.colorSvg1 {
-  color: black;
-}
 
-.linkMoreD {
-  /* background-color: aliceblue; */
-  border: 1px solid #243b55;
-  width: 150px;
-  display: flex;
-  color: #243b55;
-  justify-content: center;
-  padding: 7px;
-  border-radius: 20px;
-  text-decoration: none;
-}
+
+
 
 .bLM {
   display: flex;
   justify-content: center;
 }
-.linkMoreD:hover {
-  background-color: #243b55;
-  color: white;
-}
+
 .contDataa {
   display: flex;
   flex-direction: row;
@@ -399,6 +383,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 940px;
 }
 .reviewF,
 .reviewS {
@@ -406,12 +391,15 @@
   width: 60%;
   background-color: #3f51b554;
   display: flex;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
   box-shadow: 0 0 5px #243b55;
+  overflow: scroll;
+  position: sticky;
+  top: 20px;
 }
 .reviewF p,
 .reviewS p {

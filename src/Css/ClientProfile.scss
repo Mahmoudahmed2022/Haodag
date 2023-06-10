@@ -5,7 +5,7 @@ $speed: 0.5s;
 }
 .btn-flip {
   opacity: 1;
-  border: none;
+  border: 1px solid var(--main-color);
   outline: 0;
   color: #555;
   line-height: 40px;
@@ -35,7 +35,7 @@ $speed: 0.5s;
     left: 0;
     opacity: 0;
     width: 150px;
-    color: #263e61;
+    color: var(--white-color);
     display: block;
     transition: $speed;
     position: absolute;
@@ -53,7 +53,7 @@ $speed: 0.5s;
     line-height: 40px;
     transition: $speed;
     position: relative;
-    background: #263e61;
+    background: transparent;
     content: attr(data-front);
     transform: translateY(0) rotateX(0);
   }

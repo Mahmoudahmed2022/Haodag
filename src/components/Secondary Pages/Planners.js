@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../Main Pages/Redux";
 
-const Planners = ({ userData, isLogin,Plan }) => {
-  const [plan, setplan] = useState([]);
+const Planners = ({ userData, isLogin, Plan }) => {
+  const [plans, setplan] = useState([]);
   const [visible, setVisible] = useState(5);
   const personData = useContext(MyContext);
   const navigate = useNavigate();
-console.log(userData)
-console.log(Plan)
+  console.log(userData);
+  console.log(Plan);
 
   const fetchplans = () => {
     fetch(`http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${userData.id}`, {
@@ -34,66 +34,94 @@ console.log(Plan)
     setVisible(visible + 5);
   };
   useEffect(() => {
-    if (userData?.role === "planner")
-     fetchplans();
+    if (userData?.role === "planner") fetchplans();
   }, []);
-  function handleDetailsClick(plan_Id, plan) {
-    navigate(`/Plandetails/${plan_Id}`, {
-      state: {  plan: plan, userData: userData },
+  const  handleDetailsClick= (plan)=> {
+    navigate(`/Plandetails/${plan.id}`, {
+      state: { plan: plan },
     });
   }
-  const renderCard = (plan) => {
-    return (
-      <>
-        <div className="planD" key={plan.id}>
+
+  // const renderCard = (plan) => {
+    // const  handleDetailsClick= (plan)=> {
+    //   navigate(`/Plandetails/${plan.id}`, {
+    //     state: { plan: plan },
+    //   });
+    // }
+  
+  //   return (
+  //     <>
+  //       <div className="planD" key={plan.id}>
+  //       <img
+  //             src={plan.photos[0]}
+  //             alt={plan.name}
+  //             className="banner-image"
+  //           />
+  //         <div className="wrapper">
+            
+  //           <div className="pad20">
+  //             <h1> {plan.name}</h1>
+  //             <p>{plan.price}$</p>
+  //           </div>
+  //           <div className="button-wrapper">
+  //             <button
+  //               onClick={() => handleDetailsClick(plan)}
+  //               className="buttonMain details"
+  //             >
+  //               DETAILS
+  //             </button>
+  //           </div>
+  //         </div>
+  //       </div>{" "}
+  //     </>
+  //   );
+  // };
+ 
+  return (
+    <>
+      {userData?.role === "planner" && (
+        <h1 className="section-heading">Wedding Plans</h1>
+      )}
+      <div className="profile-content">
+  {plans.length > 0 ? (
+    <>
+      {plans.slice(0, visible).map((data, index) => (
+        <div className="planD" key={data.id}>
+          <img
+            src={data.photos[0]}
+            alt={data.name}
+            className="banner-image"
+          />
           <div className="wrapper">
-            <img
-              src={plan.photos[0]}
-              alt={plan.name}
-              className="banner-image"
-            />
             <div className="pad20">
-              <h1> {plan.name}</h1>
-              <p>{plan.price}$</p>
+              <h1>{data.name}</h1>
+              <p>{data.price}$</p>
             </div>
             <div className="button-wrapper">
               <button
-                onClick={() => handleDetailsClick(plan.id, plan)}
-                className="btnForPlan outline"
+                onClick={() => handleDetailsClick(data)}
+                className="buttonMain details"
               >
-                DETAILS
+                Details
               </button>
             </div>
           </div>
-        </div>{" "}
-      </>
-    );
-  };
-
-  return (
-    <>
-      
-        {userData?.role === "planner" && (
-          <h1 className="section-heading">Wedding Plans</h1>
-        )}
-        <div className="profile-content">
-          {plan.length > 0 ? (
-            <>
-              {plan.slice(0, visible).map(renderCard)}
-              <div className="for-button">
-                {visible < plan.length && (
-                  <button className="more" onClick={loadMore}>
-                    Load 5 More
-                  </button>
-                )}
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
         </div>
-      
+      ))}
+    </>
+  ) : (
+    <></>
+  )}
+</div>
+
     </>
   );
 };
 export default Planners;
+{/* <div className="for-button">
+                         {visible < plans.length && (
+                           <button className="more" onClick={loadMore}>
+                             Load 5 More
+                           </button>
+                         )}
+                       </div> */}

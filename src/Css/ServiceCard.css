@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 3rem;
+  padding: 10px;
   width: 90%;
-  width: 200px;
-  height: 400px;
+  width: 250px;
+  height: 370px;
   border-radius: 16px;
   position: relative;
   border: 3px solid transparent;
@@ -13,12 +13,14 @@
   text-align: center;
   color: var(--main-color);
   background-color: var(--black-color);
+  transition: 0.5s;
+  gap: 10px;
 }
 .trash {
   padding-top: 10px;
 }
 .profile:hover {
-  box-shadow: 10px 10px 15px var(--main-color);
+  box-shadow: 5px 5px 5px 5px var(--main-color);
 }
 .profile:after {
   content: "";
@@ -60,7 +62,6 @@
 .profile-username {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 1.5rem;
 }
 
 .profile-user-handle {
@@ -68,14 +69,12 @@
 }
 
 .profile-actions {
-  margin-top: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .profile-actions > * {
-  margin: 0 0.25rem;
 }
 
 .btn {

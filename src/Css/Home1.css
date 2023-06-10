@@ -349,19 +349,16 @@
 }
 
 .more {
-  width: 150px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  background-color: var(--main-color);
-  border: none;
-  border-radius: 10px;
+  background-color: transparent;
+  color: var(--main-color);
+  /* border: 1px solid var(--main-color); */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 18px;
-  color: white;
-  font-family: cursive;
+  transition: all 0.5s ease-in-out;
+  text-decoration: underline;
+  border: none;
 }
 .about-us {
   border-top: 0.5px solid #ef9011;
@@ -371,7 +368,10 @@
   align-items: center;
   background-color: #ecf4ec;
 }
-
+.halls h1{
+  text-align: center;
+  color: var(--main-color);
+}
 .left-photo-couple {
   width: 30%;
   height: 450px;

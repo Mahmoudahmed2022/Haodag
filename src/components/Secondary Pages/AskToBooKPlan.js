@@ -3,6 +3,7 @@ import "../../Css/Modal.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
+import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 
 const AskToBookPlan = (props) => {
   const nav = useNavigate();
@@ -57,10 +58,11 @@ const AskToBookPlan = (props) => {
   console.log(formData, personData.token);
   return (
     <>
+    <NavbarWithSideBar/>
       <div className="modal2">
         <h2 className="headContact">Ask To Book</h2>
 
-        <form className="formAddPlan" onSubmit={handleSubmit}>
+        <form className="formAddPlan" >
           <label htmlFor="datetime">Select check in date:</label>
           <input
             className="InputModalHallDetails"
@@ -84,10 +86,10 @@ const AskToBookPlan = (props) => {
 
           <div>
             <div className="resetAndCancel2">
-              <button className="cancel" onClick={() => nav(-1)}>
+              <button className="delete buttonMain" onClick={() => nav(-1)}>
                 Cancel
               </button>
-              <button className="submitForm2" type="submit">
+              <button className="details buttonMain" onClick={handleSubmit}>
                 Submit
               </button>
             </div>

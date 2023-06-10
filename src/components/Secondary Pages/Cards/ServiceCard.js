@@ -51,9 +51,7 @@ const ServiceCard = ({ cardData, userToken, isLogin }) => {
         </div>
 
         <h2 class="profile-username">{cardData.name}</h2>
-        <br />
         <small class="profile-user-handle">{cardData.description}</small>
-        <br />
         <h4 class="profile-user-handle">{cardData.price}</h4>
         <div class="profile-actions">
           {personData?.role === "user" && (
@@ -66,7 +64,6 @@ const ServiceCard = ({ cardData, userToken, isLogin }) => {
               Edit
             </button>
           )}
-          <br />
         </div>
         <div className="trash">
           {" "}

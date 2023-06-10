@@ -1,26 +1,92 @@
 .plantit {
   display: flex;
   justify-content: center;
-  background-color: #f7f7f7;
+  margin: 20px;
 }
 
 .top-shape {
-  border-radius: 20px 20px 0px 0px;
-  width: 85%;
-  height: 30px;
-  background-color: #243b55;
-  margin-left: 6%;
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  height: 20px;
+  background-color: var(--main-color);
+  /* margin-left: 6%; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.imageInslider{
+  width: 70%;
+}
+.plan-slider{
+  width: 46%;
+  display: flex;
+  justify-content: center;
+  /* margin: 50px 0; */
+}
+.plan-description h1{
+  text-align: center;
+}
 .plan-description {
-  width: 80%;
+  width: 100%;
   height: auto;
-  background-color: #efefef;
-  padding: 34px;
-  margin-left: 6%;
-  margin-bottom: 50px;
+  background-color: white;
+  /* padding: 34px; */
+  /* margin-left: 6%; */
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
+}
+.plan-description h1,.plan-description ul,.plan-description p{
+  padding: 10px;
+}
+
+.plan-description1 h1,.plan-description1 ul,.plan-description1 p{
+  padding: 10px;
+}
+.conShapAndInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto ;
+
+}
+.conShapAndInfo1{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 0px auto;
+  display: flex;
+
+}
+.plan-description1 {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  /* padding: 34px; */
+  /* margin-left: 6%; */
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ContAllShapeInfo{
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.AllContPlanSlider{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px 0;
 }

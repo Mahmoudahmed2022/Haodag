@@ -123,9 +123,9 @@ function Home() {
       </div>
       <div className="for-button">
         {visible < cardData.length && (
-          <button className="more" onClick={loadMore}>
+          <a className="more" onClick={loadMore}>
             Load 5 More
-          </button>
+          </a>
         )}
       </div>
       <div className="clo">

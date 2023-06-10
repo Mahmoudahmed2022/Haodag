@@ -296,8 +296,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           </div>
 
           <div className="contReview">
-            <div className="reviewF">
-              <div className="firstColRate">
+            <div className="reviewF custom-scrollbar">
+              {/* <div className="firstColRate">
                 <p>Put Rate</p>
                 <div className="rating-stars">
                   {[...Array(5)].map((star, i) => {
@@ -322,7 +322,7 @@ const HallProfile = ({ rating, isFavourite }) => {
                     );
                   })}
                 </div>
-              </div>
+              </div> */}
               <div className="secondColLove">
                 <p>Add To Fav</p>
                 <div className="heartLove ">
@@ -350,9 +350,18 @@ const HallProfile = ({ rating, isFavourite }) => {
                   />
                 </div>
               </div>
+              <div className="thirdColLike">
+                <p>Number Of Likes </p>
+                <div className="PheartLove">
+                  <div className="likeDown1 ">
+                    <FaThumbsUp className="heartLoveSvg" />
+                    <p>{hall.likes_count}</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="reviewS">
+            {/* <div className="reviewS">
               <div className="firstColRate">
                 <p>Rating Percentage</p>
                 <div className="manyStarsR">
@@ -389,16 +398,8 @@ const HallProfile = ({ rating, isFavourite }) => {
                 </div>
               </div>
 
-              <div className="thirdColLike">
-                <p>Number Of Likes </p>
-                <div className="PheartLove">
-                  <div className="likeDown1 ">
-                    <FaThumbsUp className="heartLoveSvg" />
-                    <p>{hall.likes_count}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              
+            </div> */}
           </div>
         </div>
 
