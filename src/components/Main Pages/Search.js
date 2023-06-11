@@ -247,25 +247,6 @@ function Search() {
     return (
       <>
       <NewCardTemplate key={hall.id} cardData={hall} />
-        {/* <div className="search-hall-container" key={hall.id}>
-          <div className="search-img-div">
-            <img
-              className="search-hall-img"
-              src={hall.photos[0]}
-              alt={hall.name}
-            ></img>
-            {hall.name}
-          </div>
-          <div className="search-hall-body">
-            <Link
-              to={`/hallDetails/${hall.id}`}
-              className="buttonMain details"
-              href="#"
-            >
-              Details
-            </Link>
-          </div>
-        </div> */}
       </>
     );
   };
@@ -276,9 +257,7 @@ function Search() {
 
       <div className="search-page-container">
         <div className="landing-container">
-          {/* <div className="user-pic">
-            <img src={user} alt="user pic" />
-          </div> */}
+         
           <div className="search-box">
             <div className="landing-text">
               <div className="sml-landing-text-container">
@@ -288,7 +267,11 @@ function Search() {
                 <p className="big-landing-text">Search , Find & Book</p>
               </div>
             </div>
-            <div className="search-form-container">
+          
+          </div>
+        </div>
+        <div className="search-form-container">
+          <h3>Search By Filter</h3>
               <form onSubmit={searchHalls} className="advanced-search-form">
                 <div className="search-inputs-container">
                   <div className="search-input-container">
@@ -362,18 +345,17 @@ function Search() {
                       onChange={(e) => setMaxPrice(e.target.value)}
                     />
                   </div>
-                </div>
-
-                <div className="search-btn-div">
+                  <div className="search-btn-div">
                   <button type="submit" className="search-btn s-d-hover">
                     <IoMdSearch className="search-icon" />
                     Search
                   </button>
                 </div>
+                </div>
+
+               
               </form>
             </div>
-          </div>
-        </div>
         <div className="allhalls-container">
           {halls.slice(0, visible).map(renderCard)}
         </div>

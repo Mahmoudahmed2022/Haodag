@@ -172,6 +172,8 @@ const HallForm = () => {
     const formGroups = document.querySelectorAll(".form-group1");
     formGroups.forEach((group) => group.classList.add("visible"));
   }, []);
+console.log(formData.link);
+console.log(formData);
 
   return (
     <>
