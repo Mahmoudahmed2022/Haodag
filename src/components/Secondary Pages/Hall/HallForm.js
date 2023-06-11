@@ -37,8 +37,9 @@ const HallForm = () => {
       };
     });
   }
-
   console.log(formData);
+
+  console.log(formData.link);
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     setFormData({

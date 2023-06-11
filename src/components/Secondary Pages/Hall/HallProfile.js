@@ -209,8 +209,8 @@ let contentAvalaible;
           <div className="mapAndData">
             <InfoForMap
               className="singleInfoMap"
-              products={products}
-              img={image7}
+              hall={hall}
+              
             />
 
             <div className="dataModalContact">
@@ -240,7 +240,7 @@ let contentAvalaible;
               </div>
               <div className="phonec">
                 <FaPhoneAlt className="" />
-                <p className="pWhatsap">+165156</p>
+                <p className="">{ownerData?.phone}</p>
               </div>
             </div>
             <div className="dataModalContact">
@@ -261,7 +261,7 @@ let contentAvalaible;
         <div className="contDataa">
           <div className="contDataInfo">
             <div className="allContInfo">
-              <div className="topShape"></div>
+              <div className="top-shape"></div>
 
               <div className="card-content">
                 <h2 className="section__title">The Amplitude</h2>
@@ -315,7 +315,7 @@ let contentAvalaible;
               
             </div>
             <div className="allContInfo">
-              <div className="topShape"></div>
+              <div className="top-shape"></div>
 
               <div className="card-content">
                 <h2 className="section__title">The Address</h2>
@@ -341,113 +341,53 @@ let contentAvalaible;
             <InfoServices hall={hall} />
             <InfoDescription hall={hall} />
           </div>
+{personData.role==="user"&&(
+  <div className="contReview">
+  <div className="reviewF custom-scrollbar">
+    
+    <div className="secondColLove">
+      <p>Add To Fav</p>
+      <div className="heartLove ">
+        <FaHeart
+          className="heartLoveSvg "
+          // color={1 <= (hoverHeart || false ) ? "red" : ""}
+          style={isFavourited ? { color: "red" } : heartStyle}
+          onClick={() => {
+            toggle ? handleClick() : handleClick2();
+            AddToFavourites();
+          }}
+        />
+      </div>
+    </div>
+    <div className="thirdColLike">
+      <p>Did You Like This </p>
+      <div className="heartLove">
+        <FaThumbsUp
+          className="LikeIcon"
+          // color={ (disLike) ? "#243b55" : ""}
+          style={LikeStyle}
+          onClick={() => {AddLike();
 
-          <div className="contReview">
-            <div className="reviewF custom-scrollbar">
-              {/* <div className="firstColRate">
-                <p>Put Rate</p>
-                <div className="rating-stars">
-                  {[...Array(5)].map((star, i) => {
-                    const ratingValue = i + 1;
+          }}
+        />
+      </div>
+    </div>
+    <div className="thirdColLike">
+      <p>Number Of Likes </p>
+      <div className="PheartLove">
+        <div className="likeDown1 ">
+          <FaThumbsUp className="heartLoveSvg"  />
+          <p>{hall.likes_count}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                    return (
-                      <label key={i}>
-                        <FaStar
-                          className="star"
-                          color={
-                            ratingValue <= (hover || rating)
-                              ? "#ffc107"
-                              : "#e4e5e9"
-                          }
-                          // style={starStyle}
-                          // onClick={toggle1 ? handleClickStar : handleOutClickStar }
-                          // onClick={() => {toggle1 ? handleClickStar(ratingValue) : handleOutClickStar(ratingValue)  }}
-                          onMouseEnter={() => handleHover(ratingValue)}
-                          onMouseLeave={handleMouseLeave}
-                        />
-                      </label>
-                    );
-                  })}
-                </div>
-              </div> */}
-              <div className="secondColLove">
-                <p>Add To Fav</p>
-                <div className="heartLove ">
-                  <FaHeart
-                    className="heartLoveSvg "
-                    // color={1 <= (hoverHeart || false ) ? "red" : ""}
-                    style={isFavourited ? { color: "red" } : heartStyle}
-                    onClick={() => {
-                      toggle ? handleClick() : handleClick2();
-                      AddToFavourites();
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="thirdColLike">
-                <p>Did You Like This </p>
-                <div className="heartLove">
-                  <FaThumbsUp
-                    className="LikeIcon"
-                    // color={ (disLike) ? "#243b55" : ""}
-                    style={LikeStyle}
-                    onClick={() => {AddLike();
+</div>
+)}
+   
 
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="thirdColLike">
-                <p>Number Of Likes </p>
-                <div className="PheartLove">
-                  <div className="likeDown1 ">
-                    <FaThumbsUp className="heartLoveSvg" />
-                    <p>{hall.likes_count}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* <div className="reviewS">
-              <div className="firstColRate">
-                <p>Rating Percentage</p>
-                <div className="manyStarsR">
-                  <div>
-                    <FaStar className="likeDown" />
-                    <span className="likeDown1">15</span>
-                  </div>
-                  <div>
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <span className="likeDown1">15</span>
-                  </div>
-                  <div>
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <span className="likeDown1">15</span>
-                  </div>
-                  <div>
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <span className="likeDown1">15</span>
-                  </div>
-                  <div>
-                    <FaStar className="likeDown " />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <FaStar className="likeDown" />
-                    <span className="likeDown1">15</span>
-                  </div>
-                </div>
-              </div>
-
-              
-            </div> */}
-          </div>
+         
         </div>
 
         {personData && (

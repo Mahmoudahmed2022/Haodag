@@ -14,7 +14,9 @@
 .contactWUs:hover .colorSvg1 {
   transform: scale(1.2);
 }
-
+.allContInfo{
+  margin-left: 6%;
+}
 .whatsap:hover .colorSvg {
   transform: scale(1.2);
 }
@@ -196,8 +198,8 @@
 .dott button {
   border: none;
   border-radius: 20px;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   background-color: white;
 }
 .btnnextback {
@@ -207,7 +209,7 @@
   color: #243b55 !important;
 }
 .btnnextback:hover {
-  color: #607d8b !important;
+  color: var(--main-color) !important;
 }
 
 .carousel__dot--selected {
@@ -232,6 +234,7 @@
   background-color: #f7f7f7;
   text-decoration: none;
   justify-content: center;
+  transition: 0.5s;
 }
 .button-buttonPrice:hover {
   background-color: var(--main-color);
@@ -291,7 +294,6 @@
   /* width: 80%; */
   background-color: #efefef;
   padding: 30px;
-  margin-left: 6%;
   margin-bottom: 50px;
 }
 
@@ -302,9 +304,23 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  WIDTH: 100%;
+  row-gap: 20px;
+
+}
+.pForData{
+  padding: 7px;
+}
+.pForInfo{
+  font-weight: bold;
 }
 .liElement {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid var(--main-color);
+  list-style: none;
 }
 
 .dataModalContact {
@@ -337,6 +353,9 @@
   margin-left: 4px;
   cursor: pointer;
 }
+.pWhatsap:hover{
+  color: var(--main-color);
+}
 .linkWhats {
   display: flex;
   align-items: center;
@@ -357,7 +376,7 @@
   color: black;
 }
 .dataModalContact a:hover {
-  color: rgb(47, 47, 219);
+  color: var(--main-color);
 }
 .colorSvg {
   color: green;
@@ -389,14 +408,14 @@
 .reviewS {
   padding: 30px;
   width: 60%;
-  background-color: #3f51b554;
+  background-color: white;
   display: flex;
   /* margin-bottom: 100px; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  box-shadow: 0 0 5px #243b55;
+  box-shadow: 0 0 5px var(--main-color);
   overflow: scroll;
   position: sticky;
   top: 20px;
@@ -404,7 +423,7 @@
 .reviewF p,
 .reviewS p {
   font-size: 18px;
-  color: #243b55;
+  color: var(--black-color);
 }
 .firstColRate,
 .secondColLove,
@@ -429,7 +448,9 @@
   color: white;
   cursor: pointer;
 }
-
+.section__title{
+  margin-bottom: 15px;
+}
 .likeDown1 {
   color: #243b55;
 }
@@ -437,7 +458,9 @@
   color: white;
   margin: 3px;
 }
-
+.likeDown1 svg{
+  color: var(--black-color) !important;
+}
 .heartLoveSvg {
   width: 20px;
   height: 20px;

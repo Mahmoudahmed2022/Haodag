@@ -5,7 +5,7 @@ const InfoDescription = ({hall}) => {
   return (
     <>
       <div className="allContInfo">
-      <div className="topShape"></div>
+      <div className="top-shape"></div>
 
         <div className="card-content">
           <h2 className="section__title">Description</h2>

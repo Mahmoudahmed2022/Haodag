@@ -8,19 +8,41 @@ const ModalEditClientProfile = () => {
   const [formData, setFormData] = useState({});
   let navigate = useNavigate();
   const personData = useContext(MyContext);
-  function getLoginData(event) {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [event.target.name]: event.target.value,
-      };
-    });
-  }
+  const getLoginData = (e) => {
+    const { name, value, files } = e.target;
+  
+    if (name === "photo") {
+      setFormData((prev) => ({
+        ...prev,
+        photo: files[0], // Set the selected file as the photo
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
 
   console.log(formData);
   console.log(personData);
   const onSubmitted = (e) => {
     e.preventDefault();
+    
+    const formDataObj = new FormData();
+  
+    // Append form fields excluding the photo
+    for (const [key, value] of Object.entries(formData)) {
+      if (key !== "photo") {
+        formDataObj.append(key, value);
+      }
+    }
+  
+    // Append the updated photo if available
+    if (formData.photo) {
+      formDataObj.append("photo", formData.photo);
+    }
+    
     fetch(
       `http://127.0.0.1:8000/${personData.role}/auth/update${
         personData.role.charAt(0).toUpperCase() + personData.role.slice(1)
@@ -28,29 +50,29 @@ const ModalEditClientProfile = () => {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${personData.token}`,
           "auth-token": `${personData.token}`,
         },
-        body: JSON.stringify(formData),
+        body: formDataObj,
       }
     )
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         console.log(data.data.name);
         personData.name = data.data.name;
         personData.phone = data.data.phone;
         personData.password = data.data.password;
-
+        personData.photo = data.data.photo;
+  
+        console.log(data);
         navigate(`/user/${personData.role}/${personData.id}`);
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
       });
   };
-
+  
   function togglePasswordVisibility1() {
     var passwordField = document.getElementById("password");
     console.log(passwordField, "Input");
@@ -89,6 +111,19 @@ const ModalEditClientProfile = () => {
               id="email"
               name="email"
               defaultValue={personData?.email}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              photo
+            </label>
+            <input
+              onChange={getLoginData}
+              type="file"
+              className="form-control"
+              id="photo"
+              name="photo"
+
             />
           </div>
           <div className="form-group">
