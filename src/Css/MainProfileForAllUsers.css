@@ -648,6 +648,5 @@
     flex-direction: row;
   }
   .cOntLeftData {
-    justify-content: space-between;
-  }
+    justify-content: flex-start;  }
 }

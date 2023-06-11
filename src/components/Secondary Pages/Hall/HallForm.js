@@ -23,6 +23,7 @@ const HallForm = () => {
     city: "",
     street: "",
     description:"",
+    link:"",
     photos: [],
     videos: [],
     shows: [],
@@ -132,6 +133,8 @@ const HallForm = () => {
     formDataObj.append("street", formData.street);
     formDataObj.append("city", formData.city);
     formDataObj.append("description", formData.description);
+    formDataObj.append("link", formData.link);
+
 
     for (let i = 0; i < formData.shows.length; i++) {
       formDataObj.append(`shows[${i}]`, formData.shows[i]);
@@ -157,10 +160,9 @@ const HallForm = () => {
         })
         .then((data) => {
           console.log(data);
-          alert(data.message);
 
         });
-      navigate(`/user/${personData.role}/${personData.id}`);
+      // navigate(`/user/${personData.role}/${personData.id}`);
       // window.location.reload();
     }
   };
@@ -388,6 +390,20 @@ const HallForm = () => {
           />
         </div>
         <div className="form-group1">
+          <label htmlFor="link" className="labelDAtaForAddHall">
+            Hall Link In Google Maps:
+          </label>
+
+          <input
+            className="inputDAtaForAddHall"
+            type="text"
+            name="link"
+            onChange={getRegisterData}
+            required
+            value={formData.link}
+          />
+        </div>
+        <div className="form-group1">
           <label className="labelDAtaForAddHall">Choose Images</label>
 
           <input
@@ -399,7 +415,7 @@ const HallForm = () => {
             onChange={handleImageChange}
           />
         </div>
-        <div className="form-group1">
+        {/* <div className="form-group1">
           <label className="labelDAtaForAddHall">Choose Videos</label>
 
           <input
@@ -410,7 +426,7 @@ const HallForm = () => {
             multiple
             onChange={handleMediaChange}
           />
-        </div>
+        </div> */}
         <div className="AllChecBoxes">
           <div className="ShowsHall">
             <h2>Shows</h2>

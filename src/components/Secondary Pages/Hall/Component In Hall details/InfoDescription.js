@@ -1,26 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../../../Css/HallProfile.css";
-const InfoDescription = (props) => {
-  const product = props.products;
+const InfoDescription = ({hall}) => {
   return (
     <>
       <div className="allContInfo">
       <div className="topShape"></div>
 
         <div className="card-content">
-          <h2 className="section__title">Discription</h2>
+          <h2 className="section__title">Description</h2>
 
-          <h3></h3>
+          <p className="pForData">- {hall.description}</p>
 
-          <ul className="ulDescription">
-            {/* {product.map((element) => (
-              <div>
-                <h3 className="h3Title">{element.Title} </h3>
-                <p className="pForDescription">{element.Poster}</p>
-              </div>
-            ))} */}
-          </ul>
+          
         </div>
       </div>
     </>

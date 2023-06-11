@@ -190,7 +190,11 @@ const HallProfile = ({ rating, isFavourite }) => {
       state: { userData: ownerData },
     });
   };
-
+let contentAvalaible;
+  if(hall.available===0)
+  {contentAvalaible="Not Available"}
+  else if(hall.available===1)
+  {contentAvalaible="Available"}
   return (
     <>
       <NavbarWithSideBar />
@@ -264,35 +268,78 @@ const HallProfile = ({ rating, isFavourite }) => {
                 <ul className="uiForInfo">
                   <li className="liElement">
                     <p className="pForInfo">The price is per person</p>
-                    <p className="pForData">300-350 pound</p>
+                    <p className="pForData">{hall.price} $</p>
                   </li>
                   <li className="liElement">
                     <p className="pForInfo">Hall capacity</p>
-                    <p className="pForData">250-100 people</p>
+                    <p className="pForData">{hall.capacity}</p>
                   </li>
                   <li className="liElement">
+                    <p className="pForInfo">Chairs</p>
+                    <p className="pForData">{hall.chairs}</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Tables</p>
+                    <p className="pForData">{hall.tables}</p>
+                  </li>
+                  {/* <li className="liElement">
                     <p className="pForInfo">food court capacity</p>
                     <p className="pForData">250-100 people </p>
-                  </li>
+                  </li> */}
                   <li className="liElement">
-                    <p className="pForInfo">How many rooms are in the Hall?</p>
-                    <p className="pForData">two Rooms</p>
+                    <p className="pForInfo">Number of Rooms</p>
+                    <p className="pForData">{hall.rooms}</p>
                   </li>
                   <li className="liElement">
                     <p className="pForInfo">Type</p>
-                    <p className="pForData">Open/Closed Air</p>
+                    <p className="pForData">{hall.type}</p>
                   </li>
                   <li className="liElement">
                     <p className="pForInfo">Available</p>
-                    <p className="pForData">3 : 12 PM</p>
+                    <p className="pForData">{contentAvalaible}</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Available In a Day</p>
+                    <p className="pForData">{hall.hours} hours in a day</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Party starts at</p>
+                    <p className="pForData">{hall.start_party}</p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">Party ends at</p>
+                    <p className="pForData">{hall.end_party} </p>
                   </li>
                 </ul>
               </div>
-              <div></div>
+              
             </div>
-            <InfoShow products={products} />
-            <InfoServices products={products} />
-            <InfoDescription products={products} />
+            <div className="allContInfo">
+              <div className="topShape"></div>
+
+              <div className="card-content">
+                <h2 className="section__title">The Address</h2>
+                <ul className="uiForInfo">
+                  <li className="liElement">
+                    <p className="pForInfo">The Country</p>
+                    <p className="pForData">{hall.country} </p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">The City</p>
+                    <p className="pForData">{hall.city} </p>
+                  </li>
+                  <li className="liElement">
+                    <p className="pForInfo">The Street</p>
+                    <p className="pForData">{hall.street} </p>
+                  </li>
+                  
+                </ul>
+              </div>
+              
+            </div>
+            <InfoShow hall={hall} />
+            <InfoServices hall={hall} />
+            <InfoDescription hall={hall} />
           </div>
 
           <div className="contReview">
