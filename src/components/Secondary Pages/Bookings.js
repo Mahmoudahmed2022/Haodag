@@ -3,6 +3,7 @@ import "../../Css/WeddingPlanners.css";
 import "../../Css/Reservation.css";
 import { useContext } from "react";
 import { MyContext } from "../Main Pages/Redux";
+import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
 function Reservations() {
 const personData = useContext(MyContext);
   const [reservations, setReservations] = useState([]);
@@ -93,6 +94,7 @@ const personData = useContext(MyContext);
   }, []);
   return (
     <>
+    <NavbarWithSideBar/>
       <div>
         <h1 className="reserve-tit">Booking Requests</h1>
         <div className="reserv-big-cont">

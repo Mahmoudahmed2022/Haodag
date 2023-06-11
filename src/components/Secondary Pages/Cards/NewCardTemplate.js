@@ -35,6 +35,30 @@ const NewCardTemplate = ({ cardData }) => {
       });
     }
   };
+  const deleteHall = (user) => {
+    if (user) {
+      Swal.fire({
+        title: `Are You Sure To Delete Hall (${user.name}) `,
+        showCancelButton: true,
+      }).then((data) => {
+        if (data.isConfirmed) {
+          fetch(`http://127.0.0.1:8000/owner/auth/deleteHall/${user.id}`, {
+            method: "POST",
+            headers: {
+              "auth-token": `${personData.token}`,
+              Authorization: `Bearer${personData.token}`,
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              alert(data.message);
+              window.location.reload();
+            });
+        }
+      });
+    }
+  };
+  
   console.log(cardData);
   return (
     <div className="CardContainer animate">
@@ -81,6 +105,22 @@ const NewCardTemplate = ({ cardData }) => {
         </div>
 
         <div className="ContButtonGoToHall">
+        {personData.role === "admin" && (
+            <button
+              className="buttonMain delete"
+              onClick={() => deletePackage(cardData)}
+            >
+              Delete
+            </button>
+          )}
+             {personData.role === "owner" && (
+            <button
+              className="buttonMain delete"
+              onClick={() => deleteHall(cardData)}
+            >
+              Delete
+            </button>
+          )}
           <button className="details buttonMain" onClick={goTohallDetails}>
             Details
           </button>
@@ -89,14 +129,8 @@ const NewCardTemplate = ({ cardData }) => {
               Edit 
             </button>
           )} */}
-          {personData.role === "admin" && (
-            <button
-              className="buttonMain delete"
-              onClick={() => deletePackage(cardData)}
-            >
-              Delete
-            </button>
-          )}
+          
+          
           {/* {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>} */}
         </div>
       </div>

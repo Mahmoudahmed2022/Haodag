@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../Main Pages/Redux";
+import Swal from "sweetalert2";
 
 const Planners = ({ userData, isLogin, Plan }) => {
   const [plans, setplan] = useState([]);
@@ -42,41 +43,29 @@ const Planners = ({ userData, isLogin, Plan }) => {
     });
   }
 
-  // const renderCard = (plan) => {
-    // const  handleDetailsClick= (plan)=> {
-    //   navigate(`/Plandetails/${plan.id}`, {
-    //     state: { plan: plan },
-    //   });
-    // }
-  
-  //   return (
-  //     <>
-  //       <div className="planD" key={plan.id}>
-  //       <img
-  //             src={plan.photos[0]}
-  //             alt={plan.name}
-  //             className="banner-image"
-  //           />
-  //         <div className="wrapper">
-            
-  //           <div className="pad20">
-  //             <h1> {plan.name}</h1>
-  //             <p>{plan.price}$</p>
-  //           </div>
-  //           <div className="button-wrapper">
-  //             <button
-  //               onClick={() => handleDetailsClick(plan)}
-  //               className="buttonMain details"
-  //             >
-  //               DETAILS
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>{" "}
-  //     </>
-  //   );
-  // };
- 
+  const deletePlan = (user) => {
+   
+      Swal.fire({
+        title: `Are You Sure To Delete Plan (${user.name}) `,
+        showCancelButton: true,
+      }).then((data) => {
+        if (data.isConfirmed) {
+          fetch(`http://127.0.0.1:8000/planner/auth/deletePlan/${user.id}`, {
+            method: "POST",
+            headers: {
+              "auth-token": `${personData.token}`,
+              Authorization: `Bearer${personData.token}`,
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              alert(data.message)
+              window.location.reload();
+            });
+        }
+      });
+    
+  };
   return (
     <>
       {userData?.role === "planner" && (
@@ -98,12 +87,21 @@ const Planners = ({ userData, isLogin, Plan }) => {
               <p>{data.price}$</p>
             </div>
             <div className="button-wrapper">
+              {personData.role==="planner"&&( <button
+                onClick={() => deletePlan(data)}
+                className="buttonMain delete"
+              >
+                Delete
+              </button>)}
+           
               <button
                 onClick={() => handleDetailsClick(data)}
                 className="buttonMain details"
               >
                 Details
               </button>
+             
+              
             </div>
           </div>
         </div>
@@ -118,10 +116,3 @@ const Planners = ({ userData, isLogin, Plan }) => {
   );
 };
 export default Planners;
-{/* <div className="for-button">
-                         {visible < plans.length && (
-                           <button className="more" onClick={loadMore}>
-                             Load 5 More
-                           </button>
-                         )}
-                       </div> */}

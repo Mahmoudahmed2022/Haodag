@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../Css/Modal.css";
 import { useContext } from "react";
 import { MyContext } from "../../Main Pages/Redux";
+import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
 
 const ModalEditClientProfile = () => {
   const [formData, setFormData] = useState({});
@@ -84,6 +85,7 @@ const ModalEditClientProfile = () => {
   }
   return (
     <>
+    <NavbarWithSideBar/>
       <div className="modal-container">
         <h1 className="modal-title">Edit Profile</h1>
         <form onSubmit={onSubmitted} className="form-container">
@@ -160,7 +162,7 @@ const ModalEditClientProfile = () => {
           </div>
 
           <div className=" DivbtnModal">
-            <button type="submit" className="form-btn btnModal">
+            <button type="submit" className="details buttonMain">
               Edit Profile
             </button>
           </div>

@@ -345,10 +345,10 @@ function Search() {
                       onChange={(e) => setMaxPrice(e.target.value)}
                     />
                   </div>
-                  <div className="search-btn-div">
-                  <button type="submit" className="search-btn s-d-hover">
-                    <IoMdSearch className="search-icon" />
-                    Search
+                  <div className="">
+                  <button type="submit" className="details buttonMain flexButton">
+                    
+                  <IoMdSearch className="search-icon" /> <span>Search</span>
                   </button>
                 </div>
                 </div>

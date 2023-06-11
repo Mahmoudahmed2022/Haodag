@@ -14,7 +14,7 @@ body {
 }
 .search-box {
   text-align: center;
-  background-color: rgb(108 119 136 / 60%);
+  background-color: rgb(108 119 136 / 30%);
   height: inherit;
 }
 
@@ -50,28 +50,8 @@ body {
   background-color: white;
   width: 90%;
 }
-.search-form {
-  display: flex;
-  flex-direction: row;
-  border: solid #263e61;
-  box-shadow: 6px 6px 15px #a8acb1;
-  width: fit-content;
-  block-size: fit-content;
-  background-color: #e4e9e4;
-  height: 50px;
-  border-radius: 10px;
-  border-color: #263e61;
-}
 
-.city-input,
-.price-input {
-  color: #263e61;
-  border: none;
-  text-align: center;
-}
-.city-input {
-  border-right: #263e61;
-}
+
 .search-icon {
   display: block;
   color: #c7862f;
@@ -79,7 +59,15 @@ body {
   width: 20px;
   /* font-size: 27px; */
 }
+.flexButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.search-icon:hover{
+  color: white;
+}
 .search-btn,
 .search-details-btn {
   width: 100%;
