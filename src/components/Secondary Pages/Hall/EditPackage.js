@@ -12,30 +12,25 @@ function EditPackage() {
   const hall = location.state.hall;
   console.log(hall);
   const [formData, setFormData] = useState({
-    start_date: "",
-    end_date: "",
-    price: "",
-    package_description:"",
+    start_date: hall.start_date,
+    end_date: hall.end_date,
+    price: hall.price,
   });
   console.log("ID", id);
-  console.log(personData);
+  console.log(personData, formData);
 
-
-  
   function handleSubmit(e) {
     e.preventDefault();
     const formDataObj = new FormData();
     formDataObj.append("start_date", formData.start_date);
     formDataObj.append("end_date", formData.end_date);
     formDataObj.append("price", formData.price);
-    formDataObj.append("package_description", formData.package_description);
     console.log(formDataObj);
     if (formDataObj) {
       fetch(`http://127.0.0.1:8000/admin/auth/updateOffer/${id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${personData.token}`,
+          Authorization: `Bearer${personData.token}`,
           "auth-token": `${personData.token}`,
         },
         body: formDataObj,
@@ -48,7 +43,7 @@ function EditPackage() {
             title: data.message,
             showCancelButton: false,
           });
-          navigate(`/adminDashboard`, );
+          navigate(`/adminDashboard`);
         });
     }
   }
@@ -94,7 +89,7 @@ function EditPackage() {
               name="package_description"
               onChange={getRegisterData}
               defaultValue={hall.package_description}
-              
+              readOnly
             />
           </div>
           <div className="form-group1 ">

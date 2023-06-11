@@ -38,6 +38,7 @@ import ProfileForAll from "./components/Secondary Pages/ProfileForAll";
 import UpdateService from "./components/Secondary Pages/UpdateService";
 import AskToBookService from "./components/Secondary Pages/AskToBookService";
 import ServicesRequests from "./components/Secondary Pages/ServicesRequests";
+import AllPlans from "./components/Secondary Pages/AllPlans";
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
         <div className="ParentDivForAll">
           <Routes>
             <Route path="/AdminDashboard" element={<Dashboard />} />
+            <Route path="/plans" element={<AllPlans />} />
+
             <Route path="/hallForm" element={<HallForm />} />
             <Route path="/hallsrequests" element={<HallsRequests />} />
             <Route path="/greatepackages" element={<GreatePackages />} />

@@ -61,6 +61,7 @@ const ProfileForAll = (props) => {
   console.log(personData);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
+
     // fetchplans();
   }, []);
   // const fetchplans = () => {
@@ -122,14 +123,16 @@ const ProfileForAll = (props) => {
               <>
                 {/* edit */}
                 {personData?.role && (
-                  <div className="planner-prof-btn-div">
-                    <button
-                      onClick={goToEditProfile}
-                      className="btn-flip add-hall-btn"
-                      data-back="Edit"
-                      data-front="Edit"
-                    ></button>
-                  </div>
+                  <>
+                    <div className="planner-prof-btn-div">
+                      <button
+                        onClick={goToEditProfile}
+                        className="btn-flip add-hall-btn"
+                        data-back="Edit"
+                        data-front="Edit"
+                      ></button>
+                    </div>
+                  </>
                 )}
                 {/* admindashboard */}
                 {isAdmin && (
@@ -239,6 +242,15 @@ const ProfileForAll = (props) => {
                         className="btn-flip add-hall-btn"
                         data-back="Requests"
                         data-front="Requests"
+                        to="#"
+                      ></button>
+                    </div>
+                    <div className="planner-prof-btn-div">
+                      <button
+                        onClick={handleHallsBookings}
+                        className="btn-flip add-hall-btn"
+                        data-back="Bookings"
+                        data-front="Bookings"
                         to="#"
                       ></button>
                     </div>

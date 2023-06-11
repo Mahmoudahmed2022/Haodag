@@ -432,7 +432,7 @@
   width: 80%;
 }
 .cOntLeftData {
-  width: 60%;
+  width: 100%;
   display: flex;
   gap: 50px;
   flex-wrap: wrap;
@@ -573,7 +573,6 @@
   width: 100%;
   height: 280px;
   object-fit: cover;
-  
 }
 
 .wrapper h1 {
@@ -597,7 +596,8 @@
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
-  border-bottom: 1px solid var(--main-color);}
+  border-bottom: 1px solid var(--main-color);
+}
 
 .planner-prof-btn-div {
   margin: 0 0 10px 0;
@@ -646,5 +646,8 @@
   }
   .profile-header {
     flex-direction: row;
+  }
+  .cOntLeftData {
+    justify-content: space-between;
   }
 }

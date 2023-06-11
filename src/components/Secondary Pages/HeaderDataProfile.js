@@ -18,13 +18,27 @@ const HeaderDataProfile = (props) => {
   const [plan, setplan] = useState([]);
   const personData = useContext(MyContext);
   const userData = location?.state?.userData;
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   const isAdmin = (personData?.role || personData?.role) === "admin";
   const isPlanner = (personData?.role || personData?.role) === "planner";
   const isOwner = (personData?.role || personData?.role) === "owner";
   const isClient = (personData?.role || personData?.role) === "user";
   const isSupplier = (personData?.role || personData?.role) === "supplier";
+  let phoneNumber = "0";
+  let message = "!";
+  const urlWhatSap = () => {
+    phoneNumber = userData.phone; // replace with the phone number you want to chat with
+    message = "Hello!"; // replace with the message you want to send
+    setWhatsappUrl(
+      `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${message}&type=phone_number&app_absent=0`
 
+      //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    );
+  };
+  function goToWhatapp() {
+    window.open(whatsappUrl, "_blank");
+  }
   const navigate = useNavigate();
 
   function handleClick() {
@@ -62,6 +76,7 @@ const HeaderDataProfile = (props) => {
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
     fetchplans();
+    urlWhatSap();
   }, []);
 
   const fetchplans = () => {
@@ -86,7 +101,6 @@ const HeaderDataProfile = (props) => {
       });
   };
 
-
   return (
     <>
       <NavbarWithSideBar />
@@ -103,20 +117,12 @@ const HeaderDataProfile = (props) => {
                 alt="Profile"
                 className="profile-image"
               />
-              <p className="nameUser">
-                 {userData?.role}
-              </p>
+              <p className="nameUser">{userData?.role}</p>
             </div>
             <div className="profile-details">
-              <h1 className="profile-name">
-               {userData?.name}
-              </h1>
-              <p className="profile-bio">
-                {userData?.email}
-              </p>
-              <p className="profile-bio">
-                {userData?.phone}
-              </p>
+              <h1 className="profile-name">{userData?.name}</h1>
+              <p className="profile-bio">{userData?.email}</p>
+              <p className="profile-bio">{userData?.phone}</p>
               <div className="social-icons">
                 <a href="#">
                   <FaInstagram className="widthHieht" />
@@ -129,35 +135,25 @@ const HeaderDataProfile = (props) => {
                 </a>
               </div>
             </div>
+            <div className="btnsPlannerProf">
+              <div className="planner-prof-btn-div">
+                <button
+                  onClick={goToWhatapp}
+                  className="btn-flip add-hall-btn"
+                  data-back="Contact"
+                  data-front="Contact"
+                ></button>
+              </div>
+            </div>
           </div>
-
-        
-        
         </div>
       </div>
-      {userData?.role === "owner"&& (
-        <Owners
-          userData={userData}
-        />
-      )  }
-      {userData?.role ==="planner" &&(
-        <Planners
-          Plan={plan}
-          userData={userData}
-        />
+      {userData?.role === "owner" && <Owners userData={userData} />}
+      {userData?.role === "planner" && (
+        <Planners Plan={plan} userData={userData} />
       )}
-      {userData?.role === "user" && (
-        <Users
-          userData={userData}
-        />
-      ) }
-      {userData?.role === "supplier"&& (
-        <Services
-        userData={userData}
-        />
-      )}
-      
-      
+      {userData?.role === "user" && <Users userData={userData} />}
+      {userData?.role === "supplier" && <Services userData={userData} />}
 
       {/* <Owners userData={userData} personData={personData}/>
       <Planners userData={userData} personData={personData}/> */}

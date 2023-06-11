@@ -170,7 +170,11 @@ function NavbarWithSideBar() {
               <div></div>
             ) : (
               <div onClick={goToProfile} className="profile-photo">
-                <img src={user} alt="user pic" />
+                <img
+                  className="pro-nav-pic"
+                  src={personData.photo}
+                  alt="user pic"
+                />
               </div>
             )}
 
