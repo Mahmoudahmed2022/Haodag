@@ -107,18 +107,39 @@ function NavbarWithSideBar() {
     });
     // nav(`/${personData.role}/${personData.id}`,{state:{userData:personData}});
   }
+  function goToAllPlans() {
+    nav(`/plans`, {
+      state: { userData: personData },
+    });
+    // nav(`/${personData.role}/${personData.id}`,{state:{userData:personData}});
+  }
   function goToTranslation() {
     nav(`/translation`);
   }
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+  let phoneNumber = "0";
+  let message = "!";
+  const urlWhatSap = () => {
+    phoneNumber = "201026249568"; // replace with the phone number you want to chat with
+    message = "Hello!"; // replace with the message you want to send
+    setWhatsappUrl(
+      `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${message}&type=phone_number&app_absent=0`
+
+      //`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    );
+  };
+  useEffect(() => {
+    urlWhatSap();
+  }, []);
 
   return (
     <>
       <IconContext.Provider value={{}}>
         <div className="navbar">
           <div className="left">
-            <Link className="advertisment" to="/">
+            <a className="advertisment" href={whatsappUrl} target="_blank">
               To Put Your Advertisement
-            </Link>
+            </a>
             {/* <div className="svgColor1">
               <FaArrowCircleLeft className="bigger" onClick={() => nav(-1)} />
               <FaArrowCircleRight className="bigger" onClick={() => nav(1)} />
@@ -133,7 +154,7 @@ function NavbarWithSideBar() {
             <button className="headerSignBtn">Signup</button>
           </div>} */}
           <div className="right2">
-            {personData.isLogin || personData.isLogin === "true" ? (
+            {personData.role ? (
               <div className="buttons-log-reg">
                 <button onClick={handleLogout} className="glow-on-hover">
                   Logout
@@ -166,9 +187,7 @@ function NavbarWithSideBar() {
                 <img className="avatar" src={image2} alt="" />
               </div>
             </div>
-            {!personData.isLogin ? (
-              <div></div>
-            ) : (
+            {personData.role && (
               <div onClick={goToProfile} className="profile-photo">
                 <img
                   className="pro-nav-pic"
@@ -293,6 +312,21 @@ function NavbarWithSideBar() {
               >
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Search For Halls</span>
+              </button>
+            </li>
+            <li className="nav-text">
+              <button
+                className="aAll transparentBorderN"
+                onClick={() => {
+                  setPath("plans");
+                  goToAllPlans();
+                }}
+                style={{
+                  backgroundColor: path === "plans" ? "red" : "transparent",
+                }}
+              >
+                <AiIcons.AiOutlineLogout />
+                <span className="svgColor">All Plans</span>
               </button>
             </li>
             {/* <li className="nav-text">
