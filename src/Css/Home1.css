@@ -544,11 +544,13 @@
     width: 90%;
   }
 
+  @media only screen and (min-width: 300px) and (max-width: 992px) {
+    .home-landing{
+     background-image: url(../components/images/backgroundAddHall.jpg);
+    max-height: 500px;
+   }}
   @media only screen and (min-width: 375px) and (max-width: 768px) {
- .home-landing{
-  /* background-image: url(../components/images/backgroundAddHall.jpg); */
- max-height: 600px;
-}
+ 
  .head-text{
   width: 85%;
  }
@@ -563,11 +565,13 @@
   font-size: 30px;
 }
 .ContImgCard{
-  /* display: none; */
-}
+       /* display: none; */
+       width: 100%;
+       height: 50%;}
 .CardContainer{
   width: 90%;
-}
+  flex-direction: column;
+  height: 100%;}
 .contact-us{
   flex-direction: column;
   gap: 20px;
@@ -603,12 +607,41 @@
   }
   @media only screen and (max-width: 768px) {
     .ContDataInCard{width: 100%;}
+    .about-us{
+     
+      flex-direction: column; 
+    }
+    .left-photo-couple{
+      width: 60%;
+    }
     }
   @media only screen and (min-width: 768px) {
     .ContImgCard{
       display: block;
-    }
+      width: 45%;    }
     .ContDataInCard {
-      width: 60%;
-    }
+      width: 55%;    }
+      .CardContainer{
+        flex-direction: row;
+        width: 700px;
+      }
   }
+  @media only screen and (min-width: 1250px) {
+    .ContImgCard{
+      display: block;
+      width: 45%;    }
+    .ContDataInCard {
+      width: 55%;    }
+      .CardContainer{
+        width: 600px;
+      }
+  }
+
+
+  @media only screen and (max-width: 400px) {
+     .glow-on-hover{
+      font-size: 16px;
+      width: 70px;
+      height: 30px;
+     }
+    }

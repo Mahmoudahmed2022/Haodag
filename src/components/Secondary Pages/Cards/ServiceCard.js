@@ -69,7 +69,7 @@ const ServiceCard = ({ cardData, userToken, isLogin }) => {
           {" "}
           {personData?.role === "supplier" && (
             <FaTrash
-              className="delete"
+              className="deleteService"
               onClick={() => deleteCourse(cardData)}
             />
           )}

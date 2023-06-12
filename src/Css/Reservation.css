@@ -127,6 +127,8 @@
   color: #fff;
   font-size: 16px;
   font-family: "Segoe UI", Arial, sans-serif;
+  /* width: 90%; */
+  text-align: center;
 }
 .user-pic-cont,
 .user-info-div {

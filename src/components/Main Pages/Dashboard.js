@@ -34,6 +34,7 @@ import FetchHallsPlans from "../Secondary Pages/FetchHallsPlans";
 import CardInDashboard from "../Secondary Pages/Cards/CardInDashboard";
 import CardPackagesInDashboard from "../Secondary Pages/CardPackagesInDashboard";
 import Swal from "sweetalert2";
+import { MdCancelPresentation, MdLibraryBooks, MdOutlineCancelPresentation } from "react-icons/md";
 const Dashboard = () => {
   const personData= useContext(MyContext);
   console.log(personData);
@@ -481,7 +482,30 @@ e.preventDefault();
               </div>
               {/* </NavLink> */}
             </button>
-
+            <button
+              style={{
+                backgroundColor:
+                  selectedComponent === "allPlans" ? "red" : "transparent",
+              }}
+              className="link"
+              onClick={() => setSelectedComponent("allPlans")}
+            >
+              {/* <NavLink to="/allhalls" className="link" > */}
+              <div className="iconAndName">
+                <div className="icon">
+                  {/* <FaTh /> */}
+                  <MdLibraryBooks className="widthIcon"/>
+                  {/* <img className="widthIcon" src={hallss} alt="plans"></img> */}
+                </div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="link_text"
+                >
+                  All Plans <p>{allPlans?.length}</p>
+                </div>
+              </div>
+              {/* </NavLink> */}
+            </button>
             <button
               style={{
                 backgroundColor:
@@ -506,29 +530,7 @@ e.preventDefault();
               {/* </NavLink> */}
             </button>
 
-            <button
-              style={{
-                backgroundColor:
-                  selectedComponent === "allPlans" ? "red" : "transparent",
-              }}
-              className="link"
-              onClick={() => setSelectedComponent("allPlans")}
-            >
-              {/* <NavLink to="/allhalls" className="link" > */}
-              <div className="iconAndName">
-                <div className="icon">
-                  {/* <FaTh /> */}
-                  <img className="widthIcon" src={hallss} alt="plans"></img>
-                </div>
-                <div
-                  style={{ display: isOpen ? "block" : "none" }}
-                  className="link_text"
-                >
-                  All Plans <p>{allPlans?.length}</p>
-                </div>
-              </div>
-              {/* </NavLink> */}
-            </button>
+           
             <button
               style={{
                 backgroundColor:
@@ -567,7 +569,8 @@ e.preventDefault();
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img className="widthIcon" src={hallss} alt="halls"></img>
+                  <MdOutlineCancelPresentation className="widthIcon"/>
+                  {/* <img className="widthIcon" src={hallss} alt="halls"></img> */}
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}
@@ -600,7 +603,7 @@ e.preventDefault();
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Admins <p>{admins?.length}</p>
+                   Admins <p>{admins?.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -629,7 +632,7 @@ e.preventDefault();
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Suppliers <p>{suppliers?.length}</p>
+                   Suppliers <p>{suppliers?.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -653,7 +656,7 @@ e.preventDefault();
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Owners <p>{hallOwner?.length}</p>
+                   Owners <p>{hallOwner?.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -683,7 +686,7 @@ e.preventDefault();
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Planners <p>{weddingPlanner?.length}</p>
+                   Planners <p>{weddingPlanner?.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -706,7 +709,7 @@ e.preventDefault();
                   style={{ display: isOpen ? "block" : "none" }}
                   className="link_text"
                 >
-                  All Clients <p>{client?.length}</p>
+                   Clients <p>{client?.length}</p>
                 </div>
               </div>
               {/* </NavLink> */}
@@ -740,10 +743,10 @@ e.preventDefault();
           <CardInDashboard number={weddingPlanner?.length} name="Planners"backColor="#0f0f0f"/>
           <CardInDashboard number={hallOwner?.length} name="Hall Owners"backColor="#0f0f0f"/>
           <CardInDashboard number={suppliers?.length} name="Suppliers"backColor="#0f0f0f"/>
-          <CardInDashboard number={allHalls?.length} name="Halls" backColor="#c38213"/>
-          <CardInDashboard number={allPlans?.length} name="Plans"backColor="#c38213"/>
-          <CardInDashboard number={allPackages?.length} name="add package"backColor="#c38213" addPackage={addPackage}/>
-          <CardInDashboard number={admins?.length} name="add admin"backColor="#c38213" addPackage={addAdmin}/>
+          <CardInDashboard number={allHalls?.length} name="Halls" backColor="#e69428"/>
+          <CardInDashboard number={allPlans?.length} name="Plans"backColor="#e69428"/>
+          <CardInDashboard number={allPackages?.length} name="add package"backColor="#e69428" addPackage={addPackage}/>
+          <CardInDashboard number={admins?.length} name="add admin"backColor="#e69428" addPackage={addAdmin}/>
 
 
 

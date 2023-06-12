@@ -138,7 +138,7 @@ const FetchAllData = ({ user,deleteRecord, }) => {
     // })
   };
   function goToProfile(user) {
-    navigate(`/${user.role}/${user.id}`, { state: { userData: user } });
+    navigate(`/user/${user.role}/${user.id}`, { state: { userData: user } });
   }
   return (
     <>

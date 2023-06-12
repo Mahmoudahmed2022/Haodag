@@ -15,7 +15,7 @@ const InfoForMap = ({hall}) => {
       <div className="buttonPrice">
         <a
           target="_blank"
-          href={hall.link}
+          href={hall.address}
           type="button"
           className="button-buttonPrice"
         >

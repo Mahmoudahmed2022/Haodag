@@ -93,7 +93,7 @@ const goToPlanDetails=(product)=>{
                       <div className="contNameImg">
                         <img
                           className="imagetableuser"
-                          src={product.photos}
+                          src={product.photos[0]}
                           alt="image"
                         />
                         <p>{product.category}</p>

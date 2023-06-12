@@ -603,13 +603,17 @@
 .planner-prof-btn-div {
   margin: 0 0 10px 0;
 }
+.deleteService:hover{
+  color: red;
+  cursor: pointer;
+}
 .profile-content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 @media only screen and (max-width: 375px) {
   .cOntLeftData {

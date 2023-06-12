@@ -23,7 +23,6 @@ const HallForm = () => {
     city: "",
     street: "",
     description:"",
-    link:"",
     photos: [],
     videos: [],
     shows: [],
@@ -39,7 +38,6 @@ const HallForm = () => {
   }
   console.log(formData);
 
-  console.log(formData.link);
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     setFormData({
@@ -134,7 +132,6 @@ const HallForm = () => {
     formDataObj.append("street", formData.street);
     formDataObj.append("city", formData.city);
     formDataObj.append("description", formData.description);
-    formDataObj.append("link", formData.link);
 
 
     for (let i = 0; i < formData.shows.length; i++) {
@@ -172,7 +169,6 @@ const HallForm = () => {
     const formGroups = document.querySelectorAll(".form-group1");
     formGroups.forEach((group) => group.classList.add("visible"));
   }, []);
-console.log(formData.link);
 console.log(formData);
 
   return (
@@ -392,20 +388,7 @@ console.log(formData);
             value={formData.description}
           />
         </div>
-        <div className="form-group1">
-          <label htmlFor="link" className="labelDAtaForAddHall">
-            Hall Link In Google Maps:
-          </label>
-
-          <input
-            className="inputDAtaForAddHall"
-            type="text"
-            name="link"
-            onChange={getRegisterData}
-            required
-            value={formData.link}
-          />
-        </div>
+       
         <div className="form-group1">
           <label className="labelDAtaForAddHall">Choose Images</label>
 

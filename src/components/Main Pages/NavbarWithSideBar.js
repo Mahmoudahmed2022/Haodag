@@ -161,6 +161,7 @@ function NavbarWithSideBar() {
                 </button>
               </div>
             ) : (
+              
               <div className="buttons-log-reg">
                 <Link className="glow-on-hover" to="/login">
                   Login

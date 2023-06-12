@@ -85,11 +85,12 @@ const ProfileForAll = (props) => {
   //       console.error("Error fetching data:", error);
   //     });
   // };
-
+console.log(personData.role === "admin")
   return (
     <>
       <NavbarWithSideBar />
-      <div className="contProfileAll">
+      <div className="contProfileAll" style={{ marginBottom: personData.role === "admin" ? "200px" : "20px" }}
+>
         <div className="profile-header">
           <div className="cOntLeftData">
             <div className="divContImgType">

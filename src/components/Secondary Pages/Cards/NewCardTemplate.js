@@ -113,7 +113,7 @@ const NewCardTemplate = ({ cardData }) => {
               Delete
             </button>
           )}
-             {personData.role === "owner" && (
+             {(personData.role === "owner" && cardData.owner.id===personData.id) && (
             <button
               className="buttonMain delete"
               onClick={() => deleteHall(cardData)}

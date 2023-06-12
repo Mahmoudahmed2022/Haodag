@@ -450,6 +450,7 @@
 }
 .section__title{
   margin-bottom: 15px;
+  font-size: 30px;
 }
 .likeDown1 {
   color: #243b55;
@@ -557,18 +558,10 @@
   resize: none;
 }
 
-.submitComment {
-  padding: 8px;
-  border: 1px solid #243b55;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #243b55;
-}
-.submitComment:hover {
-  color: rgb(178, 176, 176);
-  background-color: #243b55;
-}
 
+.FirstDivForm h2{
+  margin: 10px;
+}
 .commentData {
   width: 75%;
   display: flex;
