@@ -44,7 +44,7 @@ function App() {
   return (
     <MyProvider>
       <div className="App">
-        <div className="ParentDivForAll">
+        {/* <div className="ParentDivForAll"> */}
           <Routes>
             <Route path="/AdminDashboard" element={<Dashboard />} />
             <Route path="/plans" element={<AllPlans />} />
@@ -89,7 +89,7 @@ function App() {
           </Routes>
 
           <Footer />
-        </div>
+        {/* </div> */}
       </div>
     </MyProvider>
   );

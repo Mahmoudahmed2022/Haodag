@@ -182,11 +182,6 @@ function NavbarWithSideBar() {
                 </div>
               </div>
             </div> */}
-            <div className="right">
-              <div className="logo" onClick={goToHome}>
-                <img className="avatar" src={image2} alt="" />
-              </div>
-            </div>
             {personData.role && (
               <div onClick={goToProfile} className="profile-photo">
                 <img
@@ -196,6 +191,12 @@ function NavbarWithSideBar() {
                 />
               </div>
             )}
+            <div className="right">
+              <div className="logo" onClick={goToHome}>
+                <img className="avatar" src={image2} alt="" />
+              </div>
+            </div>
+            
 
             {/* <button className="aAll" onClick={handleLogout}>
               <AiIcons.AiOutlineLogout />
@@ -238,18 +239,16 @@ function NavbarWithSideBar() {
             <li
               className="nav-text"
               onClick={() => {
-                setPath("home");
+                goToHome();
+              }}
+              style={{
+                backgroundColor:
+                  location.pathname === "/" ? "#286995" : "transparent",
               }}
             >
               <button
                 className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("home");
-                  goToHome();
-                }}
-                style={{
-                  backgroundColor: path === "home" ? "#ef9011" : "transparent",
-                }}
+                
               >
                 <FaHome />
                 <span className="svgColor">Home</span>
@@ -258,21 +257,17 @@ function NavbarWithSideBar() {
 
             <li
               className="nav-text"
+              style={{
+                backgroundColor:
+                  location.pathname === "/greatepackages"
+                    ? "#286995"
+                    : "transparent",
+              }}
               onClick={() => {
-                setPath("greatepackages");
+                goToPackages();
               }}
             >
-              <button
-                className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("home");
-                  goToPackages();
-                }}
-                style={{
-                  backgroundColor:
-                    path === "greatepackages" ? "red" : "transparent",
-                }}
-              >
+              <button className="aAll transparentBorderN" >
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Great Packages</span>
               </button>
@@ -281,70 +276,50 @@ function NavbarWithSideBar() {
             <li
               className="nav-text"
               onClick={() => {
-                setPath("WeddingPlanners");
+                goToOwnerPlannerPage();
+              }}
+              style={{
+                backgroundColor:
+                  location.pathname === "/WeddingPlanners"
+                    ? "#286995"
+                    : "transparent",
               }}
             >
-              <button
-                className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("home");
-                  goToOwnerPlannerPage();
-                }}
-                style={{
-                  backgroundColor:
-                    path === "WeddingPlanners" ? "red" : "transparent",
-                }}
-              >
+              <button className="aAll transparentBorderN">
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Owners & Planners & Suppliers</span>
               </button>
             </li>
-            <li className="nav-text">
-              <button
-                className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("home");
-                  goToSearchPage();
-                }}
-                style={{
-                  backgroundColor: path === "search" ? "red" : "transparent",
-                }}
-              >
+            <li
+              className="nav-text"
+              style={{
+                backgroundColor:
+                  location.pathname === "/search" ? "#286995" : "transparent",
+              }}
+              onClick={() => {
+                goToSearchPage();
+              }}
+            >
+              <button className="aAll transparentBorderN">
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">Search For Halls</span>
               </button>
             </li>
-            <li className="nav-text">
-              <button
-                className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("plans");
-                  goToAllPlans();
-                }}
-                style={{
-                  backgroundColor: path === "plans" ? "red" : "transparent",
-                }}
-              >
+            <li
+              className="nav-text"
+              onClick={() => {
+                goToAllPlans();
+              }}
+              style={{
+                backgroundColor:
+                  location.pathname === "/plans" ? "#286995" : "transparent",
+              }}
+            >
+              <button className="aAll transparentBorderN">
                 <AiIcons.AiOutlineLogout />
                 <span className="svgColor">All Plans</span>
               </button>
             </li>
-            {/* <li className="nav-text">
-              <button
-                className="aAll transparentBorderN"
-                onClick={() => {
-                  setPath("translation");
-                  goToTranslation();
-                }}
-                style={{
-                  backgroundColor: path === "search" ? "red" : "transparent",
-                }}
-              >
-                <AiIcons.AiOutlineLogout />
-                <span className="svgColor">translation</span>
-              </button>
-            </li> */}
-
             {personData.isLogin ? (
               <li className="nav-text">
                 <button

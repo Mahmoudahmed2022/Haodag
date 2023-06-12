@@ -26,6 +26,7 @@ import {
   FaCommentAlt,
   FaShoppingBag,
   FaThList,
+  FaHome,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Owners from "../Secondary Pages/Owners";
@@ -409,11 +410,12 @@ e.preventDefault();
               <div className="iconAndName">
                 <div className="icon">
                   {/* <FaTh /> */}
-                  <img
+                  <FaHome  className="widthIcon"/>
+                  {/* <img
                     className="widthIcon"
                     src={hallRequests}
                     alt="home"
-                  ></img>
+                  ></img> */}
                 </div>
                 <div
                   style={{ display: isOpen ? "block" : "none" }}

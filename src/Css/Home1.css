@@ -76,7 +76,6 @@
 
 .buttons-log-reg {
   justify-content: space-around;
-  width: 200px;
   display: flex;
   gap: 10px;
   flex-direction: row;
@@ -335,6 +334,7 @@
   }
 }
 .headForHalls {
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -542,4 +542,73 @@
   align-items: center;}
   .W90{
     width: 90%;
+  }
+
+  @media only screen and (min-width: 375px) and (max-width: 768px) {
+ .home-landing{
+  /* background-image: url(../components/images/backgroundAddHall.jpg); */
+ max-height: 600px;
+}
+ .head-text{
+  width: 85%;
+ }
+ .CardSSecondMod{
+  margin: 30px 10px;
+  font-size: 30px;
+ }
+ .ContCardsMotion{
+  gap: 50px;
+ }
+.headForHalls{
+  font-size: 30px;
+}
+.ContImgCard{
+  /* display: none; */
+}
+.CardContainer{
+  width: 90%;
+}
+.contact-us{
+  flex-direction: column;
+  gap: 20px;
+}
+.left-details1{
+  width: 90%;
+  align-items: center;
+  padding: 10px;
+}
+.right-form{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .left-photo-couple{
+  display: none;
+} */
+.right-for-description{
+  width: 70%;
+}
+.about-us{
+  margin: 30px;
+}
+.descrition-about-us,.who-we-are{
+  text-align: center;
+}
+.right-for-description{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+  }
+  @media only screen and (max-width: 768px) {
+    .ContDataInCard{width: 100%;}
+    }
+  @media only screen and (min-width: 768px) {
+    .ContImgCard{
+      display: block;
+    }
+    .ContDataInCard {
+      width: 60%;
+    }
   }

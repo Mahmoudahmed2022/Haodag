@@ -142,6 +142,7 @@
 .iconAndName {
   display: flex;
   column-gap: 10px;
+  align-items: center;
 }
 /* .tdoperations{
         display: flex;
