@@ -30,7 +30,7 @@ function Favourites() {
   //     })
   //     .catch((err) => console.error(err));
   // });
-  console.log(favourites);
+  // console.log(favourites);
   useEffect(() => {
     getFavorites();
   }, []);

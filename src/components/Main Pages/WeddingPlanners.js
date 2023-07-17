@@ -49,9 +49,9 @@ function WeddingPlanners() {
         console.error(error);
       });
   };
-console.log("planners",planners);
-console.log("owners",owners)
-console.log("suppliers",suppliers)
+// console.log("planners",planners);
+// console.log("owners",owners)
+// console.log("suppliers",suppliers)
 
   const loadMore = () => {
     setVisible(visible + 6);

@@ -18,12 +18,12 @@ function CommentSection(props) {
     fetch(api)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setComments(response.data);
       })
       .catch((err) => console.error(err));
   };
-  console.log(personData, hallId, comments);
+  // console.log(personData, hallId, comments);
 
   useEffect(() => {
     getComments();

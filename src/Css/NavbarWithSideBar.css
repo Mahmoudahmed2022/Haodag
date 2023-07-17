@@ -29,12 +29,12 @@
 .svgColor {
   color: var(--main-color);
 }
-.svgColor:hover {
-  color: rgb(251, 179, 46);
-}
-.bigger:hover {
+/* .svgColor:hover {
+  color: white;
+} */
+/* .bigger:hover {
   color: var(--white-color);
-}
+} */
 .svgColor1 {
   width: 50px;
   color: var(--main-color);
@@ -102,12 +102,13 @@
   align-items: center;
   padding: 0 16px;
   cursor: pointer;
+  gap: 20px;
 }
 
-.nav-text:hover {
+/* .nav-text:hover {
   background-color: var(--main-color);
   color: var(--white-color);
-}
+} */
 .hoverOnX:hover {
   color: red;
 }
@@ -229,8 +230,12 @@
   background-color: transparent;
   border: none;
 }
-.transparentBorderN:hover {
-  background-color: var(--main-color) !important;
+/* .transparentBorderN:hover {
+  background-color: var(--white-color) !important;
+} */
+.transparentBorderN svg{
+  width: 20px;
+  height: 20px;
 }
 .profile-photo {
   display: flex;

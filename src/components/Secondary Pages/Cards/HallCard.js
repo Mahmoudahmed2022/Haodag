@@ -13,8 +13,8 @@ import { MyContext } from "../../Main Pages/Redux";
 const HallCard = ({ hall, key, userData }) => {
   const personData =useContext(MyContext)
   const navigate = useNavigate();
-  console.log(personData);
-  console.log(hall);
+  // console.log(personData);
+  // console.log(hall);
 
   const isOwner = userData.role === "owner" &&personData.id===userData.id;
   function handleClick() {
@@ -23,7 +23,7 @@ const HallCard = ({ hall, key, userData }) => {
     });
   }
   const Id = useParams();
-  console.log(hall, personData);
+  // console.log(hall, personData);
   
   function deleteCourse(hall) {
     Swal.fire({

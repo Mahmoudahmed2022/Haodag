@@ -34,9 +34,10 @@ const HallProfile = ({ rating, isFavourite }) => {
   const [Like, setLike] = useState(false);
   const [isFavourited, setIsFavourited] = useState(false);
   const [disLike, setDisLike] = useState(false);
-  const [heartStyle, setHeartStyle] = useState({ color: "white" });
+  const [heartStyle, setHeartStyle] = useState({ color: "#cacaca" });
   const [toggle, setToggle] = useState(true);
-  const [LikeStyle, setLikeStyle] = useState({ color: "white" });
+  const [LikeStyle, setLikeStyle] = useState({ color: "#cacaca" });
+
   const [disLikeStyle, setDisLikeStyle] = useState({ color: "white" });
   let phoneNumber = "0";
   const [products, setProducts] = useState([]);
@@ -47,14 +48,14 @@ const HallProfile = ({ rating, isFavourite }) => {
 
   let message = "!";
   const { hallId } = useParams();
-  console.log(hallId);
+  // console.log(hallId);
 
   const allData = async (hallId) => {
     const api = `http://127.0.0.1:8000/api/auth/getHall/${hallId}`;
     await fetch(api)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setProducts(response);
         sethall(response.data);
         setOwnerData(response.data.owner);
@@ -89,14 +90,12 @@ const HallProfile = ({ rating, isFavourite }) => {
         return response.json();
       })
       .then((data) => {
+        // console.log(data)
         Swal.fire({
           title: `Hall ${data.message}`,
           showCancelButton: false,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.reload();
-          }
         });
+        navigate(`/user/${personData.role}/${personData.id}`);
       });
   }
   function AddLike() {
@@ -116,8 +115,8 @@ const HallProfile = ({ rating, isFavourite }) => {
           showCancelButton: false,
         }).then((result) => {
           if (result.isConfirmed) {
-            setLike(true)
-            console.log(result)
+            setLike(true);
+            // console.log(result);
             window.location.reload();
           }
         });
@@ -127,7 +126,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   function goToaAskToBook() {
     navigate(`/BookHall/${hallId}`);
   }
-  console.log(isFavourited, hall);
+  // console.log(isFavourited, hall);
 
   useEffect(() => {
     allData(hallId);
@@ -159,7 +158,7 @@ const HallProfile = ({ rating, isFavourite }) => {
     setToggle(!toggle);
   }
   function handleClick2() {
-    setHeartStyle({ color: "white" });
+    setHeartStyle({ color: "#cacaca" });
     setToggle(!toggle);
   }
   const handleLike = () => {
@@ -172,7 +171,7 @@ const HallProfile = ({ rating, isFavourite }) => {
   const removeColor = () => {
     setLikeStyle({ color: "white" });
     setLike(!Like);
-    console.log("colorRemoved");
+    // console.log("colorRemoved");
   };
   const handleDislike = () => {
     setLikeStyle({ color: "white" });
@@ -183,18 +182,19 @@ const HallProfile = ({ rating, isFavourite }) => {
   const removeDislikeColor = () => {
     setDisLikeStyle({ color: "white" });
     setDisLike(!disLike);
-    console.log("colorRemoved");
+    // console.log("colorRemoved");
   };
   const goToProfile = () => {
     navigate(`/owner/${hall.owner.id}`, {
       state: { userData: ownerData },
     });
   };
-let contentAvalaible;
-  if(hall.available===0)
-  {contentAvalaible="Not Available"}
-  else if(hall.available===1)
-  {contentAvalaible="Available"}
+  let contentAvalaible;
+  if (hall.available === 0) {
+    contentAvalaible = "Not Available";
+  } else if (hall.available === 1) {
+    contentAvalaible = "Available";
+  }
   return (
     <>
       <NavbarWithSideBar />
@@ -207,11 +207,7 @@ let contentAvalaible;
             <ImageSlider products={products} />
           </div>
           <div className="mapAndData">
-            <InfoForMap
-              className="singleInfoMap"
-              hall={hall}
-              
-            />
+            <InfoForMap className="singleInfoMap" hall={hall} />
 
             <div className="dataModalContact">
               <Link className="contactWUs" onClick={() => setShow(true)}>
@@ -245,10 +241,11 @@ let contentAvalaible;
             </div>
             <div className="dataModalContact">
               <div className="contactWUs" to="/modal">
-                <button className="askBooking" onClick={goToaAskToBook}>
+                {personData.role==="user"&&(<button className="askBooking" onClick={goToaAskToBook}>
                   <BiMailSend className="colorSvg1" />
                   Ask To Book
-                </button>
+                </button>)}
+                
               </div>
             </div>
           </div>
@@ -312,7 +309,6 @@ let contentAvalaible;
                   </li>
                 </ul>
               </div>
-              
             </div>
             <div className="allContInfo">
               <div className="top-shape"></div>
@@ -332,62 +328,55 @@ let contentAvalaible;
                     <p className="pForInfo">The Street</p>
                     <p className="pForData">{hall.street} </p>
                   </li>
-                  
                 </ul>
               </div>
-              
             </div>
             <InfoShow hall={hall} />
             <InfoServices hall={hall} />
             <InfoDescription hall={hall} />
           </div>
-{personData.role==="user"&&(
-  <div className="contReview">
-  <div className="reviewF custom-scrollbar">
-    
-    <div className="secondColLove">
-      <p>Add To Fav</p>
-      <div className="heartLove ">
-        <FaHeart
-          className="heartLoveSvg "
-          // color={1 <= (hoverHeart || false ) ? "red" : ""}
-          style={isFavourited ? { color: "red" } : heartStyle}
-          onClick={() => {
-            toggle ? handleClick() : handleClick2();
-            AddToFavourites();
-          }}
-        />
-      </div>
-    </div>
-    <div className="thirdColLike">
-      <p>Did You Like This </p>
-      <div className="heartLove">
-        <FaThumbsUp
-          className="LikeIcon"
-          // color={ (disLike) ? "#243b55" : ""}
-          style={LikeStyle}
-          onClick={() => {AddLike();
-
-          }}
-        />
-      </div>
-    </div>
-    <div className="thirdColLike">
-      <p>Number Of Likes </p>
-      <div className="PheartLove">
-        <div className="likeDown1 ">
-          <FaThumbsUp className="heartLoveSvg"  />
-          <p>{hall.likes_count}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-)}
-   
-
-         
+          {personData.role === "user" && (
+            <div className="contReview">
+              <div className="reviewF custom-scrollbar">
+                <div className="secondColLove">
+                  <p>Add To Fav</p>
+                  <div className="heartLove ">
+                    <FaHeart
+                      className="heartLoveSvg "
+                      // color={1 <= (hoverHeart || false ) ? "red" : ""}
+                      style={isFavourited ? { color: "red" } : heartStyle}
+                      onClick={() => {
+                        toggle ? handleClick() : handleClick2();
+                        AddToFavourites();
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="thirdColLike">
+                  <p>Did You Like This </p>
+                  <div className="heartLove">
+                    <FaThumbsUp
+                      className="LikeIcon"
+                      // color={ (disLike) ? "#243b55" : ""}
+                      style={LikeStyle}
+                      onClick={() => {
+                        AddLike();
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="thirdColLike">
+                  <p>Number Of Likes </p>
+                  <div className="PheartLove">
+                    <div className="likeDown1 ">
+                      <FaThumbsUp className="heartLoveSvg" />
+                      <p>{hall.likes_count}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {personData && (

@@ -27,7 +27,7 @@ function AddService() {
     });
   }
 
-  console.log(formData);
+  // console.log(formData);
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     setFormData({
@@ -50,7 +50,7 @@ function AddService() {
     formDataObj.append("address", formData.address);
     formDataObj.append("type", formData.type);
 
-    console.log(formDataObj);
+    // console.log(formDataObj);
     if (formDataObj) {
       fetch("http://127.0.0.1:8000/supplier/auth/addService", {
         method: "POST",
@@ -64,7 +64,7 @@ function AddService() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           Swal.fire({
             title: "Service Added Succuessfully",
             showCancelButton: false,

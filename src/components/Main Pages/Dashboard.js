@@ -37,7 +37,6 @@ import Swal from "sweetalert2";
 import { MdCancelPresentation, MdLibraryBooks, MdOutlineCancelPresentation } from "react-icons/md";
 const Dashboard = () => {
   const personData= useContext(MyContext);
-  console.log(personData);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [client, setClient] = useState([]);
   const [admins, setAdmins] = useState([]);
@@ -240,13 +239,11 @@ e.preventDefault();
               nav(`/`);
               // window.location.reload();
             }
-            console.log(response)
           } else {
             throw new Error("Logout failed.");
           }
         })
         .catch((error) => {
-          console.error(error);
         });
     }}
    
@@ -368,17 +365,17 @@ e.preventDefault();
     getAllPackages();
     getAllPlans();
   }, []);
-  console.log("suppliers", suppliers);
-  console.log("AllHalls", allHalls);
-  console.log("ALLAdmins", admins);
-  console.log("AllPlans", allPlans);
-  console.log("confirmedHalls", confirmedHalls);
-  console.log("canceledHalls", canceledHalls);
-  console.log("owners", hallOwner);
-  console.log("planners", weddingPlanner);
-  console.log("clients", client);
-  console.log("hallrequset", hallsRequest);
-  console.log("allPackages", allPackages);
+  // console.log("suppliers", suppliers);
+  // console.log("AllHalls", allHalls);
+  // console.log("ALLAdmins", admins);
+  // console.log("AllPlans", allPlans);
+  // console.log("confirmedHalls", confirmedHalls);
+  // console.log("canceledHalls", canceledHalls);
+  // console.log("owners", hallOwner);
+  // console.log("planners", weddingPlanner);
+  // console.log("clients", client);
+  // console.log("hallrequset", hallsRequest);
+  // console.log("allPackages", allPackages);
   return (
     <div className="contSidebarWithDash">
       <div className="container">

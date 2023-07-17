@@ -10,7 +10,7 @@ import { MyContext } from "./Redux";
 function Login({ onLogin }) {
   const personData = useContext(MyContext);
 
-  console.log(personData);
+  // console.log(personData);
 
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
@@ -45,7 +45,7 @@ function Login({ onLogin }) {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
 
         if (response.status === 200) {
           return response.json();

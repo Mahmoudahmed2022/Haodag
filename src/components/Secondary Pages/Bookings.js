@@ -88,7 +88,7 @@ const personData = useContext(MyContext);
         console.error("Error fetching data:", error);
       });
   }
-  console.log(reservations);
+  // console.log(reservations);
   useEffect(() => {
     getReservations();
   }, []);

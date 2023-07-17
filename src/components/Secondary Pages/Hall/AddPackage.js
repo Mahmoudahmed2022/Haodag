@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { MyContext } from "../../Main Pages/Redux";
 const AddPackage = () => {
   const personData= useContext(MyContext);
-  console.log(personData);
+  const navigate = useNavigate();
+  // console.log(personData);
   const [formData, setFormData] = useState({
     hall_name: "",
     hallid: "",
@@ -31,7 +32,7 @@ const AddPackage = () => {
     });
   }
 
-  console.log(formData);
+  // console.log(formData);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,7 +43,7 @@ const AddPackage = () => {
     formDataObj.append("start_date", formData.start_date);
     formDataObj.append("end_date", formData.end_date);
     formDataObj.append("price", formData.price);
-    console.log(formDataObj);
+    // console.log(formDataObj);
     if (formDataObj) {
       fetch("http://127.0.0.1:8000/admin/auth/createOffer", {
         method: "POST",
@@ -56,9 +57,9 @@ const AddPackage = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
-          alert(data.message)
-          // window.location.reload();
+          // console.log(data);
+          alert(data.message);
+          navigate(`/adminDashboard`)
         });
     }
   }

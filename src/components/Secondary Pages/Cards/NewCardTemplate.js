@@ -58,54 +58,53 @@ const NewCardTemplate = ({ cardData }) => {
       });
     }
   };
-  
-  console.log(cardData);
+
   return (
     <div className="CardContainer animate">
       <div className="ContImgCard">
-        <img src={cardData?.photos[0]} alt="no photo"></img>
+        <img src={cardData?.photos?.[0]} alt="no photo" />
       </div>
       <div className="ContDataInCard">
         <div className="ContTwoData">
           <div className="AllRightData">
             <p className="custom-scrollbar">
-              Name:<span className="boldColor">{cardData.name}</span>{" "}
+              Name:<span className="boldColor">{cardData?.name}</span>{" "}
             </p>
             <p className="custom-scrollbar">
-              Capacity: <span className="boldColor">{cardData.capacity}</span>
+              Capacity: <span className="boldColor">{cardData?.capacity}</span>
             </p>
             <p className="custom-scrollbar">
-              Type: <span className="boldColor">{cardData.type}</span>
+              Type: <span className="boldColor">{cardData?.type}</span>
             </p>
             <p className="custom-scrollbar">
-              Price: <span className="boldColor">{cardData.price}</span>{" "}
+              Price: <span className="boldColor">{cardData?.price}</span>{" "}
             </p>
             <p className="custom-scrollbar">
-              Likes: <span className="boldColor">{cardData.likes_count}</span>{" "}
+              Likes: <span className="boldColor">{cardData?.likes_count}</span>{" "}
             </p>
           </div>
           <div className="AllRightData">
             <p className="custom-scrollbar">
-              Country:<span className="boldColor">{cardData.country}</span>{" "}
+              Country:<span className="boldColor">{cardData?.country}</span>{" "}
             </p>
             <p className="custom-scrollbar">
-              City: <span className="boldColor">{cardData.city}</span>
+              City: <span className="boldColor">{cardData?.city}</span>
             </p>
             <p className="custom-scrollbar">
-              Street: <span className="boldColor">{cardData.street}</span>{" "}
+              Street: <span className="boldColor">{cardData?.street}</span>{" "}
             </p>
             <p className="custom-scrollbar">
-              Rooms: <span className="boldColor">{cardData.rooms}</span>
+              Rooms: <span className="boldColor">{cardData?.rooms}</span>
             </p>
             <p className="custom-scrollbar">
               Comments:{" "}
-              <span className="boldColor">{cardData.comments_count}</span>{" "}
+              <span className="boldColor">{cardData?.comments_count}</span>{" "}
             </p>
           </div>
         </div>
 
         <div className="ContButtonGoToHall">
-        {personData.role === "admin" && (
+          {personData.role === "admin" && (
             <button
               className="buttonMain delete"
               onClick={() => deletePackage(cardData)}
@@ -113,7 +112,7 @@ const NewCardTemplate = ({ cardData }) => {
               Delete
             </button>
           )}
-             {(personData.role === "owner" && cardData.owner.id===personData.id) && (
+          {personData.role === "owner" && (
             <button
               className="buttonMain delete"
               onClick={() => deleteHall(cardData)}
@@ -129,8 +128,7 @@ const NewCardTemplate = ({ cardData }) => {
               Edit 
             </button>
           )} */}
-          
-          
+
           {/* {isOwner && <Link to={`/hallDetails/${cardData.id}`}>Edit</Link>} */}
         </div>
       </div>

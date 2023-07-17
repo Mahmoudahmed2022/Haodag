@@ -16,7 +16,7 @@ const AskToBookPlan = (props) => {
     check_out_date: "",
   });
 
-  console.log(PlanId, "ask to book", personData);
+  // console.log(PlanId, "ask to book", personData);
   function getRegisterData(e) {
     setFormData((prev) => {
       return {
@@ -55,7 +55,7 @@ const AskToBookPlan = (props) => {
         console.error("Error fetching data:", error);
       });
   };
-  console.log(formData, personData.token);
+  // console.log(formData, personData.token);
   return (
     <>
     <NavbarWithSideBar/>

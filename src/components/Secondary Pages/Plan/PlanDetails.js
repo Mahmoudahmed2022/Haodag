@@ -15,7 +15,7 @@ function PlanDetails() {
   const location = useLocation();
   const userData = location?.state?.userData;
   const plan = location?.state?.plan;
-  console.log("plan", plan);
+  // console.log("plan", plan);
    function goToaAskToBook() {
     navigate(`/BookPlan/${plan_Id}`,);
   }

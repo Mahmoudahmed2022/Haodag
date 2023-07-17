@@ -26,7 +26,7 @@ const Owners = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setownersHallsCard(data.data);
       })
       .catch((error) => {

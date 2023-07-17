@@ -7,7 +7,7 @@ import "../../../Css/PlanSlider.css";
 import { ButtonBack, ButtonNext, CarouselProvider, DotGroup, Slide, Slider } from "pure-react-carousel";
 
 function PlanSlider({plan}) {
-  console.log(plan);
+  // console.log(plan);
   return (
     <>
        <div className="imageInslider">

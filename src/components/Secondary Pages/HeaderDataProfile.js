@@ -72,7 +72,7 @@ const HeaderDataProfile = (props) => {
   function handleHallsBookings() {
     navigate(`/HallsBookings`);
   }
-  console.log(personData);
+  // console.log(personData);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
     fetchplans();
@@ -93,7 +93,7 @@ const HeaderDataProfile = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setplan(data.data);
       })
       .catch((error) => {

@@ -10,7 +10,7 @@ import photo from "../images/user.png"
 const FetchAllData = ({ user,deleteRecord, }) => {
   const navigate = useNavigate();
   let content;
-  console.log(user);
+  // console.log(user);
   const personData = useContext(MyContext);
   user.map((user) => {
     if (user.role === "planner") {

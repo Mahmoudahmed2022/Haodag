@@ -32,7 +32,7 @@ const CardPackagesInDashboard = ({ user, deletePackage }) => {
               
               deletePackage(pack.id);
               alert(data.message);
-              console.log(data);
+              // console.log(data);
 
             });
         }

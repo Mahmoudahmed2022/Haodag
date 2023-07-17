@@ -94,7 +94,7 @@ function PlansRequests() {
         console.error("Error fetching data:", error);
       });
   }
-  console.log(reservations);
+  // console.log(reservations);
   useEffect(() => {
     getReservations();
   }, []);

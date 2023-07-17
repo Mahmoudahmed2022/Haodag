@@ -9,8 +9,8 @@ import { useContext } from "react";
 import { MyContext } from "../../Main Pages/Redux";
 const PackageCard = ({cardData}) => {
   const personData = useContext(MyContext);
-  console.log("cardDa",cardData)
-  console.log("check",personData==="admin")
+  // console.log("cardDa",cardData)
+  // console.log("check",personData==="admin")
   const navigate = useNavigate();
   const [showHallDetails, setShowHallDetails] = useState(false);
   const [hall, setHall] = useState();
@@ -73,7 +73,7 @@ const nav=useNavigate();
     });
   }
   
-  console.log(cardData, hall);
+  // console.log(cardData, hall);
 
   useEffect(() => {
     allCardData();

@@ -23,7 +23,7 @@ function AllPlans() {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setplan(data.data);
       })
       .catch((error) => {
@@ -39,7 +39,7 @@ function AllPlans() {
   const loadMore = () => {
     setVisible(visible + 5);
   };
-  console.log(personData);
+  // console.log(personData);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
     fetchplans();

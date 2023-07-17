@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 function AddAdmin() {
   const personData= useContext(MyContext);
-  console.log(personData);
+  // console.log(personData);
  
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
@@ -57,7 +57,7 @@ function AddAdmin() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setStatus(data);
           alert(data.message);
           navigate(`/AdminDashboard`);
@@ -69,11 +69,11 @@ function AddAdmin() {
       alert("Password and Confirm Password Does not Match");
     }
   };
-  console.log("status", status);
+  // console.log("status", status);
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
-    console.log(passwordField, "Input");
+    // console.log(passwordField, "Input");
     if (passwordField.type === "password") {
       passwordField.type = "text";
     } else {
@@ -82,7 +82,7 @@ function AddAdmin() {
   }
   function togglePasswordVisibility1() {
     var passwordField = document.getElementById("password");
-    console.log(passwordField, "Input");
+    // console.log(passwordField, "Input");
     if (passwordField.type === "password") {
       passwordField.type = "text";
     } else {

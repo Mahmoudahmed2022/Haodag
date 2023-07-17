@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { MyContext } from "./Redux";
 const GreatePackages = () => {
   const personData = useContext(MyContext);
-  console.log(personData);
+  // console.log(personData);
   const [cardData, setCardData] = useState([]);
  
   const allCardData = () => {
@@ -20,7 +20,7 @@ const GreatePackages = () => {
         console.error(error);
       });
   };
-  console.log(cardData);
+  // console.log(cardData);
   useEffect(() => {
     allCardData();
   }, []);

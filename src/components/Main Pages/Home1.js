@@ -8,12 +8,11 @@ import suppliers from "../images/suppliers2.png";
 import clients from "../images/clients1.png";
 import shape1 from "../images/shape.png";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import "../../Css/App.css";
 import "../../Css//Home1.css";
 import image11 from "../images/12.jpeg";
-import couples from "../images/couples.png"
+import couples from "../images/couples.png";
 import NewCardTemplate from "../Secondary Pages/Cards/NewCardTemplate";
 import NavbarWithSideBar from "./NavbarWithSideBar";
 import { useContext } from "react";
@@ -28,43 +27,63 @@ function Home() {
   const [visible, setVisible] = useState(5);
   const nav = useNavigate();
   const allCardData = () => {
-    fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
-      .then((response) => response.json())
-      .then((data) => {
-        setCardData(data.data);
+    if (personData.token) {
+      fetch("http://127.0.0.1:8000/api/auth/getRecommendations", {
+        method: "GET",
+        headers: {
+          "auth-token": `${personData.token}`,
+          Authorization: `Bearer${personData.token}`,
+        },
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          setCardData(data.halls);
+          // console.log("recommendation",data.halls)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      fetch("http://127.0.0.1:8000/api/auth/getAllHalls")
+        .then((response) => response.json())
+        .then((data) => {
+          setCardData(data.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   const loadMore = () => {
     setVisible(visible + 5);
   };
+  // console.log(cardData)
 
   useEffect(() => {
-    if(personData.isLogin==="false")
-    {personData.setIsLogin(false)}
-    if(personData.isLogin==="true"||personData.token)
-    {personData.setIsLogin(true)}
-
-   
+    if (personData.isLogin === "false") {
+      personData.setIsLogin(false);
+    }
+    if (personData.isLogin === "true" || personData.token) {
+      personData.setIsLogin(true);
+    }
   }, [personData.isLogin]);
 
   useEffect(() => {
     allCardData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
- 
+
   return (
     <>
       <NavbarWithSideBar />
 
       <div className="home-landing">
         <div className="all-content">
-        <h1 className="head-text">
-              Discover exquisite wedding halls that will make your special day unforgettable.
-              </h1>
+          <h1 className="head-text">
+            Discover exquisite wedding halls that will make your special day
+            unforgettable.
+          </h1>
           {/* <div className="text-content1">
             <div className="text-content2">
               <h1 className="head-text">
@@ -113,11 +132,12 @@ function Home() {
           name="We Are Clients"
         />
       </div>
-
-      <h1 className="headForHalls animate">Our Recommendation For You</h1>
+{personData.token ?(      <h1 className="headForHalls animate">Our Recommendation For You</h1>
+):(      <h1 className="headForHalls animate">Our Halls</h1>
+)}
 
       <div className="home-allhalls-container animate">
-        {cardData.slice(0, visible).map((data, index) => (
+        {cardData?.slice(0, visible)?.map((data, index) => (
           <NewCardTemplate key={index} cardData={data} />
         ))}{" "}
       </div>

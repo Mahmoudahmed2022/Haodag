@@ -64,11 +64,9 @@ function ServicesRequests() {
         Swal.fire({
           title: confirmMessge,
           showCancelButton: false,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.reload();
-          }
+        }).then((result) => {        
         });
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -97,16 +95,16 @@ function ServicesRequests() {
           title: rejectMessage,
           showCancelButton: false,
         }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.reload();
-          }
+          
         });
+        window.location.reload();
+
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }
-  console.log(reservations);
+  // console.log(reservations);
   useEffect(() => {
     getReservations();
   }, []);

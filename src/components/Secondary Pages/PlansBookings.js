@@ -31,7 +31,7 @@ function PlansBookings() {
       });
   };
 
-  console.log(bookings);
+  // console.log(bookings);
   useEffect(() => {
     getBookings();
   }, []);

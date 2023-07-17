@@ -24,7 +24,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -63,7 +63,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -84,7 +84,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -105,7 +105,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -123,7 +123,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -144,7 +144,7 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
@@ -165,14 +165,14 @@ const Services = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setSupplierServiceCard(data.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }
-  console.log(supplierServiceCard);
+  // console.log(supplierServiceCard);
   useEffect(() => {
     getSupplierServiceCard();
   }, []);

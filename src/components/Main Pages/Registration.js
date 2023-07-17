@@ -64,7 +64,7 @@ const goToHome=()=>{
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           personData.setIsLogin(true);
           personData.setName(data.data.name);
           personData.setEmail(data.data.email);
@@ -86,8 +86,8 @@ const goToHome=()=>{
       alert("Password and Confirm Password Does not Match");
     }
   };
-  console.log("personData", personData);
-  console.log("status", status);
+  // console.log("personData", personData);
+  // console.log("status", status);
 
   useEffect(() => {
     // if (personData) {
@@ -106,7 +106,7 @@ const goToHome=()=>{
 
   function togglePasswordVisibility() {
     var passwordField = document.getElementById("verifyPassword");
-    console.log(passwordField, "Input");
+    // console.log(passwordField, "Input");
     if (passwordField.type === "password") {
       passwordField.type = "text";
     } else {
@@ -115,7 +115,7 @@ const goToHome=()=>{
   }
   function togglePasswordVisibility1() {
     var passwordField = document.getElementById("password");
-    console.log(passwordField, "Input");
+    // console.log(passwordField, "Input");
     if (passwordField.type === "password") {
       passwordField.type = "text";
     } else {

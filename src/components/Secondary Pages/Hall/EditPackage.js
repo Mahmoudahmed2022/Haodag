@@ -10,14 +10,14 @@ function EditPackage() {
   const navigate = useNavigate();
   const location = useLocation();
   const hall = location.state.hall;
-  console.log(hall);
+  // console.log(hall);
   const [formData, setFormData] = useState({
     start_date: hall.start_date,
     end_date: hall.end_date,
     price: hall.price,
   });
-  console.log("ID", id);
-  console.log(personData, formData);
+  // console.log("ID", id);
+  // console.log(personData, formData);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,7 +25,7 @@ function EditPackage() {
     formDataObj.append("start_date", formData.start_date);
     formDataObj.append("end_date", formData.end_date);
     formDataObj.append("price", formData.price);
-    console.log(formDataObj);
+    // console.log(formDataObj);
     if (formDataObj) {
       fetch(`http://127.0.0.1:8000/admin/auth/updateOffer/${id}`, {
         method: "POST",

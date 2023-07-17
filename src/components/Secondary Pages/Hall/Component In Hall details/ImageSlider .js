@@ -17,8 +17,8 @@ function ImageSlider({products}) {
   // const [images, setImages] = useState([]);
 //   const hall = props.hall;
 // console.log(hall)
-console.log(products)
-console.log("from image slider",products?.data?.photos);
+// console.log(products)
+// console.log("from image slider",products?.data?.photos);
   return (
     <>
       <div className="media">

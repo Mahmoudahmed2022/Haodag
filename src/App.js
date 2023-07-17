@@ -39,6 +39,7 @@ import UpdateService from "./components/Secondary Pages/UpdateService";
 import AskToBookService from "./components/Secondary Pages/AskToBookService";
 import ServicesRequests from "./components/Secondary Pages/ServicesRequests";
 import AllPlans from "./components/Secondary Pages/AllPlans";
+import ServicesBooking from "./components/Secondary Pages/ServicesBooking";
 
 function App() {
   return (
@@ -65,6 +66,8 @@ function App() {
             <Route path="/WeddingPlanners" element={<WeddingPlanners />} />
             <Route path="/PlansBookings" element={<PlansBookings />} />
             <Route path="/HallsBookings" element={<HallsBookings />} />
+            <Route path="/ServicesBooking" element={<ServicesBooking />} />
+
             <Route path="/Plandetails/:plannerId" element={<PlanDetails />} />
             <Route path="/:param/:id" element={<HeaderDataProfile />} />
             <Route path="/user/:name/:id" element={<ProfileForAll />} />

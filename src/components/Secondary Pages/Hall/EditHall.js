@@ -9,7 +9,7 @@ function EditHall() {
   const navigate = useNavigate();
   const location = useLocation();
 const hall = location.state.hall;
-console.log(hall)
+// console.log(hall)
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -29,8 +29,8 @@ console.log(hall)
     shows: [],
     services: [],
   });
-  console.log("ID",id);
-console.log(personData)
+//   console.log("ID",id);
+// console.log(personData)
 
   // Fetch hall data if in edit mode
 
@@ -66,7 +66,7 @@ console.log(personData)
         hall.street=data.street
         hall.shows=data.shows
         hall.services=data.services
-        console.log(data);
+        // console.log(data);
         navigate(`/user/:${personData.role}/:${personData.id}`);
       })
       .catch((error) => {

@@ -5,6 +5,7 @@ import "../../Css/ClientProfile.scss";
 import "../../Css/MainProfileForAllUsers.css";
 import "../../Css/ProfileData.css";
 import { useEffect } from "react";
+import adminPhoto from "../images/user2.png"
 import Owners from "./Owners";
 import Planners from "./Planners";
 import NavbarWithSideBar from "../Main Pages/NavbarWithSideBar";
@@ -55,10 +56,13 @@ const ProfileForAll = (props) => {
   function handlePlansBookings() {
     navigate(`/PlansBookings`);
   }
+  function handleServicesBookings() {
+    navigate(`/ServicesBooking`);
+  }
   function handleHallsBookings() {
     navigate(`/HallsBookings`);
   }
-  console.log(personData);
+  // console.log(personData);
   useEffect(() => {
     window.scrollTo({ behavior: "smooth" });
 
@@ -85,7 +89,7 @@ const ProfileForAll = (props) => {
   //       console.error("Error fetching data:", error);
   //     });
   // };
-console.log(personData.role === "admin")
+// console.log(personData.role === "admin")
   return (
     <>
       <NavbarWithSideBar />
@@ -94,11 +98,16 @@ console.log(personData.role === "admin")
         <div className="profile-header">
           <div className="cOntLeftData">
             <div className="divContImgType">
-              <img
+              {personData.role==="admin"?( <img
+                src={adminPhoto}
+                alt="Profile"
+                className="profile-image"
+              />):( <img
                 src={personData?.photo}
                 alt="Profile"
                 className="profile-image"
-              />
+              />)}
+             
               <p className="nameUser">{personData?.role}</p>
             </div>
             <div className="profile-details">
@@ -176,6 +185,15 @@ console.log(personData.role === "admin")
                         className="btn-flip add-hall-btn"
                         data-back="Halls Bookings"
                         data-front="Halls Bookings"
+                        to="#"
+                      ></button>
+                    </div>
+                    <div className="planner-prof-btn-div">
+                      <button
+                        onClick={handleServicesBookings}
+                        className="btn-flip add-hall-btn"
+                        data-back="Services Bookings"
+                        data-front="Services Bookings"
                         to="#"
                       ></button>
                     </div>

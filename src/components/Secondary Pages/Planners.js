@@ -10,8 +10,8 @@ const Planners = ({ userData, isLogin, Plan }) => {
   const [visible, setVisible] = useState(5);
   const personData = useContext(MyContext);
   const navigate = useNavigate();
-  console.log(userData);
-  console.log(Plan);
+  // console.log(userData);
+  // console.log(Plan);
 
   const fetchplans = () => {
     fetch(`http://127.0.0.1:8000/api/auth/getAllPlannerPlans/${userData.id}`, {
@@ -24,7 +24,7 @@ const Planners = ({ userData, isLogin, Plan }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setplan(data.data);
       })
       .catch((error) => {

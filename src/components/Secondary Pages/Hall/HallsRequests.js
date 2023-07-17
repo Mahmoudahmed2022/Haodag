@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { MyContext } from "../../Main Pages/Redux";
 function HallsRequests({hallsRequest,deleteHallRequest}) {
   const personData = useContext(MyContext);
-  console.log(hallsRequest)
-  console.log(personData)
+  // console.log(hallsRequest)
+  // console.log(personData)
 
   const ConfirmHall =(hall)=>{
     fetch(`http://127.0.0.1:8000/admin/auth/confirmHallRequest/${hall.id}`, {
@@ -16,7 +16,9 @@ function HallsRequests({hallsRequest,deleteHallRequest}) {
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data);alert(data.message);deleteHallRequest(hall.id)})
+      .then((data) => {
+        // console.log(data);
+        alert(data.message);deleteHallRequest(hall.id)})
 
   
   }
@@ -28,7 +30,8 @@ function HallsRequests({hallsRequest,deleteHallRequest}) {
       },
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data);
+      .then((data) => {
+        // console.log(data);
         alert(data.message);
         deleteHallRequest(hall.id)})
 

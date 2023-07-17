@@ -9,7 +9,7 @@ const DeleteHall = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // do something with form data here, e.g. send it to a server
-    console.log({ name });
+    // console.log({ name });
 
     props.onClose();
   };
@@ -18,8 +18,8 @@ const DeleteHall = (props) => {
     await fetch(`${api2}`)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
-        console.log("from api");
+        // console.log(response);
+        // console.log("from api");
         setProducts(response);
       })
       .catch((err) => console.error(err));

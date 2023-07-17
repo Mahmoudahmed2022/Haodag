@@ -26,7 +26,7 @@ const Users = ({ userData, isLogin }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Data received from server:", data);
+        // console.log("Data received from server:", data);
         setownersHallsCard(data.halls);
       })
       .catch((error) => {
@@ -37,6 +37,7 @@ const Users = ({ userData, isLogin }) => {
   useEffect(() => {
     getownersHallsCard();
   }, []);
+  // console.log(ownersHallsCard);
   return (
     <>
       <div className="halls">

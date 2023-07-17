@@ -54,7 +54,7 @@ const navigate = useNavigate();
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if(data.message==="done")
         alert("plan added succesfully")
       })

@@ -25,8 +25,8 @@ const ModalEditClientProfile = () => {
     }
   };
 
-  console.log(formData);
-  console.log(personData);
+  // console.log(formData);
+  // console.log(personData);
   const onSubmitted = (e) => {
     e.preventDefault();
     
@@ -59,15 +59,14 @@ const ModalEditClientProfile = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data.name);
+        // console.log(data.data.name);
         personData.name = data.data.name;
         personData.phone = data.data.phone;
         personData.password = data.data.password;
         personData.photo = data.data.photo;
   
-        console.log(data);
+        // console.log(data);
         navigate(`/user/${personData.role}/${personData.id}`);
-        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -76,7 +75,7 @@ const ModalEditClientProfile = () => {
   
   function togglePasswordVisibility1() {
     var passwordField = document.getElementById("password");
-    console.log(passwordField, "Input");
+    // console.log(passwordField, "Input");
     if (passwordField.type === "password") {
       passwordField.type = "text";
     } else {

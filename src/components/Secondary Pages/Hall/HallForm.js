@@ -3,6 +3,7 @@ import "../../../Css/HallForm.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Main Pages/Redux";
 import NavbarWithSideBar from "../../Main Pages/NavbarWithSideBar";
+import swal from "sweetalert";
 
 const HallForm = () => {
   const personData = useContext(MyContext);
@@ -36,7 +37,7 @@ const HallForm = () => {
       };
     });
   }
-  console.log(formData);
+  // console.log(formData);
 
   const handleImageChange = (event) => {
     const selectedImages = Array.from(event.target.files);
@@ -143,7 +144,7 @@ const HallForm = () => {
     for (let i = 0; i < formData.photos.length; i++) {
       formDataObj.append(`photos[${i}]`, formData.photos[i]);
     }
-    console.log(formDataObj);
+    // console.log(formDataObj);
     if (formDataObj) {
       fetch("http://127.0.0.1:8000/owner/auth/addHall", {
         method: "POST",
@@ -157,11 +158,11 @@ const HallForm = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
+          alert(data.message)
 
         });
-      // navigate(`/user/${personData.role}/${personData.id}`);
-      // window.location.reload();
+      
     }
   };
 
@@ -169,7 +170,7 @@ const HallForm = () => {
     const formGroups = document.querySelectorAll(".form-group1");
     formGroups.forEach((group) => group.classList.add("visible"));
   }, []);
-console.log(formData);
+// console.log(formData);
 
   return (
     <>

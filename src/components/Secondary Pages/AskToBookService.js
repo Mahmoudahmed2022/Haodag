@@ -60,7 +60,7 @@ const AskToBookService = (props) => {
         console.error("Error fetching data:", error);
       });
   };
-  console.log(formData, personData.token);
+  // console.log(formData, personData.token);
   return (
     <>
       <div className="modal2">
@@ -90,10 +90,10 @@ const AskToBookService = (props) => {
 
           <div>
             <div className="resetAndCancel2">
-              <button className="cancel" onClick={() => nav(-1)}>
+              <button className="delete buttonMain" onClick={() => nav(-1)}>
                 Cancel
               </button>
-              <button className="submitForm2" type="submit">
+              <button className="details buttonMain" type="submit">
                 Submit
               </button>
             </div>

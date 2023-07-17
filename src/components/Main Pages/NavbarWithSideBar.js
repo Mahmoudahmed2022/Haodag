@@ -4,9 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../../Css/NavbarWithSideBar.css";
 import "../../Css/App.css";
-
+import adminPhoto from "../images/user2.png"
+import planPhoto from "../images/hallRequests.png"
+import photos from "../images/suppliers.png"
+import packagePhoto from "../images/package.png"
 import { IconContext } from "react-icons";
-import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleLeft, FaSearch } from "react-icons/fa";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { FaAlignLeft } from "react-icons/fa";
 import image2 from "../images/logo.png";
@@ -21,7 +24,6 @@ import { MyContext } from "./Redux";
 import Swal from "sweetalert2";
 function NavbarWithSideBar() {
   const personData = useContext(MyContext);
-  console.log(personData);
 
   const [sidebar, setSidebar] = useState(false);
   const nav = useNavigate();
@@ -65,8 +67,9 @@ function NavbarWithSideBar() {
               personData.setId("");
               alert("You Logged out");
               nav(`/`);
+              window.location.reload();
 
-              console.log(response);
+              // console.log(response);
             } else {
               throw new Error("Logout failed.");
             }
@@ -101,7 +104,7 @@ function NavbarWithSideBar() {
   //   }
   // }, [personData.isLogin]);
   function goToProfile() {
-    "/user/:name/:id";
+    // "/user/:name/:id";
     nav(`/user/${personData.role}/${personData.id}`, {
       state: { userData: personData },
     });
@@ -183,11 +186,47 @@ function NavbarWithSideBar() {
                 </div>
               </div>
             </div> */}
-            {personData.role && (
+           {personData.role === "user" && (
               <div onClick={goToProfile} className="profile-photo">
                 <img
                   className="pro-nav-pic"
                   src={personData.photo}
+                  alt="user pic"
+                />
+              </div>
+            )}
+            {personData.role === "planner" && (
+              <div onClick={goToProfile} className="profile-photo">
+                <img
+                  className="pro-nav-pic"
+                  src={personData.photo}
+                  alt="user pic"
+                />
+              </div>
+            )}
+            {personData.role === "supplier" && (
+              <div onClick={goToProfile} className="profile-photo">
+                <img
+                  className="pro-nav-pic"
+                  src={personData.photo}
+                  alt="user pic"
+                />
+              </div>
+            )}{" "}
+            {personData.role === "owner" && (
+              <div onClick={goToProfile} className="profile-photo">
+                <img
+                  className="pro-nav-pic"
+                  src={personData.photo}
+                  alt="user pic"
+                />
+              </div>
+            )}
+            {personData.role === "admin" && (
+              <div onClick={goToProfile} className="profile-photo">
+                <img
+                  className="pro-nav-pic"
+                  src={adminPhoto}
                   alt="user pic"
                 />
               </div>
@@ -251,7 +290,7 @@ function NavbarWithSideBar() {
                 className="aAll transparentBorderN"
                 
               >
-                <FaHome />
+                <FaHome  className="widthIcon"/>
                 <span className="svgColor">Home</span>
               </button>
             </li>
@@ -269,7 +308,7 @@ function NavbarWithSideBar() {
               }}
             >
               <button className="aAll transparentBorderN" >
-                <AiIcons.AiOutlineLogout />
+                <img src={packagePhoto}/>
                 <span className="svgColor">Great Packages</span>
               </button>
             </li>
@@ -287,7 +326,7 @@ function NavbarWithSideBar() {
               }}
             >
               <button className="aAll transparentBorderN">
-                <AiIcons.AiOutlineLogout />
+                <img src={photos} alt="photo"/>
                 <span className="svgColor">Owners & Planners & Suppliers</span>
               </button>
             </li>
@@ -302,7 +341,7 @@ function NavbarWithSideBar() {
               }}
             >
               <button className="aAll transparentBorderN">
-                <AiIcons.AiOutlineLogout />
+                <FaSearch/>
                 <span className="svgColor">Search For Halls</span>
               </button>
             </li>
@@ -317,7 +356,7 @@ function NavbarWithSideBar() {
               }}
             >
               <button className="aAll transparentBorderN">
-                <AiIcons.AiOutlineLogout />
+              <img src={planPhoto} alt="photo" className="widthIcon"/>
                 <span className="svgColor">All Plans</span>
               </button>
             </li>
@@ -328,6 +367,7 @@ function NavbarWithSideBar() {
                   onClick={handleLogout}
                 >
                   <AiIcons.AiOutlineLogout />
+
                   <span className="svgColor">Logout</span>
                 </button>
               </li>

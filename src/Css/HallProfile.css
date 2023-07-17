@@ -558,7 +558,9 @@
   resize: none;
 }
 
-
+.heartLove svg{
+  color: #9e9e9e;
+}
 .FirstDivForm h2{
   margin: 10px;
 }
